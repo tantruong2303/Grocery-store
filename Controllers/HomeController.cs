@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using backend.Models;
 
+
 namespace backend.Controllers
 {
     public class HomeController : Controller
@@ -21,20 +22,15 @@ namespace backend.Controllers
 
         public IActionResult Index()
         {
-              Console.WriteLine("hello");
-            return View("Hello");
+
+            this.ViewData["Title"] = "hello";
+            Console.WriteLine("hello213");
+            return View();
         }
 
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-          
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

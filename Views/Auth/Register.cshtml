@@ -1,0 +1,19 @@
+@{
+    var username = new TextField() { label = "Username", field = "username" };
+}
+
+<div>
+    <form method="post" action="/auth/register">
+        <div>
+            <label for="username">username:</label>
+            <input type="text" name="username" />
+        </div>
+        <p>
+            @ViewData["usernameError"]
+        </p>
+
+
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", username)
+        <button>Button</button>
+    </form>
+</div>
