@@ -20,5 +20,10 @@ namespace backend.DAO
             User user = this.dbContext.user.FirstOrDefault(item => item.username == username);
             return user;
         }
+        public User getUserById(string id)
+        {
+            User user = this.dbContext.user.FirstOrDefault(item => item.userId == id);
+            return user;
+        }
     }
 }

@@ -47,7 +47,7 @@ namespace backend.Utils
                     ValidateAudience = false,
                 }, out SecurityToken verifiedToken);
 
-                // I have no idea what am I doing here :)
+
                 var jwtToken = (JwtSecurityToken)verifiedToken;
                 return jwtToken.Claims.First(x => x.Type == "data").Value;
             }

@@ -15639,16 +15639,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "e:\\server\\grocery-store\\backend\\Views\\Home\\Hello.cshtml",
-      "TargetPath": "Views\\Home\\Hello.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\backend\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "e:\\server\\grocery-store\\backend\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -15659,11 +15649,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "e:\\server\\grocery-store\\backend\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "e:\\server\\grocery-store\\backend\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -15671,6 +15656,11 @@
     {
       "FilePath": "e:\\server\\grocery-store\\backend\\Views\\User\\Index.cshtml",
       "TargetPath": "Views\\User\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\server\\grocery-store\\backend\\Views\\Containers\\Register.cshtml",
+      "TargetPath": "Views\\Containers\\Register.cshtml",
       "FileKind": "mvc"
     },
     {

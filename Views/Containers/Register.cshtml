@@ -1,0 +1,28 @@
+@using backend.Views.ViewModel
+@using backend.Utils.Common
+@{
+    ViewData["Title"] = Routers.Register.title;
+    var username = new TextField() { label = "Username", field = "username" };
+    var password = new TextField() { label = "Password", field = "password" };
+    var name = new TextField() { label = "Name", field = "name" };
+    var confirmPassword = new TextField() { label = "Confirm Password", field = "confirmPassword" };
+    var email = new TextField() { label = "Email", field = "email" };
+    var address = new TextField() { label = "Address", field = "address" };
+    var phone = new TextField() { label = "Phone", field = "phone" };
+}
+
+<div>
+    <form method="post" action="/auth/register">
+        <p>
+            @ViewData["errorMessage"]
+        </p>
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", name)
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", username)
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", password)
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", confirmPassword)
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", address)
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", phone)
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", email)
+        <button>Regsiter</button>
+    </form>
+</div>

@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using backend.Models;
-
+using backend.Utils.Common;
+using backend.Pipe;
 
 namespace backend.Controllers
 {
+    [Route("")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -20,11 +22,13 @@ namespace backend.Controllers
             _logger = logger;
         }
 
+        [HttpGet("")]
+        [ServiceFilter(typeof(AuthGuard))]
         public IActionResult Index()
         {
 
             this.ViewData["Title"] = "hello";
-            return View();
+            return View(Routers.Home.page);
         }
 
         public IActionResult Privacy()

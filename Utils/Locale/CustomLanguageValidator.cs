@@ -4,51 +4,27 @@ namespace backend.Utils.Locale
     {
         public static class ErrorMessageKey
         {
-            public const string Error_LoginFail = "Error_LoginFail";
-            public const string Error_Existed = "Error_Existed";
-            public const string Error_FailToSave = "Error_FailToSave";
-            public const string Error_UpdateFail = "Error_UpdateFail";
-            public const string Error_DeleteFail = "Error_DeleteFail";
-            public const string Error_Wrong = "Error_Wrong";
-            public const string Error_NotFound = "Error_NotFound";
-            public const string Error_NotAllow = "Error_NotAllow";
-            public const string Error_PasswordNotContainRequiredCharacter = "Error_PasswordNotContainRequiredCharacter";
-            public const string Error_PasswordContainWhiteSpace = "Error_PasswordContainWhiteSpace";
+            public const string ERROR_LOGIN_FAIL = "ERROR_LOGIN_FAIL";
+            public const string ERROR_EXISTED = "ERROR_EXISTED";
+            public const string ERROR_NOT_ALLOW_ACTION = "ERROR_NOT_ALLOW_ACTION";
+
         }
 
         public static class MessageKey
         {
-            public const string Message_LoginSuccess = "Message_LoginSuccess";
-            public const string Message_RegisterSuccess = "Message_RegisterSuccess";
-            public const string Message_LogoutSuccess = "Message_LogoutSuccess";
-            public const string Message_UpdateSuccess = "Message_UpdateSuccess";
-            public const string Message_AddSuccess = "Message_AddSuccess";
-            public const string Message_DeleteSuccess = "Message_DeleteSuccess";
+
         }
         public CustomLanguageValidator()
         {
-
-            // Success message
             // EN
-            AddTranslation("en", "Message_LoginSuccess", "login success");
-            AddTranslation("en", "Message_RegisterSuccess", "register success");
-            AddTranslation("en", "Message_LogoutSuccess", "logout success");
-            AddTranslation("en", "Message_UpdateSuccess", "update success");
-            AddTranslation("en", "Message_AddSuccess", "add success");
-            AddTranslation("en", "Message_DeleteSuccess", "delete success");
+
 
             // Error message
             // EN
-            AddTranslation("en", "Error_LoginFail", "username or password is wrong");
-            AddTranslation("en", "Error_Existed", "is already exist");
-            AddTranslation("en", "Error_FailToSave", "database error");
-            AddTranslation("en", "Error_UpdateFail", "update fail");
-            AddTranslation("en", "Error_DeleteFail", "delete fail");
-            AddTranslation("en", "Error_Wrong", "is wrong");
-            AddTranslation("en", "Error_NotFound", "is not found");
-            AddTranslation("en", "Error_NotAllow", "not allow");
-            AddTranslation("en", "Error_PasswordNotContainRequiredCharacter", "should contain at least 1 uppercase, 1 lowwercase, 1 number");
-            AddTranslation("en", "Error_PasswordContainWhiteSpace", "should not contain white space");
+            AddTranslation("en", "ERROR_LOGIN_FAIL", "username or password is wrong");
+            AddTranslation("en", "ERROR_EXISTED", "is already exist");
+            AddTranslation("en", "ERROR_NOT_ALLOW_ACTION", "please login or action is not allow");
+
 
             // Don't touch me please
             AddTranslation("en", "EmailValidator", "is not a valid email address");
@@ -70,27 +46,6 @@ namespace backend.Utils.Locale
             AddTranslation("en", "NullValidator", "must be empty");
             AddTranslation("en", "EmptyValidator", "must be empty");
             AddTranslation("en", "EnumValidator", "has a range of values which does not include {PropertyValue}");
-
-
-            AddTranslation("vi", "EmailValidator", "không hợp lệ");
-            AddTranslation("vi", "GreaterThanOrEqualValidator", "phải lớn hơn hoặc bằng với {ComparisonValue}");
-            AddTranslation("vi", "GreaterThanValidator", "phải lớn hơn {ComparisonValue}");
-            AddTranslation("vi", "LengthValidator", "phải nằm trong khoảng từ {MinLength} đến {MaxLength} kí tự");
-            AddTranslation("vi", "MinimumLengthValidator", "tối thiểu {MinLength} kí tự");
-            AddTranslation("vi", "MaximumLengthValidator", "tối đa  {MaxLength} kí tự");
-            AddTranslation("vi", "LessThanOrEqualValidator", "phải nhỏ hơn hoặc bằng {ComparisonValue}");
-            AddTranslation("vi", "LessThanValidator", "phải nhỏ hơn {ComparisonValue}");
-            AddTranslation("vi", "NotEmptyValidator", "không được rỗng");
-            AddTranslation("vi", "NotEqualValidator", "không được bằng {ComparisonValue}");
-            AddTranslation("vi", "NotNullValidator", "phải có giá trị");
-            AddTranslation("vi", "RegularExpressionValidator", "không đúng định dạng");
-            AddTranslation("vi", "EqualValidator", "phải bằng {ComparisonValue}");
-            AddTranslation("vi", "ExactLengthValidator", "phải có độ dài chính xác {MaxLength} kí tự");
-            AddTranslation("vi", "InclusiveBetweenValidator", "phải có giá trị trong khoảng từ {From} đến {To}");
-            AddTranslation("vi", "ExclusiveBetweenValidator", "phải có giá trị trong khoảng giữa {From} và {To}");
-            AddTranslation("vi", "EmptyValidator", "phải là rỗng");
-            AddTranslation("vi", "NullValidator", "không được chứa giá trị");
-            AddTranslation("vi", "EnumValidator", "nằm trong một tập giá trị không bao gồm {PropertyValue}");
         }
     }
 }

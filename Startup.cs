@@ -14,6 +14,7 @@ using backend.Services.Interface;
 using backend.Controllers;
 using backend.DAO.Interface;
 using backend.DAO;
+using backend.Pipe;
 
 namespace backend
 {
@@ -33,10 +34,11 @@ namespace backend
             services.AddScoped<IUploadFileService, UploadFileService>();
             services.AddScoped<IJwtService, JwtService>();
             services.AddScoped<DBContext, DBContext>();
-            services.AddScoped<AuthGuard>();
-            services.AddScoped<AuthController>();
+            services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<AuthGuard>();
+            services.AddScoped<AuthController>();
 
             services.AddControllersWithViews();
         }

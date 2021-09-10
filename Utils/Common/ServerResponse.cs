@@ -12,6 +12,11 @@ namespace backend.Utils.Common
 {
     public class ServerResponse
     {
+        public static void setFieldErrorMessage(string field, string key, ViewDataDictionary dataView)
+        {
+            string value = ValidatorOptions.Global.LanguageManager.GetString(key);
+            dataView[$"{field}Error"] = value;
+        }
         public static void setMessage(string key, ViewDataDictionary dataView)
         {
             string value = ValidatorOptions.Global.LanguageManager.GetString(key);
