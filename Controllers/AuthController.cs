@@ -1,50 +1,40 @@
-using System.Reflection;
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using backend.Models;
 using backend.Controllers.DTO;
 using backend.Utils.Common;
-using backend.Utils.Validator;
-using backend.Services;
-
+using backend.Services.Interface;
 namespace backend.Controllers
 {
 
     [Route("auth")]
     public class AuthController : Controller
     {
-        private readonly UserService userService;
+        private readonly IUserService userService;
 
-        public AuthController(UserService userService)
+        public AuthController(IUserService userService)
         {
             this.userService = userService;
         }
 
-        [HttpGet("register")]
-        public IActionResult Register()
+        [HttpGet("login")]
+        public IActionResult Login()
         {
-            Console.WriteLine("calllllllllllllllll");
-            return View(Routers.Register.page);
+
+            return View(Routers.Login.page);
         }
 
 
-        [HttpPost("register")]
-        [ServiceFilter(typeof(AuthGuard))]
+        [HttpPost("login")]
         public IActionResult handleRegister(string username, string password)
         {
+            var input = new LoginDTO() { username = username, password = password };
+            var user = this.userService.loginHandler(input, this.ViewData);
+            if (user == null)
+            {
+                return View(Routers.Login.page);
+            }
 
-            Console.WriteLine("call me");
-            var input = new RegisterDTO() { username = username, password = password };
-
-            Boolean isValid = this.userService.registerHandler(input, this.ViewData);
-
-            return View(Routers.Register.page);
+            return View(Routers.Home.page);
         }
     }
 }

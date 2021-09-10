@@ -24,7 +24,6 @@ namespace backend.Controllers
         {
 
             this.ViewData["Title"] = "hello";
-            Console.WriteLine("hello213");
             return View();
         }
 

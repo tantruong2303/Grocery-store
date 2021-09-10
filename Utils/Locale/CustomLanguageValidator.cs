@@ -37,14 +37,6 @@ namespace backend.Utils.Locale
             AddTranslation("en", "Message_AddSuccess", "add success");
             AddTranslation("en", "Message_DeleteSuccess", "delete success");
 
-            // VI
-            AddTranslation("vi", "Message_LoginSuccess", "đăng nhập thành công");
-            AddTranslation("vi", "Message_RegisterSuccess", "đăng kí thành công");
-            AddTranslation("vi", "Message_LogoutSuccess", "đăng xuất thành công");
-            AddTranslation("vi", "Message_UpdateSuccess", "cập nhật thành công");
-            AddTranslation("vi", "Message_AddSuccess", "thêm mới thành công");
-            AddTranslation("vi", "Message_DeleteSuccess", "xóa thành công");
-
             // Error message
             // EN
             AddTranslation("en", "Error_LoginFail", "username or password is wrong");
@@ -57,27 +49,6 @@ namespace backend.Utils.Locale
             AddTranslation("en", "Error_NotAllow", "not allow");
             AddTranslation("en", "Error_PasswordNotContainRequiredCharacter", "should contain at least 1 uppercase, 1 lowwercase, 1 number");
             AddTranslation("en", "Error_PasswordContainWhiteSpace", "should not contain white space");
-
-            // VI
-            AddTranslation("vi", "Error_LoginFail", "username hoặc password không đúng");
-            AddTranslation("vi", "Error_Existed", "đã tồn tại");
-            AddTranslation("vi", "Error_FailToSaveUser", "lỗi cơ sở dữ liệu");
-            AddTranslation("vi", "Error_UpdateFail", "cập nhật không thành công");
-            AddTranslation("vi", "Error_DeleteFail", "xóa không thành công");
-            AddTranslation("vi", "Error_Wrong", "không đúng");
-            AddTranslation("vi", "Error_NotFound", "không tìm thấy");
-            AddTranslation("vi", "Error_NotAllow", "không có quyền");
-            AddTranslation("vi", "Error_PasswordNotContainRequiredCharacter", "phải có ít nhất 1 kí tự hoa, 1 kí tự thường, 1 số");
-            AddTranslation("vi", "Error_PasswordContainWhiteSpace", "không được chứa khoảng trắng");
-
-
-
-
-
-
-
-
-
 
             // Don't touch me please
             AddTranslation("en", "EmailValidator", "is not a valid email address");

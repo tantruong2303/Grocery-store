@@ -10,7 +10,10 @@ using FluentValidation;
 using System.Globalization;
 using backend.Controllers.DTO;
 using backend.Services;
+using backend.Services.Interface;
 using backend.Controllers;
+using backend.DAO.Interface;
+using backend.DAO;
 
 namespace backend
 {
@@ -32,7 +35,8 @@ namespace backend
             services.AddScoped<DBContext, DBContext>();
             services.AddScoped<AuthGuard>();
             services.AddScoped<AuthController>();
-            services.AddScoped<UserService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddControllersWithViews();
         }

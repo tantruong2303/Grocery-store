@@ -15619,6 +15619,11 @@
   "RootNamespace": "backend",
   "Documents": [
     {
+      "FilePath": "e:\\server\\grocery-store\\backend\\Views\\Containers\\Login.cshtml",
+      "TargetPath": "Views\\Containers\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "e:\\server\\grocery-store\\backend\\Views\\User\\All.cshtml",
       "TargetPath": "Views\\User\\All.cshtml",
       "FileKind": "mvc"
@@ -15669,8 +15674,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "e:\\server\\grocery-store\\backend\\Views\\Auth\\Register.cshtml",
-      "TargetPath": "Views\\Auth\\Register.cshtml",
+      "FilePath": "e:\\server\\grocery-store\\backend\\Views\\Containers\\Home.cshtml",
+      "TargetPath": "Views\\Containers\\Home.cshtml",
       "FileKind": "mvc"
     }
   ],
