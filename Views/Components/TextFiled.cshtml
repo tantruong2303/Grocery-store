@@ -4,12 +4,13 @@
 
 
 <div class="space-y-1">
-    <label className="font-medium" htmlFor="@Model.field">
+    <label class="font-medium" htmlFor="@Model.field">
         @Model.label
     </label>
-    <input name="@Model.field" class="block w-full px-2 py-1 border rounded-sm focus:outline-none" />
+    @Html.TextBox($"{@Model.field}", null, new { @class = "block w-full px-2 py-1 border rounded-sm focus:outline-none"})
     @if (ViewData[@errorField] != null)
     {
-        <p className="text-red-500">@Model.label @ViewData[@errorField]</p>
+        <p class="text-red-500">@Model.label @ViewData[@errorField]</p>
     }
+
 </div>

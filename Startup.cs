@@ -10,6 +10,7 @@ using FluentValidation;
 using System.Globalization;
 using backend.Controllers.DTO;
 using backend.Services;
+using backend.Controllers;
 
 namespace backend
 {
@@ -28,6 +29,9 @@ namespace backend
             services.AddScoped<IConfig, Config>();
             services.AddScoped<IUploadFileService, UploadFileService>();
             services.AddScoped<IJwtService, JwtService>();
+            services.AddScoped<DBContext, DBContext>();
+            services.AddScoped<AuthGuard>();
+            services.AddScoped<AuthController>();
             services.AddScoped<UserService>();
 
             services.AddControllersWithViews();

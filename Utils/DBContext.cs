@@ -1,29 +1,11 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 
-using System.IO;
-
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using backend.Models;
-using Microsoft.AspNetCore.Builder;
-
-using Microsoft.Extensions.DependencyInjection;
-
-using Microsoft.OpenApi.Models;
-using Microsoft.Extensions.FileProviders;
-
-using backend.Utils;
-using backend.Utils.Locale;
 using backend.Utils.Interface;
 
-using FluentValidation;
-using System.Globalization;
+
 
 namespace backend.Utils
 {

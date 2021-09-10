@@ -1,7 +1,12 @@
+using System.Linq;
+using System.Reflection;
+using System.Collections.Generic;
+using System;
 
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using backend.Controllers.DTO;
 
 namespace backend.Utils.Common
 {
@@ -18,6 +23,7 @@ namespace backend.Utils.Common
             string value = ValidatorOptions.Global.LanguageManager.GetString(errorKey);
             dataView["errorMessage"] = value;
         }
+
 
         public static void mapDetails(ValidationResult result, ViewDataDictionary dataView)
         {

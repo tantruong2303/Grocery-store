@@ -1,3 +1,4 @@
+using System.Reflection;
 
 using System;
 using System.Collections.Generic;
@@ -28,22 +29,20 @@ namespace backend.Controllers
         [HttpGet("register")]
         public IActionResult Register()
         {
-            this.ViewData["Title"] = Routers.Register.title;
-
+            Console.WriteLine("calllllllllllllllll");
             return View(Routers.Register.page);
         }
 
 
         [HttpPost("register")]
-
+        [ServiceFilter(typeof(AuthGuard))]
         public IActionResult handleRegister(string username, string password)
         {
 
+            Console.WriteLine("call me");
             var input = new RegisterDTO() { username = username, password = password };
-            Boolean isValid = this.userService.registerHandler(input, this.ViewData);
 
-            Console.WriteLine(isValid);
-            this.ViewData["Title"] = Routers.Register.title;
+            Boolean isValid = this.userService.registerHandler(input, this.ViewData);
 
             return View(Routers.Register.page);
         }
