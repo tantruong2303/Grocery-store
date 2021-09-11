@@ -1,0 +1,18 @@
+@using backend.Views.ViewModel
+@using backend.Utils.Common
+@{
+    ViewData["Title"] = Routers.CreateCategory.title;
+    var name = new TextField() { label = "Category Name", field = "name" };
+    var descirption = new TextField() { label = "Description", field = "description" };
+}
+
+<div>
+    <form method="post" action="/category/create">
+        <p>
+            @ViewData["errorMessage"]
+        </p>
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", name)
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", descirption)
+        <button>Create</button>
+    </form>
+</div>

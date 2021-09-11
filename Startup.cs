@@ -36,6 +36,8 @@ namespace backend
             services.AddScoped<DBContext, DBContext>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<AuthGuard>();
             services.AddScoped<AuthController>();

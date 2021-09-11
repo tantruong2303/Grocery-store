@@ -1,0 +1,20 @@
+@using backend.Views.ViewModel
+@using backend.Utils.Common
+@{
+    ViewData["Title"] = Routers.UpdateCategory.title;
+    var categoryId = new TextField() { label = "Category ID", field = "categoryId" };
+    var name = new TextField() { label = "Category Name", field = "name" };
+    var descirption = new TextField() { label = "Description", field = "description" };
+}
+
+<div>
+    <form method="POST" action="/category/update">
+        <p>
+            @ViewData["errorMessage"]
+        </p>
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", categoryId)
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", name)
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", descirption)
+        <button>Update</button>
+    </form>
+</div>
