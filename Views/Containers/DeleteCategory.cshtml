@@ -1,0 +1,16 @@
+@using backend.Views.ViewModel
+@using backend.Utils.Common
+@{
+    ViewData["Title"] = Routers.DeleteCategory.title;
+    var categoryId = new TextField() { label = "Category ID", field = "categoryId" };
+}
+
+<div>
+    <form method="POST" action="/category/delete">
+        <p>
+            @ViewData["errorMessage"]
+        </p>
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", categoryId)
+        <button>Delete</button>
+    </form>
+</div>
