@@ -1,0 +1,15 @@
+@using backend.Views
+@using backend.Views.ViewModel
+@using backend.Utils.Common
+@{
+    ViewData["Title"] = Routers.User.title;
+}
+<div>
+    <form method="post" action="/user">
+        <p>
+            @ViewData["errorMessage"]
+        </p>
+        <button>@Html.ActionLink("Update Password","password")</button>
+        <button>@Html.ActionLink("Update User Info","info")</button>
+    </form>
+</div>

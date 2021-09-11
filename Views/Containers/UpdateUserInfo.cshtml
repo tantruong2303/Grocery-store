@@ -1,0 +1,22 @@
+@using backend.Views.ViewModel
+@using backend.Utils.Common
+@{
+    ViewData["Title"] = Routers.UpdatePassword.title;
+    var name = new TextField() { label = "Name", field = "name" };
+    var email = new TextField() { label = "Email", field = "email" };
+    var address = new TextField() { label = "Address", field = "address" };
+    var phone = new TextField() { label = "Phone", field = "phone" };
+}
+
+<div>
+    <form method="post" action="/user/info">
+        <p>
+            @ViewData["errorMessage"]
+        </p>
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", name)
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", address)
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", phone)
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", email)
+        <button>Update</button>
+    </form>
+</div>
