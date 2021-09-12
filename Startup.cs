@@ -41,6 +41,7 @@ namespace backend
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<AuthGuard>();
             services.AddScoped<AuthController>();
+            services.AddScoped<UserController>();
 
             services.AddControllersWithViews();
         }
