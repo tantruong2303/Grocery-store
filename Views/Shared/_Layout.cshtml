@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@{
+    @* Routers; *@
+
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,42 +12,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] | Grocery Store</title>
     <link rel="stylesheet" href="~/css/style.css" />
-    <link rel="apple-touch-icon" sizes="57x57" href="~/images/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="~/images/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="~/images/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="~/images/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="~/images/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="~/images/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="~/images/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="~/images/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="~/images/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="~/images/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="~/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="~/images/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="~/images/favicon-16x16.png">
-    <link rel="manifest" href="~/images/manifest.json">
+    <link rel="stylesheet" href="~/css/custom.css" />
+    <link rel="apple-touch-icon" sizes="57x57" href="~/header/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="~/header/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/header/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/header/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/header/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="~/header/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/header/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="~/header/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/header/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="~/header/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/header/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="~/header/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/header/favicon-16x16.png">
+    <link rel="manifest" href="~/header/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="~/images/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="~/header/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
 
 <body class="bg-blue-100">
-    <div class="space-x-4">
-        <a href="/">Home</a>
-        <a href="/auth/login">Login</a>
-        <a href="/auth/register">Register</a>
-        <a href="/user">User</a>
-        <a href="/category">Category</a>
-        <a href="/product">Product</a>
-        <a href="/auth/logout">Logout</a>
-    </div>
 
-    <div class="container">
-        <main role="main" class="pb-3">
+
+    <div class="flex w-full min-h-screen">
+
+
+        @await Html.PartialAsync("~/Views/Components/Navbar.cshtml")
+
+        <main role="main" class="flex flex-1 pt-20 ">
             @RenderBody()
         </main>
     </div>
+    <script>
+        window.onload = function () {
+            const navbarBtn = document.getElementById("navbar-btn");
+            navbarBtn.addEventListener("click", function () {
+                const navbarBtn1 = document.getElementById("navbar-btn-1");
+                const navbarBtn2 = document.getElementById("navbar-btn-2");
+                const navbarMenu = document.getElementById("navbar-menu");
+                navbarBtn1.classList.toggle("translate-y-2");
+                navbarBtn1.classList.toggle("rotate-45");
+                navbarBtn2.classList.toggle("-translate-y-2");
+                navbarBtn2.classList.toggle("-rotate-45");
+                navbarMenu.classList.toggle("scale-y-100");
 
+
+            })
+        }
+    </script>
 </body>
 
 </html>

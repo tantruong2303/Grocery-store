@@ -1,10 +1,7 @@
-@using Backend.Views.ViewModel
-@using Backend.Utils.Common
-
 @{
-    ViewData["Title"] = Routers.CreateCategory.title;
-    var name = new TextField() { Label = "Category Name", Field = "name" };
-    var descirption = new TextField() { Label = "Description", Field = "description" };
+    ViewData["Title"] = Routers.CreateCategory.Title;
+    var name = new FormField() { Label = "Category Name", Field = "name" };
+    var descirption = new FormField() { Label = "Description", Field = "description" };
 }
 
 <div>
@@ -12,8 +9,8 @@
         <p>
             @ViewData["errorMessage"]
         </p>
-        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", name)
-        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", descirption)
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", descirption)
         <button>Create</button>
     </form>
 </div>

@@ -28,7 +28,7 @@ namespace Backend.Controllers
         {
 
             this.ViewData["Title"] = "hello";
-            return View(Routers.Home.page);
+            return View(Routers.Home.Page);
         }
 
         public IActionResult Privacy()

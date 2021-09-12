@@ -1,0 +1,65 @@
+@{
+    User user = (User)ViewData["user"];
+}
+
+
+
+
+
+
+
+
+<div class="fixed z-50 flex items-center justify-between w-full px-4 py-2 bg-white shadow-lg md:px-8">
+    <a class="flex items-center justify-between space-x-2" href="@Routers.Home.Link">
+        <div class="w-16 h-16">
+            <img src="~/images/logo.svg" alt="momo store" class="w-full h-full" />
+        </div>
+        <h1 class="hidden md:block">
+            <span class="text-4xl font-semibold text-purple-700">Mono</span>
+            <span class="text-4xl font-semibold text-pink-600">Grocery</span>
+        </h1>
+    </a>
+    <button class="space-y-2 focus:outline-none md:hidden" id="navbar-btn">
+        <div class="w-12 h-2 duration-300 transform bg-blue-500 rounded-lg " id="navbar-btn-1">
+        </div>
+        <div class="w-12 h-2 duration-300 transform bg-blue-500 rounded-lg " id="navbar-btn-2">
+        </div>
+    </button>
+    <div id="navbar-menu"
+        class="absolute left-0 flex flex-col w-full pb-4 space-y-2 duration-300 origin-top transform scale-y-0 bg-white border shadow-lg md:space-y-0 md:scale-y-100 md:space-x-2 md:border-none top-full md:w-auto md:flex-row md:shadow-none md:pb-0 md:static">
+        @if (user == null)
+        {
+
+
+            <a class="px-4 py-1 text-lg font-semibold duration-300 hover:bg-blue-500 md:hover:bg-transparent hover:text-white md:hover:text-blue-600"
+            href="@Routers.Login.Link">
+                Login
+            </a>
+            <a class="px-4 py-1 text-lg font-semibold duration-300 hover:bg-blue-500 md:hover:bg-transparent hover:text-white md:hover:text-blue-600"
+            href="@Routers.Register.Link">
+                Register
+            </a>
+        }
+        else
+        {
+            <a class="px-4 py-1 text-lg font-semibold duration-300 hover:bg-blue-500 md:hover:bg-transparent hover:text-white md:hover:text-blue-600"
+            href="@Routers.User.Link">
+                User
+            </a>
+            <a class="px-4 py-1 text-lg font-semibold duration-300 hover:bg-blue-500 md:hover:bg-transparent hover:text-white md:hover:text-blue-600"
+            href="@Routers.Category.Link">
+                Category
+            </a>
+            <a class="px-4 py-1 text-lg font-semibold duration-300 hover:bg-blue-500 md:hover:bg-transparent hover:text-white md:hover:text-blue-600"
+            href="@Routers.Product.Link">
+                Product
+            </a>
+            <a class="px-4 py-1 text-lg font-semibold duration-300 hover:bg-blue-500 md:hover:bg-transparent hover:text-white md:hover:text-blue-600"
+            href="@Routers.Logout.Link">
+                Logout
+            </a>
+        }
+
+
+    </div>
+</div>

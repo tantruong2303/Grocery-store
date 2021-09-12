@@ -1,13 +1,11 @@
-@using Backend.Views.ViewModel
-@using Backend.Utils.Common
 @{
-    ViewData["Title"] = Routers.CreateProduct.title;
-    var name = new TextField() { Label = "Product Name", Field = "name" };
-    var descirption = new TextField() { Label = "Description", Field = "description" };
-    var originalPrice = new TextField() { Label = "Original Price", Field = "originalPrice" };
-    var retailPrice = new TextField() { Label = "Retail Price", Field = "retailPrice" };
-    var quantity = new TextField() { Label = "Quantity", Field = "quantity" };
-    var categoryId = new TextField() { Label = "Category ID", Field = "categoryId" };
+    ViewData["Title"] = Routers.CreateProduct.Title;
+    var name = new FormField() { Label = "Product Name", Field = "name" };
+    var descirption = new FormField() { Label = "Description", Field = "description" };
+    var originalPrice = new FormField() { Label = "Original Price", Field = "originalPrice" };
+    var retailPrice = new FormField() { Label = "Retail Price", Field = "retailPrice" };
+    var quantity = new FormField() { Label = "Quantity", Field = "quantity" };
+    var categoryId = new FormField() { Label = "Category ID", Field = "categoryId" };
 }
 
 <div>
@@ -15,12 +13,12 @@
         <p>
             @ViewData["errorMessage"]
         </p>
-        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", name)
-        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", descirption)
-        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", originalPrice)
-        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", retailPrice)
-        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", quantity)
-        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", categoryId)
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", descirption)
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", originalPrice)
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", retailPrice)
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", quantity)
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", categoryId)
         <button>Create</button>
     </form>
 </div>

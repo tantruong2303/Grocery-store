@@ -1,8 +1,6 @@
-@using Backend.Views.ViewModel
-@using Backend.Utils.Common
 @{
-    ViewData["Title"] = Routers.DeleteCategory.title;
-    var categoryId = new TextField() { Label = "Category ID", Field = "categoryId" };
+    ViewData["Title"] = Routers.DeleteCategory.Title;
+    var categoryId = new FormField() { Label = "Category ID", Field = "categoryId" };
 }
 
 <div>
@@ -10,7 +8,7 @@
         <p>
             @ViewData["errorMessage"]
         </p>
-        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", categoryId)
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", categoryId)
         <button>Delete</button>
     </form>
 </div>

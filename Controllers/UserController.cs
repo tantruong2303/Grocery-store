@@ -22,15 +22,16 @@ namespace Backend.Controllers
         }
 
         [HttpGet("")]
-        public IActionResult User()
+        public IActionResult GetUser()
         {
-            return View(Routers.User.page);
+
+            return View(Routers.User.Page);
         }
 
         [HttpGet("password")]
         public IActionResult UpdatePassword()
         {
-            return View(Routers.UpdatePassword.page);
+            return View(Routers.UpdatePassword.Page);
         }
 
         [HttpPost("password")]
@@ -46,7 +47,7 @@ namespace Backend.Controllers
             var isUpdate = this.userService.updatePasswordHandler(input, this.ViewData);
             if (!isUpdate)
             {
-                return View(Routers.UpdatePassword.page);
+                return View(Routers.UpdatePassword.Page);
             }
 
             this.HttpContext.Response.Cookies.Append("auth-token", "", new CookieOptions()
@@ -56,13 +57,13 @@ namespace Backend.Controllers
                 Secure = true
 
             });
-            return Redirect(Routers.Login.link);
+            return Redirect(Routers.Login.Link);
         }
 
         [HttpGet("info")]
         public IActionResult UpdateUserInfo()
         {
-            return View(Routers.UpdateUserInfo.page);
+            return View(Routers.UpdateUserInfo.Page);
         }
 
         [HttpPost("info")]
@@ -80,10 +81,10 @@ namespace Backend.Controllers
 
             if (!isUpdate)
             {
-                return View(Routers.UpdateUserInfo.page);
+                return View(Routers.UpdateUserInfo.Page);
             }
 
-            return Redirect(Routers.Home.link);
+            return Redirect(Routers.Home.Link);
         }
     }
 }

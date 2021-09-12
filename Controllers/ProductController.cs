@@ -28,7 +28,7 @@ namespace Backend.Controllers
         [ServiceFilter(typeof(AuthGuard))]
         public IActionResult CreateProduct()
         {
-            return View(Routers.CreateProduct.page);
+            return View(Routers.CreateProduct.Page);
         }
 
         [HttpPost("create")]
@@ -49,17 +49,17 @@ namespace Backend.Controllers
 
             if (!isValid)
             {
-                return View(Routers.CreateProduct.page);
+                return View(Routers.CreateProduct.Page);
             }
 
-            return Redirect(Routers.Product.link);
+            return Redirect(Routers.Product.Link);
         }
 
         [HttpGet("")]
         [ServiceFilter(typeof(AuthGuard))]
         public IActionResult Product()
         {
-            return View(Routers.Product.page);
+            return View(Routers.Product.Page);
         }
 
     }

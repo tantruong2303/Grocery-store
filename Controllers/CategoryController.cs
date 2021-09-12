@@ -22,14 +22,14 @@ namespace Backend.Controllers
         [ServiceFilter(typeof(AuthGuard))]
         public IActionResult Category()
         {
-            return View(Routers.Category.page);
+            return View(Routers.Category.Page);
         }
 
         [ServiceFilter(typeof(AuthGuard))]
         [HttpGet("create")]
         public IActionResult CreateCategory()
         {
-            return View(Routers.CreateCategory.page);
+            return View(Routers.CreateCategory.Page);
         }
 
         [ServiceFilter(typeof(AuthGuard))]
@@ -44,9 +44,9 @@ namespace Backend.Controllers
             var isValid = this.categoryService.createCategoryHandler(input, this.ViewData);
             if (!isValid)
             {
-                return View(Routers.CreateCategory.page);
+                return View(Routers.CreateCategory.Page);
             }
-            return Redirect(Routers.Category.link);
+            return Redirect(Routers.Category.Link);
         }
 
 
@@ -54,7 +54,7 @@ namespace Backend.Controllers
         [HttpGet("update")]
         public IActionResult UpdateCategory()
         {
-            return View(Routers.UpdateCategory.page);
+            return View(Routers.UpdateCategory.Page);
         }
 
         [ServiceFilter(typeof(AuthGuard))]
@@ -70,16 +70,16 @@ namespace Backend.Controllers
             var isValid = this.categoryService.updateCategoryHandler(input, this.ViewData);
             if (!isValid)
             {
-                return View(Routers.UpdateCategory.page);
+                return View(Routers.UpdateCategory.Page);
             }
-            return Redirect(Routers.Category.link);
+            return Redirect(Routers.Category.Link);
         }
 
         [ServiceFilter(typeof(AuthGuard))]
         [HttpGet("delete")]
         public IActionResult DeleteCategory()
         {
-            return View(Routers.DeleteCategory.page);
+            return View(Routers.DeleteCategory.Page);
         }
 
         [ServiceFilter(typeof(AuthGuard))]
@@ -93,9 +93,9 @@ namespace Backend.Controllers
             var isValid = this.categoryService.deleteCategoryHandler(input, this.ViewData);
             if (!isValid)
             {
-                return View(Routers.DeleteCategory.page);
+                return View(Routers.DeleteCategory.Page);
             }
-            return Redirect(Routers.Category.link);
+            return Redirect(Routers.Category.Link);
         }
     }
 }

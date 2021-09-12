@@ -1,0 +1,72 @@
+@{
+    ViewData["Title"] = Routers.User.Title;
+    User user = (User)ViewData["user"];
+}
+
+<div class="flex items-center justify-center flex-1 py-2 ">
+
+    <div
+        class="flex-1 px-4 py-16 mx-2 space-y-8 bg-white rounded-md shadow-lg bg-opacity-90 md:mx-0 md:flex-none fade-in">
+        <h1 class="text-4xl font-bold ">User Information</h1>
+        <div class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="col-span-1">
+                    <p class="font-semibold">Username</p>
+                </div>
+                <div class="col-span-1">
+                    <p>@user.username</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="col-span-1">
+                    <p class="font-semibold">Name</p>
+                </div>
+                <div class="col-span-1">
+                    <p class="first-letter">@user.name</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="col-span-1">
+                    <p class="font-semibold">Email</p>
+                </div>
+                <div class="col-span-1">
+                    <p class="first-letter">@user.email</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="col-span-1">
+                    <p class="font-semibold">Phone</p>
+                </div>
+                <div class="col-span-1">
+                    <p class="first-letter">@user.phone</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="col-span-1">
+                    <p class="font-semibold">Address</p>
+                </div>
+                <div class="col-span-1">
+                    <p class="first-letter">@user.address</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="col-span-1">
+                    <p class="font-semibold ">Role</p>
+                </div>
+                <div class="col-span-1">
+                    <p class="lowercase first-letter">@user.role</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center justify-between space-x-2">
+            <a href="@Routers.UpdatePassword.Link"
+                class="flex-1 p-2 font-medium text-center text-white bg-blue-600">Update
+                Password</a>
+            <a href="@Routers.UpdateUserInfo.Link"
+                class="flex-1 p-2 font-medium text-center text-white bg-blue-600">Update
+                Information</a>
+        </div>
+
+    </div>
+
+</div>

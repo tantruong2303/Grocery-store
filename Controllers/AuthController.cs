@@ -23,7 +23,7 @@ namespace Backend.Controllers
         public IActionResult Login()
         {
 
-            return View(Routers.Login.page);
+            return View(Routers.Login.Page);
         }
 
 
@@ -35,7 +35,7 @@ namespace Backend.Controllers
 
             if (token == null)
             {
-                return View(Routers.Login.page);
+                return View(Routers.Login.Page);
             }
             this.HttpContext.Response.Cookies.Append("auth-token", token, new CookieOptions()
             {
@@ -44,14 +44,14 @@ namespace Backend.Controllers
                 Secure = true
 
             });
-            return Redirect(Routers.Home.link);
+            return Redirect(Routers.Home.Link);
         }
 
 
         [HttpGet("register")]
         public IActionResult Register()
         {
-            return View(Routers.Register.page);
+            return View(Routers.Register.Page);
         }
 
         [HttpGet("logout")]
@@ -65,7 +65,7 @@ namespace Backend.Controllers
                 Secure = true
 
             });
-            return Redirect(Routers.Login.link);
+            return Redirect(Routers.Login.Link);
         }
 
 
@@ -87,10 +87,10 @@ namespace Backend.Controllers
 
             if (!isValid)
             {
-                return View(Routers.Register.page);
+                return View(Routers.Register.Page);
             }
 
-            return Redirect(Routers.Login.link);
+            return Redirect(Routers.Login.Link);
         }
 
     }
