@@ -14,20 +14,20 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 1 "C:\Users\Lenovo\Desktop\grocery-store\Views\_ViewImports.cshtml"
-using backend;
+using Backend;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\Lenovo\Desktop\grocery-store\Views\_ViewImports.cshtml"
-using backend.Models;
+using Backend.Models;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"85e45f4925274cfd04eb245535b791474b0feb07", @"/Views/Containers/Category.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c284b32202a794bdcfa4a79fcb7649eb36b840fc", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0021bd08ba069bd3f9a9eba953f746aee9124a0d", @"/Views/_ViewImports.cshtml")]
     public class Views_Containers_Category : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

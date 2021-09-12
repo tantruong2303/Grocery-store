@@ -521,3 +521,6 @@ C:\Users\Lenovo\Desktop\grocery-store\obj\Debug\net5.0\backend.pdb
 C:\Users\Lenovo\Desktop\grocery-store\obj\Debug\net5.0\backend.genruntimeconfig.cache
 C:\Users\Lenovo\Desktop\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\CreateProduct.cshtml.g.cs
 C:\Users\Lenovo\Desktop\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Product.cshtml.g.cs
+C:\Users\Lenovo\Desktop\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\UpdatePassword.cshtml.g.cs
+C:\Users\Lenovo\Desktop\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\UpdateUserInfo.cshtml.g.cs
+C:\Users\Lenovo\Desktop\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\User.cshtml.g.cs

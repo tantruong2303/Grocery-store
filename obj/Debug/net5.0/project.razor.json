@@ -15624,6 +15624,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Lenovo\\Desktop\\grocery-store\\Views\\Containers\\UpdateUserInfo.cshtml",
+      "TargetPath": "Views\\Containers\\UpdateUserInfo.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Lenovo\\Desktop\\grocery-store\\Views\\Containers\\CreateProduct.cshtml",
       "TargetPath": "Views\\Containers\\CreateProduct.cshtml",
       "FileKind": "mvc"
@@ -15684,6 +15689,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Lenovo\\Desktop\\grocery-store\\Views\\Containers\\User.cshtml",
+      "TargetPath": "Views\\Containers\\User.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Lenovo\\Desktop\\grocery-store\\Views\\Containers\\Product.cshtml",
       "TargetPath": "Views\\Containers\\Product.cshtml",
       "FileKind": "mvc"
@@ -15696,6 +15706,11 @@
     {
       "FilePath": "c:\\Users\\Lenovo\\Desktop\\grocery-store\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Lenovo\\Desktop\\grocery-store\\Views\\Containers\\UpdatePassword.cshtml",
+      "TargetPath": "Views\\Containers\\UpdatePassword.cshtml",
       "FileKind": "mvc"
     }
   ],

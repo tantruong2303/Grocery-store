@@ -8,6 +8,7 @@ namespace Backend.Utils.Locale
             public const string ERROR_EXISTED = "ERROR_EXISTED";
             public const string ERROR_NOT_ALLOW_ACTION = "ERROR_NOT_ALLOW_ACTION";
             public const string ERROR_NOT_FOUND = "ERROR_NOT_FOUND";
+            public const string ERROR_OLD_PASSWORD_NOT_CORRECT = "ERROR_OLD_PASSWORD_NOT_CORRECT";
 
         }
 
@@ -26,7 +27,7 @@ namespace Backend.Utils.Locale
             AddTranslation("en", "ERROR_EXISTED", "is already exist");
             AddTranslation("en", "ERROR_NOT_ALLOW_ACTION", "please login or action is not allow");
             AddTranslation("en", "ERROR_NOT_FOUND", "is not found");
-
+            AddTranslation("en", "ERROR_OLD_PASSWORD_NOT_CORRECT", "password is wrong");
 
             // Don't touch me please
             AddTranslation("en", "EmailValidator", "is not a valid email address");
