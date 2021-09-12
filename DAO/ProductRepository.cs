@@ -18,13 +18,13 @@ namespace Backend.DAO
 
         public Product GetProductById(string id)
         {
-            Product product = this.DBContext.product.FirstOrDefault(item => item.productId == id);
+            Product product = this.DBContext.Product.FirstOrDefault(item => item.ProductId == id);
             return product;
         }
 
         public Product GetProductByProductName(string name)
         {
-            Product product = this.DBContext.product.FirstOrDefault(item => item.name == name);
+            Product product = this.DBContext.Product.FirstOrDefault(item => item.Name == name);
             return product;
         }
 

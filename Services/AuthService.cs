@@ -16,83 +16,83 @@ namespace Backend.Services
     public class AuthService : IAuthService
     {
 
-        private readonly DBContext dbContext;
-        private readonly IUserRepository userRepository;
-        private readonly IJwtService jwtService;
-        public AuthService(DBContext dbContext, IUserRepository userRepository, IJwtService jwtService)
+        private readonly DBContext DBContext;
+        private readonly IUserRepository UserRepository;
+        private readonly IJwtService JWTService;
+        public AuthService(DBContext dBContext, IUserRepository userRepository, IJwtService jwtService)
         {
-            this.dbContext = dbContext;
-            this.userRepository = userRepository;
-            this.jwtService = jwtService;
+            this.DBContext = dBContext;
+            this.UserRepository = userRepository;
+            this.JWTService = jwtService;
         }
 
-        public bool registerHandler(RegisterDTO input, ViewDataDictionary dataView)
+        public bool RegisterHandler(RegisterDTO input, ViewDataDictionary dataView)
         {
             ValidationResult result = new RegisterDTOValidator().Validate(input);
             if (!result.IsValid)
             {
-                ServerResponse.mapDetails(result, dataView);
+                ServerResponse.MapDetails(result, dataView);
                 return false;
             }
-            var isExistUser = this.userRepository.GetUserByUsername(input.Username);
+            var isExistUser = this.UserRepository.GetUserByUsername(input.Username);
             if (isExistUser != null)
             {
-                ServerResponse.setFieldErrorMessage("username", CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, dataView);
+                ServerResponse.SetFieldErrorMessage("username", CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, dataView);
                 return false;
             }
             Console.WriteLine("hello");
 
             var user = new User();
-            user.userId = Guid.NewGuid().ToString();
-            user.name = input.Name;
-            user.username = input.Username;
-            user.phone = input.Phone;
-            user.address = input.Address;
-            user.email = input.Email;
-            user.createDate = DateTime.Now.ToShortDateString();
-            user.role = UserRole.CUSTOMER;
-            user.password = this.hashingPassword(input.Password);
+            user.UserId = Guid.NewGuid().ToString();
+            user.Name = input.Name;
+            user.Username = input.Username;
+            user.Phone = input.Phone;
+            user.Address = input.Address;
+            user.Email = input.Email;
+            user.CreateDate = DateTime.Now.ToShortDateString();
+            user.Role = UserRole.CUSTOMER;
+            user.Password = this.HashingPassword(input.Password);
 
-            this.dbContext.user.Add(user);
-            this.dbContext.SaveChanges();
+            this.DBContext.User.Add(user);
+            this.DBContext.SaveChanges();
 
             return true;
         }
 
 
-        public string loginHandler(LoginDTO input, ViewDataDictionary dataView)
+        public string LoginHandler(LoginDTO input, ViewDataDictionary dataView)
         {
             ValidationResult result = new LoginDTOValidator().Validate(input);
             if (!result.IsValid)
             {
-                ServerResponse.mapDetails(result, dataView);
+                ServerResponse.MapDetails(result, dataView);
                 return null;
             }
 
-            var user = this.userRepository.GetUserByUsername(input.Username);
+            var user = this.UserRepository.GetUserByUsername(input.Username);
             if (user == null)
             {
-                ServerResponse.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_LOGIN_FAIL, dataView);
+                ServerResponse.SetErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_LOGIN_FAIL, dataView);
                 return null;
             }
 
-            if (!this.comparePassword(input.Password, user.password))
+            if (!this.ComparePassword(input.Password, user.Password))
             {
-                ServerResponse.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_LOGIN_FAIL, dataView);
+                ServerResponse.SetErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_LOGIN_FAIL, dataView);
                 return null;
             }
 
-            string token = this.jwtService.GenerateToken(user.userId);
+            string token = this.JWTService.GenerateToken(user.UserId);
 
             return token;
         }
 
-        public string hashingPassword(string password)
+        public string HashingPassword(string password)
         {
             return BCrypt.Net.BCrypt.HashPassword(password, workFactor: 8);
         }
 
-        public bool comparePassword(string inputPassword, string encryptedPassword)
+        public bool ComparePassword(string inputPassword, string encryptedPassword)
         {
             return BCrypt.Net.BCrypt.Verify(inputPassword, encryptedPassword);
         }

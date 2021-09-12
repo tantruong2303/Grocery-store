@@ -10,30 +10,30 @@ namespace Backend.Models
         [Key]
         [Required]
         [StringLength(50)]
-        public string orderItemId { set; get; }
+        public string OrderItemId { set; get; }
 
         [Required]
-        public int quantity { set; get; }
+        public int Quantity { set; get; }
 
         [Required]
-        public float salePrive { set; get; }
+        public float SalePrice { set; get; }
 
         [Required]
         [StringLength(50)]
-        public string createDate { set; get; }
+        public string CreateDate { set; get; }
 
         [Required]
         [StringLength(50)]
         [ForeignKey("tblOrder")]
-        public string orderId { set; get; }
-        public virtual Order order { set; get; }
+        public string OrderId { set; get; }
+        public virtual Order Order { set; get; }
 
 
         [Required]
         [StringLength(50)]
         [ForeignKey("tblProduct")]
-        public string productId { set; get; }
+        public string ProductId { set; get; }
 
-        public virtual Product product { set; get; }
+        public virtual Product Product { set; get; }
     }
 }

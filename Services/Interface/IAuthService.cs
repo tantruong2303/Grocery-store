@@ -7,9 +7,9 @@ namespace Backend.Services.Interface
 {
     public interface IAuthService
     {
-        public string loginHandler(LoginDTO input, ViewDataDictionary dataView);
-        public bool registerHandler(RegisterDTO input, ViewDataDictionary dataView);
-        public string hashingPassword(string password);
-        public bool comparePassword(string inputPassword, string encryptedPassword);
+        public string LoginHandler(LoginDTO input, ViewDataDictionary dataView);
+        public bool RegisterHandler(RegisterDTO input, ViewDataDictionary dataView);
+        public string HashingPassword(string password);
+        public bool ComparePassword(string inputPassword, string encryptedPassword);
     }
 }

@@ -21,13 +21,13 @@ namespace Backend.Pipe
     public class AuthGuard : IActionFilter
     {
 
-        private readonly IJwtService jwtService;
-        private readonly IUserRepository userRepository;
+        private readonly IJwtService JWTService;
+        private readonly IUserRepository UserRepository;
         public AuthGuard(IJwtService jwtService, IUserRepository userRepository)
         {
 
-            this.jwtService = jwtService;
-            this.userRepository = userRepository;
+            this.JWTService = jwtService;
+            this.UserRepository = userRepository;
         }
 
         public void OnActionExecuted(ActionExecutedContext context)
@@ -36,7 +36,7 @@ namespace Backend.Pipe
 
         }
 
-        public bool guardHandler(ActionExecutingContext context)
+        public bool GuardHandler(ActionExecutingContext context)
         {
 
             try
@@ -55,13 +55,13 @@ namespace Backend.Pipe
                 {
                     return false;
                 }
-                var token = this.jwtService.VerifyToken(cookies["auth-token"]).Split(";");
+                var token = this.JWTService.VerifyToken(cookies["auth-token"]).Split(";");
 
                 if (token[0] == null)
                 {
                     return false;
                 }
-                var user = this.userRepository.GetUserById(token[0]);
+                var user = this.UserRepository.GetUserById(token[0]);
                 if (user == null)
                 {
                     return false;
@@ -73,7 +73,7 @@ namespace Backend.Pipe
                 if (context.ActionArguments.TryGetValue("roles", out _))
                 {
                     UserRole[] roles = context.ActionArguments["roles"] as UserRole[];
-                    if (!roles.Contains(user.role))
+                    if (!roles.Contains(user.Role))
                     {
                         return false;
                     }
@@ -92,11 +92,11 @@ namespace Backend.Pipe
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            bool isValid = this.guardHandler(context);
+            bool isValid = this.GuardHandler(context);
             if (!isValid)
             {
                 Controller controller = context.Controller as Controller;
-                ServerResponse.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_ALLOW_ACTION, controller.ViewData);
+                ServerResponse.SetErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_ALLOW_ACTION, controller.ViewData);
                 context.Result = new ViewResult
                 {
                     ViewName = Routers.Login.Page,

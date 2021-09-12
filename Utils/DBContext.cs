@@ -11,26 +11,26 @@ namespace Backend.Utils
 {
     public class DBContext : DbContext
     {
-        private IConfig config;
+        private IConfig Config;
         public DBContext(IConfig config)
         {
-            this.config = config;
+            this.Config = config;
         }
 
-        public DbSet<User> user { set; get; }
-        public DbSet<Category> category { set; get; }
-        public DbSet<Product> product { set; get; }
-        public DbSet<Order> order { set; get; }
-        public DbSet<OrderItem> orderItem { set; get; }
+        public DbSet<User> User { set; get; }
+        public DbSet<Category> Category { set; get; }
+        public DbSet<Product> Product { set; get; }
+        public DbSet<Order> Order { set; get; }
+        public DbSet<OrderItem> OrderItem { set; get; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(this.config.getEnvByKey("DB_URL"));
+            optionsBuilder.UseSqlServer(this.Config.GetEnvByKey("DB_URL"));
         }
 
-        public static async Task<Boolean> initDatabase(IConfig config)
+        public static async Task<Boolean> InitDatabase(IConfig config)
         {
             var dbContext = new DBContext(config);
             bool result = await dbContext.Database.EnsureCreatedAsync();

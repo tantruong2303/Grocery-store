@@ -2,10 +2,10 @@
     ViewData["Title"] = Routers.UpdatePassword.Title;
     User user = (User)ViewData["user"];
 
-    var name = new FormField() { Label = "Name", Field = "name", Type = "text", Value = user.name };
-    var email = new FormField() { Label = "Email", Field = "email", Type = "text", Value = user.email };
-    var address = new FormField() { Label = "Address", Field = "address", Type = "text", Value = user.address };
-    var phone = new FormField() { Label = "Phone", Field = "phone", Type = "text", Value = user.phone };
+    var name = new FormField() { Label = "Name", Field = "name", Type = "text", Value = user.Name };
+    var email = new FormField() { Label = "Email", Field = "email", Type = "text", Value = user.Email };
+    var address = new FormField() { Label = "Address", Field = "address", Type = "text", Value = user.Address };
+    var phone = new FormField() { Label = "Phone", Field = "phone", Type = "text", Value = user.Phone };
     var updateUserBtn = new FormField() { Label = "Update User Information" };
 }
 

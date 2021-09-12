@@ -1,11 +1,9 @@
 using System;
-
 using Microsoft.AspNetCore.Mvc;
 using Backend.Controllers.DTO;
 using Backend.Utils.Common;
 using Backend.Services.Interface;
 using Microsoft.AspNetCore.Http;
-using System.Web;
 using Backend.Pipe;
 
 namespace Backend.Controllers
@@ -14,17 +12,16 @@ namespace Backend.Controllers
     [ServiceFilter(typeof(AuthGuard))]
     public class UserController : Controller
     {
-        private readonly IUserService userService;
+        private readonly IUserService UserService;
 
         public UserController(IUserService userService)
         {
-            this.userService = userService;
+            this.UserService = userService;
         }
 
         [HttpGet("")]
         public IActionResult GetUser()
         {
-
             return View(Routers.User.Page);
         }
 
@@ -35,7 +32,7 @@ namespace Backend.Controllers
         }
 
         [HttpPost("password")]
-        public IActionResult handleUpdatePassword(string oldPassword, string newPassword, string confirmNewPassword)
+        public IActionResult HandleUpdatePassword(string oldPassword, string newPassword, string confirmNewPassword)
         {
             var input = new UpdatePasswordDTO()
             {
@@ -44,7 +41,7 @@ namespace Backend.Controllers
                 confirmNewPassword = confirmNewPassword
             };
 
-            var isUpdate = this.userService.updatePasswordHandler(input, this.ViewData);
+            var isUpdate = this.UserService.UpdatePasswordHandler(input, this.ViewData);
             if (!isUpdate)
             {
                 return View(Routers.UpdatePassword.Page);
@@ -67,7 +64,7 @@ namespace Backend.Controllers
         }
 
         [HttpPost("info")]
-        public IActionResult handleUpdateUserInfo(string name, string email, string phone, string address)
+        public IActionResult HandleUpdateUserInfo(string name, string email, string phone, string address)
         {
             var input = new UpdateUserInfoDTO()
             {
@@ -77,7 +74,7 @@ namespace Backend.Controllers
                 address = address
             };
 
-            var isUpdate = this.userService.updateUserInfoHandler(input, this.ViewData);
+            var isUpdate = this.UserService.UpdateUserInfoHandler(input, this.ViewData);
 
             if (!isUpdate)
             {

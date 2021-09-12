@@ -12,25 +12,25 @@ namespace Backend.Utils.Common
 {
     public class ServerResponse
     {
-        public static void setFieldErrorMessage(string field, string key, ViewDataDictionary dataView)
+        public static void SetFieldErrorMessage(string field, string key, ViewDataDictionary dataView)
         {
             string value = ValidatorOptions.Global.LanguageManager.GetString(key);
             dataView[$"{field}Error"] = value;
         }
-        public static void setMessage(string key, ViewDataDictionary dataView)
+        public static void SetMessage(string key, ViewDataDictionary dataView)
         {
             string value = ValidatorOptions.Global.LanguageManager.GetString(key);
             dataView["message"] = value;
         }
 
-        public static void setErrorMessage(string errorKey, ViewDataDictionary dataView)
+        public static void SetErrorMessage(string errorKey, ViewDataDictionary dataView)
         {
             string value = ValidatorOptions.Global.LanguageManager.GetString(errorKey);
             dataView["errorMessage"] = value;
         }
 
 
-        public static void mapDetails(ValidationResult result, ViewDataDictionary dataView)
+        public static void MapDetails(ValidationResult result, ViewDataDictionary dataView)
         {
             foreach (var failure in result.Errors)
             {

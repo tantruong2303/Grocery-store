@@ -31,7 +31,7 @@ namespace Backend.Controllers
         public IActionResult HandleLogin(string username, string password)
         {
             var input = new LoginDTO() { Username = username, Password = password };
-            var token = this.AuthService.loginHandler(input, this.ViewData);
+            var token = this.AuthService.LoginHandler(input, this.ViewData);
 
             if (token == null)
             {
@@ -70,7 +70,7 @@ namespace Backend.Controllers
 
 
         [HttpPost("register")]
-        public IActionResult handleRegister(string name, string username, string password, string confirmPassword, string email, string phone, string address)
+        public IActionResult HandleRegister(string name, string username, string password, string confirmPassword, string email, string phone, string address)
         {
             var input = new RegisterDTO()
             {
@@ -83,7 +83,7 @@ namespace Backend.Controllers
                 Address = address,
             };
 
-            var isValid = this.AuthService.registerHandler(input, this.ViewData);
+            var isValid = this.AuthService.RegisterHandler(input, this.ViewData);
 
             if (!isValid)
             {

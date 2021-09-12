@@ -14,59 +14,59 @@ namespace Backend.Services
 {
     public class UserService : IUserService
     {
-        private readonly DBContext dbContext;
-        private readonly IUserRepository userRepository;
-        private readonly IAuthService authService;
+        private readonly DBContext DBContext;
+        private readonly IUserRepository UserRepository;
+        private readonly IAuthService AuthService;
 
-        public UserService(DBContext dbContext, IUserRepository userRepository, IAuthService authService)
+        public UserService(DBContext dBContext, IUserRepository userRepository, IAuthService authService)
         {
-            this.dbContext = dbContext;
-            this.userRepository = userRepository;
-            this.authService = authService;
+            this.DBContext = dBContext;
+            this.UserRepository = userRepository;
+            this.AuthService = authService;
         }
 
-        public bool updatePasswordHandler(UpdatePasswordDTO input, ViewDataDictionary dataView)
+        public bool UpdatePasswordHandler(UpdatePasswordDTO input, ViewDataDictionary dataView)
         {
             ValidationResult result = new UpdatePasswordDTOValidator().Validate(input);
             if (!result.IsValid)
             {
-                ServerResponse.mapDetails(result, dataView);
+                ServerResponse.MapDetails(result, dataView);
                 return false;
             }
             Console.WriteLine(input.oldPassword);
             User user = (User)dataView["user"];
 
-            if (!authService.comparePassword(input.oldPassword, user.password))
+            if (!AuthService.ComparePassword(input.oldPassword, user.Password))
             {
-                ServerResponse.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_OLD_PASSWORD_NOT_CORRECT, dataView);
+                ServerResponse.SetErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_OLD_PASSWORD_NOT_CORRECT, dataView);
                 return false;
             }
 
-            user.password = authService.hashingPassword(input.newPassword);
-            Console.WriteLine(user.password);
+            user.Password = AuthService.HashingPassword(input.newPassword);
+            Console.WriteLine(user.Password);
 
-            this.dbContext.user.Update(user);
-            this.dbContext.SaveChanges();
+            this.DBContext.User.Update(user);
+            this.DBContext.SaveChanges();
             return true;
         }
 
-        public bool updateUserInfoHandler(UpdateUserInfoDTO input, ViewDataDictionary dataView)
+        public bool UpdateUserInfoHandler(UpdateUserInfoDTO input, ViewDataDictionary dataView)
         {
             ValidationResult result = new UpdateUserInfoDTOValidator().Validate(input);
             if (!result.IsValid)
             {
-                ServerResponse.mapDetails(result, dataView);
+                ServerResponse.MapDetails(result, dataView);
                 return false;
             }
 
             User user = (User)dataView["user"];
-            user.name = input.name;
-            user.email = input.email;
-            user.phone = input.phone;
-            user.address = input.address;
+            user.Name = input.name;
+            user.Email = input.email;
+            user.Phone = input.phone;
+            user.Address = input.address;
 
-            this.dbContext.Update(user);
-            this.dbContext.SaveChanges();
+            this.DBContext.Update(user);
+            this.DBContext.SaveChanges();
             return true;
         }
     }

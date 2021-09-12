@@ -10,11 +10,11 @@ namespace Backend.Controllers
     [Route("category")]
     public class CategoryController : Controller
     {
-        private readonly ICategoryService categoryService;
+        private readonly ICategoryService CategoryService;
 
         public CategoryController(ICategoryService categoryService)
         {
-            this.categoryService = categoryService;
+            this.CategoryService = categoryService;
         }
 
 
@@ -34,14 +34,14 @@ namespace Backend.Controllers
 
         [ServiceFilter(typeof(AuthGuard))]
         [HttpPost("create")]
-        public IActionResult handleCreateCategory(string name, string description)
+        public IActionResult HandleCreateCategory(string name, string description)
         {
             var input = new CreateCategoryDTO()
             {
                 Name = name,
                 Description = description
             };
-            var isValid = this.categoryService.createCategoryHandler(input, this.ViewData);
+            var isValid = this.CategoryService.CreateCategoryHandler(input, this.ViewData);
             if (!isValid)
             {
                 return View(Routers.CreateCategory.Page);
@@ -67,7 +67,7 @@ namespace Backend.Controllers
                 Name = name,
                 Description = description
             };
-            var isValid = this.categoryService.updateCategoryHandler(input, this.ViewData);
+            var isValid = this.CategoryService.UpdateCategoryHandler(input, this.ViewData);
             if (!isValid)
             {
                 return View(Routers.UpdateCategory.Page);
@@ -90,7 +90,7 @@ namespace Backend.Controllers
             {
                 CategoryId = categoryId
             };
-            var isValid = this.categoryService.deleteCategoryHandler(input, this.ViewData);
+            var isValid = this.CategoryService.DeleteCategoryHandler(input, this.ViewData);
             if (!isValid)
             {
                 return View(Routers.DeleteCategory.Page);

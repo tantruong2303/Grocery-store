@@ -17,35 +17,35 @@ namespace Backend.Models
         [Key]
         [Required]
         [StringLength(50)]
-        public string userId { set; get; }
+        public string UserId { set; get; }
 
         [Required]
         [StringLength(50)]
-        public string name { set; get; }
+        public string Name { set; get; }
 
         [Required]
         [StringLength(50)]
-        public string username { set; get; }
+        public string Username { set; get; }
 
         [StringLength(255)]
-        public string password { set; get; }
+        public string Password { set; get; }
 
         [Required]
         [StringLength(255)]
-        public string email { set; get; }
+        public string Email { set; get; }
 
         [Required]
         [StringLength(50)]
-        public string phone { set; get; }
+        public string Phone { set; get; }
 
         [StringLength(50)]
-        public string address { set; get; }
+        public string Address { set; get; }
 
         [Required]
         [StringLength(50)]
-        public string createDate { set; get; }
+        public string CreateDate { set; get; }
 
         [Required]
-        public UserRole role { get; set; }
+        public UserRole Role { get; set; }
     }
 }

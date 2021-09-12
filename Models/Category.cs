@@ -16,21 +16,21 @@ namespace Backend.Models
         [Key]
         [Required]
         [StringLength(50)]
-        public string categoryId { set; get; }
+        public string CategoryId { set; get; }
 
         [Required]
         [StringLength(50)]
-        public string name { set; get; }
+        public string Name { set; get; }
 
         [Required]
         [StringLength(500)]
-        public string description { set; get; }
+        public string Description { set; get; }
 
         [Required]
-        public CategoryStatus status { get; set; }
+        public CategoryStatus Status { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string createDate { set; get; }
+        public string CreateDate { set; get; }
     }
 }
