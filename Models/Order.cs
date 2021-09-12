@@ -21,27 +21,27 @@ namespace Backend.Models
         [Required]
         [StringLength(50)]
         [Key]
-        public string orderId { set; get; }
+        public string OrderId { set; get; }
 
         [Required]
-        public OrderStatus status { get; set; }
+        public OrderStatus Status { get; set; }
 
         [Required]
-        public float total { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string createDate { set; get; }
+        public float Total { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string paymentMethod { set; get; }
+        public string CreateDate { set; get; }
+
+        [Required]
+        [StringLength(50)]
+        public string PaymentMethod { set; get; }
 
         [Required]
         [StringLength(50)]
         [ForeignKey("tblUser")]
-        public string customerId { set; get; }
+        public string CustomerId { set; get; }
 
-        public virtual User customer { set; get; }
+        public virtual User Customer { set; get; }
     }
 }

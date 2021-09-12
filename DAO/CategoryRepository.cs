@@ -16,12 +16,12 @@ namespace Backend.DAO
 
         public Category GetCategoryByCategoryName(string name)
         {
-            Category category = this.DBContext.category.FirstOrDefault(item => item.name == name);
+            Category category = this.DBContext.Category.FirstOrDefault(item => item.Name == name);
             return category;
         }
         public Category GetCategoryByCategoryId(string categoryId)
         {
-            Category category = this.DBContext.category.FirstOrDefault(item => item.categoryId == categoryId);
+            Category category = this.DBContext.Category.FirstOrDefault(item => item.CategoryId == categoryId);
             return category;
         }
     }

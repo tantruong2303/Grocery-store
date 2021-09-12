@@ -17,23 +17,23 @@ namespace Backend.Controllers
     [Route("product")]
     public class ProductController : Controller
     {
-        private readonly IProductService productService;
+        private readonly IProductService ProductService;
 
         public ProductController(IProductService productService)
         {
-            this.productService = productService;
+            this.ProductService = productService;
         }
 
         [HttpGet("create")]
         [ServiceFilter(typeof(AuthGuard))]
         public IActionResult CreateProduct()
         {
-            return View(Routers.CreateProduct.page);
+            return View(Routers.CreateProduct.Page);
         }
 
         [HttpPost("create")]
         [ServiceFilter(typeof(AuthGuard))]
-        public IActionResult handleCreateProduct(string name, string description, float originalPrice, float retailPrice, int quantity, string categoryId)
+        public IActionResult HandleCreateProduct(string name, string description, float originalPrice, float retailPrice, int quantity, string categoryId)
         {
             var input = new CreateProductDTO()
             {
@@ -45,21 +45,21 @@ namespace Backend.Controllers
                 CategoryId = categoryId,
             };
 
-            var isValid = this.productService.createProductHandler(input, this.ViewData);
+            var isValid = this.ProductService.CreateProductHandler(input, this.ViewData);
 
             if (!isValid)
             {
-                return View(Routers.CreateProduct.page);
+                return View(Routers.CreateProduct.Page);
             }
 
-            return Redirect(Routers.Product.link);
+            return Redirect(Routers.Product.Link);
         }
 
         [HttpGet("")]
         [ServiceFilter(typeof(AuthGuard))]
         public IActionResult Product()
         {
-            return View(Routers.Product.page);
+            return View(Routers.Product.Page);
         }
 
     }

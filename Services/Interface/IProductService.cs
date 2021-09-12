@@ -5,7 +5,7 @@ namespace Backend.Services.Interface
 {
     public interface IProductService
     {
-        public bool createProductHandler(CreateProductDTO input, ViewDataDictionary dataView);
+        public bool CreateProductHandler(CreateProductDTO input, ViewDataDictionary dataView);
 
     }
 }

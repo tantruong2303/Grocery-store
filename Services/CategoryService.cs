@@ -15,78 +15,78 @@ namespace Backend.Services
 {
     public class CategoryService : ICategoryService
     {
-        private readonly DBContext dBContext;
-        private readonly ICategoryRepository categoryRepository;
+        private readonly DBContext DBContext;
+        private readonly ICategoryRepository CategoryRepository;
 
         public CategoryService(DBContext dBContext, ICategoryRepository categoryRepository)
         {
-            this.dBContext = dBContext;
-            this.categoryRepository = categoryRepository;
+            this.DBContext = dBContext;
+            this.CategoryRepository = categoryRepository;
         }
 
-        public bool createCategoryHandler(CreateCategoryDTO input, ViewDataDictionary dataView)
+        public bool CreateCategoryHandler(CreateCategoryDTO input, ViewDataDictionary dataView)
         {
             ValidationResult result = new CreateCategoryDTOValidator().Validate(input);
             if (!result.IsValid)
             {
-                ServerResponse.mapDetails(result, dataView);
+                ServerResponse.MapDetails(result, dataView);
                 return false;
             }
-            var isExistCategory = this.categoryRepository.GetCategoryByCategoryName(input.Name);
+            var isExistCategory = this.CategoryRepository.GetCategoryByCategoryName(input.Name);
             if (isExistCategory != null)
             {
-                ServerResponse.setFieldErrorMessage("name", CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, dataView);
+                ServerResponse.SetFieldErrorMessage("name", CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, dataView);
                 return false;
             }
 
             var category = new Category();
-            category.categoryId = Guid.NewGuid().ToString();
-            category.name = input.Name;
-            category.description = input.Description;
-            category.status = (CategoryStatus)1;
-            category.createDate = DateTime.Now.ToShortDateString();
-            this.dBContext.category.Add(category);
-            this.dBContext.SaveChanges();
+            category.CategoryId = Guid.NewGuid().ToString();
+            category.Name = input.Name;
+            category.Description = input.Description;
+            category.Status = (CategoryStatus)1;
+            category.CreateDate = DateTime.Now.ToShortDateString();
+            this.DBContext.Category.Add(category);
+            this.DBContext.SaveChanges();
             return true;
         }
 
-        public bool updateCategoryHandler(UpdateCategoryDTO input, ViewDataDictionary dataView)
+        public bool UpdateCategoryHandler(UpdateCategoryDTO input, ViewDataDictionary dataView)
         {
             ValidationResult result = new UpdateCategoryDTOValidator().Validate(input);
             if (!result.IsValid)
             {
-                ServerResponse.mapDetails(result, dataView);
+                ServerResponse.MapDetails(result, dataView);
                 return false;
             }
-            var category = this.categoryRepository.GetCategoryByCategoryId(input.CategoryId);
+            var category = this.CategoryRepository.GetCategoryByCategoryId(input.CategoryId);
             if (category == null)
             {
-                ServerResponse.setFieldErrorMessage("categoryId", CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_FOUND, dataView);
+                ServerResponse.SetFieldErrorMessage("categoryId", CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_FOUND, dataView);
                 return false;
             }
-            category.name = input.Name;
-            category.description = input.Description;
-            this.dBContext.SaveChanges();
+            category.Name = input.Name;
+            category.Description = input.Description;
+            this.DBContext.SaveChanges();
             return true;
 
         }
 
-        public bool deleteCategoryHandler(DeleteCategoryDTO input, ViewDataDictionary dataView)
+        public bool DeleteCategoryHandler(DeleteCategoryDTO input, ViewDataDictionary dataView)
         {
             ValidationResult result = new DeleteCategoryDTOValidator().Validate(input);
             if (!result.IsValid)
             {
-                ServerResponse.mapDetails(result, dataView);
+                ServerResponse.MapDetails(result, dataView);
                 return false;
             }
-            var category = this.categoryRepository.GetCategoryByCategoryId(input.CategoryId);
+            var category = this.CategoryRepository.GetCategoryByCategoryId(input.CategoryId);
             if (category == null)
             {
-                ServerResponse.setFieldErrorMessage("categoryId", CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_FOUND, dataView);
+                ServerResponse.SetFieldErrorMessage("categoryId", CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_FOUND, dataView);
                 return false;
             }
-            category.status = 0;
-            this.dBContext.SaveChanges();
+            category.Status = 0;
+            this.DBContext.SaveChanges();
             return true;
         }
     }

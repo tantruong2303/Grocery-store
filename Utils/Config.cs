@@ -7,15 +7,15 @@ namespace Backend.Utils
 {
     public class Config : IConfig
     {
-        private readonly IWebHostEnvironment env;
+        private readonly IWebHostEnvironment ENV;
         public Config(IWebHostEnvironment env)
         {
-            this.env = env;
+            this.ENV = env;
         }
 
-        public string getEnvByKey(string name)
+        public string GetEnvByKey(string name)
         {
-            string currentEnv = this.env.EnvironmentName.ToLower();
+            string currentEnv = this.ENV.EnvironmentName.ToLower();
             string envFileName = "env." + currentEnv + ".json";
             string envPath = Path.Combine(Directory.GetCurrentDirectory(), "config") + "/" + envFileName;
 
