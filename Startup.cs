@@ -80,7 +80,7 @@ namespace Backend
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            await DBContext.initDatabase(config);
+            await DBContext.InitDatabase(config);
         }
     }
 }

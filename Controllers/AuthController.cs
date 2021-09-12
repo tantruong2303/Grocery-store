@@ -23,7 +23,7 @@ namespace Backend.Controllers
         public IActionResult Login()
         {
 
-            return View(Routers.Login.page);
+            return View(Routers.Login.Page);
         }
 
 
@@ -31,11 +31,11 @@ namespace Backend.Controllers
         public IActionResult HandleLogin(string username, string password)
         {
             var input = new LoginDTO() { Username = username, Password = password };
-            var token = this.AuthService.loginHandler(input, this.ViewData);
+            var token = this.AuthService.LoginHandler(input, this.ViewData);
 
             if (token == null)
             {
-                return View(Routers.Login.page);
+                return View(Routers.Login.Page);
             }
             this.HttpContext.Response.Cookies.Append("auth-token", token, new CookieOptions()
             {
@@ -44,14 +44,14 @@ namespace Backend.Controllers
                 Secure = true
 
             });
-            return Redirect(Routers.Home.link);
+            return Redirect(Routers.Home.Link);
         }
 
 
         [HttpGet("register")]
         public IActionResult Register()
         {
-            return View(Routers.Register.page);
+            return View(Routers.Register.Page);
         }
 
         [HttpGet("logout")]
@@ -65,12 +65,12 @@ namespace Backend.Controllers
                 Secure = true
 
             });
-            return Redirect(Routers.Login.link);
+            return Redirect(Routers.Login.Link);
         }
 
 
         [HttpPost("register")]
-        public IActionResult handleRegister(string name, string username, string password, string confirmPassword, string email, string phone, string address)
+        public IActionResult HandleRegister(string name, string username, string password, string confirmPassword, string email, string phone, string address)
         {
             var input = new RegisterDTO()
             {
@@ -83,14 +83,14 @@ namespace Backend.Controllers
                 Address = address,
             };
 
-            var isValid = this.AuthService.registerHandler(input, this.ViewData);
+            var isValid = this.AuthService.RegisterHandler(input, this.ViewData);
 
             if (!isValid)
             {
-                return View(Routers.Register.page);
+                return View(Routers.Register.Page);
             }
 
-            return Redirect(Routers.Login.link);
+            return Redirect(Routers.Login.Link);
         }
 
     }

@@ -6,7 +6,7 @@ namespace Backend.Services.Interface
 {
     public interface IUserService
     {
-        public bool updatePasswordHandler(UpdatePasswordDTO input, ViewDataDictionary dataView);
-        public bool updateUserInfoHandler(UpdateUserInfoDTO input, ViewDataDictionary dataView);
+        public bool UpdatePasswordHandler(UpdatePasswordDTO input, ViewDataDictionary dataView);
+        public bool UpdateUserInfoHandler(UpdateUserInfoDTO input, ViewDataDictionary dataView);
     }
 }

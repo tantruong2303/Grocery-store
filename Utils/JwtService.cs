@@ -11,18 +11,18 @@ namespace Backend.Utils
 {
     public class JwtService : IJwtService
     {
-        private readonly string secret;
-        private readonly IConfig config;
+        private readonly string Secret;
+        private readonly IConfig Config;
         public JwtService(IConfig config)
         {
-            this.config = config;
-            this.secret = this.config.getEnvByKey("JWT_SECRET");
+            this.Config = config;
+            this.Secret = this.Config.GetEnvByKey("JWT_SECRET");
         }
 
         public string GenerateToken(string data)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(secret);
+            var key = Encoding.ASCII.GetBytes(Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[] { new Claim("data", data) }),
@@ -36,7 +36,7 @@ namespace Backend.Utils
         public string VerifyToken(string token)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(secret);
+            var key = Encoding.ASCII.GetBytes(Secret);
             try
             {
                 tokenHandler.ValidateToken(token, new TokenValidationParameters

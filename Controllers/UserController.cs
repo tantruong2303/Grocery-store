@@ -1,11 +1,9 @@
 using System;
-
 using Microsoft.AspNetCore.Mvc;
 using Backend.Controllers.DTO;
 using Backend.Utils.Common;
 using Backend.Services.Interface;
 using Microsoft.AspNetCore.Http;
-using System.Web;
 using Backend.Pipe;
 
 namespace Backend.Controllers
@@ -14,27 +12,27 @@ namespace Backend.Controllers
     [ServiceFilter(typeof(AuthGuard))]
     public class UserController : Controller
     {
-        private readonly IUserService userService;
+        private readonly IUserService UserService;
 
         public UserController(IUserService userService)
         {
-            this.userService = userService;
+            this.UserService = userService;
         }
 
         [HttpGet("")]
         public IActionResult User()
         {
-            return View(Routers.User.page);
+            return View(Routers.User.Page);
         }
 
         [HttpGet("password")]
         public IActionResult UpdatePassword()
         {
-            return View(Routers.UpdatePassword.page);
+            return View(Routers.UpdatePassword.Page);
         }
 
         [HttpPost("password")]
-        public IActionResult handleUpdatePassword(string oldPassword, string newPassword, string confirmNewPassword)
+        public IActionResult HandleUpdatePassword(string oldPassword, string newPassword, string confirmNewPassword)
         {
             var input = new UpdatePasswordDTO()
             {
@@ -43,10 +41,10 @@ namespace Backend.Controllers
                 confirmNewPassword = confirmNewPassword
             };
 
-            var isUpdate = this.userService.updatePasswordHandler(input, this.ViewData);
+            var isUpdate = this.UserService.UpdatePasswordHandler(input, this.ViewData);
             if (!isUpdate)
             {
-                return View(Routers.UpdatePassword.page);
+                return View(Routers.UpdatePassword.Page);
             }
 
             this.HttpContext.Response.Cookies.Append("auth-token", "", new CookieOptions()
@@ -56,17 +54,17 @@ namespace Backend.Controllers
                 Secure = true
 
             });
-            return Redirect(Routers.Login.link);
+            return Redirect(Routers.Login.Link);
         }
 
         [HttpGet("info")]
         public IActionResult UpdateUserInfo()
         {
-            return View(Routers.UpdateUserInfo.page);
+            return View(Routers.UpdateUserInfo.Page);
         }
 
         [HttpPost("info")]
-        public IActionResult handleUpdateUserInfo(string name, string email, string phone, string address)
+        public IActionResult HandleUpdateUserInfo(string name, string email, string phone, string address)
         {
             var input = new UpdateUserInfoDTO()
             {
@@ -76,14 +74,14 @@ namespace Backend.Controllers
                 address = address
             };
 
-            var isUpdate = this.userService.updateUserInfoHandler(input, this.ViewData);
+            var isUpdate = this.UserService.UpdateUserInfoHandler(input, this.ViewData);
 
             if (!isUpdate)
             {
-                return View(Routers.UpdateUserInfo.page);
+                return View(Routers.UpdateUserInfo.Page);
             }
 
-            return Redirect(Routers.Home.link);
+            return Redirect(Routers.Home.Link);
         }
     }
 }

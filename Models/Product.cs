@@ -16,44 +16,44 @@ namespace Backend.Models
         [Key]
         [Required]
         [StringLength(50)]
-        public string productId { set; get; }
+        public string ProductId { set; get; }
 
         [Required]
         [StringLength(50)]
-        public string name { set; get; }
+        public string Name { set; get; }
 
         [Required]
         [StringLength(500)]
-        public string description { set; get; }
+        public string Description { set; get; }
 
         [Required]
-        public ProductStatus status { get; set; }
+        public ProductStatus Status { get; set; }
 
         [Required]
-        public float originalPrice { get; set; }
+        public float OriginalPrice { get; set; }
 
         [Required]
-        public float retailPrice { get; set; }
+        public float RetailPrice { get; set; }
 
 
         [Required]
         [StringLength(50)]
-        public string createDate { set; get; }
+        public string CreateDate { set; get; }
 
         [Required]
-        public int quantity { get; set; }
+        public int Quantity { get; set; }
 
         [Required]
         [StringLength(255)]
-        public string imageUrl { set; get; }
+        public string ImageUrl { set; get; }
 
 
         [Required]
         [StringLength(50)]
         [ForeignKey("tblCategory")]
-        public string categoryId { set; get; }
+        public string CategoryId { set; get; }
 
 
-        public virtual Category category { set; get; }
+        public virtual Category Category { set; get; }
     }
 }

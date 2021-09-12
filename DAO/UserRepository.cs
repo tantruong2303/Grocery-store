@@ -17,13 +17,13 @@ namespace Backend.DAO
 
         public User GetUserByUsername(string username)
         {
-            User user = this.DBContext.user.FirstOrDefault(item => item.username == username);
+            User user = this.DBContext.User.FirstOrDefault(item => item.Username == username);
             return user;
         }
 
         public User GetUserById(string id)
         {
-            User user = this.DBContext.user.FirstOrDefault(item => item.userId == id);
+            User user = this.DBContext.User.FirstOrDefault(item => item.UserId == id);
             return user;
         }
     }

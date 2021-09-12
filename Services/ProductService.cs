@@ -14,52 +14,52 @@ namespace Backend.Services
     public class ProductService : IProductService
     {
 
-        private readonly IProductRepository productRepository;
-        private readonly ICategoryRepository categoryRepository;
-        private readonly DBContext dBContext;
+        private readonly IProductRepository ProductRepository;
+        private readonly ICategoryRepository CategoryRepository;
+        private readonly DBContext DBContext;
 
         public ProductService(DBContext dBContext, IProductRepository productRepository, ICategoryRepository categoryRepository)
         {
-            this.dBContext = dBContext;
-            this.productRepository = productRepository;
-            this.categoryRepository = categoryRepository;
+            this.DBContext = dBContext;
+            this.ProductRepository = productRepository;
+            this.CategoryRepository = categoryRepository;
         }
-        public bool createProductHandler(CreateProductDTO input, ViewDataDictionary dataView)
+        public bool CreateProductHandler(CreateProductDTO input, ViewDataDictionary dataView)
         {
             ValidationResult result = new CreateProductDTOValidator().Validate(input);
             if (!result.IsValid)
             {
-                ServerResponse.mapDetails(result, dataView);
+                ServerResponse.MapDetails(result, dataView);
                 return false;
             }
 
-            var isExistCategory = this.categoryRepository.GetCategoryByCategoryId(input.CategoryId);
+            var isExistCategory = this.CategoryRepository.GetCategoryByCategoryId(input.CategoryId);
             if (isExistCategory == null)
             {
-                ServerResponse.setFieldErrorMessage("categoryId", CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_FOUND, dataView);
+                ServerResponse.SetFieldErrorMessage("categoryId", CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_FOUND, dataView);
                 return false;
             }
 
-            var isExistProduct = this.productRepository.GetProductByProductName(input.Name);
+            var isExistProduct = this.ProductRepository.GetProductByProductName(input.Name);
             if (isExistProduct != null)
             {
-                ServerResponse.setFieldErrorMessage("name", CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, dataView);
+                ServerResponse.SetFieldErrorMessage("name", CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, dataView);
                 return false;
             }
 
             var product = new Product();
-            product.productId = Guid.NewGuid().ToString();
-            product.name = input.Name;
-            product.description = input.Description;
-            product.status = (ProductStatus)1;
-            product.retailPrice = input.RetailPrice;
-            product.originalPrice = input.OriginalPrice;
-            product.createDate = DateTime.Now.ToShortDateString();
-            product.quantity = input.Quantity;
-            product.imageUrl = "";
-            product.categoryId = input.CategoryId;
-            this.dBContext.product.Add(product);
-            this.dBContext.SaveChanges();
+            product.ProductId = Guid.NewGuid().ToString();
+            product.Name = input.Name;
+            product.Description = input.Description;
+            product.Status = (ProductStatus)1;
+            product.RetailPrice = input.RetailPrice;
+            product.OriginalPrice = input.OriginalPrice;
+            product.CreateDate = DateTime.Now.ToShortDateString();
+            product.Quantity = input.Quantity;
+            product.ImageUrl = "";
+            product.CategoryId = input.CategoryId;
+            this.DBContext.Product.Add(product);
+            this.DBContext.SaveChanges();
             return true;
         }
     }

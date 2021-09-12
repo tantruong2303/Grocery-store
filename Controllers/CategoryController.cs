@@ -10,11 +10,11 @@ namespace Backend.Controllers
     [Route("category")]
     public class CategoryController : Controller
     {
-        private readonly ICategoryService categoryService;
+        private readonly ICategoryService CategoryService;
 
         public CategoryController(ICategoryService categoryService)
         {
-            this.categoryService = categoryService;
+            this.CategoryService = categoryService;
         }
 
 
@@ -22,31 +22,31 @@ namespace Backend.Controllers
         [ServiceFilter(typeof(AuthGuard))]
         public IActionResult Category()
         {
-            return View(Routers.Category.page);
+            return View(Routers.Category.Page);
         }
 
         [ServiceFilter(typeof(AuthGuard))]
         [HttpGet("create")]
         public IActionResult CreateCategory()
         {
-            return View(Routers.CreateCategory.page);
+            return View(Routers.CreateCategory.Page);
         }
 
         [ServiceFilter(typeof(AuthGuard))]
         [HttpPost("create")]
-        public IActionResult handleCreateCategory(string name, string description)
+        public IActionResult HandleCreateCategory(string name, string description)
         {
             var input = new CreateCategoryDTO()
             {
                 Name = name,
                 Description = description
             };
-            var isValid = this.categoryService.createCategoryHandler(input, this.ViewData);
+            var isValid = this.CategoryService.CreateCategoryHandler(input, this.ViewData);
             if (!isValid)
             {
-                return View(Routers.CreateCategory.page);
+                return View(Routers.CreateCategory.Page);
             }
-            return Redirect(Routers.Category.link);
+            return Redirect(Routers.Category.Link);
         }
 
 
@@ -54,7 +54,7 @@ namespace Backend.Controllers
         [HttpGet("update")]
         public IActionResult UpdateCategory()
         {
-            return View(Routers.UpdateCategory.page);
+            return View(Routers.UpdateCategory.Page);
         }
 
         [ServiceFilter(typeof(AuthGuard))]
@@ -67,19 +67,19 @@ namespace Backend.Controllers
                 Name = name,
                 Description = description
             };
-            var isValid = this.categoryService.updateCategoryHandler(input, this.ViewData);
+            var isValid = this.CategoryService.UpdateCategoryHandler(input, this.ViewData);
             if (!isValid)
             {
-                return View(Routers.UpdateCategory.page);
+                return View(Routers.UpdateCategory.Page);
             }
-            return Redirect(Routers.Category.link);
+            return Redirect(Routers.Category.Link);
         }
 
         [ServiceFilter(typeof(AuthGuard))]
         [HttpGet("delete")]
         public IActionResult DeleteCategory()
         {
-            return View(Routers.DeleteCategory.page);
+            return View(Routers.DeleteCategory.Page);
         }
 
         [ServiceFilter(typeof(AuthGuard))]
@@ -90,12 +90,12 @@ namespace Backend.Controllers
             {
                 CategoryId = categoryId
             };
-            var isValid = this.categoryService.deleteCategoryHandler(input, this.ViewData);
+            var isValid = this.CategoryService.DeleteCategoryHandler(input, this.ViewData);
             if (!isValid)
             {
-                return View(Routers.DeleteCategory.page);
+                return View(Routers.DeleteCategory.Page);
             }
-            return Redirect(Routers.Category.link);
+            return Redirect(Routers.Category.Link);
         }
     }
 }
