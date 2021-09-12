@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Backend.Services.Interface;
 using System;
 using Backend.Controllers.DTO;
@@ -22,6 +23,17 @@ namespace Backend.Services
         {
             this.DBContext = dBContext;
             this.CategoryRepository = categoryRepository;
+        }
+
+        public Category GetCategory(string categoryId)
+        {
+            var category = this.CategoryRepository.GetCategory(categoryId);
+            return category;
+        }
+
+        public List<Category> GetCategories()
+        {
+            return this.CategoryRepository.GetCategories();
         }
 
         public bool CreateCategoryHandler(CreateCategoryDTO input, ViewDataDictionary dataView)

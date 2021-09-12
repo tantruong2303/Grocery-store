@@ -15634,6 +15634,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\Category\\Category.cshtml",
+      "TargetPath": "Views\\Containers\\Category\\Category.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -15644,18 +15649,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\Category.cshtml",
-      "TargetPath": "Views\\Containers\\Category.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\CreateCategory.cshtml",
-      "TargetPath": "Views\\Containers\\CreateCategory.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\DeleteCategory.cshtml",
-      "TargetPath": "Views\\Containers\\DeleteCategory.cshtml",
+      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\Category\\UpdateCategory.cshtml",
+      "TargetPath": "Views\\Containers\\Category\\UpdateCategory.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15671,11 +15666,6 @@
     {
       "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\User\\UpdateUserInfo.cshtml",
       "TargetPath": "Views\\Containers\\User\\UpdateUserInfo.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\UpdateCategory.cshtml",
-      "TargetPath": "Views\\Containers\\UpdateCategory.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15701,6 +15691,11 @@
     {
       "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\Home.cshtml",
       "TargetPath": "Views\\Containers\\Home.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\Category\\CreateCategory.cshtml",
+      "TargetPath": "Views\\Containers\\Category\\CreateCategory.cshtml",
       "FileKind": "mvc"
     },
     {

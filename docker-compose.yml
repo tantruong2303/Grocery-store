@@ -1,0 +1,10 @@
+version: "3"
+services:
+        server:
+                build: .
+                image: heaty566/mono-grocery:latest
+                container_name: mono-grocery
+                expose:
+                        - 80
+                volumes:
+                        - ./config:/app/config

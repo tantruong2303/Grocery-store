@@ -8,6 +8,7 @@ using Backend.Pipe;
 namespace Backend.Controllers
 {
     [Route("category")]
+    [ServiceFilter(typeof(AuthGuard))]
     public class CategoryController : Controller
     {
         private readonly ICategoryService CategoryService;
@@ -19,20 +20,23 @@ namespace Backend.Controllers
 
 
         [HttpGet("")]
-        [ServiceFilter(typeof(AuthGuard))]
+
         public IActionResult Category()
         {
+            var categories = this.CategoryService.GetCategories();
+
+            this.ViewData["categories"] = categories;
             return View(Routers.Category.Page);
         }
 
-        [ServiceFilter(typeof(AuthGuard))]
+
         [HttpGet("create")]
         public IActionResult CreateCategory()
         {
             return View(Routers.CreateCategory.Page);
         }
 
-        [ServiceFilter(typeof(AuthGuard))]
+
         [HttpPost("create")]
         public IActionResult HandleCreateCategory(string name, string description)
         {
@@ -50,14 +54,16 @@ namespace Backend.Controllers
         }
 
 
-        [ServiceFilter(typeof(AuthGuard))]
+
         [HttpGet("update")]
-        public IActionResult UpdateCategory()
+        public IActionResult UpdateCategory(string categoryId)
         {
+            var category = this.CategoryService.GetCategory(categoryId);
+            this.ViewData["category"] = category;
             return View(Routers.UpdateCategory.Page);
         }
 
-        [ServiceFilter(typeof(AuthGuard))]
+
         [HttpPost("update")]
         public IActionResult handleUpdateCategory(string categoryId, string name, string description)
         {
@@ -75,17 +81,14 @@ namespace Backend.Controllers
             return Redirect(Routers.Category.Link);
         }
 
-        [ServiceFilter(typeof(AuthGuard))]
-        [HttpGet("delete")]
-        public IActionResult DeleteCategory()
-        {
-            return View(Routers.DeleteCategory.Page);
-        }
 
-        [ServiceFilter(typeof(AuthGuard))]
-        [HttpPost("delete")]
+
+
+        [HttpGet("delete")]
         public IActionResult handleDeleteCategory(string categoryId)
         {
+
+
             var input = new DeleteCategoryDTO()
             {
                 CategoryId = categoryId

@@ -23,11 +23,11 @@ namespace Backend.Utils.Locale
 
             // Error message
             // EN
-            AddTranslation("en", "ERROR_LOGIN_FAIL", "username or password is wrong");
-            AddTranslation("en", "ERROR_EXISTED", "is already exist");
-            AddTranslation("en", "ERROR_NOT_ALLOW_ACTION", "please login or action is not allow");
-            AddTranslation("en", "ERROR_NOT_FOUND", "is not found");
-            AddTranslation("en", "ERROR_OLD_PASSWORD_NOT_CORRECT", "password is wrong");
+            AddTranslation("en", ErrorMessageKey.ERROR_LOGIN_FAIL, "username or password is wrong");
+            AddTranslation("en", ErrorMessageKey.ERROR_EXISTED, "is already exist");
+            AddTranslation("en", ErrorMessageKey.ERROR_NOT_ALLOW_ACTION, "please login or action is not allow");
+            AddTranslation("en", ErrorMessageKey.ERROR_NOT_FOUND, "is not found");
+            AddTranslation("en", ErrorMessageKey.ERROR_OLD_PASSWORD_NOT_CORRECT, "password is wrong");
 
             // Don't touch me please
             AddTranslation("en", "EmailValidator", "is not a valid email address");

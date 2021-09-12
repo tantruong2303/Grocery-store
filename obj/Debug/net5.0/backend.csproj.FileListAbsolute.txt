@@ -677,13 +677,9 @@ e:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\s
 e:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\backend.TagHelpers.input.cache
 e:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\backend.TagHelpers.output.cache
 e:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\backend.RazorCoreGenerate.cache
-e:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Category.cshtml.g.cs
-e:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\CreateCategory.cshtml.g.cs
 e:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\CreateProduct.cshtml.g.cs
-e:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\DeleteCategory.cshtml.g.cs
 e:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Home.cshtml.g.cs
 e:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Product.cshtml.g.cs
-e:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\UpdateCategory.cshtml.g.cs
 e:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 e:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 e:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
@@ -705,3 +701,6 @@ E:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\R
 E:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\User\UpdateUserInfo.cshtml.g.cs
 E:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\User\User.cshtml.g.cs
 E:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Form\FormBtn.cshtml.g.cs
+E:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Category\Category.cshtml.g.cs
+E:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Category\CreateCategory.cshtml.g.cs
+E:\server\grocery-store\tailwind-fast-kit\hello\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Category\UpdateCategory.cshtml.g.cs

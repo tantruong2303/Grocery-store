@@ -36,10 +36,7 @@
 
 
     <div class="flex w-full min-h-screen">
-
-
         @await Html.PartialAsync("~/Views/Components/Navbar.cshtml")
-
         <main role="main" class="flex flex-1 pt-20 ">
             @RenderBody()
         </main>
@@ -56,8 +53,6 @@
                 navbarBtn2.classList.toggle("-translate-y-2");
                 navbarBtn2.classList.toggle("-rotate-45");
                 navbarMenu.classList.toggle("scale-y-100");
-
-
             })
         }
     </script>

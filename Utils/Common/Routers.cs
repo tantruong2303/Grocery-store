@@ -20,9 +20,9 @@ namespace Backend.Utils.Common
         public static readonly RouterItem UpdateUserInfo = new RouterItem() { Page = "/Views/Containers/User/UpdateUserInfo.cshtml", Title = "Update User Info", Link = "/user/info" };
         //------------------------------------
         public static readonly RouterItem Home = new RouterItem() { Page = "/Views/Containers/Home.cshtml", Title = "Home", Link = "/" };
-        public static readonly RouterItem Category = new RouterItem() { Page = "/Views/Containers/Category.cshtml", Title = "All Category", Link = "/category" };
-        public static readonly RouterItem CreateCategory = new RouterItem() { Page = "/Views/Containers/CreateCategory.cshtml", Title = "Create Category", Link = "/category/create" };
-        public static readonly RouterItem UpdateCategory = new RouterItem() { Page = "/Views/Containers/UpdateCategory.cshtml", Title = "Update Category", Link = "/category/update" };
+        public static readonly RouterItem Category = new RouterItem() { Page = "/Views/Containers/Category/Category.cshtml", Title = "All Category", Link = "/category" };
+        public static readonly RouterItem CreateCategory = new RouterItem() { Page = "/Views/Containers/Category/CreateCategory.cshtml", Title = "Create Category", Link = "/category/create" };
+        public static readonly RouterItem UpdateCategory = new RouterItem() { Page = "/Views/Containers/Category/UpdateCategory.cshtml", Title = "Update Category", Link = "/category/update" };
         public static readonly RouterItem DeleteCategory = new RouterItem() { Page = "/Views/Containers/DeleteCategory.cshtml", Title = "Delete Category", Link = "/category/delete" };
         public static readonly RouterItem Product = new RouterItem() { Page = "/Views/Containers/Product.cshtml", Title = "All Product", Link = "/product" };
         public static readonly RouterItem CreateProduct = new RouterItem() { Page = "/Views/Containers/CreateProduct.cshtml", Title = "Create Product", Link = "/product/create" };

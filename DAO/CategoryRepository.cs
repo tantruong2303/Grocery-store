@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Backend.DAO.Interface;
 using Backend.Models;
 using Backend.Utils;
@@ -12,6 +13,17 @@ namespace Backend.DAO
         public CategoryRepository(DBContext dBContext)
         {
             this.DBContext = dBContext;
+        }
+
+        public List<Category> GetCategories()
+        {
+            List<Category> categories = this.DBContext.Category.ToList();
+            return categories;
+        }
+        public Category GetCategory(string categoryId)
+        {
+            Category category = this.DBContext.Category.Find(categoryId);
+            return category;
         }
 
         public Category GetCategoryByCategoryName(string name)
