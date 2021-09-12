@@ -1,14 +1,14 @@
 using System;
 
 using Microsoft.AspNetCore.Mvc;
-using backend.Controllers.DTO;
-using backend.Utils.Common;
-using backend.Services.Interface;
+using Backend.Controllers.DTO;
+using Backend.Utils.Common;
+using Backend.Services.Interface;
 using Microsoft.AspNetCore.Http;
 using System.Web;
-using backend.Pipe;
+using Backend.Pipe;
 
-namespace backend.Controllers
+namespace Backend.Controllers
 {
     [Route("user")]
     [ServiceFilter(typeof(AuthGuard))]

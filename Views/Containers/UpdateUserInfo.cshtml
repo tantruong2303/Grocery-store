@@ -1,11 +1,12 @@
-@using backend.Views.ViewModel
-@using backend.Utils.Common
+@using Backend.Views.ViewModel
+@using Backend.Utils.Common
+
 @{
     ViewData["Title"] = Routers.UpdatePassword.title;
-    var name = new TextField() { label = "Name", field = "name" };
-    var email = new TextField() { label = "Email", field = "email" };
-    var address = new TextField() { label = "Address", field = "address" };
-    var phone = new TextField() { label = "Phone", field = "phone" };
+    var name = new TextField() { Label = "Name", Field = "name" };
+    var email = new TextField() { Label = "Email", Field = "email" };
+    var address = new TextField() { Label = "Address", Field = "address" };
+    var phone = new TextField() { Label = "Phone", Field = "phone" };
 }
 
 <div>

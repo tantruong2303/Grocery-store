@@ -1,22 +1,22 @@
 using System;
 
 using Microsoft.AspNetCore.Mvc;
-using backend.Controllers.DTO;
-using backend.Utils.Common;
-using backend.Services.Interface;
+using Backend.Controllers.DTO;
+using Backend.Utils.Common;
+using Backend.Services.Interface;
 using Microsoft.AspNetCore.Http;
 using System.Web;
-namespace backend.Controllers
+namespace Backend.Controllers
 {
 
     [Route("auth")]
     public class AuthController : Controller
     {
-        private readonly IAuthService authService;
+        private readonly IAuthService AuthService;
 
         public AuthController(IAuthService authService)
         {
-            this.authService = authService;
+            this.AuthService = authService;
         }
 
         [HttpGet("login")]
@@ -28,10 +28,10 @@ namespace backend.Controllers
 
 
         [HttpPost("login")]
-        public IActionResult handleLogin(string username, string password)
+        public IActionResult HandleLogin(string username, string password)
         {
-            var input = new LoginDTO() { username = username, password = password };
-            var token = this.authService.loginHandler(input, this.ViewData);
+            var input = new LoginDTO() { Username = username, Password = password };
+            var token = this.AuthService.loginHandler(input, this.ViewData);
 
             if (token == null)
             {
@@ -74,16 +74,16 @@ namespace backend.Controllers
         {
             var input = new RegisterDTO()
             {
-                name = name,
-                username = username,
-                password = password,
-                confirmPassword = confirmPassword,
-                email = email,
-                phone = phone,
-                address = address,
+                Name = name,
+                Username = username,
+                Password = password,
+                ConfirmPassword = confirmPassword,
+                Email = email,
+                Phone = phone,
+                Address = address,
             };
 
-            var isValid = this.authService.registerHandler(input, this.ViewData);
+            var isValid = this.AuthService.registerHandler(input, this.ViewData);
 
             if (!isValid)
             {

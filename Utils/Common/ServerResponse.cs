@@ -6,9 +6,9 @@ using System;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using backend.Controllers.DTO;
+using Backend.Controllers.DTO;
 
-namespace backend.Utils.Common
+namespace Backend.Utils.Common
 {
     public class ServerResponse
     {

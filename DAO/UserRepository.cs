@@ -1,28 +1,29 @@
 using System.Linq;
 using System;
 
-using backend.DAO.Interface;
-using backend.Utils;
-using backend.Models;
+using Backend.DAO.Interface;
+using Backend.Utils;
+using Backend.Models;
 
-namespace backend.DAO
+namespace Backend.DAO
 {
     public class UserRepository : IUserRepository
     {
-        private readonly DBContext dbContext;
-        public UserRepository(DBContext dbContext)
+        private readonly DBContext DBContext;
+        public UserRepository(DBContext dBContext)
         {
-            this.dbContext = dbContext;
+            this.DBContext = dBContext;
         }
 
-        public User getUserByUsername(string username)
+        public User GetUserByUsername(string username)
         {
-            User user = this.dbContext.user.FirstOrDefault(item => item.username == username);
+            User user = this.DBContext.user.FirstOrDefault(item => item.username == username);
             return user;
         }
-        public User getUserById(string id)
+
+        public User GetUserById(string id)
         {
-            User user = this.dbContext.user.FirstOrDefault(item => item.userId == id);
+            User user = this.DBContext.user.FirstOrDefault(item => item.userId == id);
             return user;
         }
     }

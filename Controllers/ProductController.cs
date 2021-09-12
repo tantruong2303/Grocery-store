@@ -1,0 +1,66 @@
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Backend.Models;
+using Backend.Utils.Common;
+using Backend.Controllers.DTO;
+using Backend.Pipe;
+using Backend.Services.Interface;
+
+namespace Backend.Controllers
+{
+    [Route("product")]
+    public class ProductController : Controller
+    {
+        private readonly IProductService productService;
+
+        public ProductController(IProductService productService)
+        {
+            this.productService = productService;
+        }
+
+        [HttpGet("create")]
+        [ServiceFilter(typeof(AuthGuard))]
+        public IActionResult CreateProduct()
+        {
+            return View(Routers.CreateProduct.page);
+        }
+
+        [HttpPost("create")]
+        [ServiceFilter(typeof(AuthGuard))]
+        public IActionResult handleCreateProduct(string name, string description, float originalPrice, float retailPrice, int quantity, string categoryId)
+        {
+            var input = new CreateProductDTO()
+            {
+                Name = name,
+                Description = description,
+                RetailPrice = retailPrice,
+                OriginalPrice = originalPrice,
+                Quantity = quantity,
+                CategoryId = categoryId,
+            };
+
+            var isValid = this.productService.createProductHandler(input, this.ViewData);
+
+            if (!isValid)
+            {
+                return View(Routers.CreateProduct.page);
+            }
+
+            return Redirect(Routers.Product.link);
+        }
+
+        [HttpGet("")]
+        [ServiceFilter(typeof(AuthGuard))]
+        public IActionResult Product()
+        {
+            return View(Routers.Product.page);
+        }
+
+    }
+}

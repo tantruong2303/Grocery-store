@@ -1,9 +1,9 @@
 using FluentValidation;
 using FluentValidation.Results;
-using backend.Utils.Validator;
+using Backend.Utils.Validator;
 using System.Text.RegularExpressions;
 
-namespace backend.Controllers.DTO
+namespace Backend.Controllers.DTO
 {
     public class UpdateUserInfoDTO
     {

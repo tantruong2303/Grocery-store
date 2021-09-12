@@ -2,12 +2,12 @@ using System;
 using Microsoft.EntityFrameworkCore;
 
 using System.Threading.Tasks;
-using backend.Models;
-using backend.Utils.Interface;
+using Backend.Models;
+using Backend.Utils.Interface;
 
 
 
-namespace backend.Utils
+namespace Backend.Utils
 {
     public class DBContext : DbContext
     {

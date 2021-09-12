@@ -4,7 +4,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 
-namespace backend.Utils.Locale
+namespace Backend.Utils.Locale
 {
     public class LocaleFilter : IActionFilter
     {

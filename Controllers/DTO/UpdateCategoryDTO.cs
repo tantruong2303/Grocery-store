@@ -1,12 +1,12 @@
 using FluentValidation;
 
-namespace backend.Controllers.DTO
+namespace Backend.Controllers.DTO
 {
     public class UpdateCategoryDTO
     {
-        public string categoryId { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
+        public string CategoryId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
     }
 
@@ -14,9 +14,9 @@ namespace backend.Controllers.DTO
     {
         public UpdateCategoryDTOValidator()
         {
-            RuleFor(x => x.categoryId).NotEmpty().Length(30, 50);
-            RuleFor(x => x.name).NotEmpty().Length(3, 50);
-            RuleFor(x => x.description).NotEmpty().Length(3, 500);
+            RuleFor(x => x.CategoryId).NotEmpty().Length(30, 50);
+            RuleFor(x => x.Name).NotEmpty().Length(3, 50);
+            RuleFor(x => x.Description).NotEmpty().Length(3, 500);
         }
     }
 }

@@ -1,17 +1,16 @@
 using System.Linq;
 using System;
-using backend.Controllers.DTO;
+using Backend.Controllers.DTO;
 using FluentValidation.Results;
-using backend.Utils.Common;
+using Backend.Utils.Common;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using backend.Utils;
-using backend.DAO.Interface;
-using backend.Utils.Locale;
-using backend.Models;
-using backend.Services.Interface;
-using backend.Utils.Interface;
+using Backend.Utils;
+using Backend.DAO.Interface;
+using Backend.Utils.Locale;
+using Backend.Models;
+using Backend.Services.Interface;
 
-namespace backend.Services
+namespace Backend.Services
 {
     public class UserService : IUserService
     {

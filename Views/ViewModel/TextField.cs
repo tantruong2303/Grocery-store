@@ -1,9 +1,9 @@
-namespace backend.Views.ViewModel
+namespace Backend.Views.ViewModel
 {
     public class TextField
     {
-        public string field { set; get; }
-        public string label { set; get; }
-        public string value { set; get; }
+        public string Field { set; get; }
+        public string Label { set; get; }
+        public string Value { set; get; }
     }
 }

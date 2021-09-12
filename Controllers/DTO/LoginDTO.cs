@@ -1,15 +1,15 @@
 using System.Text.RegularExpressions;
 using FluentValidation;
 using FluentValidation.Results;
-using backend.Utils.Validator;
+using Backend.Utils.Validator;
 
 
-namespace backend.Controllers.DTO
+namespace Backend.Controllers.DTO
 {
     public class LoginDTO
     {
-        public string username { set; get; }
-        public string password { set; get; }
+        public string Username { set; get; }
+        public string Password { set; get; }
 
     }
     public class LoginDTOValidator : AbstractValidator<LoginDTO>
@@ -17,8 +17,8 @@ namespace backend.Controllers.DTO
         public LoginDTOValidator()
         {
 
-            RuleFor(x => x.username).NotEmpty().Length(UserValidator.USERNAME_MIN, UserValidator.USERNAME_MAX);
-            RuleFor(x => x.password).NotEmpty().Length(UserValidator.PASSWORD_MIN, UserValidator.PASSWORD_MAX);
+            RuleFor(x => x.Username).NotEmpty().Length(UserValidator.USERNAME_MIN, UserValidator.USERNAME_MAX);
+            RuleFor(x => x.Password).NotEmpty().Length(UserValidator.PASSWORD_MIN, UserValidator.PASSWORD_MAX);
         }
     }
 }

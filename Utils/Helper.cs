@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace backend.Utils
+namespace Backend.Utils
 {
     public class Helper
     {

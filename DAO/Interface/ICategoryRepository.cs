@@ -1,10 +1,10 @@
-using backend.Models;
+using Backend.Models;
 
-namespace backend.DAO.Interface
+namespace Backend.DAO.Interface
 {
     public interface ICategoryRepository
     {
-        public Category getCategoryByCategoryName(string name);
-        public Category getCategoryByCategoryId(string categoryId);
+        public Category GetCategoryByCategoryName(string name);
+        public Category GetCategoryByCategoryId(string categoryId);
     }
 }

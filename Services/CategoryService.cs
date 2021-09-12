@@ -1,17 +1,17 @@
-using backend.Services.Interface;
+using Backend.Services.Interface;
 using System;
-using backend.Controllers.DTO;
+using Backend.Controllers.DTO;
 using FluentValidation.Results;
-using backend.Utils.Common;
+using Backend.Utils.Common;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using backend.Utils;
-using backend.DAO.Interface;
-using backend.Utils.Locale;
-using backend.Models;
-using backend.Utils.Interface;
+using Backend.Utils;
+using Backend.DAO.Interface;
+using Backend.Utils.Locale;
+using Backend.Models;
+using Backend.Utils.Interface;
 using System.Linq;
 
-namespace backend.Services
+namespace Backend.Services
 {
     public class CategoryService : ICategoryService
     {
@@ -32,7 +32,7 @@ namespace backend.Services
                 ServerResponse.mapDetails(result, dataView);
                 return false;
             }
-            var isExistCategory = this.categoryRepository.getCategoryByCategoryName(input.name);
+            var isExistCategory = this.categoryRepository.GetCategoryByCategoryName(input.Name);
             if (isExistCategory != null)
             {
                 ServerResponse.setFieldErrorMessage("name", CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, dataView);
@@ -41,8 +41,8 @@ namespace backend.Services
 
             var category = new Category();
             category.categoryId = Guid.NewGuid().ToString();
-            category.name = input.name;
-            category.description = input.description;
+            category.name = input.Name;
+            category.description = input.Description;
             category.status = (CategoryStatus)1;
             category.createDate = DateTime.Now.ToShortDateString();
             this.dBContext.category.Add(category);
@@ -58,14 +58,14 @@ namespace backend.Services
                 ServerResponse.mapDetails(result, dataView);
                 return false;
             }
-            var category = this.categoryRepository.getCategoryByCategoryId(input.categoryId);
+            var category = this.categoryRepository.GetCategoryByCategoryId(input.CategoryId);
             if (category == null)
             {
                 ServerResponse.setFieldErrorMessage("categoryId", CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_FOUND, dataView);
                 return false;
             }
-            category.name = input.name;
-            category.description = input.description;
+            category.name = input.Name;
+            category.description = input.Description;
             this.dBContext.SaveChanges();
             return true;
 
@@ -79,7 +79,7 @@ namespace backend.Services
                 ServerResponse.mapDetails(result, dataView);
                 return false;
             }
-            var category = this.categoryRepository.getCategoryByCategoryId(input.categoryId);
+            var category = this.categoryRepository.GetCategoryByCategoryId(input.CategoryId);
             if (category == null)
             {
                 ServerResponse.setFieldErrorMessage("categoryId", CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_FOUND, dataView);

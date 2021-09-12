@@ -4,10 +4,10 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using backend.Utils.Interface;
+using Backend.Utils.Interface;
 
 
-namespace backend.Utils
+namespace Backend.Utils
 {
     public class JwtService : IJwtService
     {

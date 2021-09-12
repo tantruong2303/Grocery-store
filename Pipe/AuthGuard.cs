@@ -7,16 +7,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using backend.Models;
-using backend.Controllers.DTO;
-using backend.Utils.Common;
-using backend.Utils.Validator;
-using backend.Services;
-using backend.DAO.Interface;
-using backend.Utils.Interface;
-using backend.Utils.Locale;
+using Backend.Models;
+using Backend.Controllers.DTO;
+using Backend.Utils.Common;
+using Backend.Utils.Validator;
+using Backend.Services;
+using Backend.DAO.Interface;
+using Backend.Utils.Interface;
+using Backend.Utils.Locale;
 
-namespace backend.Pipe
+namespace Backend.Pipe
 {
     public class AuthGuard : IActionFilter
     {
@@ -61,7 +61,7 @@ namespace backend.Pipe
                 {
                     return false;
                 }
-                var user = this.userRepository.getUserById(token[0]);
+                var user = this.userRepository.GetUserById(token[0]);
                 if (user == null)
                 {
                     return false;

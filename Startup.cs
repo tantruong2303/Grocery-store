@@ -3,20 +3,20 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using backend.Utils;
-using backend.Utils.Locale;
-using backend.Utils.Interface;
+using Backend.Utils;
+using Backend.Utils.Locale;
+using Backend.Utils.Interface;
 using FluentValidation;
 using System.Globalization;
-using backend.Controllers.DTO;
-using backend.Services;
-using backend.Services.Interface;
-using backend.Controllers;
-using backend.DAO.Interface;
-using backend.DAO;
-using backend.Pipe;
+using Backend.Controllers.DTO;
+using Backend.Services;
+using Backend.Services.Interface;
+using Backend.Controllers;
+using Backend.DAO.Interface;
+using Backend.DAO;
+using Backend.Pipe;
 
-namespace backend
+namespace Backend
 {
     public class Startup
     {
@@ -36,8 +36,10 @@ namespace backend
             services.AddScoped<DBContext, DBContext>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<AuthGuard>();
             services.AddScoped<AuthController>();
