@@ -16,5 +16,7 @@ namespace backend.Utils.Common
         public static readonly RouterItem CreateCategory = new RouterItem() { page = "/Views/Containers/CreateCategory.cshtml", title = "Create Category", link = "/category/create" };
         public static readonly RouterItem UpdateCategory = new RouterItem() { page = "/Views/Containers/UpdateCategory.cshtml", title = "Update Category", link = "/category/update" };
         public static readonly RouterItem DeleteCategory = new RouterItem() { page = "/Views/Containers/DeleteCategory.cshtml", title = "Delete Category", link = "/category/delete" };
+        public static readonly RouterItem Product = new RouterItem() { page = "/Views/Containers/Product.cshtml", title = "All Product", link = "/product" };
+        public static readonly RouterItem CreateProduct = new RouterItem() { page = "/Views/Containers/CreateProduct.cshtml", title = "Create Product", link = "/product/create" };
     }
 }

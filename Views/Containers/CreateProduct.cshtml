@@ -1,0 +1,26 @@
+@using backend.Views.ViewModel
+@using backend.Utils.Common
+@{
+    ViewData["Title"] = Routers.CreateProduct.title;
+    var name = new TextField() { label = "Product Name", field = "name" };
+    var descirption = new TextField() { label = "Description", field = "description" };
+    var originalPrice = new TextField() { label = "Original Price", field = "originalPrice" };
+    var retailPrice = new TextField() { label = "Retail Price", field = "retailPrice" };
+    var quantity = new TextField() { label = "Quantity", field = "quantity" };
+    var categoryId = new TextField() { label = "Category ID", field = "categoryId" };
+}
+
+<div>
+    <form method="post" action="/product/create">
+        <p>
+            @ViewData["errorMessage"]
+        </p>
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", name)
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", descirption)
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", originalPrice)
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", retailPrice)
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", quantity)
+        @await Html.PartialAsync("~/Views/Components/TextFiled.cshtml", categoryId)
+        <button>Create</button>
+    </form>
+</div>
