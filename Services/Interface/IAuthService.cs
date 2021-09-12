@@ -1,9 +1,9 @@
-using backend.Models;
-using backend.Controllers.DTO;
+using Backend.Models;
+using Backend.Controllers.DTO;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 
-namespace backend.Services.Interface
+namespace Backend.Services.Interface
 {
     public interface IAuthService
     {

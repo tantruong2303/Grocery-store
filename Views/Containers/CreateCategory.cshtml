@@ -1,9 +1,10 @@
-@using backend.Views.ViewModel
-@using backend.Utils.Common
+@using Backend.Views.ViewModel
+@using Backend.Utils.Common
+
 @{
     ViewData["Title"] = Routers.CreateCategory.title;
-    var name = new TextField() { label = "Category Name", field = "name" };
-    var descirption = new TextField() { label = "Description", field = "description" };
+    var name = new TextField() { Label = "Category Name", Field = "name" };
+    var descirption = new TextField() { Label = "Description", Field = "description" };
 }
 
 <div>

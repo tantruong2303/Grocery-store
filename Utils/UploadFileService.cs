@@ -1,9 +1,9 @@
 using System;
 using System.IO;
 using Microsoft.AspNetCore.Http;
-using backend.Utils.Interface;
+using Backend.Utils.Interface;
 
-namespace backend.Utils
+namespace Backend.Utils
 {
     public class UploadFileService : IUploadFileService
     {

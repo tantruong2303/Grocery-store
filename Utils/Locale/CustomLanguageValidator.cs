@@ -1,4 +1,4 @@
-namespace backend.Utils.Locale
+namespace Backend.Utils.Locale
 {
     public class CustomLanguageValidator : FluentValidation.Resources.LanguageManager
     {

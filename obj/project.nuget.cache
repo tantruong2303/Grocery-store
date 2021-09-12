@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JG0w0EV71KgbR8N5lyqw31Q8P4xZ9X4aWWdFj+Wex+UqeY1Lywz2dsI1YdXFwgi8hTRRptlxaCWrn/6aW+SXqw==",
+  "dgSpecHash": "6ZTE0HNhVNIkvoUXciZbGmc83E+jKMnELqYWxzTNBIhM1P70yD1V59Gh1m+1YsGJq9Cup6YqvL5Sbz50mlS31A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\grocery-store\\backend.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\grocery-store\\Backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\bcrypt.net-next\\4.0.2\\bcrypt.net-next.4.0.2.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\fluentvalidation\\10.3.3\\fluentvalidation.10.3.3.nupkg.sha512",

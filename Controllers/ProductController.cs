@@ -6,13 +6,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using backend.Models;
-using backend.Utils.Common;
-using backend.Controllers.DTO;
-using backend.Pipe;
-using backend.Services.Interface;
+using Backend.Models;
+using Backend.Utils.Common;
+using Backend.Controllers.DTO;
+using Backend.Pipe;
+using Backend.Services.Interface;
 
-namespace backend.Controllers
+namespace Backend.Controllers
 {
     [Route("product")]
     public class ProductController : Controller
@@ -37,12 +37,12 @@ namespace backend.Controllers
         {
             var input = new CreateProductDTO()
             {
-                name = name,
-                description = description,
-                retailPrice = retailPrice,
-                originalPrice = originalPrice,
-                quantity = quantity,
-                categoryId = categoryId,
+                Name = name,
+                Description = description,
+                RetailPrice = retailPrice,
+                OriginalPrice = originalPrice,
+                Quantity = quantity,
+                CategoryId = categoryId,
             };
 
             var isValid = this.productService.createProductHandler(input, this.ViewData);

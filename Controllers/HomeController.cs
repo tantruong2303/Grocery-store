@@ -6,11 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using backend.Models;
-using backend.Utils.Common;
-using backend.Pipe;
+using Backend.Models;
+using Backend.Utils.Common;
+using Backend.Pipe;
 
-namespace backend.Controllers
+namespace Backend.Controllers
 {
     [Route("")]
     public class HomeController : Controller

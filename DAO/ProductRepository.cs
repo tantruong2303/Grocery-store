@@ -1,30 +1,30 @@
 using System.Linq;
 using System;
 
-using backend.DAO.Interface;
+using Backend.DAO.Interface;
 
-using backend.Utils;
-using backend.Models;
+using Backend.Utils;
+using Backend.Models;
 
-namespace backend.DAO
+namespace Backend.DAO
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly DBContext dbContext;
-        public ProductRepository(DBContext dbContext)
+        private readonly DBContext DBContext;
+        public ProductRepository(DBContext dBContext)
         {
-            this.dbContext = dbContext;
+            this.DBContext = dBContext;
         }
 
-        public Product getProductById(string id)
+        public Product GetProductById(string id)
         {
-            Product product = this.dbContext.product.FirstOrDefault(item => item.productId == id);
+            Product product = this.DBContext.product.FirstOrDefault(item => item.productId == id);
             return product;
         }
 
-        public Product getProductByProductName(string name)
+        public Product GetProductByProductName(string name)
         {
-            Product product = this.dbContext.product.FirstOrDefault(item => item.name == name);
+            Product product = this.DBContext.product.FirstOrDefault(item => item.name == name);
             return product;
         }
 

@@ -1,10 +1,10 @@
-using backend.Models;
+using Backend.Models;
 
-namespace backend.DAO.Interface
+namespace Backend.DAO.Interface
 {
     public interface IProductRepository
     {
-        public Product getProductById(string id);
-        public Product getProductByProductName(string name);
+        public Product GetProductById(string id);
+        public Product GetProductByProductName(string name);
     }
 }

@@ -1,7 +1,7 @@
-using backend.Controllers.DTO;
+using Backend.Controllers.DTO;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using backend.Models;
-namespace backend.Services.Interface
+using Backend.Models;
+namespace Backend.Services.Interface
 {
     public interface ICategoryService
     {

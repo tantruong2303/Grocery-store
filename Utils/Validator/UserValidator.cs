@@ -1,4 +1,4 @@
-namespace backend.Utils.Validator
+namespace Backend.Utils.Validator
 {
     public class UserValidator
     {

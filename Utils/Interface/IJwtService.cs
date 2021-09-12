@@ -1,4 +1,4 @@
-namespace backend.Utils.Interface
+namespace Backend.Utils.Interface
 {
     public interface IJwtService
     {

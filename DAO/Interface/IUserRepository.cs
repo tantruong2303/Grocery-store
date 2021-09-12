@@ -1,10 +1,10 @@
-using backend.Models;
+using Backend.Models;
 
-namespace backend.DAO.Interface
+namespace Backend.DAO.Interface
 {
     public interface IUserRepository
     {
-        public User getUserByUsername(string username);
-        public User getUserById(string id);
+        public User GetUserByUsername(string username);
+        public User GetUserById(string id);
     }
 }

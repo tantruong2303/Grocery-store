@@ -1,9 +1,9 @@
 using System.IO;
-using backend.Utils.Interface;
+using Backend.Utils.Interface;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Hosting;
 
-namespace backend.Utils
+namespace Backend.Utils
 {
     public class Config : IConfig
     {

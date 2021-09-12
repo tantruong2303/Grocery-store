@@ -1,27 +1,27 @@
-using backend.DAO.Interface;
-using backend.Models;
-using backend.Utils;
+using Backend.DAO.Interface;
+using Backend.Models;
+using Backend.Utils;
 using System.Linq;
 
-namespace backend.DAO
+namespace Backend.DAO
 {
     public class CategoryRepository : ICategoryRepository
     {
-        private readonly DBContext dBContext;
+        private readonly DBContext DBContext;
 
         public CategoryRepository(DBContext dBContext)
         {
-            this.dBContext = dBContext;
+            this.DBContext = dBContext;
         }
 
-        public Category getCategoryByCategoryName(string name)
+        public Category GetCategoryByCategoryName(string name)
         {
-            Category category = this.dBContext.category.FirstOrDefault(item => item.name == name);
+            Category category = this.DBContext.category.FirstOrDefault(item => item.name == name);
             return category;
         }
-        public Category getCategoryByCategoryId(string categoryId)
+        public Category GetCategoryByCategoryId(string categoryId)
         {
-            Category category = this.dBContext.category.FirstOrDefault(item => item.categoryId == categoryId);
+            Category category = this.DBContext.category.FirstOrDefault(item => item.categoryId == categoryId);
             return category;
         }
     }

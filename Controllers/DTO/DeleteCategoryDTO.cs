@@ -1,16 +1,16 @@
 using FluentValidation;
 
-namespace backend.Controllers.DTO
+namespace Backend.Controllers.DTO
 {
     public class DeleteCategoryDTO
     {
-        public string categoryId { get; set; }
+        public string CategoryId { get; set; }
     }
     public class DeleteCategoryDTOValidator : AbstractValidator<DeleteCategoryDTO>
     {
         public DeleteCategoryDTOValidator()
         {
-            RuleFor(x => x.categoryId).NotEmpty().Length(30, 50);
+            RuleFor(x => x.CategoryId).NotEmpty().Length(30, 50);
         }
     }
 }

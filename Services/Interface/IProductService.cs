@@ -1,7 +1,7 @@
-using backend.Controllers.DTO;
+using Backend.Controllers.DTO;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
-namespace backend.Services.Interface
+namespace Backend.Services.Interface
 {
     public interface IProductService
     {

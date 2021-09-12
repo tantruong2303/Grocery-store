@@ -1,15 +1,15 @@
-using backend.Controllers.DTO;
+using Backend.Controllers.DTO;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using FluentValidation.Results;
-using backend.Utils.Common;
-using backend.DAO.Interface;
-using backend.Utils.Locale;
-using backend.Models;
-using backend.Services.Interface;
+using Backend.Utils.Common;
+using Backend.DAO.Interface;
+using Backend.Utils.Locale;
+using Backend.Models;
+using Backend.Services.Interface;
 using System;
-using backend.Utils;
+using Backend.Utils;
 
-namespace backend.Services
+namespace Backend.Services
 {
     public class ProductService : IProductService
     {
@@ -33,14 +33,14 @@ namespace backend.Services
                 return false;
             }
 
-            var isExistCategory = this.categoryRepository.getCategoryByCategoryId(input.categoryId);
+            var isExistCategory = this.categoryRepository.GetCategoryByCategoryId(input.CategoryId);
             if (isExistCategory == null)
             {
                 ServerResponse.setFieldErrorMessage("categoryId", CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_FOUND, dataView);
                 return false;
             }
 
-            var isExistProduct = this.productRepository.getProductByProductName(input.name);
+            var isExistProduct = this.productRepository.GetProductByProductName(input.Name);
             if (isExistProduct != null)
             {
                 ServerResponse.setFieldErrorMessage("name", CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, dataView);
@@ -49,15 +49,15 @@ namespace backend.Services
 
             var product = new Product();
             product.productId = Guid.NewGuid().ToString();
-            product.name = input.name;
-            product.description = input.description;
+            product.name = input.Name;
+            product.description = input.Description;
             product.status = (ProductStatus)1;
-            product.retailPrice = input.retailPrice;
-            product.originalPrice = input.originalPrice;
+            product.retailPrice = input.RetailPrice;
+            product.originalPrice = input.OriginalPrice;
             product.createDate = DateTime.Now.ToShortDateString();
-            product.quantity = input.quantity;
+            product.quantity = input.Quantity;
             product.imageUrl = "";
-            product.categoryId = input.categoryId;
+            product.categoryId = input.CategoryId;
             this.dBContext.product.Add(product);
             this.dBContext.SaveChanges();
             return true;

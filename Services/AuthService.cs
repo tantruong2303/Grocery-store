@@ -1,17 +1,17 @@
 using System.Linq;
 using System;
-using backend.Controllers.DTO;
+using Backend.Controllers.DTO;
 using FluentValidation.Results;
-using backend.Utils.Common;
+using Backend.Utils.Common;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using backend.Utils;
-using backend.DAO.Interface;
-using backend.Utils.Locale;
-using backend.Models;
-using backend.Services.Interface;
-using backend.Utils.Interface;
+using Backend.Utils;
+using Backend.DAO.Interface;
+using Backend.Utils.Locale;
+using Backend.Models;
+using Backend.Services.Interface;
+using Backend.Utils.Interface;
 
-namespace backend.Services
+namespace Backend.Services
 {
     public class AuthService : IAuthService
     {
@@ -34,7 +34,7 @@ namespace backend.Services
                 ServerResponse.mapDetails(result, dataView);
                 return false;
             }
-            var isExistUser = this.userRepository.getUserByUsername(input.username);
+            var isExistUser = this.userRepository.GetUserByUsername(input.Username);
             if (isExistUser != null)
             {
                 ServerResponse.setFieldErrorMessage("username", CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, dataView);
@@ -44,14 +44,14 @@ namespace backend.Services
 
             var user = new User();
             user.userId = Guid.NewGuid().ToString();
-            user.name = input.name;
-            user.username = input.username;
-            user.phone = input.phone;
-            user.address = input.address;
-            user.email = input.email;
+            user.name = input.Name;
+            user.username = input.Username;
+            user.phone = input.Phone;
+            user.address = input.Address;
+            user.email = input.Email;
             user.createDate = DateTime.Now.ToShortDateString();
             user.role = UserRole.CUSTOMER;
-            user.password = this.hashingPassword(input.password);
+            user.password = this.hashingPassword(input.Password);
 
             this.dbContext.user.Add(user);
             this.dbContext.SaveChanges();
@@ -69,14 +69,14 @@ namespace backend.Services
                 return null;
             }
 
-            var user = this.userRepository.getUserByUsername(input.username);
+            var user = this.userRepository.GetUserByUsername(input.Username);
             if (user == null)
             {
                 ServerResponse.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_LOGIN_FAIL, dataView);
                 return null;
             }
 
-            if (!this.comparePassword(input.password, user.password))
+            if (!this.comparePassword(input.Password, user.password))
             {
                 ServerResponse.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_LOGIN_FAIL, dataView);
                 return null;

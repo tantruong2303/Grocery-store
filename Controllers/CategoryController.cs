@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
-using backend.Services.Interface;
-using backend.Utils.Common;
-using backend.Controllers.DTO;
+using Backend.Services.Interface;
+using Backend.Utils.Common;
+using Backend.Controllers.DTO;
 using System;
-using backend.Pipe;
+using Backend.Pipe;
 
-namespace backend.Controllers
+namespace Backend.Controllers
 {
     [Route("category")]
     public class CategoryController : Controller
@@ -38,8 +38,8 @@ namespace backend.Controllers
         {
             var input = new CreateCategoryDTO()
             {
-                name = name,
-                description = description
+                Name = name,
+                Description = description
             };
             var isValid = this.categoryService.createCategoryHandler(input, this.ViewData);
             if (!isValid)
@@ -63,9 +63,9 @@ namespace backend.Controllers
         {
             var input = new UpdateCategoryDTO()
             {
-                categoryId = categoryId,
-                name = name,
-                description = description
+                CategoryId = categoryId,
+                Name = name,
+                Description = description
             };
             var isValid = this.categoryService.updateCategoryHandler(input, this.ViewData);
             if (!isValid)
@@ -88,7 +88,7 @@ namespace backend.Controllers
         {
             var input = new DeleteCategoryDTO()
             {
-                categoryId = categoryId
+                CategoryId = categoryId
             };
             var isValid = this.categoryService.deleteCategoryHandler(input, this.ViewData);
             if (!isValid)
