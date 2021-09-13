@@ -2,7 +2,7 @@ using System.Linq;
 using System;
 
 using Backend.DAO.Interface;
-
+using System.Collections.Generic;
 using Backend.Utils;
 using Backend.Models;
 
@@ -28,5 +28,10 @@ namespace Backend.DAO
             return product;
         }
 
+        public (List<Product>, int) GetProducts()
+        {
+            List<Product> products = this.DBContext.Product.ToList();
+            return (products, products.Count);
+        }
     }
 }

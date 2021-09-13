@@ -34,6 +34,12 @@ namespace Backend.Services
         public List<Category> GetCategories()
         {
             return this.CategoryRepository.GetCategories();
+
+        }
+
+        public (List<Product>, int) GetProducts()
+        {
+            return this.ProductRepository.GetProducts();
         }
         public bool CreateProductHandler(CreateProductDTO input, ViewDataDictionary dataView)
         {

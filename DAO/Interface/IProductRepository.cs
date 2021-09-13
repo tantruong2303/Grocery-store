@@ -1,4 +1,5 @@
 using Backend.Models;
+using System.Collections.Generic;
 
 namespace Backend.DAO.Interface
 {
@@ -6,5 +7,6 @@ namespace Backend.DAO.Interface
     {
         public Product GetProductById(string productId);
         public Product GetProductByProductName(string name);
+        public (List<Product>, int) GetProducts();
     }
 }
