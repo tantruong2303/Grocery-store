@@ -55,7 +55,7 @@ namespace Backend.Services
             category.CategoryId = Guid.NewGuid().ToString();
             category.Name = input.Name;
             category.Description = input.Description;
-            category.Status = (CategoryStatus)1;
+            category.Status = (CategoryStatus)input.Status;
             category.CreateDate = DateTime.Now.ToShortDateString();
             this.DBContext.Category.Add(category);
             this.DBContext.SaveChanges();

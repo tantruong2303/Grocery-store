@@ -37,12 +37,13 @@ namespace Backend.Controllers
 
 
         [HttpPost("create")]
-        public IActionResult HandleCreateCategory(string name, string description)
+        public IActionResult HandleCreateCategory(string name, string description, int status)
         {
             var input = new CreateCategoryDTO()
             {
                 Name = name,
-                Description = description
+                Description = description,
+                Status = status
             };
             var isValid = this.CategoryService.CreateCategoryHandler(input, this.ViewData);
             if (!isValid)
