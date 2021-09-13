@@ -20,7 +20,6 @@ namespace Backend.Controllers
 
 
         [HttpGet("")]
-
         public IActionResult Category()
         {
             var categories = this.CategoryService.GetCategories();

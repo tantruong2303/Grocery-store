@@ -15624,8 +15624,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Containers\\Order\\Order.cshtml",
+      "TargetPath": "Views\\Containers\\Order\\Order.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Containers\\Category\\UpdateCategory.cshtml",
       "TargetPath": "Views\\Containers\\Category\\UpdateCategory.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Containers\\Order\\OrderDetail.cshtml",
+      "TargetPath": "Views\\Containers\\Order\\OrderDetail.cshtml",
       "FileKind": "mvc"
     },
     {

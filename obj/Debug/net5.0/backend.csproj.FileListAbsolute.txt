@@ -710,3 +710,5 @@ C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Contain
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\User\UpdatePassword.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\User\UpdateUserInfo.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\User\User.cshtml.g.cs
+C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\Order.cshtml.g.cs
+C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\OrderDetail.cshtml.g.cs
