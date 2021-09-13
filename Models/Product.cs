@@ -30,10 +30,10 @@ namespace Backend.Models
         public ProductStatus Status { get; set; }
 
         [Required]
-        public float OriginalPrice { get; set; }
+        public double OriginalPrice { get; set; }
 
         [Required]
-        public float RetailPrice { get; set; }
+        public double RetailPrice { get; set; }
 
 
         [Required]

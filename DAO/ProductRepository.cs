@@ -16,9 +16,9 @@ namespace Backend.DAO
             this.DBContext = dBContext;
         }
 
-        public Product GetProductById(string id)
+        public Product GetProductById(string productId)
         {
-            Product product = this.DBContext.Product.FirstOrDefault(item => item.ProductId == id);
+            Product product = this.DBContext.Product.FirstOrDefault(item => item.ProductId == productId);
             return product;
         }
 

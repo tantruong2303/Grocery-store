@@ -1,0 +1,62 @@
+@{
+    ViewData["Title"] = Routers.UpdateProduct.Title;
+    Product product = (Product)ViewData["product"];
+
+    var name = new FormField() { Label = "Product Name", Field = "name", Type = "text", Value = product.Name };
+    var descirption = new FormField()
+    {
+        Label = "Description",
+        Field = "description",
+        Type = "text",
+        Value = product.Description
+    };
+    var status = new FormField()
+    {
+        Label = "Status",
+        Field = "status",
+        Type = "text",
+        Value = product.Status.ToString()
+    };
+    var originalPrice = new FormField()
+    {
+        Label = "Original Price",
+        Field = "originalPrice",
+        Type = "number",
+        Value = product.OriginalPrice.ToString()
+    };
+    var retailPrice = new FormField()
+    {
+        Label = "Retail Price",
+        Field = "retailPrice",
+        Type = "number",
+        Value = product.RetailPrice.ToString()
+    };
+    var quantity = new FormField()
+    {
+        Label = "Quantity",
+        Field = "quantity",
+        Type = "number",
+        Value = product.Quantity.ToString()
+    };
+    var categoryId = new FormField()
+    {
+        Label = "Category ID",
+        Field = "categoryId",
+        Type = "text",
+        Value = product.CategoryId
+    };
+}
+
+<div>
+    <form method="post" action="/product/update?productId=477e4029-5784-4635-881b-cf5b2256aba9">
+        @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", descirption)
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", status)
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", originalPrice)
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", retailPrice)
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", quantity)
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", categoryId)
+        <button>Update</button>
+    </form>
+</div>
