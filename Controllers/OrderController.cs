@@ -35,5 +35,14 @@ namespace Backend.Controllers
             this.ViewData["items"] = items;
             return View(Routers.OrderDetail.Page);
         }
+
+        [HttpGet("manager")]
+        public IActionResult Manager()
+        {
+            var user = (User)this.ViewData["user"];
+            var orders = this.OrderService.GetOrders(user.UserId);
+            this.ViewData["orders"] = orders;
+            return View(Routers.Order.Page);
+        }
     }
 }
