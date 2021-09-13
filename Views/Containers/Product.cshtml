@@ -1,4 +1,35 @@
-<div class="text-center">
-    <a href="/product/create">create</a>
-    <br>
+@{
+    List<Product> products = (List<Product>)ViewData["products"];
+}
+
+<div class="p-2 ">
+
+    <div>
+        <a href="@Routers.CreateProduct.Link"
+            class="inline-block p-2 font-medium text-white duration-300 bg-blue-600 rounded-sm hover:bg-blue-800">Create
+            New Product</a>
+    </div>
+    @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
+    <table class="my-2 bg-white border border-black fade-in">
+        <thead>
+            <tr>
+                <th class="p-2 border border-black">Name</th>
+                <th class="p-2 border border-black">Price</th>
+                <th class="p-2 border border-black">Description</th>
+                <th class="p-2 border border-black">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in products)
+            {
+                var activeColor = product.Status == ProductStatus.ACTIVE ? "text-green-500" : "text-red-500";
+                    <tr>
+                        <td class="p-2 text-center border border-black max-h-16">@product.Name</td>
+                        <td class="p-2 text-center border border-black">@product.OriginalPrice</td>
+                        <td class="p-2 text-center border border-black">@product.Description</td>
+                        <td class="p-2 text-center lowercase border border-black first-letter @activeColor">@product.Status</td>
+                    </tr>
+            }
+        </tbody>
+    </table>
 </div>

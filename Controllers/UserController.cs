@@ -81,7 +81,7 @@ namespace Backend.Controllers
                 return View(Routers.UpdateUserInfo.Page);
             }
 
-            return Redirect(Routers.Home.Link);
+            return Redirect(Routers.User.Link);
         }
     }
 }
