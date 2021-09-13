@@ -8,6 +8,7 @@ using Backend.Models;
 using Backend.Services.Interface;
 using System;
 using Backend.Utils;
+using System.Collections.Generic;
 
 namespace Backend.Services
 {
@@ -23,6 +24,11 @@ namespace Backend.Services
             this.DBContext = dBContext;
             this.ProductRepository = productRepository;
             this.CategoryRepository = categoryRepository;
+        }
+
+        public (List<Product>, int) GetProducts()
+        {
+            return this.ProductRepository.GetProducts();
         }
         public bool CreateProductHandler(CreateProductDTO input, ViewDataDictionary dataView)
         {

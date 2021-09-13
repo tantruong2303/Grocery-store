@@ -59,6 +59,9 @@ namespace Backend.Controllers
         [ServiceFilter(typeof(AuthGuard))]
         public IActionResult Product()
         {
+            var (products, count) = this.ProductService.GetProducts();
+            this.ViewData["products"] = products;
+            this.ViewData["count"] = count;
             return View(Routers.Product.Page);
         }
 
