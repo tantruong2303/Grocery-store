@@ -65,38 +65,19 @@ namespace Backend.Controllers
 
 
         [HttpPost("update")]
-        public IActionResult handleUpdateCategory(string categoryId, string name, string description)
+        public IActionResult handleUpdateCategory(string categoryId, string name, string description, int status)
         {
             var input = new UpdateCategoryDTO()
             {
                 CategoryId = categoryId,
                 Name = name,
-                Description = description
+                Description = description,
+                Status = status
             };
             var isValid = this.CategoryService.UpdateCategoryHandler(input, this.ViewData);
             if (!isValid)
             {
                 return View(Routers.UpdateCategory.Page);
-            }
-            return Redirect(Routers.Category.Link);
-        }
-
-
-
-
-        [HttpGet("delete")]
-        public IActionResult handleDeleteCategory(string categoryId)
-        {
-
-
-            var input = new DeleteCategoryDTO()
-            {
-                CategoryId = categoryId
-            };
-            var isValid = this.CategoryService.DeleteCategoryHandler(input, this.ViewData);
-            if (!isValid)
-            {
-                return View(Routers.DeleteCategory.Page);
             }
             return Redirect(Routers.Category.Link);
         }

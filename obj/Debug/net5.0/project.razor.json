@@ -1,5 +1,5 @@
 {
-  "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\backend.csproj",
+  "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\backend.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "5.0",
@@ -15619,98 +15619,98 @@
   "RootNamespace": "backend",
   "Documents": [
     {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\Auth\\Register.cshtml",
-      "TargetPath": "Views\\Containers\\Auth\\Register.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Components\\Navbar.cshtml",
-      "TargetPath": "Views\\Components\\Navbar.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\Category\\Category.cshtml",
-      "TargetPath": "Views\\Containers\\Category\\Category.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\User\\UpdatePassword.cshtml",
-      "TargetPath": "Views\\Containers\\User\\UpdatePassword.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\Category\\UpdateCategory.cshtml",
-      "TargetPath": "Views\\Containers\\Category\\UpdateCategory.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\CreateProduct.cshtml",
-      "TargetPath": "Views\\Containers\\CreateProduct.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Components\\Form\\FormBtn.cshtml",
-      "TargetPath": "Views\\Components\\Form\\FormBtn.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\User\\UpdateUserInfo.cshtml",
-      "TargetPath": "Views\\Containers\\User\\UpdateUserInfo.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\Auth\\Login.cshtml",
-      "TargetPath": "Views\\Containers\\Auth\\Login.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Components\\Form\\TextFiled.cshtml",
-      "TargetPath": "Views\\Components\\Form\\TextFiled.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\Product.cshtml",
-      "TargetPath": "Views\\Containers\\Product.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\Home.cshtml",
-      "TargetPath": "Views\\Containers\\Home.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\Category\\CreateCategory.cshtml",
-      "TargetPath": "Views\\Containers\\Category\\CreateCategory.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Components\\Form\\FormMsg.cshtml",
-      "TargetPath": "Views\\Components\\Form\\FormMsg.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Shared\\_Layout.cshtml",
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "e:\\server\\grocery-store\\tailwind-fast-kit\\hello\\grocery-store\\Views\\Containers\\User\\User.cshtml",
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Containers\\Category\\UpdateCategory.cshtml",
+      "TargetPath": "Views\\Containers\\Category\\UpdateCategory.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Components\\Navbar.cshtml",
+      "TargetPath": "Views\\Components\\Navbar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Components\\Form\\FormBtn.cshtml",
+      "TargetPath": "Views\\Components\\Form\\FormBtn.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Components\\Form\\TextFiled.cshtml",
+      "TargetPath": "Views\\Components\\Form\\TextFiled.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Containers\\Home.cshtml",
+      "TargetPath": "Views\\Containers\\Home.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Containers\\User\\UpdateUserInfo.cshtml",
+      "TargetPath": "Views\\Containers\\User\\UpdateUserInfo.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Components\\Form\\FormMsg.cshtml",
+      "TargetPath": "Views\\Components\\Form\\FormMsg.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Containers\\User\\User.cshtml",
       "TargetPath": "Views\\Containers\\User\\User.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Containers\\Auth\\Register.cshtml",
+      "TargetPath": "Views\\Containers\\Auth\\Register.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Containers\\Auth\\Login.cshtml",
+      "TargetPath": "Views\\Containers\\Auth\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Containers\\Product.cshtml",
+      "TargetPath": "Views\\Containers\\Product.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Containers\\User\\UpdatePassword.cshtml",
+      "TargetPath": "Views\\Containers\\User\\UpdatePassword.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Containers\\CreateProduct.cshtml",
+      "TargetPath": "Views\\Containers\\CreateProduct.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Containers\\Category\\Category.cshtml",
+      "TargetPath": "Views\\Containers\\Category\\Category.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\Views\\Containers\\Category\\CreateCategory.cshtml",
+      "TargetPath": "Views\\Containers\\Category\\CreateCategory.cshtml",
       "FileKind": "mvc"
     }
   ],
