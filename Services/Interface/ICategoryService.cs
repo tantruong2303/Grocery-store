@@ -9,7 +9,6 @@ namespace Backend.Services.Interface
     {
         public bool CreateCategoryHandler(CreateCategoryDTO input, ViewDataDictionary dataView);
         public bool UpdateCategoryHandler(UpdateCategoryDTO input, ViewDataDictionary dataView);
-        public bool DeleteCategoryHandler(DeleteCategoryDTO input, ViewDataDictionary dataView);
         public List<Category> GetCategories();
         public Category GetCategory(string categoryId);
     }

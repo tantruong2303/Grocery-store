@@ -7,7 +7,7 @@ namespace Backend.Controllers.DTO
         public string CategoryId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-
+        public int Status { get; set; }
     }
 
     public class UpdateCategoryDTOValidator : AbstractValidator<UpdateCategoryDTO>
@@ -17,6 +17,7 @@ namespace Backend.Controllers.DTO
             RuleFor(x => x.CategoryId).NotEmpty().Length(30, 50);
             RuleFor(x => x.Name).NotEmpty().Length(3, 50);
             RuleFor(x => x.Description).NotEmpty().Length(3, 500);
+            RuleFor(x => x.Status).InclusiveBetween(0, 1);
         }
     }
 }

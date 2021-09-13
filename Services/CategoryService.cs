@@ -78,28 +78,10 @@ namespace Backend.Services
             }
             category.Name = input.Name;
             category.Description = input.Description;
+            category.Status = (CategoryStatus)input.Status;
             this.DBContext.SaveChanges();
             return true;
 
-        }
-
-        public bool DeleteCategoryHandler(DeleteCategoryDTO input, ViewDataDictionary dataView)
-        {
-            ValidationResult result = new DeleteCategoryDTOValidator().Validate(input);
-            if (!result.IsValid)
-            {
-                ServerResponse.MapDetails(result, dataView);
-                return false;
-            }
-            var category = this.CategoryRepository.GetCategoryByCategoryId(input.CategoryId);
-            if (category == null)
-            {
-                ServerResponse.SetFieldErrorMessage("categoryId", CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_FOUND, dataView);
-                return false;
-            }
-            category.Status = 0;
-            this.DBContext.SaveChanges();
-            return true;
         }
     }
 }

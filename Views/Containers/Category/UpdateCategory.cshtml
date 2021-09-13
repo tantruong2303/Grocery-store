@@ -16,6 +16,8 @@
         Type = "text",
         Value = category.Description
     };
+
+
     var createBtn = new FormField() { Label = "Update Category" };
 
     var actionLink = $"{Routers.UpdateCategory.Link}?categoryId={category.CategoryId}";
@@ -31,6 +33,9 @@
         <div class="space-y-4">
             @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
             @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", descirption)
+            <label class="font-medium">Status: </label>
+            @Html.RadioButton("status", 1, true)<span>Active </span>
+            @Html.RadioButton("status", 0)<span>Inactive</span>
         </div>
         @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", createBtn)
     </form>
