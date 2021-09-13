@@ -28,6 +28,7 @@ namespace Backend.Controllers
         [ServiceFilter(typeof(AuthGuard))]
         public IActionResult CreateProduct()
         {
+            this.ViewData["categories"] = this.ProductService.GetCategories();
             return View(Routers.CreateProduct.Page);
         }
 
@@ -49,8 +50,10 @@ namespace Backend.Controllers
 
             if (!isValid)
             {
+                this.ViewData["categories"] = this.ProductService.GetCategories();
                 return View(Routers.CreateProduct.Page);
             }
+
 
             return Redirect(Routers.Product.Link);
         }
@@ -59,6 +62,7 @@ namespace Backend.Controllers
         [ServiceFilter(typeof(AuthGuard))]
         public IActionResult Product()
         {
+
             return View(Routers.Product.Page);
         }
 
