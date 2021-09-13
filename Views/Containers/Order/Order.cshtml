@@ -1,0 +1,38 @@
+@{
+    List<Order> orders = (List<Order>)ViewData["orders"];
+
+}
+
+<div class="p-2 ">
+
+    @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
+    <table class="my-2 bg-white border border-black fade-in">
+        <thead>
+            <tr>
+                <th class="p-2 border border-black">Date</th>
+                <th class="p-2 border border-black">Status</th>
+                <th class="p-2 border border-black">Payment Method</th>
+                <th class="p-2 border border-black">Total</th>
+                <th class="p-2 border border-black">Detail</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in orders)
+            {
+                var detailLink = $"{@Routers.OrderDetail.Link}?orderId={@order.OrderId}";
+                var activeColor = order.Status == OrderStatus.ACTIVE ? "text-green-500" : "text-red-500";
+                <tr>
+                    <td class="p-2 text-center border border-black max-h-16">@order.CreateDate</td>
+                    <td class="p-2 text-center lowercase border border-black first-letter @activeColor">@order.Status
+                    </td>
+                    <td class="p-2 text-center border border-black">@order.PaymentMethod</td>
+                    <td class="p-2 text-center border border-black">@order.Total</td>
+                    <td class="p-2 text-center border border-black">
+                        <a href="@detailLink"
+                        class="inline-block p-2 font-medium text-white duration-300 bg-blue-600 rounded-sm hover:bg-blue-800">View</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

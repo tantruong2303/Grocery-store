@@ -27,5 +27,7 @@ namespace Backend.Utils.Common
         public static readonly RouterItem Product = new RouterItem() { Page = "/Views/Containers/Product.cshtml", Title = "All Product", Link = "/product" };
         public static readonly RouterItem CreateProduct = new RouterItem() { Page = "/Views/Containers/CreateProduct.cshtml", Title = "Create Product", Link = "/product/create" };
         public static readonly RouterItem Logout = new RouterItem() { Page = "/Views/Containers/CreateProduct.cshtml", Title = "Create Product", Link = "/auth/logout" };
+        public static readonly RouterItem Order = new RouterItem() { Page = "/Views/Containers/order/Order.cshtml", Title = "Your Order", Link = "/order" };
+        public static readonly RouterItem OrderDetail = new RouterItem() { Page = "/Views/Containers/order/OrderDetail.cshtml", Title = "Order Detail", Link = "/detail" };
     }
 }

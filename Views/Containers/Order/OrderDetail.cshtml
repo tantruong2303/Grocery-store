@@ -1,0 +1,36 @@
+@{
+    List<OrderItem> items = (List<OrderItem>)ViewData["items"];
+
+}
+
+<div class="p-2 ">
+
+    @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
+    <table class="my-2 bg-white border border-black fade-in">
+        <thead>
+            <tr>
+                <th class="p-2 border border-black">Product</th>
+                <th class="p-2 border border-black">Quantity</th>
+                <th class="p-2 border border-black">Price</th>
+                <th class="p-2 border border-black">Total</th>
+                <th class="p-2 border border-black">View Product</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in items)
+            {
+                var productLink = $"{@Routers.Product.Link}?productId={@item.ProductId}";
+                <tr>
+                    <td class="p-2 text-center border border-black max-h-16">@item.ProductId</td>
+                    <td class="p-2 text-center border border-black">@item.Quantity</td>
+                    <td class="p-2 text-center border border-black">@item.SalePrice</td>
+                    <td class="p-2 text-center border border-black">@(item.Quantity*item.SalePrice)</td>
+                    <td class="p-2 text-center border border-black">
+                        <a href="@productLink"
+                        class="inline-block p-2 font-medium text-white duration-300 bg-blue-600 rounded-sm hover:bg-blue-800">View</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
