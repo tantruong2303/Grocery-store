@@ -8,8 +8,9 @@ namespace Backend.Services.Interface
     public interface IProductService
     {
         public bool CreateProductHandler(CreateProductDTO input, ViewDataDictionary dataView);
-
+        public bool UpdateProductHandler(UpdateProductDTO input, ViewDataDictionary dataView);
         public List<Category> GetCategories();
+        public Product GetProduct(string productId);
 
     }
 }

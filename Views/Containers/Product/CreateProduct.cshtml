@@ -1,18 +1,16 @@
 @{
     ViewData["Title"] = Routers.CreateProduct.Title;
-    var name = new FormField() { Label = "Product Name", Field = "name" };
-    var descirption = new FormField() { Label = "Description", Field = "description" };
-    var originalPrice = new FormField() { Label = "Original Price", Field = "originalPrice" };
-    var retailPrice = new FormField() { Label = "Retail Price", Field = "retailPrice" };
-    var quantity = new FormField() { Label = "Quantity", Field = "quantity" };
-    var categoryId = new FormField() { Label = "Category ID", Field = "categoryId" };
+    var name = new FormField() { Label = "Product Name", Field = "name", Type = "text" };
+    var descirption = new FormField() { Label = "Description", Field = "description", Type = "text" };
+    var originalPrice = new FormField() { Label = "Original Price", Field = "originalPrice", Type = "number" };
+    var retailPrice = new FormField() { Label = "Retail Price", Field = "retailPrice", Type = "number" };
+    var quantity = new FormField() { Label = "Quantity", Field = "quantity", Type = "number" };
+    var categoryId = new FormField() { Label = "Category ID", Field = "categoryId", Type = "text" };
 }
 
 <div>
     <form method="post" action="/product/create">
-        <p>
-            @ViewData["errorMessage"]
-        </p>
+        @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
         @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
         @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", descirption)
         @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", originalPrice)

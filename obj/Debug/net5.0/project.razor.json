@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\Lenovo\\Desktop\\grocery-store\\Backend.csproj",
+  "FilePath": "c:\\Users\\Lenovo\\Desktop\\grocery-store\\backend.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "5.0",
@@ -15616,7 +15616,7 @@
     ],
     "CSharpLanguageVersion": 900
   },
-  "RootNamespace": "Backend",
+  "RootNamespace": "backend",
   "Documents": [
     {
       "FilePath": "c:\\Users\\Lenovo\\Desktop\\grocery-store\\Views\\Components\\Navbar.cshtml",
@@ -15696,6 +15696,11 @@
     {
       "FilePath": "c:\\Users\\Lenovo\\Desktop\\grocery-store\\Views\\Containers\\Home.cshtml",
       "TargetPath": "Views\\Containers\\Home.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Lenovo\\Desktop\\grocery-store\\Views\\Containers\\Product\\UpdateProduct.cshtml",
+      "TargetPath": "Views\\Containers\\Product\\UpdateProduct.cshtml",
       "FileKind": "mvc"
     },
     {
