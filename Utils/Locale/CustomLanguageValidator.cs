@@ -9,6 +9,8 @@ namespace Backend.Utils.Locale
             public const string ERROR_NOT_ALLOW_ACTION = "ERROR_NOT_ALLOW_ACTION";
             public const string ERROR_NOT_FOUND = "ERROR_NOT_FOUND";
             public const string ERROR_OLD_PASSWORD_NOT_CORRECT = "ERROR_OLD_PASSWORD_NOT_CORRECT";
+            public const string ERROR_INVALID_FILE = "ERROR_INVALID_FILE";
+            public const string ERROR_UPLOAD_FILE_FAILED = "ERROR_UPLOAD_FILE_FAILED";
 
         }
 
@@ -28,6 +30,8 @@ namespace Backend.Utils.Locale
             AddTranslation("en", ErrorMessageKey.ERROR_NOT_ALLOW_ACTION, "please login or action is not allow");
             AddTranslation("en", ErrorMessageKey.ERROR_NOT_FOUND, "is not found");
             AddTranslation("en", ErrorMessageKey.ERROR_OLD_PASSWORD_NOT_CORRECT, "password is wrong");
+            AddTranslation("en", ErrorMessageKey.ERROR_INVALID_FILE, "file is invalid");
+            AddTranslation("en", ErrorMessageKey.ERROR_UPLOAD_FILE_FAILED, "upload file failed");
 
             // Don't touch me please
             AddTranslation("en", "EmailValidator", "is not a valid email address");

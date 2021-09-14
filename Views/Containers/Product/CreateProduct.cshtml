@@ -6,16 +6,18 @@
     var retailPrice = new FormField() { Label = "Retail Price", Field = "retailPrice", Type = "number" };
     var quantity = new FormField() { Label = "Quantity", Field = "quantity", Type = "number" };
     var categoryId = new FormField() { Label = "Category ID", Field = "categoryId", Type = "text" };
+    var file = new FormField() { Label = "Product Image", Field = "file", Type = "file" };
 }
 
 <div>
-    <form method="post" action="/product/create">
+    <form method="post" action="/product/create" enctype="multipart/form-data">
         @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
         @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
         @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", descirption)
         @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", originalPrice)
         @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", retailPrice)
         @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", quantity)
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", file)
         @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", categoryId)
         <button>Create</button>
     </form>

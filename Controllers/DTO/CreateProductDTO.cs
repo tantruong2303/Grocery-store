@@ -1,4 +1,5 @@
 using FluentValidation;
+using Microsoft.AspNetCore.Http;
 
 namespace Backend.Controllers.DTO
 {
@@ -10,6 +11,7 @@ namespace Backend.Controllers.DTO
         public float OriginalPrice { get; set; }
         public float RetailPrice { get; set; }
         public int Quantity { get; set; }
+        public IFormFile File { get; set; }
         public string CategoryId { get; set; }
     }
     public class CreateProductDTOValidator : AbstractValidator<CreateProductDTO>
@@ -21,6 +23,7 @@ namespace Backend.Controllers.DTO
             RuleFor(x => x.OriginalPrice).NotEmpty();
             RuleFor(x => x.RetailPrice).NotEmpty();
             RuleFor(x => x.Quantity).NotEmpty();
+            RuleFor(x => x.File).NotNull();
             RuleFor(x => x.CategoryId).NotEmpty();
         }
     }
