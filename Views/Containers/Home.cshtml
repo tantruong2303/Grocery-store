@@ -1,13 +1,90 @@
 @{
-    User user = (User)ViewData["user"];
+    ViewData["Title"] = Routers.Home.Title;
+    List<Product> products = (List<Product>)ViewData["products"];
 }
 
 
 
-<div class="text-center">
-    @if (user != null)
-    {
-        <h1>Name: @user.Name</h1>
-    }
-    @user
+<div class="flex flex-col justify-center flex-1 px-2 py-8 mb-24 space-y-4 md:flex-row md:space-x-4 md:space-y-0">
+    <div class="space-y-2">
+        <h1 class="text-xl font-semibold ">Chọn Sản Phẩm</h1>
+        <div class="grid gap-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 fade-in">
+            @foreach (var product in products)
+            {
+                var updateLink = $"{@Routers.UpdateProduct.Link}?productId={@product.ProductId}";
+                var activeColor = product.Status == ProductStatus.ACTIVE ? "text-green-500" : "text-red-500";
+                <div class="flex items-center justify-between p-2 space-x-2 bg-white rounded-lg shadow-lg">
+                    <div class="w-16 h-16 overflow-hidden border-2 rounded-full ">
+                        <img src="@product.ImageUrl" alt="@product.Name" class="block object-cover w-full h-full" />
+                    </div>
+                    <div class="w-1/2 text-left">
+                        <p class="font-semibold first-letter">@product.Name</p>
+                        <p class="max-lines">@product.Description</p>
+                        <p class="font-medium text-yellow-600">$@product.RetailPrice</p>
+                    </div>
+                    <div>
+                        <button type="button" class="px-2 py-1 text-white bg-blue-600 rounded-md ">Chọn Mua</button>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+
+    <div class="space-y-2">
+        <h1 class="text-xl font-semibold">Giỏ Hàng</h1>
+        <div class="space-y-2 md:w-101">
+            <div
+                class="fixed z-50 w-full px-2 py-4 space-y-2 font-semibold transform -translate-x-1/2 bg-white border rounded-lg shadow-2xl bottom-4 md:w-101 left-1/2">
+                <div class="flex items-center justify-between">
+                    <p>Tổng Đơn Hàng</p>
+                    <p class="text-blue-600">272.000đ</p>
+                </div><a class="block w-full px-2 py-2 text-center text-white bg-blue-600 rounded-md" href="#info">Xem
+                    Giỏ Hàng</a>
+            </div>
+            <div class="flex items-center justify-between p-2 space-x-2 bg-white rounded-lg shadow-lg fade-in">
+                <div class="w-16 h-16 overflow-hidden border-2 rounded-full "><img
+                        src="https://api.faststore.vinhnhan.com/api/public/1630955127992.jpg" alt="mi"
+                        class="block object-cover"></div>
+                <div class="w-1/2 space-y-1">
+                    <p class="font-semibold first-letter">chuối xiêm xanh già đà lạt 1 nải lớn 2-3kg</p>
+                    <div class="flex space-x-2"><button type="button"
+                            class="flex items-center justify-center w-6 h-6 font-semibold bg-blue-100">-</button>
+                        <p>3</p><button type="button"
+                            class="flex items-center justify-center w-6 h-6 font-semibold bg-blue-100">+</button>
+                    </div>
+                </div>
+                <p class="flex-1 font-medium text-right text-yellow-600">141.000đ</p>
+            </div>
+            <div class="flex items-center justify-between p-2 space-x-2 bg-white rounded-lg shadow-lg fade-in">
+                <div class="w-16 h-16 overflow-hidden border-2 rounded-full "><img
+                        src="https://api.faststore.vinhnhan.com/api/public/1630955076232.png" alt="mi"
+                        class="block object-cover"></div>
+                <div class="w-1/2 space-y-1">
+                    <p class="font-semibold first-letter">mì ottogi xốt tương đen (best seller) (vn) gói 135g</p>
+                    <div class="flex space-x-2"><button type="button"
+                            class="flex items-center justify-center w-6 h-6 font-semibold bg-blue-100">-</button>
+                        <p>1</p><button type="button"
+                            class="flex items-center justify-center w-6 h-6 font-semibold bg-blue-100">+</button>
+                    </div>
+                </div>
+                <p class="flex-1 font-medium text-right text-yellow-600">23.000đ</p>
+            </div>
+            <div class="flex items-center justify-between p-2 space-x-2 bg-white rounded-lg shadow-lg fade-in">
+                <div class="w-16 h-16 overflow-hidden border-2 rounded-full "><img
+                        src="https://api.faststore.vinhnhan.com/api/public/1630954830925.jpg" alt="mi"
+                        class="block object-cover"></div>
+                <div class="w-1/2 space-y-1">
+                    <p class="font-semibold first-letter">combo 2 gói bún tươi dạng khô safoco 300g</p>
+                    <div class="flex space-x-2"><button type="button"
+                            class="flex items-center justify-center w-6 h-6 font-semibold bg-blue-100">-</button>
+                        <p>2</p><button type="button"
+                            class="flex items-center justify-center w-6 h-6 font-semibold bg-blue-100">+</button>
+                    </div>
+                </div>
+                <p class="flex-1 font-medium text-right text-yellow-600">108.000đ</p>
+            </div>
+        </div>
+    </div>
+
 </div>

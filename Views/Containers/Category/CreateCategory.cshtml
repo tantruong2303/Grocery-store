@@ -13,10 +13,12 @@
         @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
         <div class="space-y-4">
             @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", descirption)<label
-                class="font-medium">Status: </label>
-            @Html.RadioButton("status", 1, true)<span>Active </span>
-            @Html.RadioButton("status", 0)<span>Inactive</span>
+            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", descirption)
+            <div class="flex items-center space-x-2">
+                <label class="font-medium">Status: </label>
+                @Html.RadioButton("status", 1, true)<span>Active </span>
+                @Html.RadioButton("status", 0)<span>Inactive</span>
+            </div>
         </div>
         @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", createBtn)
     </form>

@@ -4,12 +4,7 @@ services:
                 build: .
                 image: heaty566/mono-grocery:latest
                 container_name: mono-grocery
-                networks:
-                        - reverse-proxy
                 expose:
                         - 80
                 volumes:
                         - ./config:/app/config
-networks:
-        reverse-proxy:
-                external: true

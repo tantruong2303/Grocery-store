@@ -102,6 +102,7 @@ namespace Backend.Services
             ValidationResult result = new UpdateProductDTOValidator().Validate(input);
             if (!result.IsValid)
             {
+
                 ServerResponse.MapDetails(result, dataView);
                 return false;
             }
@@ -129,19 +130,23 @@ namespace Backend.Services
                     return false;
                 }
             }
-
-            var validFile = this.UploadFileService.CheckFileExtension(input.File) && this.UploadFileService.CheckFileSize(input.File, 5);
-            if (!validFile)
+            if (input.File != null)
             {
-                ServerResponse.SetFieldErrorMessage("file", CustomLanguageValidator.ErrorMessageKey.ERROR_INVALID_FILE, dataView);
-                return false;
-            }
 
-            var imageUrl = this.UploadFileService.Upload(input.File);
-            if (imageUrl == null)
-            {
-                ServerResponse.SetFieldErrorMessage("file", CustomLanguageValidator.ErrorMessageKey.ERROR_UPLOAD_FILE_FAILED, dataView);
-                return false;
+                var validFile = this.UploadFileService.CheckFileExtension(input.File) && this.UploadFileService.CheckFileSize(input.File, 5);
+                if (!validFile)
+                {
+                    ServerResponse.SetFieldErrorMessage("file", CustomLanguageValidator.ErrorMessageKey.ERROR_INVALID_FILE, dataView);
+                    return false;
+                }
+
+                var imageUrl = this.UploadFileService.Upload(input.File);
+                if (imageUrl == null)
+                {
+                    ServerResponse.SetFieldErrorMessage("file", CustomLanguageValidator.ErrorMessageKey.ERROR_UPLOAD_FILE_FAILED, dataView);
+                    return false;
+                }
+                product.ImageUrl = imageUrl;
             }
 
             product.Name = input.Name;
@@ -151,7 +156,6 @@ namespace Backend.Services
             product.OriginalPrice = input.OriginalPrice;
             product.CreateDate = DateTime.Now.ToShortDateString();
             product.Quantity = input.Quantity;
-            product.ImageUrl = imageUrl;
             product.CategoryId = input.CategoryId;
 
             this.DBContext.SaveChanges();

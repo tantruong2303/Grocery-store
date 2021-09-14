@@ -1,16 +1,11 @@
-using System.Linq;
-using System.Reflection;
-using System.Collections.Generic;
-using System;
-
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Backend.Controllers.DTO;
+
 
 namespace Backend.Utils.Common
 {
-    public class ServerResponse
+    static public class ServerResponse
     {
         public static void SetFieldErrorMessage(string field, string key, ViewDataDictionary dataView)
         {
@@ -34,7 +29,9 @@ namespace Backend.Utils.Common
         {
             foreach (var failure in result.Errors)
             {
+
                 string field = failure.PropertyName;
+
                 string message = Helper.StringFormat(failure.ErrorMessage, failure.FormattedMessagePlaceholderValues);
                 dataView[$"{field}Error"] = message;
             }

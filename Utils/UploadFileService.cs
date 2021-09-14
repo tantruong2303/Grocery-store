@@ -7,7 +7,8 @@ namespace Backend.Utils
 {
     public class UploadFileService : IUploadFileService
     {
-        readonly string FolderUrl = "/public/image/";
+        readonly string FolderUrl = "/wwwroot/public/images/";
+        readonly string ImageUrl = "/public/images/";
         public static string[] ImageExtension = { "png", "jpg", "jpeg" };
         public bool CheckFileExtension(IFormFile file)
         {
@@ -46,7 +47,7 @@ namespace Backend.Utils
                     file.CopyTo(fileStream);
                     fileStream.Flush();
                 }
-                return FolderUrl + fortmatFileName;
+                return ImageUrl + fortmatFileName;
             }
             catch (Exception e)
             {

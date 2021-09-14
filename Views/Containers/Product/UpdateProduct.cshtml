@@ -46,20 +46,50 @@
         Type = "text",
         Value = product.CategoryId
     };
+
+    var updateBtn = new FormField() { Label = "Update Product" };
+
+    var actionLink = $"{Routers.UpdateProduct.Link}?productId={product.ProductId}";
 }
 
-<div>
-    <form method="post" action="/product/update?productId=477e4029-5784-4635-881b-cf5b2256aba9"
-        enctype="multipart/form-data">
+<div class="flex items-center justify-center flex-1 ">
+    <form method="post" action="@actionLink" enctype="multipart/form-data"
+        class="flex-1 px-4 py-8 mx-2 my-2 space-y-8 bg-white rounded-md shadow-lg md:mx-0 md:w-96 bg-opacity-90 md:flex-none fade-in">
+        <h1 class="text-4xl font-semibold text-center">Update Product</h1>
+        <div class="flex justify-center max-h-64">
+            <img src="@product.ImageUrl" alt="product" id="pre-photo" class="inline-block object-cover w-full " />
+        </div>
         @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
-        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
-        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", descirption)
-        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", status)
-        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", originalPrice)
-        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", retailPrice)
-        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", quantity)
-        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", file)
-        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", categoryId)
-        <button>Update</button>
+        <div class="space-y-4">
+            @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
+            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
+            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", descirption)
+            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", originalPrice)
+            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", retailPrice)
+            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", quantity)
+            @await Html.PartialAsync("~/Views/Components/Form/FormCategories.cshtml")
+            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", file)
+            <div class="flex items-center space-x-2">
+                <label class="font-medium">Status: </label>
+                @Html.RadioButton("status", 1, true)<span>Active </span>
+                @Html.RadioButton("status", 0)<span>Inactive</span>
+            </div>
+        </div>
+        @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", updateBtn)
     </form>
 </div>
+<script>
+    document.getElementById("file").addEventListener(
+        "change",
+        function () {
+            const reader = new FileReader();
+            reader.onload = function () {
+                const dataURL = reader.result;
+                const output = document.getElementById("pre-photo");
+                output.src = dataURL;
+            };
+            reader.readAsDataURL(this.files[0]);
+        },
+        false
+    );
+</script>

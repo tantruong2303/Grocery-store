@@ -1,24 +1,51 @@
+@model Backend.Models.Category
 @{
     ViewData["Title"] = Routers.CreateProduct.Title;
+
     var name = new FormField() { Label = "Product Name", Field = "name", Type = "text" };
     var descirption = new FormField() { Label = "Description", Field = "description", Type = "text" };
     var originalPrice = new FormField() { Label = "Original Price", Field = "originalPrice", Type = "number" };
     var retailPrice = new FormField() { Label = "Retail Price", Field = "retailPrice", Type = "number" };
     var quantity = new FormField() { Label = "Quantity", Field = "quantity", Type = "number" };
-    var categoryId = new FormField() { Label = "Category ID", Field = "categoryId", Type = "text" };
     var file = new FormField() { Label = "Product Image", Field = "file", Type = "file" };
+    var createBtn = new FormField() { Label = "Create Product" };
+
 }
 
-<div>
-    <form method="post" action="/product/create" enctype="multipart/form-data">
+
+<div class="flex items-center justify-center flex-1 ">
+    <form method="post" action="@Routers.CreateProduct.Link" enctype="multipart/form-data"
+        class="flex-1 px-4 py-8 mx-2 my-2 space-y-8 bg-white rounded-md shadow-lg md:mx-0 md:w-96 bg-opacity-90 md:flex-none fade-in">
+        <h1 class="text-4xl font-semibold text-center">Create Product</h1>
+        <div class="flex justify-center max-h-64">
+            <img src="~/images/default.png" alt="product" id="pre-photo" class="inline-block object-cover w-full " />
+        </div>
         @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
-        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
-        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", descirption)
-        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", originalPrice)
-        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", retailPrice)
-        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", quantity)
-        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", file)
-        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", categoryId)
-        <button>Create</button>
+        <div class="space-y-4">
+            @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
+            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
+            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", descirption)
+            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", originalPrice)
+            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", retailPrice)
+            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", quantity)
+            @await Html.PartialAsync("~/Views/Components/Form/FormCategories.cshtml")
+            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", file)
+        </div>
+        @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", createBtn)
     </form>
 </div>
+<script>
+    document.getElementById("file").addEventListener(
+        "change",
+        function () {
+            const reader = new FileReader();
+            reader.onload = function () {
+                const dataURL = reader.result;
+                const output = document.getElementById("pre-photo");
+                output.src = dataURL;
+            };
+            reader.readAsDataURL(this.files[0]);
+        },
+        false
+    );
+</script>

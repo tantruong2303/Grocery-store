@@ -12,7 +12,7 @@
     @Html.TextBox($"{@Model.Field}", value,null, new {
     @class = "block w-full px-2 py-1 border rounded-sm focus:outline-none",
     @type = @Model.Type,
-
+    @id = @Model.Field
     })
     @if (ViewData[@errorField] != null)
     {

@@ -4,8 +4,8 @@ using Backend.Utils.Common;
 using Backend.Controllers.DTO;
 using Backend.Pipe;
 using Backend.Services.Interface;
-using System;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Backend.Controllers
 {
@@ -23,7 +23,9 @@ namespace Backend.Controllers
         [HttpGet("create")]
         public IActionResult CreateProduct()
         {
-            this.ViewData["categories"] = this.ProductService.GetCategories();
+            var categories = this.ProductService.GetCategories();
+
+            this.ViewData["categories"] = new SelectList(categories, "CategoryId", "Name", categories[0].CategoryId);
             return View(Routers.CreateProduct.Page);
         }
 
@@ -46,7 +48,7 @@ namespace Backend.Controllers
             if (!isValid)
             {
                 this.ViewData["categories"] = this.ProductService.GetCategories();
-                return View(Routers.CreateProduct.Page);
+                return this.CreateProduct();
             }
 
 
@@ -58,12 +60,18 @@ namespace Backend.Controllers
         {
             var product = this.ProductService.GetProduct(productId);
             this.ViewData["product"] = product;
+
+            var categories = this.ProductService.GetCategories();
+            this.ViewData["categories"] = new SelectList(categories, "CategoryId", "Name", product.CategoryId);
+
             return View(Routers.UpdateProduct.Page);
         }
 
         [HttpPost("update")]
         public IActionResult HandleUpdateProduct(string productId, string name, ProductStatus status, string description, float originalPrice, float retailPrice, int quantity, IFormFile file, string categoryId)
         {
+
+
             var input = new UpdateProductDTO()
             {
                 ProductId = productId,
@@ -79,9 +87,8 @@ namespace Backend.Controllers
             var isValid = this.ProductService.UpdateProductHandler(input, this.ViewData);
             if (!isValid)
             {
-                var product = this.ProductService.GetProduct(productId);
-                this.ViewData["product"] = product;
-                return View(Routers.UpdateProduct.Page);
+
+                return this.UpdateProduct(productId);
             }
 
             return Redirect(Routers.Product.Link);

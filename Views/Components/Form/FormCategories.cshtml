@@ -1,0 +1,18 @@
+@model Backend.Models.Category
+
+
+<div class="space-y-1">
+    <label class="font-medium" htmlFor="categoryId">
+        Catagory
+    </label>
+    @Html.DropDownListFor(m => m.CategoryId,(SelectList)ViewData["categories"],new {
+    @class = "block w-full px-2 py-1 border rounded-sm focus:outline-none",
+    @name ="categoryId",
+    @id = "categoryId"
+    })
+    @if (ViewData["categoryIdError"] != null)
+    {
+        <p class="text-red-500">Category @ViewData["categoryIdError"]</p>
+    }
+
+</div>

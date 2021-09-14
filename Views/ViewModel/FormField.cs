@@ -4,7 +4,7 @@ namespace Backend.Views.ViewModel
     {
         public string Field { set; get; }
         public string Label { set; get; }
-        public string Value { set; get; }
+        public dynamic Value { set; get; }
         public string Type { set; get; }
     }
 }

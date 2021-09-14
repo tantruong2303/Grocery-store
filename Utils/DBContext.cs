@@ -1,6 +1,5 @@
 using System;
 using Microsoft.EntityFrameworkCore;
-
 using System.Threading.Tasks;
 using Backend.Models;
 using Backend.Utils.Interface;

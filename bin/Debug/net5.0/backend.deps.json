@@ -31,7 +31,7 @@
   },
   "targets": {
     ".NETCoreApp,Version=v5.0": {
-      "Backend/1.0.0": {
+      "backend/1.0.0": {
         "dependencies": {
           "BCrypt.Net-Next": "4.0.2",
           "FluentValidation": "10.3.3",
@@ -328,10 +328,10 @@
           "WindowsBase": "4.0.0.0"
         },
         "runtime": {
-          "Backend.dll": {}
+          "backend.dll": {}
         },
         "compile": {
-          "Backend.dll": {}
+          "backend.dll": {}
         }
       },
       "BCrypt.Net-Next/4.0.2": {
@@ -3845,7 +3845,7 @@
     }
   },
   "libraries": {
-    "Backend/1.0.0": {
+    "backend/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

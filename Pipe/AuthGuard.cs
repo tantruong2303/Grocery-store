@@ -1,17 +1,10 @@
 using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Mvc.Filters;
-using System.Reflection;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Backend.Models;
-using Backend.Controllers.DTO;
 using Backend.Utils.Common;
-using Backend.Utils.Validator;
-using Backend.Services;
 using Backend.DAO.Interface;
 using Backend.Utils.Interface;
 using Backend.Utils.Locale;
