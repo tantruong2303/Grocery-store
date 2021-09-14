@@ -38,6 +38,7 @@
         Type = "number",
         Value = product.Quantity.ToString()
     };
+    var file = new FormField() { Label = "Product Image", Field = "file", Type = "file" };
     var categoryId = new FormField()
     {
         Label = "Category ID",
@@ -48,7 +49,8 @@
 }
 
 <div>
-    <form method="post" action="/product/update?productId=477e4029-5784-4635-881b-cf5b2256aba9">
+    <form method="post" action="/product/update?productId=477e4029-5784-4635-881b-cf5b2256aba9"
+        enctype="multipart/form-data">
         @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
         @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
         @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", descirption)
@@ -56,6 +58,7 @@
         @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", originalPrice)
         @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", retailPrice)
         @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", quantity)
+        @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", file)
         @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", categoryId)
         <button>Update</button>
     </form>

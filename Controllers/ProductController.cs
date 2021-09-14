@@ -5,6 +5,8 @@ using Backend.Controllers.DTO;
 using Backend.Pipe;
 using Backend.Services.Interface;
 using System;
+using Microsoft.AspNetCore.Http;
+
 namespace Backend.Controllers
 {
     [Route("product")]
@@ -26,7 +28,7 @@ namespace Backend.Controllers
         }
 
         [HttpPost("create")]
-        public IActionResult HandleCreateProduct(string name, string description, float originalPrice, float retailPrice, int quantity, string categoryId)
+        public IActionResult HandleCreateProduct(string name, string description, float originalPrice, float retailPrice, int quantity, IFormFile file, string categoryId)
         {
             var input = new CreateProductDTO()
             {
@@ -35,6 +37,7 @@ namespace Backend.Controllers
                 RetailPrice = retailPrice,
                 OriginalPrice = originalPrice,
                 Quantity = quantity,
+                File = file,
                 CategoryId = categoryId,
             };
 
@@ -59,7 +62,7 @@ namespace Backend.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult HandleUpdateProduct(string productId, string name, ProductStatus status, string description, float originalPrice, float retailPrice, int quantity, string categoryId)
+        public IActionResult HandleUpdateProduct(string productId, string name, ProductStatus status, string description, float originalPrice, float retailPrice, int quantity, IFormFile file, string categoryId)
         {
             var input = new UpdateProductDTO()
             {
@@ -70,6 +73,7 @@ namespace Backend.Controllers
                 RetailPrice = retailPrice,
                 OriginalPrice = originalPrice,
                 Quantity = quantity,
+                File = file,
                 CategoryId = categoryId,
             };
             var isValid = this.ProductService.UpdateProductHandler(input, this.ViewData);

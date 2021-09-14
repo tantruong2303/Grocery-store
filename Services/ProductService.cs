@@ -4,6 +4,7 @@ using FluentValidation.Results;
 using Backend.Utils.Common;
 using Backend.DAO.Interface;
 using Backend.Utils.Locale;
+using Backend.Utils.Interface;
 using Backend.Models;
 using Backend.Services.Interface;
 using System;
@@ -17,13 +18,15 @@ namespace Backend.Services
 
         private readonly IProductRepository ProductRepository;
         private readonly ICategoryRepository CategoryRepository;
+        private readonly IUploadFileService UploadFileService;
         private readonly DBContext DBContext;
 
-        public ProductService(DBContext dBContext, IProductRepository productRepository, ICategoryRepository categoryRepository)
+        public ProductService(DBContext dBContext, IProductRepository productRepository, ICategoryRepository categoryRepository, IUploadFileService uploadFileService)
         {
             this.DBContext = dBContext;
             this.ProductRepository = productRepository;
             this.CategoryRepository = categoryRepository;
+            this.UploadFileService = uploadFileService;
         }
 
         public Product GetProduct(string productId)
@@ -64,6 +67,20 @@ namespace Backend.Services
                 return false;
             }
 
+            var validFile = this.UploadFileService.CheckFileExtension(input.File) && this.UploadFileService.CheckFileSize(input.File, 5);
+            if (!validFile)
+            {
+                ServerResponse.SetFieldErrorMessage("file", CustomLanguageValidator.ErrorMessageKey.ERROR_INVALID_FILE, dataView);
+                return false;
+            }
+
+            var imageUrl = this.UploadFileService.Upload(input.File);
+            if (imageUrl == null)
+            {
+                ServerResponse.SetFieldErrorMessage("file", CustomLanguageValidator.ErrorMessageKey.ERROR_UPLOAD_FILE_FAILED, dataView);
+                return false;
+            }
+
             var product = new Product();
             product.ProductId = Guid.NewGuid().ToString();
             product.Name = input.Name;
@@ -73,7 +90,7 @@ namespace Backend.Services
             product.OriginalPrice = input.OriginalPrice;
             product.CreateDate = DateTime.Now.ToShortDateString();
             product.Quantity = input.Quantity;
-            product.ImageUrl = "";
+            product.ImageUrl = imageUrl;
             product.CategoryId = input.CategoryId;
             this.DBContext.Product.Add(product);
             this.DBContext.SaveChanges();
@@ -113,6 +130,20 @@ namespace Backend.Services
                 }
             }
 
+            var validFile = this.UploadFileService.CheckFileExtension(input.File) && this.UploadFileService.CheckFileSize(input.File, 5);
+            if (!validFile)
+            {
+                ServerResponse.SetFieldErrorMessage("file", CustomLanguageValidator.ErrorMessageKey.ERROR_INVALID_FILE, dataView);
+                return false;
+            }
+
+            var imageUrl = this.UploadFileService.Upload(input.File);
+            if (imageUrl == null)
+            {
+                ServerResponse.SetFieldErrorMessage("file", CustomLanguageValidator.ErrorMessageKey.ERROR_UPLOAD_FILE_FAILED, dataView);
+                return false;
+            }
+
             product.Name = input.Name;
             product.Description = input.Description;
             product.Status = input.Status;
@@ -120,7 +151,7 @@ namespace Backend.Services
             product.OriginalPrice = input.OriginalPrice;
             product.CreateDate = DateTime.Now.ToShortDateString();
             product.Quantity = input.Quantity;
-            product.ImageUrl = "";
+            product.ImageUrl = imageUrl;
             product.CategoryId = input.CategoryId;
 
             this.DBContext.SaveChanges();

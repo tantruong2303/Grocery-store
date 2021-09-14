@@ -5,7 +5,7 @@ namespace Backend.Utils.Interface
     public interface IUploadFileService
     {
         public bool CheckFileSize(IFormFile file, int limit);
-        public bool CheckFileExtension(IFormFile file, string[] extensions);
+        public bool CheckFileExtension(IFormFile file);
         public string Upload(IFormFile file);
     }
 }

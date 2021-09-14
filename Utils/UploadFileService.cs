@@ -9,11 +9,11 @@ namespace Backend.Utils
     {
         readonly string FolderUrl = "/public/image/";
         public static string[] ImageExtension = { "png", "jpg", "jpeg" };
-        public bool CheckFileExtension(IFormFile file, string[] extensions)
+        public bool CheckFileExtension(IFormFile file)
         {
             bool result = false;
             string fileExtension = file.FileName.ToLower().Split(".")[file.FileName.ToLower().Split(".").Length - 1];
-            foreach (string extension in extensions)
+            foreach (string extension in ImageExtension)
             {
                 if (extension == fileExtension)
                 {
