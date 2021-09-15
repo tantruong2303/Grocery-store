@@ -18,36 +18,26 @@ namespace Backend.DAO
         public Product GetProductById(string productId)
         {
             Product product = this.DBContext.Product.FirstOrDefault(item => item.ProductId == productId);
+            this.DBContext.Entry(product).Reference(item => item.Category).Load();
             return product;
         }
 
         public Product GetProductByProductName(string name)
         {
             Product product = this.DBContext.Product.FirstOrDefault(item => item.Name == name);
+            this.DBContext.Entry(product).Reference(item => item.Category).Load();
             return product;
         }
 
         public (List<Product>, int) GetProducts(double min, double max)
         {
-            List<Product> products = this.DBContext.Category.Join(
-                DBContext.Product, category => category.CategoryId,
-                product => product.CategoryId,
-                (category, product) => new Product
-                {
-                    ProductId = product.ProductId,
-                    Name = product.Name,
-                    Description = product.Description,
-                    Status = product.Status,
-                    OriginalPrice = product.OriginalPrice,
-                    RetailPrice = product.RetailPrice,
-                    CreateDate = product.CreateDate,
-                    Quantity = product.Quantity,
-                    ImageUrl = product.ImageUrl,
-                    CategoryId = product.CategoryId,
-                    Category = category
-                }).Where(item => item.RetailPrice >= min && item.RetailPrice <= max).ToList();
+            List<Product> products = this.DBContext.Product.Where(item => item.RetailPrice >= min && item.RetailPrice <= max).ToList();
+
+            foreach (Product product in products)
+            {
+                this.DBContext.Entry(product).Reference(item => item.Category).Load();
+            }
             return (products, products.Count);
         }
-
     }
 }
