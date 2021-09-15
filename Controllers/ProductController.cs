@@ -87,7 +87,9 @@ namespace Backend.Controllers
                 File = file,
                 CategoryId = categoryId,
             };
+
             var isValid = this.ProductService.UpdateProductHandler(input, this.ViewData);
+
             if (!isValid)
             {
 

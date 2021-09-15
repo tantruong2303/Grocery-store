@@ -1,3 +1,4 @@
+@model Product
 @{
     ViewData["Title"] = Routers.UpdateProduct.Title;
     Product product = (Product)ViewData["product"];
@@ -15,7 +16,7 @@
         Label = "Status",
         Field = "status",
         Type = "text",
-        Value = product.Status.ToString()
+        Value = product.Status
     };
     var originalPrice = new FormField()
     {
@@ -71,9 +72,12 @@
             @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", file)
             <div class="flex items-center space-x-2">
                 <label class="font-medium">Status: </label>
-                @Html.RadioButton("status", 1, true)<span>Active </span>
-                @Html.RadioButton("status", 0)<span>Inactive</span>
+                @Html.RadioButton("status", ProductStatus.ACTIVE,(product.Status == ProductStatus.ACTIVE))<span>Active
+                </span>
+                @Html.RadioButton("status", ProductStatus.INACTIVE,(product.Status ==
+                ProductStatus.INACTIVE))<span>Inactive</span>
             </div>
+
         </div>
         @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", updateBtn)
     </form>

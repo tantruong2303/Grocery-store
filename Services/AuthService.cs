@@ -1,4 +1,3 @@
-using System.Linq;
 using System;
 using Backend.Controllers.DTO;
 using FluentValidation.Results;
@@ -40,7 +39,6 @@ namespace Backend.Services
                 ServerResponse.SetFieldErrorMessage("username", CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, dataView);
                 return false;
             }
-            Console.WriteLine("hello");
 
             var user = new User();
             user.UserId = Guid.NewGuid().ToString();

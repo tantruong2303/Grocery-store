@@ -24,25 +24,27 @@
                 <th class="p-2 border border-black">CreateDate</th>
                 <th class="p-2 border border-black">Quantity</th>
                 <th class="p-2 border border-black">Update</th>
-                <th class="p-2 border border-black"></th>
+
             </tr>
         </thead>
         <tbody>
             @foreach (var product in products)
             {
+
                 var updateLink = $"{@Routers.UpdateProduct.Link}?productId={@product.ProductId}";
                 var activeColor = product.Status == ProductStatus.ACTIVE ? "text-green-500" : "text-red-500";
                 <tr>
                     <td class="p-2 text-center border border-black max-h-16">@product.ProductId</td>
                     <td class="p-2 text-center border border-black max-h-16">@product.Name</td>
                     <td class="p-2 text-center border border-black max-h-16">
-                        <div class="h-32">
+                        <div class="h-16">
                             <img src="@product.ImageUrl" alt="@product.Name" class="object-cover w-full h-full" />
                         </div>
                     </td>
                     <td class="p-2 text-center border border-black">@product.Category.Name</td>
                     <td class="p-2 text-center lowercase border border-black first-letter ">@product.Description</td>
-                    <td class="p-2 text-center lowercase border border-black first-letter ">@product.Status</td>
+                    <td class="p-2 text-center lowercase border border-black first-letter @activeColor ">@product.Status
+                    </td>
                     <td class="p-2 text-center lowercase border border-black first-letter ">@product.OriginalPrice</td>
                     <td class="p-2 text-center lowercase border border-black first-letter ">@product.RetailPrice</td>
                     <td class="p-2 text-center lowercase border border-black first-letter ">@product.CreateDate</td>
@@ -51,12 +53,9 @@
                         <a href="@updateLink"
                         class="inline-block p-2 font-medium text-white duration-300 bg-blue-600 rounded-sm hover:bg-blue-800">Update</a>
                     </td>
-                    <td class="p-2 text-center border border-black">
-                        <button>
-                            <a href="/cart/add?productId=@product.ProductId&quantity=1">Add to Cart</a>
-                        </button>
-                    </td>
+
                 </tr>
+
             }
         </tbody>
     </table>

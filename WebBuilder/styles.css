@@ -27,3 +27,7 @@
         max-height: 3.6em;
         line-height: 1.8em;
 }
+
+html {
+        scroll-behavior: smooth;
+}

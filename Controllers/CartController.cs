@@ -26,22 +26,23 @@ namespace Backend.Controllers
             this.ProductService = productService;
         }
 
-        [HttpGet("")]
-        public IActionResult Cart()
-        {
-            var cart = this.HttpContext.Session.GetString(CartSession);
-            if (cart != null && cart != "")
-            {
-                var list = this.CartService.convertStringToCartItem(cart);
-                var products = this.CartService.GetCartItems(list);
-                this.ViewData["cartItems"] = products;
-            }
-            return View(Routers.Cart.Page);
-        }
+        // [HttpGet("")]
+        // public IActionResult Cart()
+        // {
+        //     var cart = this.HttpContext.Session.GetString(CartSession);
+        //     if (cart != null && cart != "")
+        //     {
+        //         var list = this.CartService.convertStringToCartItem(cart);
+        //         var products = this.CartService.GetCartItems(list);
+        //         this.ViewData["cartItems"] = products;
+        //     }
+        //     return View(Routers.Cart.Page);
+        // }
 
         [HttpGet("add")]
-        public IActionResult HandleAddToCart(string productId)
+        public IActionResult HandleAddToCart(string productId, int quantity)
         {
+
             Product product = this.ProductService.GetProductById(productId);
             if (product != null)
             {
@@ -55,8 +56,9 @@ namespace Backend.Controllers
                     {
                         if (item.Key == productId)
                         {
-                            item.Value.Quantity += 1;
+                            item.Value.Quantity += quantity;
                             check = true;
+                            break;
                         }
                     }
                     if (!check)
@@ -88,37 +90,37 @@ namespace Backend.Controllers
             {
                 return Redirect(Routers.Product.Link);
             }
-            return this.Cart();
+            return Redirect(Routers.Home.Link);
         }
 
-        [HttpPost("remove")]
-        public IActionResult HandleRemoveCartItem(string productId)
-        {
-            Product product = this.ProductService.GetProductById(productId);
-            if (product != null)
-            {
-                var cart = this.HttpContext.Session.GetString(CartSession);
-                var list = this.CartService.convertStringToCartItem(cart);
-                var check = false;
-                foreach (var item in list)
-                {
-                    if (item.Key == productId)
-                    {
-                        check = true;
-                    }
-                }
-                if (check)
-                {
-                    list.Remove(productId);
-                }
-                this.HttpContext.Session.SetString(CartSession, this.CartService.convertCartItemToString(list));
-            }
-            else
-            {
-                return Redirect(Routers.Product.Link);
-            }
-            return this.Cart();
-        }
+        // [HttpPost("remove")]
+        // public IActionResult HandleRemoveCartItem(string productId)
+        // {
+        //     Product product = this.ProductService.GetProductById(productId);
+        //     if (product != null)
+        //     {
+        //         var cart = this.HttpContext.Session.GetString(CartSession);
+        //         var list = this.CartService.convertStringToCartItem(cart);
+        //         var check = false;
+        //         foreach (var item in list)
+        //         {
+        //             if (item.Key == productId)
+        //             {
+        //                 check = true;
+        //             }
+        //         }
+        //         if (check)
+        //         {
+        //             list.Remove(productId);
+        //         }
+        //         this.HttpContext.Session.SetString(CartSession, this.CartService.convertCartItemToString(list));
+        //     }
+        //     else
+        //     {
+        //         return Redirect(Routers.Product.Link);
+        //     }
+        //     return this.Cart();
+        // }
 
     }
 }

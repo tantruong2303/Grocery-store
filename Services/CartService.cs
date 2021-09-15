@@ -24,15 +24,19 @@ namespace Backend.Services
         }
         public Dictionary<string, CartItem> convertStringToCartItem(string input)
         {
+
             Dictionary<string, CartItem> list = new Dictionary<string, CartItem>();
-            var arr = input.Split(",");
-            foreach (var item in arr)
+            if (input != null && input.Trim().Length != 0)
             {
-                var arr2 = item.Split(";");
-                var cartItem = new CartItem();
-                cartItem.ProductId = arr2[0];
-                cartItem.Quantity = Int32.Parse(arr2[1]);
-                list.Add(cartItem.ProductId, cartItem);
+                var arr = input.Split(",");
+                foreach (var item in arr)
+                {
+                    var arr2 = item.Split(";");
+                    var cartItem = new CartItem();
+                    cartItem.ProductId = arr2[0];
+                    cartItem.Quantity = Int32.Parse(arr2[1]);
+                    list.Add(cartItem.ProductId, cartItem);
+                }
             }
             return list;
         }

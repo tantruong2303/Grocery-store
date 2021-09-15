@@ -1,3 +1,4 @@
+using System;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -29,7 +30,6 @@ namespace Backend.Utils.Common
         {
             foreach (var failure in result.Errors)
             {
-
                 string field = failure.PropertyName;
 
                 string message = Helper.StringFormat(failure.ErrorMessage, failure.FormattedMessagePlaceholderValues);

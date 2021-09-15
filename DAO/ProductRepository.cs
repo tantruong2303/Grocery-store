@@ -18,14 +18,20 @@ namespace Backend.DAO
         public Product GetProductById(string productId)
         {
             Product product = this.DBContext.Product.FirstOrDefault(item => item.ProductId == productId);
-            this.DBContext.Entry(product).Reference(item => item.Category).Load();
+            if (product != null)
+            {
+                this.DBContext.Entry(product).Reference(item => item.Category).Load();
+            }
             return product;
         }
 
         public Product GetProductByProductName(string name)
         {
             Product product = this.DBContext.Product.FirstOrDefault(item => item.Name == name);
-            this.DBContext.Entry(product).Reference(item => item.Category).Load();
+            if (product != null)
+            {
+                this.DBContext.Entry(product).Reference(item => item.Category).Load();
+            }
             return product;
         }
 
@@ -35,7 +41,10 @@ namespace Backend.DAO
 
             foreach (Product product in products)
             {
-                this.DBContext.Entry(product).Reference(item => item.Category).Load();
+                if (product != null)
+                {
+                    this.DBContext.Entry(product).Reference(item => item.Category).Load();
+                }
             }
             return (products, products.Count);
         }
