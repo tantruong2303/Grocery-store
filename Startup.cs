@@ -38,6 +38,7 @@ namespace Backend
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<ICartService, CartService>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
@@ -45,6 +46,8 @@ namespace Backend
             services.AddScoped<AuthGuard>();
             services.AddScoped<AuthController>();
             services.AddScoped<UserController>();
+            services.AddScoped<CartController>();
+            services.AddSession();
 
             services.AddControllersWithViews();
         }
@@ -73,6 +76,7 @@ namespace Backend
                            return next(context);
                        });
             app.UseRouting();
+            app.UseSession();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {

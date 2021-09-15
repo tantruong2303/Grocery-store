@@ -24,6 +24,7 @@
                 <th class="p-2 border border-black">CreateDate</th>
                 <th class="p-2 border border-black">Quantity</th>
                 <th class="p-2 border border-black">Update</th>
+                <th class="p-2 border border-black"></th>
             </tr>
         </thead>
         <tbody>
@@ -49,6 +50,11 @@
                     <td class="p-2 text-center border border-black">
                         <a href="@updateLink"
                         class="inline-block p-2 font-medium text-white duration-300 bg-blue-600 rounded-sm hover:bg-blue-800">Update</a>
+                    </td>
+                    <td class="p-2 text-center border border-black">
+                        <button>
+                            <a href="/cart/add?productId=@product.ProductId&quantity=1">Add to Cart</a>
+                        </button>
                     </td>
                 </tr>
             }
