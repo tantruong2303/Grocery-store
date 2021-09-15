@@ -691,8 +691,6 @@ C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Contain
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Category\Category.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Category\CreateCategory.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Category\UpdateCategory.cshtml.g.cs
-C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\CreateProduct.cshtml.g.cs
-C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Product.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\User\UpdatePassword.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\User\UpdateUserInfo.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\User\User.cshtml.g.cs
@@ -902,3 +900,8 @@ e:\grocery-store\obj\Debug\net5.0\backend.pdb
 e:\grocery-store\obj\Debug\net5.0\backend.genruntimeconfig.cache
 E:\grocery-store\bin\Debug\net5.0\WebBuilder\package.json
 E:\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Form\FormCategories.cshtml.g.cs
+C:\Users\ACER\Desktop\Grocery\grocery-store\bin\Debug\net5.0\WebBuilder\package.json
+C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Form\FormCategories.cshtml.g.cs
+C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Product\CreateProduct.cshtml.g.cs
+C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Product\Product.cshtml.g.cs
+C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Product\UpdateProduct.cshtml.g.cs

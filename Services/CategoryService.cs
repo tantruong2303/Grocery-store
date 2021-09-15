@@ -64,18 +64,21 @@ namespace Backend.Services
 
         public bool UpdateCategoryHandler(UpdateCategoryDTO input, ViewDataDictionary dataView)
         {
-            ValidationResult result = new UpdateCategoryDTOValidator().Validate(input);
+           ValidationResult result = new UpdateCategoryDTOValidator().Validate(input);
             if (!result.IsValid)
             {
                 ServerResponse.MapDetails(result, dataView);
                 return false;
             }
             var category = this.CategoryRepository.GetCategoryByCategoryId(input.CategoryId);
-            if (category == null)
+
+            var isExistCategory = this.CategoryRepository.GetCategoryByCategoryName(input.Name);
+            if (isExistCategory != null && isExistCategory.Name != category.Name)
             {
-                ServerResponse.SetFieldErrorMessage("categoryId", CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_FOUND, dataView);
+                ServerResponse.SetFieldErrorMessage("name", CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, dataView);
                 return false;
             }
+
             category.Name = input.Name;
             category.Description = input.Description;
             category.Status = (CategoryStatus)input.Status;

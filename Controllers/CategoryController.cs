@@ -76,7 +76,7 @@ namespace Backend.Controllers
             var isValid = this.CategoryService.UpdateCategoryHandler(input, this.ViewData);
             if (!isValid)
             {
-                return View(Routers.UpdateCategory.Page);
+                return this.UpdateCategory(categoryId);
             }
             return Redirect(Routers.Category.Link);
         }
