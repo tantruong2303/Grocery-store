@@ -6,6 +6,7 @@ using Backend.Pipe;
 using Backend.Services.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using FluentValidation.Results;
 
 namespace Backend.Controllers
 {
@@ -98,13 +99,27 @@ namespace Backend.Controllers
 
         [HttpGet("")]
         [ServiceFilter(typeof(AuthGuard))]
-        public IActionResult Product()
+        public IActionResult Product(double min, double max)
         {
-            var (products, count) = this.ProductService.GetProducts();
+            var (products, count) = this.ProductService.GetProducts(0, double.MaxValue);
+            var input = new SearchProductDTO()
+            {
+                Min = min,
+                Max = max
+            };
+
+            ValidationResult result = new SearchProductDTOValidator().Validate(input);
+            if (!result.IsValid)
+            {
+                ServerResponse.MapDetails(result, this.ViewData);
+                this.ViewData["products"] = products;
+                this.ViewData["count"] = count;
+                return View(Routers.Product.Page);
+            }
+            (products, count) = this.ProductService.GetProducts(min, max);
             this.ViewData["products"] = products;
             this.ViewData["count"] = count;
             return View(Routers.Product.Page);
         }
-
     }
 }
