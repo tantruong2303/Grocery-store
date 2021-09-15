@@ -7,7 +7,7 @@ using Backend.Models;
 namespace Backend.Controllers
 {
     [Route("order")]
-    [ServiceFilter(typeof(AuthGuard))]
+
     public class OrderController : Controller
     {
         private readonly IOrderService OrderService;
@@ -17,6 +17,8 @@ namespace Backend.Controllers
         }
 
         [HttpGet("")]
+        [RoleGuardAttribute(new UserRole[] { UserRole.CUSTOMER })]
+        [ServiceFilter(typeof(AuthGuard))]
         public IActionResult Order()
         {
             var user = (User)this.ViewData["user"];
@@ -26,6 +28,8 @@ namespace Backend.Controllers
         }
 
         [HttpGet("manager")]
+        [RoleGuardAttribute(new UserRole[] { UserRole.MANGER })]
+        [ServiceFilter(typeof(AuthGuard))]
         public IActionResult GetAllOrders(string startDate, string endDate, string search)
         {
             var orders = this.OrderService.GetAllOrders();
@@ -34,6 +38,7 @@ namespace Backend.Controllers
         }
 
         [HttpGet("search")]
+        [ServiceFilter(typeof(AuthGuard))]
         public IActionResult SearchOrders(string startDate, string endDate, string search)
         {
             var orders = this.OrderService.SearchOrders(startDate, endDate, search);

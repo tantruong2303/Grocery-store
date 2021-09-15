@@ -38,6 +38,8 @@ namespace Backend.Services
 
         public bool CreateCategoryHandler(CreateCategoryDTO input, ViewDataDictionary dataView)
         {
+
+
             ValidationResult result = new CreateCategoryDTOValidator().Validate(input);
             if (!result.IsValid)
             {
@@ -64,6 +66,7 @@ namespace Backend.Services
 
         public bool UpdateCategoryHandler(UpdateCategoryDTO input, ViewDataDictionary dataView)
         {
+
             ValidationResult result = new UpdateCategoryDTOValidator().Validate(input);
             if (!result.IsValid)
             {

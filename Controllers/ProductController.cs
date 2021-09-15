@@ -11,6 +11,7 @@ using FluentValidation.Results;
 namespace Backend.Controllers
 {
     [Route("product")]
+    [RoleGuardAttribute(new UserRole[] { UserRole.MANGER })]
     [ServiceFilter(typeof(AuthGuard))]
     public class ProductController : Controller
     {

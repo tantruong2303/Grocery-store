@@ -92,6 +92,7 @@ namespace Backend.Pipe
                 ServerResponse.SetErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_ALLOW_ACTION, controller.ViewData);
                 context.Result = new ViewResult
                 {
+                    ViewData = controller.ViewData,
                     ViewName = Routers.Login.Page,
                 };
                 return;

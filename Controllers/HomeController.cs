@@ -4,21 +4,11 @@ using Backend.Pipe;
 using Backend.Services.Interface;
 using Backend.Controllers.DTO;
 using FluentValidation.Results;
-using System;
 using Microsoft.AspNetCore.Http;
-
-using System.Collections.Generic;
-using Backend.Models;
-
-using System.Linq;
-
-using System.Collections;
-using System.Web;
-
-
 namespace Backend.Controllers
 {
     [Route("")]
+    [ServiceFilter(typeof(AuthGuard))]
     public class HomeController : Controller
     {
         private const string CartSession = "CartSession";
@@ -31,7 +21,6 @@ namespace Backend.Controllers
         }
 
         [HttpGet("")]
-        [ServiceFilter(typeof(AuthGuard))]
         public IActionResult Index(double min, double max)
         {
             var cart = this.HttpContext.Session.GetString(CartSession);

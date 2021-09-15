@@ -1,5 +1,10 @@
 @{
     User user = (User)ViewData["user"];
+    var orderLink = "";
+    if (user != null)
+    {
+        orderLink = user.Role == UserRole.CUSTOMER ? Routers.Order.Link : Routers.Manager.Link;
+    }
 }
 
 
@@ -53,10 +58,7 @@
                     Shopping Cart
                 </a>
 
-                <a class="px-4 py-1 text-lg font-semibold duration-300 hover:bg-blue-500 md:hover:bg-transparent hover:text-white md:hover:text-blue-600"
-            href="@Routers.Manager.Link">
-                    Order
-                </a>
+
             }
 
             @if (user.Role == UserRole.MANGER)
@@ -71,6 +73,12 @@
                 </a>
 
             }
+
+
+            <a class="px-4 py-1 text-lg font-semibold duration-300 hover:bg-blue-500 md:hover:bg-transparent hover:text-white md:hover:text-blue-600"
+            href="@orderLink">
+                Order
+            </a>
 
 
 

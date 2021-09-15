@@ -31,8 +31,8 @@ namespace Backend.Utils.Common
             foreach (var failure in result.Errors)
             {
                 string field = failure.PropertyName;
-
                 string message = Helper.StringFormat(failure.ErrorMessage, failure.FormattedMessagePlaceholderValues);
+
                 dataView[$"{field}Error"] = message;
             }
         }

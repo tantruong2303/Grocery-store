@@ -3,10 +3,12 @@ using Backend.Services.Interface;
 using Backend.Utils.Common;
 using Backend.Controllers.DTO;
 using Backend.Pipe;
+using Backend.Models;
 
 namespace Backend.Controllers
 {
     [Route("category")]
+    [RoleGuardAttribute(new UserRole[] { UserRole.MANGER })]
     [ServiceFilter(typeof(AuthGuard))]
     public class CategoryController : Controller
     {
@@ -64,7 +66,7 @@ namespace Backend.Controllers
 
 
         [HttpPost("update")]
-        public IActionResult handleUpdateCategory(string categoryId, string name, string description, int status)
+        public IActionResult handleUpdateCategory(string categoryId, string name, string description, CategoryStatus status)
         {
             var input = new UpdateCategoryDTO()
             {

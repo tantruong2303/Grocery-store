@@ -3,6 +3,8 @@
     List<Product> products = (List<Product>)ViewData["products"];
     List<Product> carts = (List<Product>)ViewData["cartItems"];
     Double total = 0;
+
+
 }
 
 
@@ -13,7 +15,7 @@
         <div class="grid gap-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 fade-in">
             @foreach (var product in products)
             {
-                @if (product.Status == ProductStatus.ACTIVE)
+                @if (product.Status == ProductStatus.ACTIVE && product.Category.Status == CategoryStatus.ACTIVE)
                 {
                     var updateLink = $"{@Routers.UpdateProduct.Link}?productId={@product.ProductId}";
                     var activeColor = product.Status == ProductStatus.ACTIVE ? "text-green-500" : "text-red-500";
