@@ -7,5 +7,7 @@ namespace Backend.DAO.Interface
     {
         public List<Order> GetOrders(string userId);
         public List<OrderItem> GetOrderDetail(string orderId);
+        public List<Order> GetAllOrders();
+        public List<Order> SearchOrders(string startDate, string endDate, string search);
     }
 }

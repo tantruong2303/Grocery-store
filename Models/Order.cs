@@ -30,6 +30,9 @@ namespace Backend.Models
         public float Total { get; set; }
 
         [Required]
+        public float Profit { get; set; }
+
+        [Required]
         [StringLength(50)]
         public string CreateDate { set; get; }
 

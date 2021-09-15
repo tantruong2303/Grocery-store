@@ -11,5 +11,6 @@ namespace Backend.Services.Interface
         public bool UpdateCategoryHandler(UpdateCategoryDTO input, ViewDataDictionary dataView);
         public List<Category> GetCategories();
         public Category GetCategory(string categoryId);
+
     }
 }

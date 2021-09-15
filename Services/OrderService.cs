@@ -29,5 +29,13 @@ namespace Backend.Services
         {
             return this.OrderRepository.GetOrderDetail(orderId);
         }
+        public List<Order> GetAllOrders()
+        {
+            return this.OrderRepository.GetAllOrders();
+        }
+        public List<Order> SearchOrders(string startDate, string endDate, string search)
+        {
+            return this.OrderRepository.SearchOrders(startDate, endDate, search);
+        }
     }
 }
