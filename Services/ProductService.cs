@@ -34,9 +34,9 @@ namespace Backend.Services
             return this.ProductRepository.GetProductById(productId);
         }
 
-        public (List<Product>, int) GetProducts()
+        public (List<Product>, int) GetProducts(double min, double max)
         {
-            return this.ProductRepository.GetProducts();
+            return this.ProductRepository.GetProducts(min, max);
         }
         public bool CreateProductHandler(CreateProductDTO input, ViewDataDictionary dataView)
         {

@@ -27,7 +27,7 @@ namespace Backend.DAO
             return product;
         }
 
-        public (List<Product>, int) GetProducts()
+        public (List<Product>, int) GetProducts(double min, double max)
         {
             List<Product> products = this.DBContext.Category.Join(
                 DBContext.Product, category => category.CategoryId,
@@ -45,8 +45,7 @@ namespace Backend.DAO
                     ImageUrl = product.ImageUrl,
                     CategoryId = product.CategoryId,
                     Category = category
-                }).ToList();
-
+                }).Where(item => item.RetailPrice >= min && item.RetailPrice <= max).ToList();
             return (products, products.Count);
         }
 
