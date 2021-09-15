@@ -29,15 +29,9 @@ namespace Backend.Services
             this.UploadFileService = uploadFileService;
         }
 
-        public Product GetProduct(string productId)
+        public Product GetProductById(string productId)
         {
             return this.ProductRepository.GetProductById(productId);
-        }
-
-        public List<Category> GetCategories()
-        {
-            return this.CategoryRepository.GetCategories();
-
         }
 
         public (List<Product>, int) GetProducts()
@@ -130,24 +124,22 @@ namespace Backend.Services
                     return false;
                 }
             }
-            if (input.File != null)
+
+            var validFile = this.UploadFileService.CheckFileExtension(input.File) && this.UploadFileService.CheckFileSize(input.File, 5);
+            if (!validFile)
             {
-
-                var validFile = this.UploadFileService.CheckFileExtension(input.File) && this.UploadFileService.CheckFileSize(input.File, 5);
-                if (!validFile)
-                {
-                    ServerResponse.SetFieldErrorMessage("file", CustomLanguageValidator.ErrorMessageKey.ERROR_INVALID_FILE, dataView);
-                    return false;
-                }
-
-                var imageUrl = this.UploadFileService.Upload(input.File);
-                if (imageUrl == null)
-                {
-                    ServerResponse.SetFieldErrorMessage("file", CustomLanguageValidator.ErrorMessageKey.ERROR_UPLOAD_FILE_FAILED, dataView);
-                    return false;
-                }
-                product.ImageUrl = imageUrl;
+                ServerResponse.SetFieldErrorMessage("file", CustomLanguageValidator.ErrorMessageKey.ERROR_INVALID_FILE, dataView);
+                return false;
             }
+
+            var imageUrl = this.UploadFileService.Upload(input.File);
+            if (imageUrl == null)
+            {
+                ServerResponse.SetFieldErrorMessage("file", CustomLanguageValidator.ErrorMessageKey.ERROR_UPLOAD_FILE_FAILED, dataView);
+                return false;
+            }
+
+
 
             product.Name = input.Name;
             product.Description = input.Description;
@@ -156,10 +148,10 @@ namespace Backend.Services
             product.OriginalPrice = input.OriginalPrice;
             product.CreateDate = DateTime.Now.ToShortDateString();
             product.Quantity = input.Quantity;
+            product.ImageUrl = imageUrl;
             product.CategoryId = input.CategoryId;
 
-            this.DBContext.SaveChanges();
-            return true;
+            return this.DBContext.SaveChanges() > 0;
         }
     }
 }

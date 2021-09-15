@@ -905,3 +905,5 @@ C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Compone
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Product\CreateProduct.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Product\Product.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Product\UpdateProduct.cshtml.g.cs
+C:\Users\Lenovo\Desktop\grocery-store\bin\Debug\net5.0\WebBuilder\package.json
+C:\Users\Lenovo\Desktop\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Form\FormCategories.cshtml.g.cs

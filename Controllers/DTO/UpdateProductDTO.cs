@@ -28,6 +28,7 @@ namespace Backend.Controllers.DTO
             RuleFor(x => x.OriginalPrice).NotEmpty();
             RuleFor(x => x.RetailPrice).NotEmpty();
             RuleFor(x => x.Quantity).NotEmpty();
+            RuleFor(x => x.File).NotNull();
             RuleFor(x => x.CategoryId).NotEmpty();
         }
     }

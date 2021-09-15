@@ -3,6 +3,7 @@ using Backend.DAO.Interface;
 using System.Collections.Generic;
 using Backend.Utils;
 using Backend.Models;
+using System;
 
 namespace Backend.DAO
 {
@@ -28,8 +29,26 @@ namespace Backend.DAO
 
         public (List<Product>, int) GetProducts()
         {
-            List<Product> products = this.DBContext.Product.ToList();
+            List<Product> products = this.DBContext.Category.Join(
+                DBContext.Product, category => category.CategoryId,
+                product => product.CategoryId,
+                (category, product) => new Product
+                {
+                    ProductId = product.ProductId,
+                    Name = product.Name,
+                    Description = product.Description,
+                    Status = product.Status,
+                    OriginalPrice = product.OriginalPrice,
+                    RetailPrice = product.RetailPrice,
+                    CreateDate = product.CreateDate,
+                    Quantity = product.Quantity,
+                    ImageUrl = product.ImageUrl,
+                    CategoryId = product.CategoryId,
+                    Category = category
+                }).ToList();
+
             return (products, products.Count);
         }
+
     }
 }
