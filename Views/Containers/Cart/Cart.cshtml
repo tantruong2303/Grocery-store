@@ -1,0 +1,57 @@
+@{
+    List<Product> products = (List<Product>)ViewData["cartItems"];
+    double total = 0;
+}
+<div class="p-2 ">
+
+    <div>
+        <a href="@Routers.Cart.Link"
+            class="inline-block p-2 font-medium text-white duration-300 bg-blue-600 rounded-sm hover:bg-blue-800">
+            Order
+        </a>
+    </div>
+    @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
+    <table class="my-2 bg-white border border-black fade-in">
+        <thead>
+            <tr>
+                <th class="p-2 border border-black">Name</th>
+                <th class="p-2 border border-black">Price</th>
+                <th class="p-2 border border-black">Quantity</th>
+                <th class="p-2 border border-black">Sum</th>
+                <th class="p-2 border border-black"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (products == null)
+            {
+                <h1>Empty cart</h1>
+            }
+            else
+            {
+
+                @foreach (var cartItem in products)
+                {
+
+                    <tr>
+                        <form action="@Routers.RemoveCart.Link?productID=@cartItem.ProductId" method="POST">
+                            <td class="p-2 text-center border border-black max-h-16">@cartItem.Name</td>
+                            <td class="p-2 text-center border border-black">@cartItem.OriginalPrice</td>
+                            <td class="p-2 text-center border border-black">@cartItem.Quantity</td>
+                            <td class="p-2 text-center border border-black">@(cartItem.Quantity * cartItem.OriginalPrice)
+                            </td>
+                            <td class="p-2 text-center border border-black">
+                                <button>
+                                    Remove
+                                </button>
+                            </td>
+                        </form>
+
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <button>
+        <a href="/product">Back to buy more</a>
+    </button>
+</div>

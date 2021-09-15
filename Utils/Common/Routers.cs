@@ -30,5 +30,7 @@ namespace Backend.Utils.Common
         public static readonly RouterItem Logout = new RouterItem() { Page = "/Views/Containers/CreateProduct.cshtml", Title = "Create Product", Link = "/auth/logout" };
         public static readonly RouterItem Order = new RouterItem() { Page = "/Views/Containers/order/Order.cshtml", Title = "Your Order", Link = "/order" };
         public static readonly RouterItem OrderDetail = new RouterItem() { Page = "/Views/Containers/order/OrderDetail.cshtml", Title = "Order Detail", Link = "/detail" };
+        public static readonly RouterItem Cart = new RouterItem() { Page = "/Views/Containers/Cart/Cart.cshtml", Title = "Cart", Link = "/cart" };
+        public static readonly RouterItem RemoveCart = new RouterItem() { Page = "/Views/Containers/Cart/Cart.cshtml", Title = "Cart", Link = "/cart/remove" };
     }
 }
