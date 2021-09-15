@@ -1,6 +1,6 @@
 ﻿@{
-    @* Routers; *@
 
+    var title = ViewData["Title"] + " | Grocery Store";
 }
 
 
@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] | Grocery Store</title>
+
     <link rel="apple-touch-icon" sizes="57x57" href="~/header/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="~/header/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="~/header/apple-icon-72x72.png">
@@ -29,6 +29,19 @@
     <meta name="msapplication-TileImage" content="~/header/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="~/style/styles.css" />
+    <title>@title</title>
+    <meta name="description" content="Mini grocery store project is developed by Mono Infinity team" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content=@title />
+    <meta property="og:description" content="Mini grocery store project is developed by Mono Infinity team" />
+    <meta property="og:image" content="/header/banner.jpg" />
+
+
+    <meta name="twitter:title" content=@title />
+    <meta name="twitter:description" content="Mini grocery store project is developed by Mono Infinity team" />
+    <meta name="twitter:image" content="/header/banner.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
 </head>
 
 <body class="bg-blue-100">
