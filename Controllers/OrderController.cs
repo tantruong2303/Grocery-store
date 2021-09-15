@@ -25,21 +25,20 @@ namespace Backend.Controllers
             return View(Routers.Order.Page);
         }
 
-        [HttpGet("/detail")]
-        public IActionResult OrderDetail(string orderId)
+        [HttpGet("manager")]
+        public IActionResult GetAllOrders(string startDate, string endDate, string search)
         {
-            var items = this.OrderService.GetOrderDetail(orderId);
-            this.ViewData["items"] = items;
-            return View(Routers.OrderDetail.Page);
+            var orders = this.OrderService.GetAllOrders();
+            this.ViewData["orders"] = orders;
+            return View(Routers.Manager.Page);
         }
 
-        [HttpGet("manager")]
-        public IActionResult Manager()
+        [HttpGet("search")]
+        public IActionResult SearchOrders(string startDate, string endDate, string search)
         {
-            var user = (User)this.ViewData["user"];
-            var orders = this.OrderService.GetOrders(user.UserId);
+            var orders = this.OrderService.SearchOrders(startDate, endDate, search);
             this.ViewData["orders"] = orders;
-            return View(Routers.Order.Page);
+            return View(Routers.SearchOrders.Page);
         }
     }
 }

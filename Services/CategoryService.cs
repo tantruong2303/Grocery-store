@@ -64,7 +64,7 @@ namespace Backend.Services
 
         public bool UpdateCategoryHandler(UpdateCategoryDTO input, ViewDataDictionary dataView)
         {
-           ValidationResult result = new UpdateCategoryDTOValidator().Validate(input);
+            ValidationResult result = new UpdateCategoryDTOValidator().Validate(input);
             if (!result.IsValid)
             {
                 ServerResponse.MapDetails(result, dataView);
