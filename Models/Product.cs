@@ -55,5 +55,12 @@ namespace Backend.Models
 
 
         public virtual Category Category { set; get; }
+
+        public override string ToString()
+        {
+            return "Product: \nProductId: " + ProductId + " \nName: " + Name + " \nDescription: " + Description +
+            " \nCreateDate: " + CreateDate + " \nStatus: " + Status + " \nOriginalPrice: " + OriginalPrice + " \nRetailPrice: " + RetailPrice +
+            " \nQuantity: " + Quantity + " \nTmageUrl: " + ImageUrl + " \nCategoryId " + CategoryId + " \nCategory " + Category;
+        }
     }
 }

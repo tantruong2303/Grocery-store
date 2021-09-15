@@ -14,16 +14,18 @@ namespace Backend.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService ProductService;
+        private readonly ICategoryService CategoryService;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, ICategoryService categoryService)
         {
             this.ProductService = productService;
+            this.CategoryService = categoryService;
         }
 
         [HttpGet("create")]
         public IActionResult CreateProduct()
         {
-            var categories = this.ProductService.GetCategories();
+            var categories = this.CategoryService.GetCategories();
 
             this.ViewData["categories"] = new SelectList(categories, "CategoryId", "Name", categories[0].CategoryId);
             return View(Routers.CreateProduct.Page);
@@ -47,7 +49,7 @@ namespace Backend.Controllers
 
             if (!isValid)
             {
-                this.ViewData["categories"] = this.ProductService.GetCategories();
+                this.ViewData["categories"] = this.CategoryService.GetCategories();
                 return this.CreateProduct();
             }
 
@@ -58,10 +60,10 @@ namespace Backend.Controllers
         [HttpGet("update")]
         public IActionResult UpdateProduct(string productId)
         {
-            var product = this.ProductService.GetProduct(productId);
+            var product = this.ProductService.GetProductById(productId);
             this.ViewData["product"] = product;
 
-            var categories = this.ProductService.GetCategories();
+            var categories = this.CategoryService.GetCategories();
             this.ViewData["categories"] = new SelectList(categories, "CategoryId", "Name", product.CategoryId);
 
             return View(Routers.UpdateProduct.Page);
