@@ -12,6 +12,12 @@ namespace Backend.Models
         INACTIVE = 0
     }
 
+    public enum PaymentMethod
+    {
+        CASH = 0,
+        CREDIT_CARDS = 1
+    }
+
 
     [Table("tblOrder")]
     public class Order
@@ -27,10 +33,10 @@ namespace Backend.Models
         public OrderStatus Status { get; set; }
 
         [Required]
-        public float Total { get; set; }
+        public double Total { get; set; }
 
         [Required]
-        public float Profit { get; set; }
+        public double Profit { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -38,7 +44,7 @@ namespace Backend.Models
 
         [Required]
         [StringLength(50)]
-        public string PaymentMethod { set; get; }
+        public PaymentMethod PaymentMethod { set; get; }
 
         [Required]
         [StringLength(50)]

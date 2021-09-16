@@ -14,12 +14,16 @@ namespace Backend.Services
 {
     public class OrderService : IOrderService
     {
-        private readonly DBContext dBContext;
+        private readonly DBContext DBContext;
         private readonly IOrderRepository OrderRepository;
-        public OrderService(DBContext dBContext, IOrderRepository orderRepository)
+        private readonly ICartService CartService;
+        private readonly IProductService ProductService;
+        public OrderService(IProductService productService, ICartService cartService, DBContext dBContext, IOrderRepository orderRepository)
         {
-            this.dBContext = dBContext;
+            this.DBContext = dBContext;
             this.OrderRepository = orderRepository;
+            this.CartService = cartService;
+            this.ProductService = productService;
         }
         public List<Order> GetOrders(string userId)
         {
@@ -36,6 +40,54 @@ namespace Backend.Services
         public List<Order> SearchOrders(string startDate, string endDate, string search)
         {
             return this.OrderRepository.SearchOrders(startDate, endDate, search);
+        }
+
+        public bool CreateOrderHandler(CreateOrderDTO input, ViewDataDictionary dataView, string cart)
+        {
+            ValidationResult result = new CreateOrderDTOValidator().Validate(input);
+            if (!result.IsValid)
+            {
+                ServerResponse.MapDetails(result, dataView);
+                return false;
+            }
+            Console.WriteLine("ahihi");
+            User customer = (User)dataView["user"];
+            Order order = new Order();
+            order.OrderId = Guid.NewGuid().ToString();
+            order.Status = OrderStatus.ACTIVE;
+            order.Total = 0;
+            order.Profit = 0;
+            order.CreateDate = DateTime.Now.ToShortDateString();
+            order.PaymentMethod = input.PaymentMethod;
+            order.CustomerId = customer.UserId;
+            this.DBContext.Order.Add(order);
+            this.DBContext.SaveChanges();
+
+            var list = this.CartService.convertStringToCartItem(cart);
+            foreach (var cartItem in list)
+            {
+                Product product = this.ProductService.GetProductById(cartItem.Key);
+
+                OrderItem orderItem = new OrderItem();
+                orderItem.OrderItemId = Guid.NewGuid().ToString();
+                orderItem.Quantity = cartItem.Value.Quantity;
+                orderItem.CreateDate = DateTime.Now.ToShortDateString();
+                orderItem.SalePrice = product.RetailPrice;
+                orderItem.OrderId = order.OrderId;
+                orderItem.ProductId = product.ProductId;
+                this.DBContext.OrderItem.Add(orderItem);
+                this.DBContext.SaveChanges();
+
+                order.Total += product.RetailPrice;
+                order.Profit += (product.RetailPrice - product.OriginalPrice);
+
+                product.Quantity -= orderItem.Quantity;
+                Console.WriteLine("ahihihihi");
+            }
+            Console.WriteLine("ahihihi1123");
+
+            this.DBContext.SaveChanges();
+            return true;
         }
     }
 }

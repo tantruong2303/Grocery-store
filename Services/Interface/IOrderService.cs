@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using Backend.Models;
+using Backend.Controllers.DTO;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+
 namespace Backend.Services.Interface
 {
     public interface IOrderService
@@ -8,5 +11,6 @@ namespace Backend.Services.Interface
         public List<OrderItem> GetOrderDetail(string orderId);
         public List<Order> GetAllOrders();
         public List<Order> SearchOrders(string startDate, string endDate, string search);
+        public bool CreateOrderHandler(CreateOrderDTO input, ViewDataDictionary dataView, string cart);
     }
 }

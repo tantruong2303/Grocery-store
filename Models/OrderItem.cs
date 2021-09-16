@@ -16,7 +16,7 @@ namespace Backend.Models
         public int Quantity { set; get; }
 
         [Required]
-        public float SalePrice { set; get; }
+        public double SalePrice { set; get; }
 
         [Required]
         [StringLength(50)]
