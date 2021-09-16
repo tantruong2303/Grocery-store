@@ -16,7 +16,7 @@ namespace Backend.Controllers.DTO
         public UpdateCategoryDTOValidator()
         {
             RuleFor(x => x.CategoryId).NotEmpty().Length(30, 50);
-            RuleFor(x => x.Name).NotEmpty().Length(3, 50);
+            RuleFor(x => x.Name).NotEmpty().NotNull().Length(3, 50);
             RuleFor(x => x.Description).NotEmpty().Length(3, 500);
             RuleFor(x => x.Status).IsInEnum().NotNull();
         }

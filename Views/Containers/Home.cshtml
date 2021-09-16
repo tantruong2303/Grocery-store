@@ -4,6 +4,12 @@
     List<Product> carts = (List<Product>)ViewData["cartItems"];
     Double total = 0;
 
+    var min = new FormField() { Label = "Min", Field = "min", Type = "number", Value = 0 };
+    var max = new FormField() { Label = "Max", Field = "max", Type = "number", Value = 99999 };
+    var name = new FormField() { Label = "Name", Field = "name", Type = "text", Value = "" };
+    var categoryId = new FormField() { Label = "CategoryId", Field = "categoryId", Type = "text", Value = "" };
+
+    var createBtn = new FormField() { Label = "Search" };
 
 }
 
@@ -11,6 +17,20 @@
 
 <div class="flex flex-col justify-center flex-1 px-2 py-8 mb-24 space-y-4 md:flex-row md:space-x-4 md:space-y-0">
     <div class="space-y-2">
+        <form method="get" action="@Routers.Home.Link">
+
+            @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
+            <div class="space-y-4">
+                @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
+                @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", min)
+                @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", max)
+                @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
+                @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", categoryId)
+            </div>
+            @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", createBtn)
+        </form>
+
+
         <h1 class="text-xl font-semibold ">Product List</h1>
         <div class="grid gap-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 fade-in">
             @foreach (var product in products)

@@ -1099,3 +1099,5 @@ C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Contain
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\SearchOrder.cshtml.g.cs
 e:\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\Manager.cshtml.g.cs
 e:\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\SearchOrder.cshtml.g.cs
+C:\Users\Lenovo\Desktop\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\Manager.cshtml.g.cs
+C:\Users\Lenovo\Desktop\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\SearchOrder.cshtml.g.cs

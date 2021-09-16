@@ -22,13 +22,12 @@ namespace Backend.Controllers.DTO
         public UpdateProductDTOValidator()
         {
             RuleFor(x => x.ProductId).NotEmpty();
-            RuleFor(x => x.Name).NotEmpty().Length(3, 50);
+            RuleFor(x => x.Name).NotEmpty().NotNull().Length(3, 50);
             RuleFor(x => x.Status).IsInEnum().NotNull();
             RuleFor(x => x.Description).NotEmpty().Length(3, 500);
             RuleFor(x => x.OriginalPrice).NotEmpty();
             RuleFor(x => x.RetailPrice).NotEmpty();
             RuleFor(x => x.Quantity).NotEmpty();
-
             RuleFor(x => x.CategoryId).NotEmpty();
         }
     }

@@ -102,24 +102,35 @@ namespace Backend.Controllers
 
         [HttpGet("")]
         [ServiceFilter(typeof(AuthGuard))]
-        public IActionResult Product(double min, double max)
+        public IActionResult Product(double min, double max, string name, string categoryId)
         {
-            var (products, count) = this.ProductService.GetProducts(0, double.MaxValue);
+            var (products, count) = this.ProductService.GetProducts(0, double.MaxValue, "", "");
+            if (name == null) name = "";
+            if (categoryId == null) categoryId = "";
+
+
             var input = new SearchProductDTO()
             {
                 Min = min,
-                Max = max
+                Max = max,
+                Name = name,
+                CategoryId = categoryId
             };
 
             ValidationResult result = new SearchProductDTOValidator().Validate(input);
-            if (!result.IsValid)
+            if (!result.IsValid || (min > max))
             {
                 ServerResponse.MapDetails(result, this.ViewData);
                 this.ViewData["products"] = products;
                 this.ViewData["count"] = count;
                 return View(Routers.Product.Page);
             }
-            (products, count) = this.ProductService.GetProducts(min, max);
+
+            if (min != 0 && max != 0 && name != "" && categoryId != "")
+            {
+                (products, count) = this.ProductService.GetProducts(min, max, name, categoryId);
+
+            }
             this.ViewData["products"] = products;
             this.ViewData["count"] = count;
             return View(Routers.Product.Page);

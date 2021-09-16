@@ -9,14 +9,16 @@ namespace Backend.Controllers.DTO
     {
         public double Min { set; get; }
         public double Max { set; get; }
+        public string Name { set; get; }
+        public string CategoryId { set; get; }
     }
 
     public class SearchProductDTOValidator : AbstractValidator<SearchProductDTO>
     {
         public SearchProductDTOValidator()
         {
-            RuleFor(x => x.Min).NotEmpty().NotNull().InclusiveBetween(0, double.MaxValue);
-            RuleFor(x => x.Max).NotEmpty().NotNull().InclusiveBetween(0, double.MaxValue);
+            RuleFor(x => x.Min).NotNull().InclusiveBetween(0, double.MaxValue);
+            RuleFor(x => x.Max).NotNull().InclusiveBetween(0, double.MaxValue);
         }
     }
 }
