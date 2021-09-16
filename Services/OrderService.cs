@@ -50,7 +50,6 @@ namespace Backend.Services
                 ServerResponse.MapDetails(result, dataView);
                 return false;
             }
-            Console.WriteLine("ahihi");
             User customer = (User)dataView["user"];
             Order order = new Order();
             order.OrderId = Guid.NewGuid().ToString();
@@ -82,9 +81,7 @@ namespace Backend.Services
                 order.Profit += (product.RetailPrice - product.OriginalPrice);
 
                 product.Quantity -= orderItem.Quantity;
-                Console.WriteLine("ahihihihi");
             }
-            Console.WriteLine("ahihihi1123");
 
             this.DBContext.SaveChanges();
             return true;

@@ -4,6 +4,7 @@ using Backend.Utils.Common;
 using Backend.Controllers.DTO;
 using Backend.Pipe;
 using Backend.Models;
+using Backend.Utils.Locale;
 
 namespace Backend.Controllers
 {
@@ -51,6 +52,8 @@ namespace Backend.Controllers
             {
                 return View(Routers.CreateCategory.Page);
             }
+
+            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_ADD_SUCCESS, this.ViewData);
             return Redirect(Routers.Category.Link);
         }
 
@@ -80,6 +83,8 @@ namespace Backend.Controllers
             {
                 return this.UpdateCategory(categoryId);
             }
+
+            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_UPDATE_SUCCESS, this.ViewData);
             return Redirect(Routers.Category.Link);
         }
     }
