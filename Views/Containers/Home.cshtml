@@ -10,6 +10,7 @@
     var categoryId = new FormField() { Label = "CategoryId", Field = "categoryId", Type = "text", Value = "" };
 
     var createBtn = new FormField() { Label = "Search" };
+    var createBtnCart = new FormField() { Label = "Order" };
 
 }
 
@@ -105,6 +106,20 @@
                 </div><a class="block w-full px-2 py-2 text-center text-white bg-blue-600 rounded-md"
                     href="#mycart">View
                     My Cart</a>
+
+                <form method="post" action="@Routers.Order.Link">
+
+                    @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
+                    <div class="space-y-4">
+                        @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
+                        <div class="flex items-center space-x-2">
+                            <label class="font-medium">Payment Method: </label>
+                            @Html.RadioButton("paymentMethod", 1, true)<span>CREDIT CARDS </span>
+                            @Html.RadioButton("paymentMethod", 0)<span>CASH</span>
+                        </div>
+                    </div>
+                    @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", createBtnCart)
+                </form>
             </div>
 
         </div>

@@ -41,7 +41,7 @@ namespace Backend.Controllers
             Product product = this.ProductService.GetProductById(productId);
             if (product != null)
             {
-                var cart = this.HttpContext.Session.GetString(CartSession);
+                string cart = this.HttpContext.Session.GetString(CartSession);
                 if (cart != null)
                 {
                     var list = this.CartService.convertStringToCartItem(cart);
