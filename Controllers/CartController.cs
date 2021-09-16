@@ -5,6 +5,7 @@ using Backend.Utils.Common;
 using System.Collections.Generic;
 using Backend.Models;
 using Backend.Pipe;
+using Backend.Utils.Locale;
 
 namespace Backend.Controllers
 {
@@ -83,8 +84,11 @@ namespace Backend.Controllers
             }
             else
             {
+                ServerResponse.SetMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_FOUND, this.ViewData);
                 return Redirect(Routers.Product.Link);
             }
+
+            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_ADD_SUCCESS, this.ViewData);
             return Redirect(Routers.Home.Link);
         }
 

@@ -5,6 +5,7 @@ using Backend.Utils.Common;
 using Backend.Services.Interface;
 using Microsoft.AspNetCore.Http;
 using Backend.Pipe;
+using Backend.Utils.Locale;
 
 namespace Backend.Controllers
 {
@@ -54,6 +55,8 @@ namespace Backend.Controllers
                 Secure = true
 
             });
+
+            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_UPDATE_SUCCESS, this.ViewData);
             return Redirect(Routers.Login.Link);
         }
 
@@ -81,6 +84,7 @@ namespace Backend.Controllers
                 return View(Routers.UpdateUserInfo.Page);
             }
 
+            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_UPDATE_SUCCESS, this.ViewData);
             return Redirect(Routers.User.Link);
         }
     }

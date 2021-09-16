@@ -7,6 +7,7 @@ using Backend.Services.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using FluentValidation.Results;
+using Backend.Utils.Locale;
 
 namespace Backend.Controllers
 {
@@ -55,7 +56,7 @@ namespace Backend.Controllers
                 return this.CreateProduct();
             }
 
-
+            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_ADD_SUCCESS, this.ViewData);
             return Redirect(Routers.Product.Link);
         }
 
@@ -97,6 +98,7 @@ namespace Backend.Controllers
                 return this.UpdateProduct(productId);
             }
 
+            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_UPDATE_SUCCESS, this.ViewData);
             return Redirect(Routers.Product.Link);
         }
 

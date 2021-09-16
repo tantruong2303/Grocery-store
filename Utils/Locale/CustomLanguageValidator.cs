@@ -17,6 +17,12 @@ namespace Backend.Utils.Locale
         public static class MessageKey
         {
 
+            public const string MESSAGE_LOGIN_SUCCESS = "MESSAGE_LOGIN_SUCCESS";
+            public const string MESSAGE_REGISTER_SUCCESS = "MESSAGE_REGISTER_SUCCESS";
+            public const string MESSAGE_LOGOUT_SUCCESS = "MESSAGE_LOGOUT_SUCCESS";
+            public const string MESSAGE_UPDATE_SUCCESS = "MESSAGE_UPDATE_SUCCESS";
+            public const string MESSAGE_ADD_SUCCESS = "MESSAGE_ADD_SUCCESS";
+            public const string MESSAGE_DELETE_SUCCESS = "MESSAGE_DELETE_SUCCESS";
         }
         public CustomLanguageValidator()
         {
@@ -32,6 +38,15 @@ namespace Backend.Utils.Locale
             AddTranslation("en", ErrorMessageKey.ERROR_OLD_PASSWORD_NOT_CORRECT, "password is wrong");
             AddTranslation("en", ErrorMessageKey.ERROR_INVALID_FILE, "file is invalid");
             AddTranslation("en", ErrorMessageKey.ERROR_UPLOAD_FILE_FAILED, "upload file failed");
+
+            // Success message
+            // EN
+            AddTranslation("en", MessageKey.MESSAGE_LOGIN_SUCCESS, "login success");
+            AddTranslation("en", MessageKey.MESSAGE_REGISTER_SUCCESS, "register success");
+            AddTranslation("en", MessageKey.MESSAGE_LOGOUT_SUCCESS, "logout success");
+            AddTranslation("en", MessageKey.MESSAGE_UPDATE_SUCCESS, "update success");
+            AddTranslation("en", MessageKey.MESSAGE_ADD_SUCCESS, "add success");
+            AddTranslation("en", MessageKey.MESSAGE_DELETE_SUCCESS, "delete success");
 
             // Don't touch me please
             AddTranslation("en", "EmailValidator", "is not a valid email address");

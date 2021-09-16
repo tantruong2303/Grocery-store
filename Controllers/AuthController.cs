@@ -4,6 +4,7 @@ using Backend.Controllers.DTO;
 using Backend.Utils.Common;
 using Backend.Services.Interface;
 using Microsoft.AspNetCore.Http;
+using Backend.Utils.Locale;
 
 namespace Backend.Controllers
 {
@@ -43,6 +44,8 @@ namespace Backend.Controllers
                 Secure = true
 
             });
+
+            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_LOGIN_SUCCESS, this.ViewData);
             return Redirect(Routers.Home.Link);
         }
 
@@ -64,6 +67,7 @@ namespace Backend.Controllers
                 Secure = true
 
             });
+            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_LOGOUT_SUCCESS, this.ViewData);
             return Redirect(Routers.Login.Link);
         }
 
@@ -89,6 +93,7 @@ namespace Backend.Controllers
                 return View(Routers.Register.Page);
             }
 
+            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_REGISTER_SUCCESS, this.ViewData);
             return Redirect(Routers.Login.Link);
         }
 
