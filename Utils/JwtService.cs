@@ -6,7 +6,6 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Backend.Utils.Interface;
 
-
 namespace Backend.Utils
 {
     public class JwtService : IJwtService

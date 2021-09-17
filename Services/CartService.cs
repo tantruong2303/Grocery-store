@@ -1,16 +1,7 @@
 using System.Collections.Generic;
 using Backend.Services.Interface;
 using System;
-using Backend.Controllers.DTO;
-using FluentValidation.Results;
-using Backend.Utils.Common;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Backend.Utils;
-using Backend.DAO.Interface;
-using Backend.Utils.Locale;
 using Backend.Models;
-using Backend.Utils.Interface;
-using System.Linq;
 
 namespace Backend.Services
 {

@@ -7,7 +7,6 @@ using Backend.Utils.Common;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Backend.Utils;
 using Backend.DAO.Interface;
-using Backend.Utils.Locale;
 using Backend.Models;
 
 namespace Backend.Services

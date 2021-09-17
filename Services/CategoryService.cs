@@ -9,8 +9,6 @@ using Backend.Utils;
 using Backend.DAO.Interface;
 using Backend.Utils.Locale;
 using Backend.Models;
-using Backend.Utils.Interface;
-using System.Linq;
 
 namespace Backend.Services
 {

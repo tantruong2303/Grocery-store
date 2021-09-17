@@ -1,5 +1,4 @@
 using FluentValidation;
-using FluentValidation.Results;
 using Backend.Utils.Validator;
 
 namespace Backend.Controllers.DTO

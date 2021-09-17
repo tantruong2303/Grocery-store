@@ -4,7 +4,6 @@ using Backend.Controllers.DTO;
 using Backend.Utils.Common;
 using Backend.Services.Interface;
 using Microsoft.AspNetCore.Http;
-using Backend.Utils.Locale;
 
 namespace Backend.Controllers
 {

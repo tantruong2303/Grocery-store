@@ -54,6 +54,10 @@ namespace Backend.Controllers
                         {
                             item.Value.Quantity += quantity;
                             check = true;
+                            if (item.Value.Quantity <= 0)
+                            {
+                                list.Remove(productId);
+                            }
                             break;
                         }
                     }

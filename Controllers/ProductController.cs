@@ -1,4 +1,3 @@
-using System;
 using Microsoft.AspNetCore.Mvc;
 using Backend.Models;
 using Backend.Utils.Common;
@@ -7,7 +6,6 @@ using Backend.Pipe;
 using Backend.Services.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using FluentValidation.Results;
 using Backend.Utils.Locale;
 
 namespace Backend.Controllers

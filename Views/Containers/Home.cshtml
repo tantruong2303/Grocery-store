@@ -19,9 +19,9 @@
 <div class="flex flex-col justify-center flex-1 px-2 py-8 mb-48 space-y-4 md:flex-row md:space-x-4 md:space-y-0">
     <div class="flex-1 space-y-2">
         <form method="get" action="@Routers.Home.Link">
-            @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
+
             <div class="space-y-4">
-                @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
+
                 <div class="flex space-x-4 justify-items-stretch">
                     @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", min)
                     @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", max)
@@ -119,7 +119,7 @@
                                 @Html.RadioButton("paymentMethod", 1, true)<span>CREDIT CARDS </span>
                                 @Html.RadioButton("paymentMethod", 0)<span>CASH</span>
                             </div>
-                            @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
+
                             <a class="block w-full px-2 py-2 text-center text-white bg-blue-600 " href="#mycart">View
                                 My Cart</a>
                             @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", createBtnCart)

@@ -1,4 +1,3 @@
-using System.Linq;
 using System;
 using Backend.Controllers.DTO;
 using FluentValidation.Results;

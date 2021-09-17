@@ -8938,19 +8938,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lenovo\\.nuget\\packages\\": {}
+    "C:\\Users\\heaty566\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\grocery-store\\Backend.csproj",
-      "projectName": "Backend",
-      "projectPath": "C:\\Users\\Lenovo\\Desktop\\grocery-store\\Backend.csproj",
-      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lenovo\\Desktop\\grocery-store\\obj\\",
+      "projectUniqueName": "E:\\server\\grocery-store\\backend.csproj",
+      "projectName": "backend",
+      "projectPath": "E:\\server\\grocery-store\\backend.csproj",
+      "packagesPath": "C:\\Users\\heaty566\\.nuget\\packages\\",
+      "outputPath": "E:\\server\\grocery-store\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\heaty566\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

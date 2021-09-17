@@ -1,5 +1,4 @@
 using FluentValidation;
-using Backend.Models;
 
 namespace Backend.Controllers.DTO
 {

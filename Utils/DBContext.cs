@@ -4,8 +4,6 @@ using System.Threading.Tasks;
 using Backend.Models;
 using Backend.Utils.Interface;
 
-
-
 namespace Backend.Utils
 {
     public class DBContext : DbContext

@@ -2,10 +2,7 @@
 using Backend.Utils.Common;
 using Backend.Pipe;
 using Backend.Services.Interface;
-using Backend.Controllers.DTO;
-using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
-using System;
 using Backend.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Backend.Utils.Locale;
@@ -29,7 +26,7 @@ namespace Backend.Controllers
         }
 
         [HttpGet("")]
-        public IActionResult Index(double min, double max, string name, string categoryId)
+        public IActionResult Index(double min, double max, string name, string categoryId, string message)
         {
 
             var categories = this.CategoryService.GetCategories();
@@ -59,7 +56,7 @@ namespace Backend.Controllers
             if (max == 0)
             {
                 max = 9999999;
-                var query = $"?min={min}&max={max}&name={name}&CategoryId={categoryId}";
+                var query = $"?min={min}&max={max}&name={name}&CategoryId={categoryId}&message={message}";
                 return Redirect(Routers.Home.Link + query);
             }
 
