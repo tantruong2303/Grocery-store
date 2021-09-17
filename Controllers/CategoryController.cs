@@ -53,8 +53,7 @@ namespace Backend.Controllers
                 return View(Routers.CreateCategory.Page);
             }
 
-            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_ADD_SUCCESS, this.ViewData);
-            return Redirect(Routers.Category.Link);
+            return Redirect(Routers.Category.Link + "?message=create category success");
         }
 
 
@@ -84,8 +83,7 @@ namespace Backend.Controllers
                 return this.UpdateCategory(categoryId);
             }
 
-            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_UPDATE_SUCCESS, this.ViewData);
-            return Redirect(Routers.Category.Link);
+            return Redirect(Routers.Category.Link + "?message=update category success");
         }
     }
 }

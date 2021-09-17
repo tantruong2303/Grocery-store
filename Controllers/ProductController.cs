@@ -57,8 +57,7 @@ namespace Backend.Controllers
                 return this.CreateProduct();
             }
 
-            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_ADD_SUCCESS, this.ViewData);
-            return Redirect(Routers.Product.Link);
+            return Redirect(Routers.Product.Link + "?message=create product success");
         }
 
         [HttpGet("update")]
@@ -99,8 +98,7 @@ namespace Backend.Controllers
                 return this.UpdateProduct(productId);
             }
 
-            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_UPDATE_SUCCESS, this.ViewData);
-            return Redirect(Routers.Product.Link);
+            return Redirect(Routers.Product.Link + "?message=update product success");
         }
 
         [HttpGet("")]
