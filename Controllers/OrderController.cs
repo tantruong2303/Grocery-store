@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using Backend.Utils.Common;
 using Backend.Services.Interface;
@@ -38,19 +39,30 @@ namespace Backend.Controllers
         [ServiceFilter(typeof(AuthGuard))]
         public IActionResult GetAllOrders(string startDate, string endDate, string search)
         {
-            var orders = this.OrderService.GetAllOrders();
-            this.ViewData["orders"] = orders;
-            return View(Routers.Manager.Page);
+            var now = DateTime.Now;
+            string lastDate = now.AddDays(1).ToString("yyyy-MM-dd");
+            string firstDate = now.AddYears(-1).ToString("yyyy-MM-dd");
+
+            if (startDate == null || endDate == null)
+            {
+                var query = $"?startDate={firstDate}&endDate={lastDate}&search=";
+                return Redirect(Routers.Manager.Link + query);
+            }
+
+            try
+            {
+                var orders = this.OrderService.SearchOrders(startDate, endDate, search);
+                this.ViewData["orders"] = orders;
+                return View(Routers.Manager.Page);
+            }
+            catch (System.Exception)
+            {
+                var query = $"?startDate={firstDate}&endDate={lastDate}&search=";
+                return Redirect(Routers.Manager.Link + query);
+            }
         }
 
-        [HttpGet("search")]
-        [ServiceFilter(typeof(AuthGuard))]
-        public IActionResult SearchOrders(string startDate, string endDate, string search)
-        {
-            var orders = this.OrderService.SearchOrders(startDate, endDate, search);
-            this.ViewData["orders"] = orders;
-            return View(Routers.SearchOrders.Page);
-        }
+
 
         [HttpPost("")]
         [ServiceFilter(typeof(AuthGuard))]

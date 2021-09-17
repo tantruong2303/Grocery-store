@@ -1,3 +1,4 @@
+@model Backend.Models.Category
 @{
     ViewData["Title"] = Routers.Home.Title;
     List<Product> products = (List<Product>)ViewData["products"];
@@ -5,30 +6,34 @@
     Double total = 0;
 
     var min = new FormField() { Label = "Min", Field = "min", Type = "number", Value = 0 };
-    var max = new FormField() { Label = "Max", Field = "max", Type = "number", Value = 99999 };
+    var max = new FormField() { Label = "Max", Field = "max", Type = "number", Value = 0 };
     var name = new FormField() { Label = "Name", Field = "name", Type = "text", Value = "" };
     var categoryId = new FormField() { Label = "CategoryId", Field = "categoryId", Type = "text", Value = "" };
-
     var createBtn = new FormField() { Label = "Search" };
-    var createBtnCart = new FormField() { Label = "Order" };
+    var createBtnCart = new FormField() { Label = "Order Now" };
 
 }
 
 
 
-<div class="flex flex-col justify-center flex-1 px-2 py-8 mb-24 space-y-4 md:flex-row md:space-x-4 md:space-y-0">
-    <div class="space-y-2">
+<div class="flex flex-col justify-center flex-1 px-2 py-8 mb-48 space-y-4 md:flex-row md:space-x-4 md:space-y-0">
+    <div class="flex-1 space-y-2">
         <form method="get" action="@Routers.Home.Link">
-
             @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
             <div class="space-y-4">
                 @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
-                @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", min)
-                @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", max)
-                @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
-                @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", categoryId)
+                <div class="flex space-x-4 justify-items-stretch">
+                    @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", min)
+                    @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", max)
+                </div>
+                <div class="flex space-x-4 justify-items-stretch">
+                    @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
+                    @await Html.PartialAsync("~/Views/Components/Form/FormCategories.cshtml")
+                </div>
+                <div class="w-32">
+                    @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", createBtn)
+                </div>
             </div>
-            @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", createBtn)
         </form>
 
 
@@ -98,31 +103,31 @@
 
                 }
             }
-            <div
-                class="fixed z-50 w-full px-2 py-4 space-y-2 font-semibold transform -translate-x-1/2 bg-white border rounded-lg shadow-2xl bottom-4 md:w-101 left-1/2">
-                <div class="flex items-center justify-between">
-                    <p>Total</p>
-                    <p class="text-blue-600">$@total</p>
-                </div><a class="block w-full px-2 py-2 text-center text-white bg-blue-600 rounded-md"
-                    href="#mycart">View
-                    My Cart</a>
+            <div class="fixed z-50 w-full font-semibold transform -translate-x-1/2 bottom-4 md:w-101 left-1/2">
+                <div class="px-2 py-4 mx-2 space-y-2 bg-white border rounded-lg shadow-2xl">
 
-                <form method="post" action="@Routers.Order.Link">
-
-                    @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
-                    <div class="space-y-4">
-                        @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
-                        <div class="flex items-center space-x-2">
-                            <label class="font-medium">Payment Method: </label>
-                            @Html.RadioButton("paymentMethod", 1, true)<span>CREDIT CARDS </span>
-                            @Html.RadioButton("paymentMethod", 0)<span>CASH</span>
-                        </div>
+                    <div class="flex items-center justify-between">
+                        <p>Total</p>
+                        <p class="text-blue-600">$@total</p>
                     </div>
-                    @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", createBtnCart)
-                </form>
+
+                    <form method="post" action="@Routers.Order.Link">
+                        @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2 rounded-md">
+                                <label class="font-medium">Payment Method: </label>
+                                @Html.RadioButton("paymentMethod", 1, true)<span>CREDIT CARDS </span>
+                                @Html.RadioButton("paymentMethod", 0)<span>CASH</span>
+                            </div>
+                            @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
+                            <a class="block w-full px-2 py-2 text-center text-white bg-blue-600 " href="#mycart">View
+                                My Cart</a>
+                            @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", createBtnCart)
+                        </div>
+                    </form>
+                </div>
             </div>
 
         </div>
     </div>
-
 </div>

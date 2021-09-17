@@ -11,6 +11,8 @@ namespace Backend.Utils.Locale
             public const string ERROR_OLD_PASSWORD_NOT_CORRECT = "ERROR_OLD_PASSWORD_NOT_CORRECT";
             public const string ERROR_INVALID_FILE = "ERROR_INVALID_FILE";
             public const string ERROR_UPLOAD_FILE_FAILED = "ERROR_UPLOAD_FILE_FAILED";
+            public const string ERROR_MIN_GREATER_MAX = "ERROR_MIN_GREATER_MAX";
+            public const string ERROR_GREATER_ZERO = "ERROR_GREATER_ZERO";
 
         }
 
@@ -38,6 +40,8 @@ namespace Backend.Utils.Locale
             AddTranslation("en", ErrorMessageKey.ERROR_OLD_PASSWORD_NOT_CORRECT, "password is wrong");
             AddTranslation("en", ErrorMessageKey.ERROR_INVALID_FILE, "file is invalid");
             AddTranslation("en", ErrorMessageKey.ERROR_UPLOAD_FILE_FAILED, "upload file failed");
+            AddTranslation("en", ErrorMessageKey.ERROR_MIN_GREATER_MAX, "max price should be greater than max");
+            AddTranslation("en", ErrorMessageKey.ERROR_GREATER_ZERO, "should be greater than 0");
 
             // Success message
             // EN

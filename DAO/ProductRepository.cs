@@ -38,7 +38,6 @@ namespace Backend.DAO
         public (List<Product>, int) GetProducts(double min, double max, string name, string categoryId)
         {
             List<Product> products = this.DBContext.Product.Where(item => item.RetailPrice >= min && item.RetailPrice <= max && item.Name.Contains(name) && item.CategoryId.Contains(categoryId)).ToList();
-
             foreach (Product product in products)
             {
                 if (product != null)

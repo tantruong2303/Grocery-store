@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using Backend.Models;
 using Backend.Utils.Common;
@@ -106,33 +107,43 @@ namespace Backend.Controllers
         [ServiceFilter(typeof(AuthGuard))]
         public IActionResult Product(double min, double max, string name, string categoryId)
         {
-            var (products, count) = this.ProductService.GetProducts(0, double.MaxValue, "", "");
+            var categories = this.CategoryService.GetCategories();
+            var allCategory = new Category()
+            {
+                CategoryId = "",
+                Name = "All"
+            };
+            categories.Add(allCategory);
+            this.ViewData["categories"] = new SelectList(categories, "CategoryId", "Name", categories[categories.Count - 1].CategoryId);
+
+
             if (name == null) name = "";
             if (categoryId == null) categoryId = "";
-
-
-            var input = new SearchProductDTO()
+            if (max < 0)
             {
-                Min = min,
-                Max = max,
-                Name = name,
-                CategoryId = categoryId
-            };
-
-            ValidationResult result = new SearchProductDTOValidator().Validate(input);
-            if (!result.IsValid || (min > max))
+                ServerResponse.SetFieldErrorMessage("max", CustomLanguageValidator.ErrorMessageKey.ERROR_GREATER_ZERO, this.ViewData);
+                max = 9999999;
+            }
+            if (max == 0)
             {
-                ServerResponse.MapDetails(result, this.ViewData);
-                this.ViewData["products"] = products;
-                this.ViewData["count"] = count;
-                return View(Routers.Product.Page);
+                max = 9999999;
+                var query = $"?min={min}&max={max}&name={name}&CategoryId={categoryId}";
+                return Redirect(Routers.Product.Link + query);
             }
 
-            if (min != 0 && max != 0 && name != "" && categoryId != "")
+            if (min < 0)
             {
-                (products, count) = this.ProductService.GetProducts(min, max, name, categoryId);
-
+                ServerResponse.SetFieldErrorMessage("min", CustomLanguageValidator.ErrorMessageKey.ERROR_GREATER_ZERO, this.ViewData);
+                min = 0;
             }
+
+            if (min > max)
+            {
+                ServerResponse.SetErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_MIN_GREATER_MAX, this.ViewData);
+            }
+
+
+            var (products, count) = this.ProductService.GetProducts(min, max, name, categoryId);
             this.ViewData["products"] = products;
             this.ViewData["count"] = count;
             return View(Routers.Product.Page);

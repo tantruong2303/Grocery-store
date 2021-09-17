@@ -1,3 +1,4 @@
+@model Backend.Models.Category
 @{
     ViewData["Title"] = Routers.Product.Title;
     List<Product> products = (List<Product>)ViewData["products"];
@@ -15,23 +16,28 @@
 <div class="p-2 ">
     @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
 
-    <form method="get" action="@Routers.Home.Link">
-
+    <form method="get" action="@Routers.Product.Link">
         @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
         <div class="space-y-4">
             @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", min)
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", max)
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", categoryId)
+            <div class="flex space-x-4 justify-items-stretch">
+                @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", min)
+                @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", max)
+            </div>
+            <div class="flex space-x-4 justify-items-stretch">
+                @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
+                @await Html.PartialAsync("~/Views/Components/Form/FormCategories.cshtml")
+            </div>
+            <div class="flex space-x-4">
+                <div class="w-32">
+                    @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", createBtn)
+                </div>
+                <a href="@Routers.CreateProduct.Link"
+                    class="inline-block p-2 font-medium text-white duration-300 bg-blue-600 rounded-sm hover:bg-blue-800">Create
+                    New Product</a>
+            </div>
         </div>
-        @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", createBtn)
     </form>
-    <div>
-        <a href="@Routers.CreateProduct.Link"
-            class="inline-block p-2 font-medium text-white duration-300 bg-blue-600 rounded-sm hover:bg-blue-800">Create
-            New Product</a>
-    </div>
     <table class="my-2 bg-white border border-black fade-in">
         <thead>
             <tr>

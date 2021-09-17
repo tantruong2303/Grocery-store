@@ -1,51 +1,84 @@
 @{
     ViewData["Title"] = Routers.Manager.Title;
     List<Order> orders = (List<Order>)ViewData["orders"];
+    var startDate = new FormField() { Label = "Start Date", Field = "startDate", Type = "date" };
+    var endDate = new FormField() { Label = "End Date", Field = "endDate", Type = "date" };
+    var search = new FormField() { Label = "Name, Phone or Email", Field = "search", Type = "text" };
+    var searchBtn = new FormField() { Label = "Search" };
+
+    double totalValue = 0;
+    double totalProfit = 0;
 
 }
 
 
-<div class="p-2 ">
-    <form action="@Routers.SearchOrders.Link" method="get">
-        <label for="startDate">Start Date:</label>
-        <input type="date" id="date" name="startDate" required>
-        <label for="endDate">End Date:</label>
-        <input type="date" id="date" name="endDate" required>
-        <br>
-        <input type="text" placeholder="Search.." name="search" id="search" required>
-        <input type="submit">
-    </form>
+<div class="flex-1 p-2">
     @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
-    <table class="my-2 bg-white border border-black fade-in">
-        <thead>
-            <tr>
-                <th class="p-2 border border-black">CustomerId</th>
-                <th class="p-2 border border-black">Date</th>
-                <th class="p-2 border border-black">Payment method</th>
-                <th class="p-2 border border-black">Total</th>
-                <th class="p-2 border border-black">Profit</th>
-                <th class="p-2 border border-black">Detail</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var order in orders)
-            {
-                var detailLink = $"{@Routers.OrderDetail.Link}?orderId={@order.OrderId}";
+    <form action="@Routers.Manager.Link" method="get" class="space-y-2">
+        <div class="flex space-x-4">
+            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", startDate)
+            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", endDate)
+        </div>
+        <div class="flex space-x-4">
+            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", search)
+            <div class="flex-1"></div>
+        </div>
+        <div class="w-32">
+            @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", searchBtn)
+        </div>
 
-                @* var detailLink = $"{@Routers.OrderDetail.Link}?orderId={@order.OrderId}";
-                    var activeColor = order.Status == OrderStatus.ACTIVE ? "text-green-500" : "text-red-500"; *@
+    </form>
+    <div class="flex flex-col-reverse py-2">
+
+        <table class="my-2 bg-white border border-black fade-in">
+            <thead>
                 <tr>
-                    <td class="p-2 text-center border border-black max-h-16">@order.CustomerId</td>
-                    <td class="p-2 text-center border border-black">@order.CreateDate</td>
-                    <td class="p-2 text-center border border-black">@order.PaymentMethod</td>
-                    <td class="p-2 text-center border border-black">@order.Total</td>
-                    <td class="p-2 text-center border border-black">@order.Profit</td>
-                    <td class="p-2 text-center border border-black">
-                        <a href="@detailLink"
-                        class="inline-block p-2 font-medium text-white duration-300 bg-blue-600 rounded-sm hover:bg-blue-800">View</a>
-                    </td>
+                    <th class="p-2 border border-black">CustomerId</th>
+                    <th class="p-2 border border-black">Customer Name</th>
+                    <th class="p-2 border border-black">Customer Phone</th>
+                    <th class="p-2 border border-black">Date</th>
+                    <th class="p-2 border border-black">Payment method</th>
+                    <th class="p-2 border border-black">Total</th>
+                    <th class="p-2 border border-black">Profit</th>
+                    <th class="p-2 border border-black">Detail</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var order in orders)
+                {
+                    var detailLink = $"{@Routers.OrderDetail.Link}?orderId={@order.OrderId}";
+                    totalValue += order.Total;
+                    totalProfit += order.Profit;
+
+                    <tr>
+                        <td class="p-2 text-center border border-black max-h-16">@order.CustomerId</td>
+                        <td class="p-2 text-center border border-black">@order.Customer.Name</td>
+                        <td class="p-2 text-center border border-black">@order.Customer.Phone</td>
+                        <td class="p-2 text-center border border-black">@order.CreateDate</td>
+                        <td class="p-2 text-center border border-black">@order.PaymentMethod</td>
+                        <td class="p-2 text-center border border-black">@order.Total</td>
+                        <td class="p-2 text-center border border-black">@order.Profit</td>
+                        <td class="p-2 text-center border border-black">
+                            <a href="@detailLink"
+                            class="inline-block px-4 py-2 font-semibold text-white duration-300 bg-blue-600 rounded-sm hover:bg-blue-800">View
+                                Detail</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="flex items-center p-2 space-x-8 font-semibold bg-white">
+            <p>
+                Total Order: @orders.Count
+            </p>
+            <p>
+                Total Value: $@totalValue
+            </p>
+            <p>
+                Total Profit: $@totalProfit
+            </p>
+        </div>
+    </div>
+
 </div>

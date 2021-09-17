@@ -41,10 +41,10 @@ namespace Backend.DAO
             startDate = stringDate[1] + "/" + stringDate[2] + "/" + stringDate[0];
             stringDate = endDate.Split('-').ToList();
             endDate = stringDate[1] + "/" + stringDate[2] + "/" + stringDate[0];
-
             DateTime sDate = Convert.ToDateTime(startDate);
             DateTime eDate = Convert.ToDateTime(endDate);
             List<Order> orders = this.DBContext.Order.Where(x => x.Customer.Name.Contains(search) || x.Customer.Phone.Contains(search) || x.Customer.Email.Contains(search)).ToList();
+
             for (int i = orders.Count - 1; i >= 0; i--)
             {
                 DateTime date = Convert.ToDateTime(orders[i].CreateDate);

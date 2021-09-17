@@ -6,6 +6,10 @@ using Backend.Controllers.DTO;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using System;
+using Backend.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Backend.Utils.Locale;
+
 
 namespace Backend.Controllers
 {
@@ -16,15 +20,27 @@ namespace Backend.Controllers
         private const string CartSession = "CartSession";
         private readonly IProductService ProductService;
         private readonly ICartService CartService;
-        public HomeController(IProductService productService, ICartService cartService)
+        private readonly ICategoryService CategoryService;
+        public HomeController(IProductService productService, ICartService cartService, ICategoryService categoryService)
         {
             this.ProductService = productService;
             this.CartService = cartService;
+            this.CategoryService = categoryService;
         }
 
         [HttpGet("")]
         public IActionResult Index(double min, double max, string name, string categoryId)
         {
+
+            var categories = this.CategoryService.GetCategories();
+            var allCategory = new Category()
+            {
+                CategoryId = "",
+                Name = "All"
+            };
+            categories.Add(allCategory);
+            this.ViewData["categories"] = new SelectList(categories, "CategoryId", "Name", categories[categories.Count - 1].CategoryId);
+
             var cart = this.HttpContext.Session.GetString(CartSession);
             if (cart != null && cart != "")
             {
@@ -33,32 +49,33 @@ namespace Backend.Controllers
                 this.ViewData["cartItems"] = getCart;
             }
 
-            var (products, count) = this.ProductService.GetProducts(0, double.MaxValue, "", "");
             if (name == null) name = "";
             if (categoryId == null) categoryId = "";
-
-            var input = new SearchProductDTO()
+            if (max < 0)
             {
-                Min = min,
-                Max = max,
-                Name = name,
-                CategoryId = categoryId
-            };
-
-            ValidationResult result = new SearchProductDTOValidator().Validate(input);
-            if (!result.IsValid || (min > max))
+                ServerResponse.SetFieldErrorMessage("max", CustomLanguageValidator.ErrorMessageKey.ERROR_GREATER_ZERO, this.ViewData);
+                max = 9999999;
+            }
+            if (max == 0)
             {
-                ServerResponse.MapDetails(result, this.ViewData);
-                this.ViewData["products"] = products;
-                this.ViewData["count"] = count;
-                return View(Routers.Home.Page);
+                max = 9999999;
+                var query = $"?min={min}&max={max}&name={name}&CategoryId={categoryId}";
+                return Redirect(Routers.Home.Link + query);
             }
 
-            if (min != 0 && max != 0 && name != "" && categoryId != "")
+            if (min < 0)
             {
-                (products, count) = this.ProductService.GetProducts(min, max, name, categoryId);
-
+                ServerResponse.SetFieldErrorMessage("min", CustomLanguageValidator.ErrorMessageKey.ERROR_GREATER_ZERO, this.ViewData);
+                min = 0;
             }
+
+            if (min > max)
+            {
+                ServerResponse.SetErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_MIN_GREATER_MAX, this.ViewData);
+            }
+
+
+            var (products, count) = this.ProductService.GetProducts(min, max, name, categoryId);
             this.ViewData["products"] = products;
             this.ViewData["count"] = count;
 
