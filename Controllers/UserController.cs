@@ -56,8 +56,7 @@ namespace Backend.Controllers
 
             });
 
-            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_UPDATE_SUCCESS, this.ViewData);
-            return Redirect(Routers.Login.Link);
+            return Redirect(Routers.Login.Link + "?message=change password success");
         }
 
         [HttpGet("info")]
@@ -84,8 +83,7 @@ namespace Backend.Controllers
                 return View(Routers.UpdateUserInfo.Page);
             }
 
-            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_UPDATE_SUCCESS, this.ViewData);
-            return Redirect(Routers.User.Link);
+            return Redirect(Routers.User.Link + "?message=update information success");
         }
     }
 }

@@ -98,8 +98,7 @@ namespace Backend.Controllers
 
             this.HttpContext.Session.Remove(CartSession);
 
-            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_ADD_SUCCESS, this.ViewData);
-            return Redirect(Routers.Home.Link);
+            return Redirect(Routers.Home.Link + "?message=create order success");
         }
     }
 }

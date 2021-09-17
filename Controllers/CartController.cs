@@ -88,8 +88,7 @@ namespace Backend.Controllers
                 return Redirect(Routers.Product.Link);
             }
 
-            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_ADD_SUCCESS, this.ViewData);
-            return Redirect(Routers.Home.Link);
+            return Redirect(Routers.Home.Link + "?message=add cart success");
         }
 
         // [HttpPost("remove")]

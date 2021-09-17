@@ -45,8 +45,7 @@ namespace Backend.Controllers
 
             });
 
-            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_LOGIN_SUCCESS, this.ViewData);
-            return Redirect(Routers.Home.Link);
+            return Redirect(Routers.Home.Link + "?message=login success");
         }
 
 
@@ -67,8 +66,8 @@ namespace Backend.Controllers
                 Secure = true
 
             });
-            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_LOGOUT_SUCCESS, this.ViewData);
-            return Redirect(Routers.Login.Link);
+
+            return Redirect(Routers.Login.Link + "?message=logout success");
         }
 
 
@@ -93,8 +92,7 @@ namespace Backend.Controllers
                 return View(Routers.Register.Page);
             }
 
-            ServerResponse.SetMessage(CustomLanguageValidator.MessageKey.MESSAGE_REGISTER_SUCCESS, this.ViewData);
-            return Redirect(Routers.Login.Link);
+            return Redirect(Routers.Login.Link + "?message=register success");
         }
 
     }
