@@ -1094,7 +1094,6 @@ E:\MinhThuan\PRN211\5\grocery-store\obj\Debug\net5.0\backend.RazorTargetAssembly
 E:\MinhThuan\PRN211\5\grocery-store\obj\Debug\net5.0\backend.Views.pdb
 E:\MinhThuan\PRN211\5\grocery-store\obj\Debug\net5.0\backend.csproj.CopyComplete
 E:\MinhThuan\PRN211\5\grocery-store\obj\Debug\net5.0\backend.genruntimeconfig.cache
-C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Cart\Cart.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\Manager.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\SearchOrder.cshtml.g.cs
 e:\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\Manager.cshtml.g.cs

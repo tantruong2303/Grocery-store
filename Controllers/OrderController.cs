@@ -34,6 +34,16 @@ namespace Backend.Controllers
             return View(Routers.Order.Page);
         }
 
+        [HttpGet("detail")]
+        [ServiceFilter(typeof(AuthGuard))]
+        public IActionResult OrderDetail(string orderId)
+        {
+            var items = this.OrderService.GetOrderDetail(orderId);
+            this.ViewData["items"] = items;
+            return View(Routers.OrderDetail.Page);
+        }
+
+
         [HttpGet("manager")]
         [RoleGuardAttribute(new UserRole[] { UserRole.MANGER })]
         [ServiceFilter(typeof(AuthGuard))]
