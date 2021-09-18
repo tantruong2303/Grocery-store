@@ -1,6 +1,7 @@
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using System;
 
 
 namespace Backend.Utils.Common
@@ -31,7 +32,7 @@ namespace Backend.Utils.Common
             {
                 string field = failure.PropertyName;
                 string message = Helper.StringFormat(failure.ErrorMessage, failure.FormattedMessagePlaceholderValues);
-
+                Console.WriteLine(field + " " + message);
                 dataView[$"{field}Error"] = message;
             }
         }

@@ -11,7 +11,7 @@ namespace Backend.Controllers.DTO
     {
         public CreateOrderDTOValidator()
         {
-            RuleFor(x => x.PaymentMethod).NotEmpty().NotNull().IsInEnum();
+            RuleFor(x => x.PaymentMethod).NotNull().IsInEnum();
         }
     }
 }
