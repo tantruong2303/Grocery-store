@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Backend.Services.Interface;
@@ -22,107 +23,56 @@ namespace Backend.Controllers
             this.ProductService = productService;
         }
 
-        // [HttpGet("")]
-        // public IActionResult Cart()
-        // {
-        //     var cart = this.HttpContext.Session.GetString(CartSession);
-        //     if (cart != null && cart != "")
-        //     {
-        //         var list = this.CartService.convertStringToCartItem(cart);
-        //         var products = this.CartService.GetCartItems(list);
-        //         this.ViewData["cartItems"] = products;
-        //     }
-        //     return View(Routers.Cart.Page);
-        // }
+
 
         [HttpGet("add")]
         public IActionResult HandleAddToCart(string productId, int quantity)
         {
 
-            Product product = this.ProductService.GetProductById(productId);
-            if (product != null)
+            string cart = this.HttpContext.Session.GetString(CartSession);
+            Dictionary<string, CartItem> list = this.CartService.convertStringToCartItem(cart); ;
+            if (list == null)
             {
-                string cart = this.HttpContext.Session.GetString(CartSession);
-                if (cart != null)
+                list = new Dictionary<string, CartItem>();
+            }
+
+            Product product = this.ProductService.GetProductById(productId);
+            if (product.Quantity <= 0)
+            {
+                return Redirect(Routers.Home.Link + $"?errorMessage=Sorry, {product.Name} is out of stock ");
+            }
+
+            foreach (var item in list)
+            {
+                if (item.Key == productId)
                 {
-                    var list = this.CartService.convertStringToCartItem(cart);
-                    bool check = false;
-                    //cart exit and check if product exist
-                    foreach (var item in list)
+
+                    if (product.Quantity < item.Value.Quantity + quantity)
                     {
-                        if (item.Key == productId)
+                        item.Value.Quantity = product.Quantity;
+                        this.HttpContext.Session.SetString(CartSession, this.CartService.convertCartItemToString(list));
+                        return Redirect(Routers.Home.Link + $"?errorMessage=Sorry, {product.Name} only have {product.Quantity} ");
+                    }
+                    else
+                    {
+                        item.Value.Quantity += quantity;
+                        if (item.Value.Quantity <= 0)
                         {
-                            item.Value.Quantity += quantity;
-                            check = true;
-                            if (item.Value.Quantity <= 0)
-                            {
-                                list.Remove(productId);
-                            }
-                            break;
+                            list.Remove(productId);
                         }
                     }
-                    if (!check)
-                    {
-                        //create new cart item
-                        var newItem = new CartItem();
-                        newItem.ProductId = product.ProductId;
-                        newItem.Quantity = 1;
-
-                        list.Add(productId, newItem);
-
-                    }
                     this.HttpContext.Session.SetString(CartSession, this.CartService.convertCartItemToString(list));
-                }
-                else
-                {
-                    //create new cart item
-                    var item = new CartItem();
-                    item.ProductId = product.ProductId;
-                    item.Quantity = 1;
-                    Dictionary<string, CartItem> list = new Dictionary<string, CartItem>();
-                    list.Add(productId, item);
-
-                    // add list to new cart session
-                    this.HttpContext.Session.SetString(CartSession, this.CartService.convertCartItemToString(list));
+                    return Redirect(Routers.Home.Link + "?message=add cart success");
                 }
             }
-            else
-            {
-                ServerResponse.SetMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_FOUND, this.ViewData);
-                return Redirect(Routers.Product.Link);
-            }
 
+            var cartItem = new CartItem();
+            cartItem.ProductId = product.ProductId;
+            cartItem.Quantity = 1;
+            list.Add(productId, cartItem);
+
+            this.HttpContext.Session.SetString(CartSession, this.CartService.convertCartItemToString(list));
             return Redirect(Routers.Home.Link + "?message=add cart success");
         }
-
-        // [HttpPost("remove")]
-        // public IActionResult HandleRemoveCartItem(string productId)
-        // {
-        //     Product product = this.ProductService.GetProductById(productId);
-        //     if (product != null)
-        //     {
-        //         var cart = this.HttpContext.Session.GetString(CartSession);
-        //         var list = this.CartService.convertStringToCartItem(cart);
-        //         var check = false;
-        //         foreach (var item in list)
-        //         {
-        //             if (item.Key == productId)
-        //             {
-        //                 check = true;
-        //             }
-        //         }
-        //         if (check)
-        //         {
-        //             list.Remove(productId);
-        //         }
-        //         this.HttpContext.Session.SetString(CartSession, this.CartService.convertCartItemToString(list));
-        //     }
-        //     else
-        //     {
-        //         return Redirect(Routers.Product.Link);
-        //     }
-        //     return this.Cart();
-        // }
-
     }
 }

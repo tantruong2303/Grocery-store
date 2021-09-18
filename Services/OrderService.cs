@@ -42,25 +42,8 @@ namespace Backend.Services
             return this.OrderRepository.SearchOrders(startDate, endDate, search);
         }
 
-        public bool CreateOrderHandler(CreateOrderDTO input, ViewDataDictionary dataView, string cart)
+        public void CreateOrderHandler(CreateOrderDTO input, ViewDataDictionary dataView, Dictionary<string, CartItem> cart)
         {
-            ValidationResult result = new CreateOrderDTOValidator().Validate(input);
-            if (!result.IsValid)
-            {
-                ServerResponse.MapDetails(result, dataView);
-                return false;
-            }
-            var list = this.CartService.convertStringToCartItem(cart);
-            foreach (var cartItem in list)
-            {
-                Product product = this.ProductService.GetProductById(cartItem.Key);
-                if (cartItem.Value.Quantity > product.Quantity)
-                {
-                    // ServerResponse.SetErrorMessage(product.Name + CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_ENOUGH_QUANTITY, dataView);
-                    return false;
-                }
-            }
-
             User customer = (User)dataView["user"];
             Order order = new Order();
             order.OrderId = Guid.NewGuid().ToString();
@@ -74,7 +57,7 @@ namespace Backend.Services
             this.DBContext.SaveChanges();
 
 
-            foreach (var cartItem in list)
+            foreach (var cartItem in cart)
             {
                 Product product = this.ProductService.GetProductById(cartItem.Key);
                 OrderItem orderItem = new OrderItem();
@@ -94,7 +77,7 @@ namespace Backend.Services
             }
 
             this.DBContext.SaveChanges();
-            return true;
+
         }
     }
 }

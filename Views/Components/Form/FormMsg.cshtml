@@ -2,6 +2,9 @@
     <p class="text-red-500 first-letter fade-in">
         @ViewData["errorMessage"]
     </p>
+    <p class="text-red-500 first-letter fade-in">
+        @this.Context.Request.Query["errorMessage"]
+    </p>
     <p class="text-green-500 first-letter fade-in">
         @ViewData["message"]
     </p>

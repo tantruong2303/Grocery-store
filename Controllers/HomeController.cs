@@ -26,7 +26,7 @@ namespace Backend.Controllers
         }
 
         [HttpGet("")]
-        public IActionResult Index(double min, double max, string name, string categoryId, string message)
+        public IActionResult Index(double min, double max, string name, string categoryId, string message, string errorMessage)
         {
 
             var categories = this.CategoryService.GetCategories();
@@ -56,7 +56,7 @@ namespace Backend.Controllers
             if (max == 0)
             {
                 max = 9999999;
-                var query = $"?min={min}&max={max}&name={name}&CategoryId={categoryId}&message={message}";
+                var query = $"?min={min}&max={max}&name={name}&CategoryId={categoryId}&message={message}&errorMessage={errorMessage}";
                 return Redirect(Routers.Home.Link + query);
             }
 
