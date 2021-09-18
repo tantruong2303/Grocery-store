@@ -1,3 +1,5 @@
+![GitHub](https://img.shields.io/github/license/tantruong2303/grocery-store)
+
 [![Grocery Store Logo](doc/logo.png)](https://grocery.vinhnhan.com)
 
 ## [Live Demo](https://grocery.vinhnhan.com)
@@ -30,7 +32,7 @@ the manager to control all systems.
 
 - Frontend
      - cshtml - Server Side Rendering
-     - Tailwind - Styling
+     - Tailwind - Style
      - Javascript
 - Backend
      - .NET - Server Core
@@ -41,13 +43,32 @@ the manager to control all systems.
 
 ## Team Member
 
-- Phạm Vĩnh Nhân - Fullstack + Planner
-- Nguyễn Thái Thịnh - Backend
-- Trần Minh Thuận - Backend
-- Trương Bỉnh Tân - Backend
+- Phạm Vĩnh Nhân | Full-Stack - Leader
+     - Gmail: heaty566@gmail.com
+     - Linkedin: https://www.linkedin.com/in/heaty566
+     - Github: https://github.com/Heaty566
+- Nguyễn Thái Thịnh | Backend
+     - Gmail: thaithinhbanzai79@gmail.com
+     - Linkedin: https://www.linkedin.com/in/thaithinhfgc
+     - Github: https://github.com/thaithinhfgc
+- Trần Minh Thuận | Backend
+     - Gmail: minhthuan1912001@gmail.com
+     - Linkedin: https://www.linkedin.com/in/tranminhthuan19
+     - Github: https://github.com/TranMinhThuanFPTU
+- Trương Bỉnh Tân | Backend
+     - Gmail: tantruong2303@gmail.com
+     - Linkedin: https://linkedin.com/in/truongbinhtan
+     - Github: https://github.com/tantruong2303
 
 ## Project Picture
+
+![Home Page](doc/home.jpg)
+![Manager Page](doc/manager.jpg)
+![Order Page](doc/order.jpg)
+![Login Page](doc/login.jpg)
 
 ## Bug Report
 
 Feel free to create an issue request anytime we will check it out and fix it as soon as possible. Thank You So Much.
+
+### Mono Infinity © 2021
