@@ -1,3 +1,5 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/88e42f870d704d47a1bd291900392e4e)](https://www.codacy.com/gh/tantruong2303/grocery-store/dashboard?utm_source=github.com&utm_medium=referral&utm_content=tantruong2303/grocery-store&utm_campaign=Badge_Grade)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tantruong2303/grocery-store/auto-build-deploy)
 ![GitHub](https://img.shields.io/github/license/tantruong2303/grocery-store)
 
 [![Grocery Store Logo](doc/logo.png)](https://grocery.vinhnhan.com)
@@ -36,6 +38,7 @@ the manager to control all systems.
      - Javascript
 - Backend
      - .NET - Server Core
+     - Entity Framework
      - SQL Server 2019 - Database
 - Deployment
      - Docker - Container Management

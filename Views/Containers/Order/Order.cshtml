@@ -35,4 +35,8 @@
             }
         </tbody>
     </table>
+    @if (orders.Count <= 0)
+    {
+        <div class="text-xl">List is empty</div>
+    }
 </div>
