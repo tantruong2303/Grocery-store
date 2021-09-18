@@ -1,4 +1,5 @@
-![GitHub](https://img.shields.io/github/license/tantruong2303/grocery-store)
+![GitHub](https://img.shields.io/github/license/tantruong2303/grocery-store) 
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tantruong2303/grocery-store/auto-build-deploy)
 
 [![Grocery Store Logo](doc/logo.png)](https://grocery.vinhnhan.com)
 
