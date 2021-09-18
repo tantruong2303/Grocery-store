@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Backend.Utils;
 using Backend.DAO.Interface;
 using Backend.Models;
+using Backend.Utils.Locale;
 
 namespace Backend.Services
 {
@@ -65,7 +66,11 @@ namespace Backend.Services
             foreach (var cartItem in list)
             {
                 Product product = this.ProductService.GetProductById(cartItem.Key);
-
+                if (cartItem.Value.Quantity > product.Quantity)
+                {
+                    ServerResponse.SetFieldErrorMessage("Quantity", CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_ENOUGH_QUANTITY, dataView);
+                    return false;
+                }
                 OrderItem orderItem = new OrderItem();
                 orderItem.OrderItemId = Guid.NewGuid().ToString();
                 orderItem.Quantity = cartItem.Value.Quantity;
