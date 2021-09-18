@@ -46,22 +46,31 @@ namespace Backend.Controllers
                 if (cart != null)
                 {
                     var list = this.CartService.convertStringToCartItem(cart);
-                    bool check = false;
+                    bool isExist = false;
+                    bool isEnough = false;
                     //cart exit and check if product exist
                     foreach (var item in list)
                     {
+
                         if (item.Key == productId)
                         {
-                            item.Value.Quantity += quantity;
-                            check = true;
-                            if (item.Value.Quantity <= 0)
+                            if (product.Quantity > item.Value.Quantity)
                             {
-                                list.Remove(productId);
+                                item.Value.Quantity += quantity;
+                                isExist = true;
+                                if (item.Value.Quantity <= 0)
+                                {
+                                    list.Remove(productId);
+                                }
+                                break;
                             }
-                            break;
+                            else
+                            {
+                                return Redirect(Routers.Home.Link + "?message=Sorry we don't have enough");
+                            }
                         }
                     }
-                    if (!check)
+                    if (!isExist)
                     {
                         //create new cart item
                         var newItem = new CartItem();
