@@ -13,7 +13,7 @@ namespace Backend.Utils.Locale
             public const string ERROR_UPLOAD_FILE_FAILED = "ERROR_UPLOAD_FILE_FAILED";
             public const string ERROR_MIN_GREATER_MAX = "ERROR_MIN_GREATER_MAX";
             public const string ERROR_GREATER_ZERO = "ERROR_GREATER_ZERO";
-
+            public const string ERROR_NOT_ENOUGH_QUANTITY = "ERROR_NOT_ENOUGH_QUANTITY";
         }
 
         public static class MessageKey
@@ -25,6 +25,7 @@ namespace Backend.Utils.Locale
             public const string MESSAGE_UPDATE_SUCCESS = "MESSAGE_UPDATE_SUCCESS";
             public const string MESSAGE_ADD_SUCCESS = "MESSAGE_ADD_SUCCESS";
             public const string MESSAGE_DELETE_SUCCESS = "MESSAGE_DELETE_SUCCESS";
+
         }
         public CustomLanguageValidator()
         {
@@ -40,8 +41,9 @@ namespace Backend.Utils.Locale
             AddTranslation("en", ErrorMessageKey.ERROR_OLD_PASSWORD_NOT_CORRECT, "password is wrong");
             AddTranslation("en", ErrorMessageKey.ERROR_INVALID_FILE, "file is invalid");
             AddTranslation("en", ErrorMessageKey.ERROR_UPLOAD_FILE_FAILED, "upload file failed");
-            AddTranslation("en", ErrorMessageKey.ERROR_MIN_GREATER_MAX, "max price should be greater than max");
+            AddTranslation("en", ErrorMessageKey.ERROR_MIN_GREATER_MAX, "max price should be greater than min");
             AddTranslation("en", ErrorMessageKey.ERROR_GREATER_ZERO, "should be greater than 0");
+            AddTranslation("en", ErrorMessageKey.ERROR_NOT_ENOUGH_QUANTITY, "is not enough in stock");
 
             // Success message
             // EN

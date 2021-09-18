@@ -25,9 +25,9 @@ namespace Backend.Controllers.DTO
             RuleFor(x => x.Name).NotEmpty().NotNull().Length(3, 50);
             RuleFor(x => x.Status).IsInEnum().NotNull();
             RuleFor(x => x.Description).NotEmpty().Length(3, 500);
-            RuleFor(x => x.OriginalPrice).NotEmpty();
-            RuleFor(x => x.RetailPrice).NotEmpty();
-            RuleFor(x => x.Quantity).NotEmpty();
+            RuleFor(x => x.OriginalPrice).NotEmpty().NotEmpty().InclusiveBetween(0, 1000000);
+            RuleFor(x => x.RetailPrice).NotEmpty().InclusiveBetween(0, 1000000);
+            RuleFor(x => x.Quantity).NotEmpty().InclusiveBetween(0, 10000);
             RuleFor(x => x.CategoryId).NotEmpty();
         }
     }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Backend.Utils;
 using Backend.DAO.Interface;
 using Backend.Models;
+using Backend.Utils.Locale;
 
 namespace Backend.Services
 {
@@ -49,6 +50,17 @@ namespace Backend.Services
                 ServerResponse.MapDetails(result, dataView);
                 return false;
             }
+            var list = this.CartService.convertStringToCartItem(cart);
+            foreach (var cartItem in list)
+            {
+                Product product = this.ProductService.GetProductById(cartItem.Key);
+                if (cartItem.Value.Quantity > product.Quantity)
+                {
+                    // ServerResponse.SetErrorMessage(product.Name + CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_ENOUGH_QUANTITY, dataView);
+                    return false;
+                }
+            }
+
             User customer = (User)dataView["user"];
             Order order = new Order();
             order.OrderId = Guid.NewGuid().ToString();
@@ -61,11 +73,10 @@ namespace Backend.Services
             this.DBContext.Order.Add(order);
             this.DBContext.SaveChanges();
 
-            var list = this.CartService.convertStringToCartItem(cart);
+
             foreach (var cartItem in list)
             {
                 Product product = this.ProductService.GetProductById(cartItem.Key);
-
                 OrderItem orderItem = new OrderItem();
                 orderItem.OrderItemId = Guid.NewGuid().ToString();
                 orderItem.Quantity = cartItem.Value.Quantity;
