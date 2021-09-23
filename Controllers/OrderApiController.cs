@@ -7,15 +7,13 @@ using Backend.Pipe;
 using Backend.Models;
 using Backend.Utils.Locale;
 using Backend.Controllers.DTO;
-
-
 using System.Collections.Generic;
-
 using FluentValidation.Results;
 
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Backend.Utils;
 using Backend.DAO.Interface;
+using grocery_store.Utils.Common;
 
 namespace Backend.Controllers
 {
@@ -33,7 +31,7 @@ namespace Backend.Controllers
         }
         [HttpPost("")]
         [ServiceFilter(typeof(AuthGuard))]
-        public IActionResult CreateOrder(PaymentMethod paymentMethod)
+        public IActionResult CreateOrder([FromBody] CreateOrderDTO body)
         {
             string cart = this.HttpContext.Session.GetString(CartSession);
             if (cart == null || cart == "")
@@ -41,34 +39,60 @@ namespace Backend.Controllers
 
                 return Redirect(Routers.Home.Link + $"?errorMessage=cart is empty");
             }
-
-            var input = new CreateOrderDTO()
-            {
-                PaymentMethod = paymentMethod,
-            };
-
-            ValidationResult result = new CreateOrderDTOValidator().Validate(input);
+            var res = new ServerApiResponse<string>();
+            ValidationResult result = new CreateOrderDTOValidator().Validate(body);
             if (!result.IsValid)
             {
-                ServerResponse.MapDetails(result, this.ViewData);
-                return Redirect(Routers.Home.Link);
+                res.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_INVALID_FILE);
+                return new BadRequestObjectResult(res.getResponse());
             }
-
-
+            double total = 0;
+            double profit = 0;
             var list = this.CartService.convertStringToCartItem(cart);
             foreach (var cartItem in list)
             {
                 Product product = this.ProductService.GetProductById(cartItem.Key);
+                total += product.RetailPrice;
+                profit += (product.RetailPrice - product.OriginalPrice);
                 if (cartItem.Value.Quantity > product.Quantity)
                 {
+
                     return Redirect(Routers.Home.Link + $"?errorMessage={product.Name} have only {product.Quantity}");
                 }
             }
+            User customer = (User)ViewData["user"];
 
-            this.OrderService.CreateOrderHandler(input, this.ViewData, list);
+            Order order = new Order();
+            order.OrderId = Guid.NewGuid().ToString();
+            order.Status = OrderStatus.ACTIVE;
+            order.Total = total;
+            order.Profit = profit;
+            order.CreateDate = DateTime.Now.ToShortDateString();
+            order.PaymentMethod = body.PaymentMethod;
+            order.CustomerId = customer.UserId;
+
+            this.OrderService.CreateOrderHandler(order);
+
+            foreach (var cartItem in list)
+            {
+                Product product = this.ProductService.GetProductById(cartItem.Key);
+                OrderItem orderItem = new OrderItem();
+
+                orderItem.OrderItemId = Guid.NewGuid().ToString();
+                orderItem.Quantity = cartItem.Value.Quantity;
+                orderItem.CreateDate = DateTime.Now.ToShortDateString();
+                orderItem.SalePrice = product.RetailPrice;
+                orderItem.OrderId = order.OrderId;
+                orderItem.ProductId = product.ProductId;
+                product.Quantity -= orderItem.Quantity;
+                this.OrderService.CreateOrderItemHandler(orderItem);
+
+            }
+
+
             this.HttpContext.Session.Remove(CartSession);
-
-            return Redirect(Routers.Home.Link + "?message=create order success");
+            res.setMessage(CustomLanguageValidator.MessageKey.MESSAGE_ORDER_SUCCESS);
+            return new ObjectResult(res.getResponse());
         }
     }
 }
