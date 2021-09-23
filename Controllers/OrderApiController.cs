@@ -13,7 +13,7 @@ using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Backend.Utils;
 using Backend.DAO.Interface;
-using grocery_store.Utils.Common;
+using Backend.Utils.Common;
 
 namespace Backend.Controllers
 {
@@ -33,17 +33,17 @@ namespace Backend.Controllers
         [ServiceFilter(typeof(AuthGuard))]
         public IActionResult CreateOrder([FromBody] CreateOrderDTO body)
         {
+            var res = new ServerApiResponse<string>();
             string cart = this.HttpContext.Session.GetString(CartSession);
             if (cart == null || cart == "")
             {
-
-                return Redirect(Routers.Home.Link + $"?errorMessage=cart is empty");
+                res.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_CART_EMPTY);
+                return new BadRequestObjectResult(res.getResponse());
             }
-            var res = new ServerApiResponse<string>();
             ValidationResult result = new CreateOrderDTOValidator().Validate(body);
             if (!result.IsValid)
             {
-                res.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_INVALID_FILE);
+                res.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_INVALID_ORDER);
                 return new BadRequestObjectResult(res.getResponse());
             }
             double total = 0;
@@ -56,8 +56,8 @@ namespace Backend.Controllers
                 profit += (product.RetailPrice - product.OriginalPrice);
                 if (cartItem.Value.Quantity > product.Quantity)
                 {
-
-                    return Redirect(Routers.Home.Link + $"?errorMessage={product.Name} have only {product.Quantity}");
+                    res.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_INVALID_ORDER, $"{product.Quantity}");
+                    return new BadRequestObjectResult(res.getResponse());
                 }
             }
             User customer = (User)ViewData["user"];

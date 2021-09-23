@@ -4,7 +4,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using Backend.Utils;
 
-namespace grocery_store.Utils.Common
+namespace Backend.Utils.Common
 {
     public class ServerApiResponse<T>
     {
