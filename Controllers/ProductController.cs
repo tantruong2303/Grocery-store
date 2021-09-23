@@ -46,35 +46,6 @@ namespace Backend.Controllers
             return View(Routers.UpdateProduct.Page);
         }
 
-        [HttpPost("update")]
-        public IActionResult HandleUpdateProduct(string productId, string name, ProductStatus status, string description, float originalPrice, float retailPrice, int quantity, IFormFile file, string categoryId)
-        {
-
-
-            var input = new UpdateProductDTO()
-            {
-                ProductId = productId,
-                Name = name,
-                Status = status,
-                Description = description,
-                RetailPrice = retailPrice,
-                OriginalPrice = originalPrice,
-                Quantity = quantity,
-                File = file,
-                CategoryId = categoryId,
-            };
-
-            var isValid = this.ProductService.UpdateProductHandler(input, this.ViewData);
-
-            if (!isValid)
-            {
-
-                return this.UpdateProduct(productId);
-            }
-
-            return Redirect(Routers.Product.Link + "?message=update product success");
-        }
-
         [HttpGet("")]
         [ServiceFilter(typeof(AuthGuard))]
         public IActionResult Product(double min, double max, string name, string categoryId)

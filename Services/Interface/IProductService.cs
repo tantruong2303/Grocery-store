@@ -9,7 +9,7 @@ namespace Backend.Services.Interface
     {
         public (List<Product>, int) GetProducts(double min, double max, string name, string categoryId);
         public bool CreateProductHandler(Product product);
-        public bool UpdateProductHandler(UpdateProductDTO input, ViewDataDictionary dataView);
+        public bool UpdateProductHandler(Product product);
         public Product GetProductById(string productId);
 
     }
