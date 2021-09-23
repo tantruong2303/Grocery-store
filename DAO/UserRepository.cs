@@ -24,5 +24,11 @@ namespace Backend.DAO
             User user = this.DBContext.User.FirstOrDefault(item => item.UserId == id);
             return user;
         }
+
+        public bool RegisterHandler(User user)
+        {
+            this.DBContext.User.Add(user);
+            return this.DBContext.SaveChanges() > 0;
+        }
     }
 }

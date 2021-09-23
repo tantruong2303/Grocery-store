@@ -37,26 +37,6 @@ namespace Backend.Controllers
         }
 
 
-        [HttpPost("create")]
-        public IActionResult HandleCreateCategory(string name, string description, int status)
-        {
-            var input = new CreateCategoryDTO()
-            {
-                Name = name,
-                Description = description,
-                Status = status
-            };
-            var isValid = this.CategoryService.CreateCategoryHandler(input, this.ViewData);
-            if (!isValid)
-            {
-                return View(Routers.CreateCategory.Page);
-            }
-
-            return Redirect(Routers.Category.Link + "?message=create category success");
-        }
-
-
-
         [HttpGet("update")]
         public IActionResult UpdateCategory(string categoryId)
         {

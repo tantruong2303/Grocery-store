@@ -6,5 +6,6 @@ namespace Backend.DAO.Interface
     {
         public User GetUserByUsername(string username);
         public User GetUserById(string id);
+        public bool RegisterHandler(User user);
     }
 }
