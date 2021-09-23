@@ -14,6 +14,7 @@ namespace Backend.Utils.Locale
             public const string ERROR_MIN_GREATER_MAX = "ERROR_MIN_GREATER_MAX";
             public const string ERROR_GREATER_ZERO = "ERROR_GREATER_ZERO";
             public const string ERROR_NOT_ENOUGH_QUANTITY = "ERROR_NOT_ENOUGH_QUANTITY";
+
         }
 
         public static class MessageKey
@@ -25,6 +26,7 @@ namespace Backend.Utils.Locale
             public const string MESSAGE_UPDATE_SUCCESS = "MESSAGE_UPDATE_SUCCESS";
             public const string MESSAGE_ADD_SUCCESS = "MESSAGE_ADD_SUCCESS";
             public const string MESSAGE_DELETE_SUCCESS = "MESSAGE_DELETE_SUCCESS";
+            public const string MESSAGE_ORDER_SUCCESS = "MESSAGE_ORDER_SUCCESS";
 
         }
         public CustomLanguageValidator()
@@ -53,6 +55,7 @@ namespace Backend.Utils.Locale
             AddTranslation("en", MessageKey.MESSAGE_UPDATE_SUCCESS, "update success");
             AddTranslation("en", MessageKey.MESSAGE_ADD_SUCCESS, "add success");
             AddTranslation("en", MessageKey.MESSAGE_DELETE_SUCCESS, "delete success");
+            AddTranslation("en", MessageKey.MESSAGE_ORDER_SUCCESS, "order success");
 
             // Don't touch me please
             AddTranslation("en", "EmailValidator", "is not a valid email address");
