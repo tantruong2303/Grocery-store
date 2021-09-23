@@ -8943,11 +8943,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ACER\\Desktop\\RESTFUL\\grocery-store\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Users\\ACER\\Desktop\\RESTFUL\\grocery-store\\backend.csproj",
+      "projectPath": "C:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\backend.csproj",
       "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ACER\\Desktop\\RESTFUL\\grocery-store\\obj\\",
+      "outputPath": "C:\\Users\\ACER\\Desktop\\Grocery\\grocery-store\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9043,7 +9043,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

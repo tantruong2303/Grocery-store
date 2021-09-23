@@ -1,7 +1,7 @@
 using Backend.Services.Interface;
 using Backend.Utils.Locale;
 using Backend.Controllers.DTO;
-using grocery_store.Utils.Common;
+using Backend.Utils.Common;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -38,13 +38,13 @@ namespace Backend.Controllers
             if (user == null)
             {
                 res.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_LOGIN_FAIL);
-                return null;
+                return new BadRequestObjectResult(res.getResponse());
             }
 
             if (!this.AuthService.ComparePassword(body.Password, user.Password))
             {
                 res.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_LOGIN_FAIL);
-                return null;
+                return new BadRequestObjectResult(res.getResponse());
             }
 
             var token = this.AuthService.LoginHandler(user.UserId);
