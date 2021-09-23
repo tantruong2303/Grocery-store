@@ -14,6 +14,9 @@ namespace Backend.Utils.Locale
             public const string ERROR_MIN_GREATER_MAX = "ERROR_MIN_GREATER_MAX";
             public const string ERROR_GREATER_ZERO = "ERROR_GREATER_ZERO";
             public const string ERROR_NOT_ENOUGH_QUANTITY = "ERROR_NOT_ENOUGH_QUANTITY";
+            public const string ERROR_CART_EMPTY = "ERROR_CART_EMPTY";
+            public const string ERROR_INVALID_ORDER = "ERROR_INVALID_ORDER";
+            public const string ERROR_INVALID_QUANTITY = "ERROR_INVALID_QUANTITY";
 
         }
 
@@ -46,6 +49,10 @@ namespace Backend.Utils.Locale
             AddTranslation("en", ErrorMessageKey.ERROR_MIN_GREATER_MAX, "max price should be greater than min");
             AddTranslation("en", ErrorMessageKey.ERROR_GREATER_ZERO, "should be greater than 0");
             AddTranslation("en", ErrorMessageKey.ERROR_NOT_ENOUGH_QUANTITY, "is not enough in stock");
+            AddTranslation("en", ErrorMessageKey.ERROR_CART_EMPTY, "cart is empty");
+            AddTranslation("en", ErrorMessageKey.ERROR_INVALID_ORDER, "order is invalid");
+            AddTranslation("en", ErrorMessageKey.ERROR_INVALID_QUANTITY, "have only");
+
 
             // Success message
             // EN

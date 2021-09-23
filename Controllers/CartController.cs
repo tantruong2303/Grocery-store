@@ -28,7 +28,7 @@ namespace Backend.Controllers
         [HttpGet("add")]
         public IActionResult HandleAddToCart(string productId, int quantity)
         {
-
+            var res = new ServerApiResponse<string>();
             string cart = this.HttpContext.Session.GetString(CartSession);
             Dictionary<string, CartItem> list = this.CartService.convertStringToCartItem(cart); ;
             if (list == null)
@@ -39,7 +39,8 @@ namespace Backend.Controllers
             Product product = this.ProductService.GetProductById(productId);
             if (product.Quantity <= 0)
             {
-                return Redirect(Routers.Home.Link + $"?errorMessage=Sorry, {product.Name} is out of stock ");
+                res.setErrorMessage("");
+                return new BadRequestObjectResult(res.getResponse());
             }
 
             foreach (var item in list)
@@ -51,7 +52,8 @@ namespace Backend.Controllers
                     {
                         item.Value.Quantity = product.Quantity;
                         this.HttpContext.Session.SetString(CartSession, this.CartService.convertCartItemToString(list));
-                        return Redirect(Routers.Home.Link + $"?errorMessage=Sorry, {product.Name} only have {product.Quantity} ");
+                        res.setErrorMessage("");
+                        return new BadRequestObjectResult(res.getResponse());
                     }
                     else
                     {
@@ -62,7 +64,8 @@ namespace Backend.Controllers
                         }
                     }
                     this.HttpContext.Session.SetString(CartSession, this.CartService.convertCartItemToString(list));
-                    return Redirect(Routers.Home.Link + "?message=add cart success");
+                    res.setMessage("");
+                    return new ObjectResult(res.getResponse());
                 }
             }
 
@@ -72,7 +75,8 @@ namespace Backend.Controllers
             list.Add(productId, cartItem);
 
             this.HttpContext.Session.SetString(CartSession, this.CartService.convertCartItemToString(list));
-            return Redirect(Routers.Home.Link + "?message=add cart success");
+            res.setMessage("");
+            return new ObjectResult(res.getResponse());
         }
     }
 }
