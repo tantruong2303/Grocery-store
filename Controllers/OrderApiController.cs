@@ -7,13 +7,8 @@ using Backend.Pipe;
 using Backend.Models;
 using Backend.Utils.Locale;
 using Backend.Controllers.DTO;
-using System.Collections.Generic;
 using FluentValidation.Results;
 
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Backend.Utils;
-using Backend.DAO.Interface;
-using Backend.Utils.Common;
 
 namespace Backend.Controllers
 {

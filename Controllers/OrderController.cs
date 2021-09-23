@@ -2,20 +2,9 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using Backend.Utils.Common;
 using Backend.Services.Interface;
-using Microsoft.AspNetCore.Http;
 using Backend.Pipe;
 using Backend.Models;
-using Backend.Utils.Locale;
-using Backend.Controllers.DTO;
 
-
-using System.Collections.Generic;
-
-using FluentValidation.Results;
-
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Backend.Utils;
-using Backend.DAO.Interface;
 
 
 namespace Backend.Controllers

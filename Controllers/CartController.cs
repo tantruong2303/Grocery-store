@@ -6,7 +6,6 @@ using Backend.Utils.Common;
 using System.Collections.Generic;
 using Backend.Models;
 using Backend.Pipe;
-using Backend.Utils.Locale;
 
 namespace Backend.Controllers
 {
