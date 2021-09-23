@@ -34,32 +34,10 @@ namespace Backend.Services
             return this.CategoryRepository.GetCategories();
         }
 
-        public bool CreateCategoryHandler(CreateCategoryDTO input, ViewDataDictionary dataView)
+        public bool CreateCategoryHandler(Category category)
         {
 
-
-            ValidationResult result = new CreateCategoryDTOValidator().Validate(input);
-            if (!result.IsValid)
-            {
-                ServerResponse.MapDetails(result, dataView);
-                return false;
-            }
-            var isExistCategory = this.CategoryRepository.GetCategoryByCategoryName(input.Name);
-            if (isExistCategory != null)
-            {
-                ServerResponse.SetFieldErrorMessage("name", CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, dataView);
-                return false;
-            }
-
-            var category = new Category();
-            category.CategoryId = Guid.NewGuid().ToString();
-            category.Name = input.Name;
-            category.Description = input.Description;
-            category.Status = (CategoryStatus)input.Status;
-            category.CreateDate = DateTime.Now.ToShortDateString();
-            this.DBContext.Category.Add(category);
-            this.DBContext.SaveChanges();
-            return true;
+            return this.CategoryRepository.CreateCategoryHandler(category);
         }
 
         public bool UpdateCategoryHandler(UpdateCategoryDTO input, ViewDataDictionary dataView)

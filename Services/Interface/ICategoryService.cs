@@ -7,7 +7,7 @@ namespace Backend.Services.Interface
 {
     public interface ICategoryService
     {
-        public bool CreateCategoryHandler(CreateCategoryDTO input, ViewDataDictionary dataView);
+        public bool CreateCategoryHandler(Category category);
         public bool UpdateCategoryHandler(UpdateCategoryDTO input, ViewDataDictionary dataView);
         public List<Category> GetCategories();
         public Category GetCategory(string categoryId);
