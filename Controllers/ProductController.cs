@@ -33,30 +33,6 @@ namespace Backend.Controllers
             return View(Routers.CreateProduct.Page);
         }
 
-        [HttpPost("create")]
-        public IActionResult HandleCreateProduct(string name, string description, float originalPrice, float retailPrice, int quantity, IFormFile file, string categoryId)
-        {
-            var input = new CreateProductDTO()
-            {
-                Name = name,
-                Description = description,
-                RetailPrice = retailPrice,
-                OriginalPrice = originalPrice,
-                Quantity = quantity,
-                File = file,
-                CategoryId = categoryId,
-            };
-
-            var isValid = this.ProductService.CreateProductHandler(input, this.ViewData);
-
-            if (!isValid)
-            {
-                this.ViewData["categories"] = this.CategoryService.GetCategories();
-                return this.CreateProduct();
-            }
-
-            return Redirect(Routers.Product.Link + "?message=create product success");
-        }
 
         [HttpGet("update")]
         public IActionResult UpdateProduct(string productId)

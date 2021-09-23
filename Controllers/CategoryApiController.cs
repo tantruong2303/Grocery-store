@@ -1,5 +1,4 @@
 using FluentValidation.Results;
-using Microsoft.AspNetCore.Http;
 using System;
 using Microsoft.AspNetCore.Mvc;
 using Backend.Pipe;
@@ -27,10 +26,10 @@ namespace Backend.Controllers
         }
 
 
-        [HttpPost("create")]
+        [HttpPost("")]
         public IActionResult HandleCreateCategory([FromBody] CreateCategoryDTO body)
         {
-            var res = new ServerApiResponse<string>();
+            var res = new ServerApiResponse<Category>();
             ValidationResult result = new CreateCategoryDTOValidator().Validate(body);
 
             if (!result.IsValid)
@@ -55,8 +54,40 @@ namespace Backend.Controllers
 
             this.CategoryService.CreateCategoryHandler(category);
 
-
+            res.data = category;
             res.setMessage(CustomLanguageValidator.MessageKey.MESSAGE_ADD_SUCCESS);
+            return new ObjectResult(res.getResponse());
+        }
+
+        [HttpPut("")]
+        public IActionResult handleUpdateCategory([FromBody] UpdateCategoryDTO body)
+        {
+
+            var res = new ServerApiResponse<Category>();
+            ValidationResult result = new UpdateCategoryDTOValidator().Validate(body);
+
+            var category = this.CategoryRepository.GetCategoryByCategoryId(body.CategoryId);
+            if (category == null)
+            {
+                res.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_FOUND, "CategoryId");
+                return new NotFoundObjectResult(res.getResponse());
+            }
+
+            var isExistCategory = this.CategoryRepository.GetCategoryByCategoryName(body.Name);
+            if (isExistCategory != null && isExistCategory.Name != category.Name)
+            {
+                res.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, "Name");
+                return new BadRequestObjectResult(res.getResponse());
+            }
+
+            category.Name = body.Name;
+            category.Description = body.Description;
+            category.Status = (CategoryStatus)body.Status;
+
+            this.CategoryService.UpdateCategoryHandler(category);
+
+            res.data = category;
+            res.setMessage(CustomLanguageValidator.MessageKey.MESSAGE_UPDATE_SUCCESS);
             return new ObjectResult(res.getResponse());
         }
 
