@@ -45,24 +45,5 @@ namespace Backend.Controllers
             return View(Routers.UpdateCategory.Page);
         }
 
-
-        [HttpPost("update")]
-        public IActionResult handleUpdateCategory(string categoryId, string name, string description, CategoryStatus status)
-        {
-            var input = new UpdateCategoryDTO()
-            {
-                CategoryId = categoryId,
-                Name = name,
-                Description = description,
-                Status = status
-            };
-            var isValid = this.CategoryService.UpdateCategoryHandler(input, this.ViewData);
-            if (!isValid)
-            {
-                return this.UpdateCategory(categoryId);
-            }
-
-            return Redirect(Routers.Category.Link + "?message=update category success");
-        }
     }
 }
