@@ -86,44 +86,6 @@ namespace Backend.Controllers
 
 
 
-        [HttpPost("")]
-        [ServiceFilter(typeof(AuthGuard))]
-        public IActionResult CreateOrder(PaymentMethod paymentMethod)
-        {
-            string cart = this.HttpContext.Session.GetString(CartSession);
-            if (cart == null || cart == "")
-            {
 
-                return Redirect(Routers.Home.Link + $"?errorMessage=cart is empty");
-            }
-
-            var input = new CreateOrderDTO()
-            {
-                PaymentMethod = paymentMethod,
-            };
-
-            ValidationResult result = new CreateOrderDTOValidator().Validate(input);
-            if (!result.IsValid)
-            {
-                ServerResponse.MapDetails(result, this.ViewData);
-                return Redirect(Routers.Home.Link);
-            }
-
-
-            var list = this.CartService.convertStringToCartItem(cart);
-            foreach (var cartItem in list)
-            {
-                Product product = this.ProductService.GetProductById(cartItem.Key);
-                if (cartItem.Value.Quantity > product.Quantity)
-                {
-                    return Redirect(Routers.Home.Link + $"?errorMessage={product.Name} have only {product.Quantity}");
-                }
-            }
-
-            this.OrderService.CreateOrderHandler(input, this.ViewData, list);
-            this.HttpContext.Session.Remove(CartSession);
-
-            return Redirect(Routers.Home.Link + "?message=create order success");
-        }
     }
 }

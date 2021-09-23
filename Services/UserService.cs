@@ -24,49 +24,15 @@ namespace Backend.Services
             this.AuthService = authService;
         }
 
-        public bool UpdatePasswordHandler(UpdatePasswordDTO input, ViewDataDictionary dataView)
+        public bool UpdatePasswordHandler(User user)
         {
-            ValidationResult result = new UpdatePasswordDTOValidator().Validate(input);
-            if (!result.IsValid)
-            {
-                ServerResponse.MapDetails(result, dataView);
-                return false;
-            }
-            Console.WriteLine(input.oldPassword);
-            User user = (User)dataView["user"];
-
-            if (!AuthService.ComparePassword(input.oldPassword, user.Password))
-            {
-                ServerResponse.SetErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_OLD_PASSWORD_NOT_CORRECT, dataView);
-                return false;
-            }
-
-            user.Password = AuthService.HashingPassword(input.newPassword);
-            Console.WriteLine(user.Password);
-
-            this.DBContext.User.Update(user);
-            this.DBContext.SaveChanges();
-            return true;
+            return this.UserRepository.UpdatePasswordHandler(user);
         }
 
-        public bool UpdateUserInfoHandler(UpdateUserInfoDTO input, ViewDataDictionary dataView)
+        public bool UpdateUserInfoHandler(User user)
         {
-            ValidationResult result = new UpdateUserInfoDTOValidator().Validate(input);
-            if (!result.IsValid)
-            {
-                ServerResponse.MapDetails(result, dataView);
-                return false;
-            }
-
-            User user = (User)dataView["user"];
-            user.Name = input.name;
-            user.Email = input.email;
-            user.Phone = input.phone;
-            user.Address = input.address;
-
-            this.DBContext.Update(user);
-            this.DBContext.SaveChanges();
-            return true;
+            return this.UserRepository.UpdateUserInfoHandler(user);
         }
+
     }
 }
