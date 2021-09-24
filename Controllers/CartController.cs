@@ -27,6 +27,8 @@ namespace Backend.Controllers
         [HttpGet("add")]
         public IActionResult HandleAddToCart(string productId, int quantity)
         {
+
+
             var res = new ServerApiResponse<string>();
             string cart = this.HttpContext.Session.GetString(CartSession);
             Dictionary<string, CartItem> list = this.CartService.convertStringToCartItem(cart); ;

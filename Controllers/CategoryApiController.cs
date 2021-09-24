@@ -65,6 +65,11 @@ namespace Backend.Controllers
 
             var res = new ServerApiResponse<Category>();
             ValidationResult result = new UpdateCategoryDTOValidator().Validate(body);
+            if (!result.IsValid)
+            {
+                res.mapDetails(result);
+                return new BadRequestObjectResult(res.getResponse());
+            }
 
             var category = this.CategoryRepository.GetCategoryByCategoryId(body.CategoryId);
             if (category == null)

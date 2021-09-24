@@ -1,52 +1,74 @@
 @{
-    ViewData["Title"] = Routers.Register.Title;
-    var username = new FormField() { Label = "Username", Field = "username", Type = "text" };
-    var password = new FormField() { Label = "Password", Field = "password", Type = "password" };
-    var name = new FormField() { Label = "Name", Field = "name", Type = "text" };
-    var confirmPassword = new FormField() { Label = "Confirm Password", Field = "confirmPassword", Type = "password" };
-    var email = new FormField() { Label = "Email", Field = "email", Type = "text" };
-    var address = new FormField() { Label = "Address", Field = "address", Type = "text" };
-    var phone = new FormField() { Label = "Phone", Field = "phone", Type = "text" };
-    var registerBtn = new FormField() { Label = "Register" };
+    this.ViewData["Title"] = Routers.Register.Title;
 }
 
 
-<div class="flex items-center justify-center flex-1 py-2 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500">
-    <form method="post" action="@Routers.Register.Link"
-        class="flex-1 px-4 py-16 mx-2 space-y-8 bg-white rounded-md shadow-lg bg-opacity-90 md:mx-0 md:flex-none fade-in">
-        <h1 class="text-4xl font-semibold text-center">Regsiter Account</h1>
-        @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
-        <div class="space-y-4">
-            <div class="justify-between md:flex md:space-x-2">
-                <div class="md:w-64">
-                    @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
-                </div>
-                <div class="md:w-64">
-                    @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", username)
-                </div>
-            </div>
-            <div class="justify-between md:space-x-2 md:flex">
-                <div class="md:w-64">
-                    @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", password)
-                </div>
-                <div class="md:w-64">
-                    @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", confirmPassword)
+<div class="flex-1 login">
+    <div class="container sm:px-10">
+        <div class="block grid-cols-2 gap-4 xl:grid">
+            <!-- BEGIN: Login Info -->
+            <div class="flex-col hidden min-h-screen xl:flex">
+                @await Html.PartialAsync("../../Components/Navbar/Logo.cshtml")
+                <div class="my-auto">
+                    <img alt="Rubick Tailwind HTML Admin Template" class="w-1/2 -mt-16 -intro-x"
+                        src="~/ui/images/illustration.svg">
+                    <div class="mt-10 text-4xl font-medium leading-tight text-white -intro-x">
+                        A few more clicks to
+                        <br>
+                        sign in to your account.
+                    </div>
+                    <div class="mt-5 text-lg text-white -intro-x text-opacity-70 dark:text-gray-500">Thank for your
+                        visit</div>
                 </div>
             </div>
+            <!-- END: Login Info -->
+            <!-- BEGIN: Login Form -->
+            <div class="flex h-screen py-5 xl:h-auto xl:py-0 xl:my-0">
+                <form id="registerForm"
+                    class="w-full px-5 py-8 mx-auto my-auto space-y-4 bg-white rounded-md shadow-md xl:ml-20 dark:bg-dark-1 xl:bg-transparent sm:px-8 xl:p-0 xl:shadow-none sm:w-3/4 lg:w-2/4 xl:w-auto">
+                    <h2 class="text-2xl font-bold text-center intro-x xl:text-3xl xl:text-left">
+                        Sign Up
+                    </h2>
+                    <div class="space-y-2 intro-x">
+                        @await Html.PartialAsync("../../Components/Form/FormMessage.cshtml")
+                        @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new {Label="Name",
+                        Field="name",Type="text"})
+                        @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new {Label="Username",
+                        Field="username",Type="text"})
+                        @await Html.PartialAsync("../../Components/Form/TextField.cshtml",new {Label="Password",
+                        Field="password",Type="password"})
+                        @await Html.PartialAsync("../../Components/Form/TextField.cshtml",new {Label="Confirm Password",
+                        Field="confirmPassword",Type="password"})
+                        @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new {Label="Phone",
+                        Field="phone",Type="text"})
+                        @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new {Label="Email",
+                        Field="email",Type="text"})
+                        @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new {Label="Address",
+                        Field="address",Type="text"})
+                    </div>
 
-            <div class="justify-between md:flex md:space-x-2">
-                <div class="md:w-64">
-                    @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", phone)
-                </div>
-                <div class="md:w-64">
-                    @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", email)
-                </div>
-            </div>
-            <div>
-                @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", address)
-            </div>
+                    <div class="flex space-x-2 ">
+                        @await Html.PartialAsync("../../Components/Form/FormBtn.cshtml","Sign Up")
+                        <a href="@Routers.Login.Link" class="flex-1 px-4 py-3 align-top btn btn-outline-secondary ">Sign
+                            In</a>
+                    </div>
 
+                </form>
+            </div>
+            <!-- END: Login Form -->
         </div>
-        @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", registerBtn)
-    </form>
+    </div>
+
+    <!-- BEGIN: JS Assets-->
+
+    <!-- END: JS Assets-->
+
 </div>
+
+
+
+@section Scripts {
+
+<script src="/js/register.js"></script>
+
+}
