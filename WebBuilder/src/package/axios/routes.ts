@@ -8,12 +8,12 @@ export const routers = {
                 update: "/api/category",
         },
         user: {
-                changePassword: "/api/user/change-password",
+                changePassword: "/api/user/password",
                 update: "/api/user",
+                login: "/api/auth/login",
+                register: "/api/auth/register",
         },
-        loginUser: "/api/auth/login",
-        getUser: "/api/user",
-        registerUser: "/api/auth/register",
-        createBlog: "/api/blog",
-        uploadImageBlog: "/api/blog/image",
+        product: {
+                create: "/api/product",
+        },
 };

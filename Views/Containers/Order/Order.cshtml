@@ -1,33 +1,38 @@
 @{
     this.ViewData["Title"] = Routers.Category.Title;
-    var categories = (List<Category>)this.ViewData["categories"];
+    var orders = (List<Order>)this.ViewData["orders"];
+
+
+
+
 }
 
-<div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6 ">
+<div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6">
     <div class="flex">
-        <!-- BEGIN: Side Menu -->
         @await Html.PartialAsync("../../Components/Navbar/NavbarSide.cshtml")
-        <!-- END: Side Menu -->
-        <!-- BEGIN: Content -->
         <div class="content">
             <div class="mt-5 intro-y box">
                 <div class="flex flex-col items-center p-5 border-b border-gray-200 sm:flex-row">
                     <h2 class="mr-auto text-base font-medium">
-                        Category Manager
+                        My Order
                     </h2>
 
                 </div>
+
+
                 <div class="p-5" id="hoverable-table">
                     <div class="preview">
                         <div class="overflow-x-auto">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Category ID
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Order ID
                                         </th>
-                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Name
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Customer Name
                                         </th>
-                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Description
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Total
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Profit
                                         </th>
                                         <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Stauts</th>
                                         <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Edit</th>
@@ -35,26 +40,28 @@
                                 </thead>
                                 <tbody>
 
-                                    @foreach (var item in categories)
+                                    @foreach (var item in orders)
                                     {
 
-                                        var link = $"{Routers.UpdateCategory.Link}?categoryId={item.CategoryId}";
+                                        var link = $"{Routers.OrderDetail.Link}?orderId={item.OrderId}";
 
                                         <tr class="hover:bg-gray-200">
-                                            <td class="border">@item.CategoryId</td>
-                                            <td class="border">@item.Name</td>
-                                            <td class="border">@item.Description</td>
+                                            <td class="border">@item.OrderId</td>
+                                            <td class="border">@item.Customer.Name</td>
+                                            <td class="border">@item.Total</td>
+                                            <td class="border">@item.Profit</td>
+                                            <td class="border">@item.CreateDate</td>
+                                            <td class="border">@item.PaymentMethod</td>
                                             <td class="border">
                                                 @await Html.PartialAsync("../../Components/Table/Status.cshtml", item.Status
-                                            == CategoryStatus.ACTIVE )
+                                            == OrderStatus.ACTIVE )
                                             </td>
                                             <td class="border">
-                                                <a href="@link" class="mb-2 mr-1 btn btn-primary"> <i data-feather="edit"
-                                                    class="w-5 h-5"></i> </a>
+                                                <a href="@link" class="mb-2 mr-1 btn btn-primary"> <i data-feather="file-text
+" class="w-5 h-5"></i> </a>
                                             </td>
                                         </tr>
                                     }
-
                                 </tbody>
                             </table>
                         </div>
@@ -62,7 +69,5 @@
                 </div>
             </div>
         </div>
-        <!-- END: Content -->
     </div>
-
 </div>

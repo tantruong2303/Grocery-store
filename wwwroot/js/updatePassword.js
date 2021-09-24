@@ -10,16 +10,6 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/category/create.ts":
-/*!********************************!*\
-  !*** ./src/category/create.ts ***!
-  \********************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nvar axios_1 = __webpack_require__(/*! ../package/axios */ \"./src/package/axios/index.ts\");\r\nvar routes_1 = __webpack_require__(/*! ../package/axios/routes */ \"./src/package/axios/routes.ts\");\r\nvar status = 1;\r\nvar createCategoryForm = document.getElementById(\"createCategoryForm\");\r\nvar statusList = document.querySelectorAll('input[name=\"status\"]');\r\nstatusList.forEach(function (radio) {\r\n    radio.addEventListener(\"click\", function () {\r\n        status = Number(radio.value);\r\n    });\r\n});\r\ncreateCategoryForm === null || createCategoryForm === void 0 ? void 0 : createCategoryForm.addEventListener(\"submit\", function (event) {\r\n    event.preventDefault();\r\n    var name = document.getElementById(\"name\");\r\n    var description = document.getElementById(\"description\");\r\n    if (name != null && description != null && status != null) {\r\n        var input = {\r\n            name: name.value,\r\n            description: description.value,\r\n            status: status,\r\n        };\r\n        axios_1.http.post(routes_1.routers.category.create, input).then(function () {\r\n            name.value = \"\";\r\n            description.value = \"\";\r\n        });\r\n    }\r\n});\r\n\n\n//# sourceURL=webpack://mono-webpack/./src/category/create.ts?");
-
-/***/ }),
-
 /***/ "./src/package/axios/index.ts":
 /*!************************************!*\
   !*** ./src/package/axios/index.ts ***!
@@ -47,6 +37,16 @@ eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n
 /***/ ((__unused_webpack_module, exports) => {
 
 eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.routers = exports.routerLinks = void 0;\r\nexports.routerLinks = {\r\n    home: \"/\",\r\n    loginForm: \"/auth/login\",\r\n};\r\nexports.routers = {\r\n    category: {\r\n        create: \"/api/category\",\r\n        update: \"/api/category\",\r\n    },\r\n    user: {\r\n        changePassword: \"/api/user/password\",\r\n        update: \"/api/user\",\r\n        login: \"/api/auth/login\",\r\n        register: \"/api/auth/register\",\r\n    },\r\n    product: {\r\n        create: \"/api/product\",\r\n    },\r\n};\r\n\n\n//# sourceURL=webpack://mono-webpack/./src/package/axios/routes.ts?");
+
+/***/ }),
+
+/***/ "./src/user/updatePassword.ts":
+/*!************************************!*\
+  !*** ./src/user/updatePassword.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nvar axios_1 = __webpack_require__(/*! ../package/axios */ \"./src/package/axios/index.ts\");\r\nvar routes_1 = __webpack_require__(/*! ../package/axios/routes */ \"./src/package/axios/routes.ts\");\r\nvar changeUserPassword = document.getElementById(\"updatePasswordForm\");\r\nchangeUserPassword === null || changeUserPassword === void 0 ? void 0 : changeUserPassword.addEventListener(\"submit\", function (event) {\r\n    event.preventDefault();\r\n    var oldPassword = document.getElementById(\"oldPassword\");\r\n    var newPassword = document.getElementById(\"newPassword\");\r\n    var confirmNewPassword = document.getElementById(\"confirmNewPassword\");\r\n    if (oldPassword !== null && newPassword !== null && confirmNewPassword !== null) {\r\n        var input = {\r\n            oldPassword: oldPassword.value,\r\n            newPassword: newPassword.value,\r\n            confirmNewPassword: confirmNewPassword.value,\r\n        };\r\n        axios_1.http.put(routes_1.routers.user.changePassword, input);\r\n    }\r\n});\r\n\n\n//# sourceURL=webpack://mono-webpack/./src/user/updatePassword.ts?");
 
 /***/ })
 
@@ -81,7 +81,7 @@ eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/category/create.ts");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/user/updatePassword.ts");
 /******/ 	
 /******/ })()
 ;

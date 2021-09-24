@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Backend.Controllers.DTO;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Backend.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Backend.Services.Interface
 {
@@ -11,6 +12,7 @@ namespace Backend.Services.Interface
         public bool UpdateCategoryHandler(Category category);
         public List<Category> GetCategories();
         public Category GetCategory(string categoryId);
+        public List<SelectListItem> GetCategoryDropListRender();
 
     }
 }

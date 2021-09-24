@@ -1,0 +1,53 @@
+@{
+    this.ViewData["Title"] = Routers.CreateProduct.Title;
+    var user = (User)this.ViewData["user"];
+
+}
+
+<div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6">
+    <div class="flex">
+        <!-- BEGIN: Side Menu -->
+        @await Html.PartialAsync("../../Components/Navbar/NavbarSide.cshtml")
+        <!-- END: Side Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <div class="max-w-md px-5 py-8 mt-5 space-y-2 intro-y box">
+                <h1 class="text-4xl font-semibold">User Information</h1>
+                <img src="https://picsum.photos/200" class="inline-block w-32 h-32" />
+                <div class="grid grid-cols-12">
+                    <div class="col-span-6 font-semibold">Name</div>
+                    <div class="col-span-6">@user.Name</div>
+                </div>
+                <div class="grid grid-cols-12">
+                    <div class="col-span-6 font-semibold">Username</div>
+                    <div class="col-span-6">@user.Username</div>
+                </div>
+                <div class="grid grid-cols-12">
+                    <div class="col-span-6 font-semibold">Role</div>
+                    <div class="col-span-6">@user.Role</div>
+                </div>
+                <div class="grid grid-cols-12">
+                    <div class="col-span-6 font-semibold">Email</div>
+                    <div class="col-span-6">@user.Email</div>
+                </div>
+                <div class="grid grid-cols-12">
+                    <div class="col-span-6 font-semibold">Phone</div>
+                    <div class="col-span-6">@user.Phone</div>
+                </div>
+                <div class="grid grid-cols-12">
+                    <div class="col-span-6 font-semibold">Address</div>
+                    <div class="col-span-6">@user.Address</div>
+                </div>
+
+            </div>
+        </div>
+        <!-- END: Content -->
+    </div>
+
+</div>
+
+@section Scripts {
+
+<script src=" /js/createProduct.js"></script>
+
+}

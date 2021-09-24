@@ -49,6 +49,6 @@ registerForm?.addEventListener("submit", function (event: Event) {
                         address: address.value,
                 };
 
-                http.post<ServerResponse<null>>(routers.registerUser, input).then(() => window.location.assign(routerLinks.loginForm));
+                http.post<ServerResponse<null>>(routers.user.register, input).then(() => window.location.assign(routerLinks.loginForm));
         }
 });

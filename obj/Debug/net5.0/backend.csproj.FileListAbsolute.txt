@@ -1635,3 +1635,13 @@ E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Components\T
 E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Category\CreateCategory.cshtml.g.cs
 E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Category\UpdateCategory.cshtml.g.cs
 E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Product\Product.cshtml.g.cs
+E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Form\TextFieldNumber.cshtml.g.cs
+E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Form\SelectList.cshtml.g.cs
+E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Product\CreateProduct.cshtml.g.cs
+E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Product\UpdateProduct.cshtml.g.cs
+E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\User\User.cshtml.g.cs
+E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\User\UpdatePassword.cshtml.g.cs
+E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\User\UpdateUserInfo.cshtml.g.cs
+E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\Order.cshtml.g.cs
+E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\Manager.cshtml.g.cs
+E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\OrderDetail.cshtml.g.cs

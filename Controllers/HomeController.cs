@@ -29,14 +29,15 @@ namespace Backend.Controllers
         public IActionResult Index(double min, double max, string name, string categoryId, string message, string errorMessage)
         {
 
-            var categories = this.CategoryService.GetCategories();
-            var allCategory = new Category()
+            var categories = this.CategoryService.GetCategoryDropListRender();
+            var allCategory = new SelectListItem()
             {
-                CategoryId = "",
-                Name = "All"
+                Value = "",
+                Text = "All"
             };
+
             categories.Add(allCategory);
-            this.ViewData["categories"] = new SelectList(categories, "CategoryId", "Name", categories[categories.Count - 1].CategoryId);
+            this.ViewData["categories"] = new SelectList(categories);
 
             var cart = this.HttpContext.Session.GetString(CartSession);
             if (cart != null && cart != "")

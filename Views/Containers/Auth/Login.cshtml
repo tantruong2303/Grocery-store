@@ -1,7 +1,7 @@
 @{
     this.ViewData["Title"] = Routers.Login.Title;
 }
-<div class="flex-1 login">
+<div class="flex-1 py-6 login">
 
 
     <div class="container sm:px-10">
@@ -32,9 +32,9 @@
                     <div class="space-y-2 intro-x">
                         @await Html.PartialAsync("../../Components/Form/FormMessage.cshtml")
                         @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new {Label="Username",
-                        Field="username",Type="text"})
+                        Field="username",Type="text", Value=""})
                         @await Html.PartialAsync("../../Components/Form/TextField.cshtml",new {Label="Password",
-                        Field="password",Type="password"})
+                        Field="password",Type="password", Value=""})
                     </div>
 
                     <div class="flex space-x-2 ">

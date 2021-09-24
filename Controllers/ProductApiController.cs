@@ -34,10 +34,15 @@ namespace Backend.Controllers
         }
 
         [HttpPost("")]
-        public IActionResult HandleCreateProduct(CreateProductDTO body)
+        public IActionResult HandleCreateProduct([FromBody] CreateProductDTO body)
         {
             var res = new ServerApiResponse<Product>();
             ValidationResult result = new CreateProductDTOValidator().Validate(body);
+            if (!result.IsValid)
+            {
+                res.mapDetails(result);
+                return new BadRequestObjectResult(res.getResponse());
+            }
 
             var isExistCategory = this.CategoryRepository.GetCategoryByCategoryId(body.CategoryId);
             if (isExistCategory == null)

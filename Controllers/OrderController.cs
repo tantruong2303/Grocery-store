@@ -29,6 +29,7 @@ namespace Backend.Controllers
         [ServiceFilter(typeof(AuthGuard))]
         public IActionResult Order()
         {
+
             var user = (User)this.ViewData["user"];
             var orders = this.OrderService.GetOrders(user.UserId);
             this.ViewData["orders"] = orders;
@@ -68,13 +69,13 @@ namespace Backend.Controllers
             }
             catch (System.Exception)
             {
+                Console.WriteLine("ok");
                 var query = $"?startDate={firstDate}&endDate={lastDate}&search=";
                 return Redirect(Routers.Manager.Link + query);
             }
+
+
         }
-
-
-
 
     }
 }

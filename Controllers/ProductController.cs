@@ -3,8 +3,9 @@ using Backend.Models;
 using Backend.Utils.Common;
 using Backend.Pipe;
 using Backend.Services.Interface;
-using Microsoft.AspNetCore.Mvc.Rendering;
+
 using Backend.Utils.Locale;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Backend.Controllers
 {
@@ -25,9 +26,8 @@ namespace Backend.Controllers
         [HttpGet("create")]
         public IActionResult CreateProduct()
         {
-            var categories = this.CategoryService.GetCategories();
-
-            this.ViewData["categories"] = new SelectList(categories, "CategoryId", "Name", categories[0].CategoryId);
+            var categories = this.CategoryService.GetCategoryDropListRender();
+            this.ViewData["categories"] = new SelectList(categories);
             return View(Routers.CreateProduct.Page);
         }
 
@@ -38,9 +38,8 @@ namespace Backend.Controllers
             var product = this.ProductService.GetProductById(productId);
             this.ViewData["product"] = product;
 
-            var categories = this.CategoryService.GetCategories();
-            this.ViewData["categories"] = new SelectList(categories, "CategoryId", "Name", product.CategoryId);
-
+            var categories = this.CategoryService.GetCategoryDropListRender();
+            this.ViewData["categories"] = new SelectList(categories);
             return View(Routers.UpdateProduct.Page);
         }
 
@@ -48,14 +47,15 @@ namespace Backend.Controllers
         [ServiceFilter(typeof(AuthGuard))]
         public IActionResult Product(double min, double max, string name, string categoryId)
         {
-            var categories = this.CategoryService.GetCategories();
-            var allCategory = new Category()
+            var categories = this.CategoryService.GetCategoryDropListRender();
+            var allCategory = new SelectListItem()
             {
-                CategoryId = "",
-                Name = "All"
+                Value = "",
+                Text = "All"
             };
+
             categories.Add(allCategory);
-            this.ViewData["categories"] = new SelectList(categories, "CategoryId", "Name", categories[categories.Count - 1].CategoryId);
+            this.ViewData["categories"] = new SelectList(categories);
 
 
             if (name == null) name = "";

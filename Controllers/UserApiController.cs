@@ -57,7 +57,7 @@ namespace Backend.Controllers
             return new ObjectResult(res.getResponse());
         }
 
-        [HttpPut("info")]
+        [HttpPut("")]
         public IActionResult HandleUpdateUserInfo([FromBody] UpdateUserInfoDTO body)
         {
             var res = new ServerApiResponse<string>();

@@ -15619,6 +15619,16 @@
   "RootNamespace": "backend",
   "Documents": [
     {
+      "FilePath": "e:\\server\\New folder (2)\\grocery-store\\Views\\Components\\Form\\TextFieldNumber.cshtml",
+      "TargetPath": "Views\\Components\\Form\\TextFieldNumber.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\server\\New folder (2)\\grocery-store\\Views\\Containers\\User\\User.cshtml",
+      "TargetPath": "Views\\Containers\\User\\User.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "e:\\server\\New folder (2)\\grocery-store\\Views\\Containers\\Home.cshtml",
       "TargetPath": "Views\\Containers\\Home.cshtml",
       "FileKind": "mvc"
@@ -15659,6 +15669,21 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "e:\\server\\New folder (2)\\grocery-store\\Views\\Components\\Form\\SelectList.cshtml",
+      "TargetPath": "Views\\Components\\Form\\SelectList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\server\\New folder (2)\\grocery-store\\Views\\Containers\\Order\\Order.cshtml",
+      "TargetPath": "Views\\Containers\\Order\\Order.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\server\\New folder (2)\\grocery-store\\Views\\Containers\\User\\UpdatePassword.cshtml",
+      "TargetPath": "Views\\Containers\\User\\UpdatePassword.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "e:\\server\\New folder (2)\\grocery-store\\Views\\Components\\Form\\FormMessage.cshtml",
       "TargetPath": "Views\\Components\\Form\\FormMessage.cshtml",
       "FileKind": "mvc"
@@ -15676,6 +15701,11 @@
     {
       "FilePath": "e:\\server\\New folder (2)\\grocery-store\\Views\\Components\\Form\\TextField.cshtml",
       "TargetPath": "Views\\Components\\Form\\TextField.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\server\\New folder (2)\\grocery-store\\Views\\Containers\\Product\\UpdateProduct.cshtml",
+      "TargetPath": "Views\\Containers\\Product\\UpdateProduct.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15699,8 +15729,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "e:\\server\\New folder (2)\\grocery-store\\Views\\Containers\\Product\\CreateProduct.cshtml",
+      "TargetPath": "Views\\Containers\\Product\\CreateProduct.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\server\\New folder (2)\\grocery-store\\Views\\Containers\\User\\UpdateUserInfo.cshtml",
+      "TargetPath": "Views\\Containers\\User\\UpdateUserInfo.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\server\\New folder (2)\\grocery-store\\Views\\Containers\\Order\\Manager.cshtml",
+      "TargetPath": "Views\\Containers\\Order\\Manager.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "e:\\server\\New folder (2)\\grocery-store\\Views\\Components\\Table\\Status.cshtml",
       "TargetPath": "Views\\Components\\Table\\Status.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\server\\New folder (2)\\grocery-store\\Views\\Containers\\Order\\OrderDetail.cshtml",
+      "TargetPath": "Views\\Containers\\Order\\OrderDetail.cshtml",
       "FileKind": "mvc"
     }
   ],

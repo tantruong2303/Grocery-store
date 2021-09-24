@@ -1,0 +1,85 @@
+@{
+    this.ViewData["Title"] = Routers.CreateProduct.Title;
+    var categories = (SelectList)this.ViewData["categories"];
+
+}
+
+<div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6 ">
+    <div class="flex">
+        <!-- BEGIN: Side Menu -->
+        @await Html.PartialAsync("../../Components/Navbar/NavbarSide.cshtml")
+        <!-- END: Side Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <div class="max-w-sm mt-5 intro-y box">
+                <div class="flex flex-col items-center p-5 border-b border-gray-200 sm:flex-row dark:border-dark-5">
+                    <h2 class="mr-auto text-base font-medium">
+                        Create Product
+                    </h2>
+                </div>
+                <form id="createProductForm" class="p-5 space-y-4">
+
+
+                    <div class="space-y-2 preview">
+                        <div class="space-y-2">
+                            <img alt="image" id="image-preview" class="object-cover w-24 h-24 "
+                                src="/images/default.png">
+                            <input type="file" id="image" />
+                            <div id="IMAGEERROR" data-label="Image" class="text-red-500 "></div>
+                        </div>
+
+                        @await Html.PartialAsync("../../Components/Form/FormMessage.cshtml")
+                        <div>
+                            <label>Name</label>
+                            @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new
+                            {Label="Name",
+                            Field="name",Type="text", Value=""})
+                        </div>
+                        <div>
+                            <label>Description</label>
+                            @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new
+                            {Label="Description",
+                            Field="description",Type="text", Value=""})
+                        </div>
+                        <div>
+                            <label>Original Price</label>
+                            @await Html.PartialAsync("../../Components/Form/TextFieldNumber.cshtml",new
+                            {Label="Original Price",
+                            Field="originalPrice", Value="", Step = "0.1"})
+                        </div>
+                        <div>
+                            <label>Retail Price</label>
+                            @await Html.PartialAsync("../../Components/Form/TextFieldNumber.cshtml",new
+                            {Label="Retail Price",
+                            Field="retailPrice", Value="", Step = "0.1"})
+                        </div>
+                        <div>
+                            <label>Quantity</label>
+                            @await Html.PartialAsync("../../Components/Form/TextFieldNumber.cshtml",new
+                            {Label="Quantity",
+                            Field="quantity",Step = "1", Value=""})
+                        </div>
+                        <div class="space-y-2">
+                            <label>Category</label>
+                            @await Html.PartialAsync("../../Components/Form/SelectList.cshtml", new {
+                            Label="Category",
+                            Values=categories, Value="", Field="categoryId"})
+                        </div>
+                    </div>
+
+                    @await Html.PartialAsync("../../Components/Form/FormBtn.cshtml","Create Product")
+                </form>
+
+
+            </div>
+        </div>
+        <!-- END: Content -->
+    </div>
+
+</div>
+
+@section Scripts {
+
+<script src="/js/createProduct.js"></script>
+
+}

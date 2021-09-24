@@ -1,10 +1,17 @@
 @{
     this.ViewData["Title"] = Routers.Product.Title;
     var products = (List<Product>)this.ViewData["products"];
+    var categories = (SelectList)this.ViewData["categories"];
+
+    var min = (string) this.Context.Request.Query["min"];
+    var max = (string) this.Context.Request.Query["max"];
+    var name =(string)  this.Context.Request.Query["name"];
+    var categoryId = (string)  this.Context.Request.Query["categoryId"];
+
 
 }
 
-<div class="flex-1 min-h-screen px-8 py-6 ">
+<div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6">
     <div class="flex">
 
         @await Html.PartialAsync("../../Components/Navbar/NavbarSide.cshtml")
@@ -12,22 +19,36 @@
         <div class="content">
             <div class="p-5 mt-5 intro-y box">
                 <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
-                    <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto">
-                        <div class="items-center sm:flex sm:mr-4">
-                            <label class="flex-none w-12 mr-2 xl:w-auto xl:flex-initial">Field</label>
-                            <select id="tabulator-html-filter-field"
-                                class="w-full mt-2 form-select sm:w-32 xxl:w-full sm:mt-0 sm:w-auto">
-                                <option value="name">Name</option>
-                                <option value="category">Category</option>
-                                <option value="remaining_stock">Remaining Stock</option>
-                            </select>
+                    <form id="tabulator-html-filter-form" >
+                        <div class="flex items-end space-x-2">
+                            <div class="space-y-2">
+                                <label>Name</label>
+                                @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new {Label="Name",
+                                Field="name",Type="text", Value=name})
+                            </div>
+                            <div class="space-y-2">
+                                <label>Min Price</label>
+                                @await Html.PartialAsync("../../Components/Form/TextFieldNumber.cshtml", new {Label="Min price",
+                                Field="min",Step="0.01", Value=min})
+                            </div>
+                            <div class="space-y-2">
+                                <label>Max Price</label>
+                                @await Html.PartialAsync("../../Components/Form/TextFieldNumber.cshtml", new {Label="Max price",
+                                Field="max",Step="0.01", Value=max})
+                            </div>
+                            <div class="space-y-2"> 
+                                <label>Category</label>
+                                @await Html.PartialAsync("../../Components/Form/SelectList.cshtml", new {Label="Max price",
+                                Values=categories, Value=categoryId, Field="categoryId"})
+                            </div>
+                            <div class="flex items-end">
+                                <button class="mb-2 btn btn-primary"> 
+                                    <i data-feather="search" class="w-5 h-5"></i> 
+                                </button>
+                                    
+                            </div>
                         </div>
-                        <div class="items-center mt-2 sm:flex sm:mr-4 xl:mt-0">
-                            <label class="flex-none w-12 mr-2 xl:w-auto xl:flex-initial">Type</label>
-                            <select id="tabulator-html-filter-type" class="w-full mt-2 form-select sm:mt-0 sm:w-auto">
-
-                            </select>
-                        </div>
+                    
                     </form>
                 </div>
 
@@ -70,7 +91,7 @@
                                 <td class="border">@item.CreateDate</td>
                                 <td class="border">@item.Quantity</td>
                                 <td class="border">
-                                    <a href="@link" class="mb-2 mr-1 btn btn-primary"> <i data-feather="edit"
+                                       <a href="@link" class=" btn btn-primary"> <i data-feather="edit"
                                         class="w-5 h-5"></i> </a>
 
                                 </td>
@@ -78,7 +99,7 @@
                             </tr>
                         }
 
-                    </tbody>
+                     </tbody>
                 </table>
             </div>
         </div>

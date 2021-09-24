@@ -10,6 +10,10 @@ using Backend.DAO.Interface;
 using Backend.Utils.Locale;
 using Backend.Models;
 
+
+using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 namespace Backend.Services
 {
     public class CategoryService : ICategoryService
@@ -32,6 +36,18 @@ namespace Backend.Services
         public List<Category> GetCategories()
         {
             return this.CategoryRepository.GetCategories();
+        }
+
+        public List<SelectListItem> GetCategoryDropListRender()
+        {
+            var categories = new List<SelectListItem>();
+            var list = this.CategoryRepository.GetCategories();
+            foreach (var item in list)
+            {
+                categories.Add(new SelectListItem() { Value = item.CategoryId, Text = item.Name });
+            }
+
+            return categories;
         }
 
         public bool CreateCategoryHandler(Category category)

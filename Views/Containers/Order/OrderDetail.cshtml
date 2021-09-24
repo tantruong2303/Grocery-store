@@ -1,0 +1,75 @@
+@{
+    this.ViewData["Title"] = Routers.Category.Title;
+    var items = (List<OrderItem>)this.ViewData["items"];
+
+    double total = 0;
+}
+
+<div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6 ">
+    <div class="flex">
+        @await Html.PartialAsync("../../Components/Navbar/NavbarSide.cshtml")
+        <div class="content">
+            <div class="mt-5 intro-y box">
+                <div class="flex flex-col items-center p-5 border-b border-gray-200 sm:flex-row">
+                    <h2 class="mr-auto text-base font-medium">
+                        Order Management
+                    </h2>
+
+                </div>
+                <div class="p-5" id="hoverable-table">
+                    <div class="preview">
+                        <div class="overflow-x-auto">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Item ID
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Product Name
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Quantity
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Price
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Create Date
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in items)
+                                    {
+                                        total += item.SalePrice;
+
+                                        var link = $"{Routers.OrderDetail.Link}?orderId={item.OrderId}";
+
+                                        <tr class="hover:bg-gray-200">
+                                            <td class="border">@item.OrderItemId</td>
+                                            <td class="border">@item.Product.Name</td>
+                                            <td class="border">@item.Quantity</td>
+                                            <td class="border">$@item.SalePrice</td>
+                                            <td class="border">@item.CreateDate</td>
+                                        </tr>
+                                    }
+
+
+                                    <tr class="hover:bg-gray-200">
+                                        <td class="border"></td>
+                                        <td class="border"></td>
+                                        <td class="border">Total</td>
+                                        <td class="border">$@total</td>
+                                        <td class="border"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+
+
+}

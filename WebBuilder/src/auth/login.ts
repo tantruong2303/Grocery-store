@@ -19,6 +19,6 @@ loginForm?.addEventListener("submit", function (event: Event) {
                         password: password.value,
                 };
 
-                http.post<ServerResponse<null>>(routers.loginUser, input).then(() => window.location.assign(routerLinks.home));
+                http.post<ServerResponse<null>>(routers.user.login, input).then(() => window.location.assign(routerLinks.home));
         }
 });

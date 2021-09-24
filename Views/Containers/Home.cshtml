@@ -1,9 +1,16 @@
 @{
     this.ViewData["Title"] = Routers.Home.Title;
     var products = (List<Product>)this.ViewData["products"];
+
+
+    var categories = (SelectList)this.ViewData["categories"];
+    var min = (string) this.Context.Request.Query["min"];
+    var max = (string) this.Context.Request.Query["max"];
+    var name =(string)  this.Context.Request.Query["name"];
+    var categoryId = (string)  this.Context.Request.Query["categoryId"];
 }
 
-<div class="flex-1 min-h-screen px-8 py-6 ">
+<div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6">
     <div class="flex">
         <!-- BEGIN: Side Menu -->
         @await Html.PartialAsync("../Components/Navbar/NavbarSide.cshtml")
@@ -13,31 +20,41 @@
             <!-- BEGIN: Top Bar -->
 
             <!-- END: Top Bar -->
-      
+
             <div class="grid grid-cols-12 gap-5 mt-5 pos intro-y">
                 <!-- BEGIN: Item List -->
                 <div class="col-span-12 intro-y lg:col-span-8">
-                    <div class="lg:flex intro-y">
-                        <div class="relative text-gray-700 dark:text-gray-300">
-                            <input type="text"
-                                class="w-full px-4 py-3 pr-10 form-control lg:w-64 box placeholder-theme-13"
-                                placeholder="Search item...">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="absolute inset-y-0 right-0 w-4 h-4 my-auto mr-3 feather feather-search">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
+                     <form id="tabulator-html-filter-form" >
+                        <div class="flex items-end space-x-2">
+                            <div class="space-y-2">
+                                <label>Name</label>
+                                @await Html.PartialAsync("../Components/Form/TextField.cshtml", new {Label="Name",
+                                Field="name",Type="text", Value=name})
+                            </div>
+                            <div class="space-y-2">
+                                <label>Min Price</label>
+                                @await Html.PartialAsync("../Components/Form/TextFieldNumber.cshtml", new {Label="Min price",
+                                Field="min",Step="0.01", Value=min})
+                            </div>
+                            <div class="space-y-2">
+                                <label>Max Price</label>
+                                @await Html.PartialAsync("../Components/Form/TextFieldNumber.cshtml", new {Label="Max price",
+                                Field="max",Step="0.01", Value=max})
+                            </div>
+                            <div class="space-y-2"> 
+                                <label>Category</label>
+                                @await Html.PartialAsync("../Components/Form/SelectList.cshtml", new {Label="Max price",
+                                Values=categories, Value=categoryId, Field="categoryId"})
+                            </div>
+                            <div class="flex items-end">
+                                <button class="mb-2 btn btn-primary"> 
+                                    <i data-feather="search" class="w-5 h-5"></i> 
+                                </button>
+                                    
+                            </div>
                         </div>
-                        <select class="w-full px-4 py-3 mt-3 ml-auto form-select box lg:w-auto lg:mt-0">
-                            <option>Sort By</option>
-                            <option>A to Z</option>
-                            <option>Z to A</option>
-                            <option>Lowest Price</option>
-                            <option>Highest Price</option>
-                        </select>
-                    </div>
+                    
+                    </form>
                     <div class="grid grid-cols-12 gap-5 pt-5 mt-5 border-t border-theme-5">
 
                         @foreach (var item in products)
@@ -70,15 +87,7 @@
                     </div>
                     <div class="tab-content">
 
-                        <div id="details" class="tab-pane active" role="tabpanel" aria-labelledby="details-tab"
-                            style="width: 344.328px;">
-                            <div class="p-5 mt-5 box">
 
-
-
-
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <!-- END: Ticket -->
@@ -118,40 +127,7 @@
             </div>
             <!-- END: New Order Modal -->
             <!-- BEGIN: Add Item Modal -->
-            <div id="add-item-modal" class="modal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h2 class="mr-auto text-base font-medium">
-                                Virginia Cheese Fries
-                            </h2>
-                        </div>
-                        <div class="grid grid-cols-12 gap-4 modal-body gap-y-3">
-                            <div class="col-span-12">
-                                <label for="pos-form-4" class="form-label">Quantity</label>
-                                <div class="flex flex-1 mt-2">
-                                    <button type="button"
-                                        class="w-12 mr-1 text-gray-600 bg-gray-200 border-gray-300 btn dark:bg-dark-1 dark:text-gray-300">-</button>
-                                    <input id="pos-form-4" type="text" class="w-24 text-center form-control"
-                                        placeholder="Item quantity" value="2">
-                                    <button type="button"
-                                        class="w-12 ml-1 text-gray-600 bg-gray-200 border-gray-300 btn dark:bg-dark-1 dark:text-gray-300">+</button>
-                                </div>
-                            </div>
-                            <div class="col-span-12">
-                                <label for="pos-form-5" class="form-label">Notes</label>
-                                <textarea id="pos-form-5" class="w-full mt-2 form-control"
-                                    placeholder="Item notes"></textarea>
-                            </div>
-                        </div>
-                        <div class="text-right modal-footer">
-                            <button type="button" data-dismiss="modal"
-                                class="w-24 mr-1 btn btn-outline-secondary">Cancel</button>
-                            <button type="button" class="w-24 btn btn-primary">Add Item</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <!-- END: Add Item Modal -->
         </div>
         <!-- END: Content -->

@@ -6,6 +6,9 @@ module.exports = {
                 register: "./src/auth/register.ts",
                 createCategory: "./src/category/create.ts",
                 updateCategory: "./src/category/update.ts",
+                createProduct: "./src/product/create.ts",
+                updatePassword: "./src/user/updatePassword.ts",
+                updateInformation: "./src/user/updateUser.ts",
         },
         output: {
                 path: __dirname + "/../wwwroot/js",
