@@ -58,6 +58,22 @@
                             {Label="Quantity",
                             Field="quantity",Step = "1", Value=product.Quantity.ToString()})
                         </div>
+                        <div>
+                            <label>Status</label>
+                            <div class="flex flex-col mt-2 sm:flex-row">
+                                <div class="mr-2 form-check">
+                                    <input id="radio-switch-4" class="form-check-input" type="radio" name="status"
+                                        value="1" @(product.Status == ProductStatus.ACTIVE ? "checked" : "")>
+                                    <label class="form-check-label" for="radio-switch-4">Active</label>
+                                </div>
+                                <div class="mt-2 mr-2 form-check sm:mt-0">
+                                    <input id="radio-switch-5" class="form-check-input" type="radio" name="status"
+                                        value="0" @(product.Status == ProductStatus.INACTIVE ? "checked" : "")>
+                                    <label class="form-check-label" for="radio-switch-5">Inactive</label>
+                                </div>
+
+                            </div>
+                        </div>
                         <div class="space-y-2">
                             <label>Category</label>
                             @await Html.PartialAsync("../../Components/Form/SelectList.cshtml", new {

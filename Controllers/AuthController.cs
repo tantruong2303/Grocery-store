@@ -42,7 +42,7 @@ namespace Backend.Controllers
                 Secure = true
 
             });
-
+            this.HttpContext.Session.Clear();
             return Redirect(Routers.Login.Link + "?message=logout success");
         }
 

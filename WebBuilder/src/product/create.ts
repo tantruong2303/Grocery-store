@@ -21,6 +21,14 @@ image?.addEventListener("change", function () {
                 reader.readAsDataURL(input.files[0]);
         }
 });
+let status = 1;
+
+const statusList = document.querySelectorAll('input[name="status"]');
+statusList.forEach((radio) => {
+        radio.addEventListener("click", function () {
+                status = Number((radio as HTMLInputElement).value);
+        });
+});
 
 interface CreateCategoryDto {
         name: string;
@@ -53,6 +61,7 @@ createProductForm?.addEventListener("submit", function (event: Event) {
                 formData.append("quantity", quantity.value);
                 formData.append("categoryId", categoryId.value);
                 formData.append("file", imageFile);
+                formData.append("status", String(status));
 
                 http.post<ServerResponse<null>>(routers.product.create, formData).then(() => {
                         window.location.assign("/product");

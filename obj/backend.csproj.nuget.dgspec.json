@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\server\\New folder (2)\\grocery-store\\backend.csproj": {}
+    "E:\\server\\final\\grocery-store\\backend.csproj": {}
   },
   "projects": {
-    "E:\\server\\New folder (2)\\grocery-store\\backend.csproj": {
+    "E:\\server\\final\\grocery-store\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\server\\New folder (2)\\grocery-store\\backend.csproj",
+        "projectUniqueName": "E:\\server\\final\\grocery-store\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "E:\\server\\New folder (2)\\grocery-store\\backend.csproj",
+        "projectPath": "E:\\server\\final\\grocery-store\\backend.csproj",
         "packagesPath": "C:\\Users\\heaty566\\.nuget\\packages\\",
-        "outputPath": "E:\\server\\New folder (2)\\grocery-store\\obj\\",
+        "outputPath": "E:\\server\\final\\grocery-store\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\heaty566\\AppData\\Roaming\\NuGet\\NuGet.Config",

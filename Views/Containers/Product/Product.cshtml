@@ -85,9 +85,13 @@
                                 </td>
                                 <td class="border">@item.Category.Name</td>
                                 <td class="border">@item.Description</td>
-                                <td class="border">@item.Name</td>
-                                <td class="border">@item.OriginalPrice</td>
-                                <td class="border">@item.RetailPrice</td>
+                                <td class="border">
+                                    @await Html.PartialAsync("../../Components/Table/Status.cshtml", item.Status
+                                                == ProductStatus.ACTIVE )
+
+                                </td>
+                                <td class="border">$@item.OriginalPrice</td>
+                                <td class="border">$@item.RetailPrice</td>
                                 <td class="border">@item.CreateDate</td>
                                 <td class="border">@item.Quantity</td>
                                 <td class="border">

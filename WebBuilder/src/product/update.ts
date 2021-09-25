@@ -3,6 +3,19 @@ import { routers } from "../package/axios/routes";
 import { ServerResponse } from "../package/interface/serverResponse";
 
 let imageFile: File;
+let status = 1;
+
+const statusList = document.querySelectorAll('input[name="status"]');
+statusList.forEach((radio) => {
+        const element = radio as HTMLInputElement;
+        if (element.getAttribute("checked")) {
+                status = Number(element.value);
+        }
+        radio.addEventListener("click", function () {
+                console.log("hello");
+                status = Number(element.value);
+        });
+});
 
 const image = document.getElementById("image");
 image?.addEventListener("change", function () {
@@ -64,6 +77,7 @@ updateProductForm?.addEventListener("submit", function (event: Event) {
                 formData.append("quantity", quantity.value);
                 formData.append("categoryId", categoryId.value);
                 formData.append("file", imageFile);
+                formData.append("status", String(status));
 
                 http.put<ServerResponse<null>>(routers.product.update, formData).then(() => {
                         window.location.assign("/product");
