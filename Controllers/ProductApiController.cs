@@ -34,7 +34,7 @@ namespace Backend.Controllers
         }
 
         [HttpPost("")]
-        public IActionResult HandleCreateProduct([FromBody] CreateProductDTO body)
+        public IActionResult HandleCreateProduct([FromForm] CreateProductDTO body)
         {
             var res = new ServerApiResponse<Product>();
             ValidationResult result = new CreateProductDTOValidator().Validate(body);

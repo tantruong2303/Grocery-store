@@ -1059,10 +1059,6 @@ E:\server\grocery-store\obj\Debug\net5.0\backend.genruntimeconfig.cache
 C:\Users\ACER\Desktop\Grocery\grocery-store\bin\Debug\net5.0\config\env.production.json
 C:\Users\ACER\Desktop\Grocery\grocery-store\bin\Debug\net5.0\WebBuilder\package.json
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Form\FormBtn.cshtml.g.cs
-C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Form\FormCategories.cshtml.g.cs
-C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Form\FormMsg.cshtml.g.cs
-C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Form\TextFiled.cshtml.g.cs
-C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Navbar.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Auth\Login.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Auth\Register.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Category\Category.cshtml.g.cs
@@ -1071,7 +1067,6 @@ C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Contain
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\Manager.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\Order.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\OrderDetail.cshtml.g.cs
-C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\SearchOrder.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Product\CreateProduct.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Product\Product.cshtml.g.cs
 C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Product\UpdateProduct.cshtml.g.cs
@@ -1645,3 +1640,11 @@ E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\U
 E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\Order.cshtml.g.cs
 E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\Manager.cshtml.g.cs
 E:\server\New folder (2)\grocery-store\obj\Debug\net5.0\Razor\Views\Containers\Order\OrderDetail.cshtml.g.cs
+C:\Users\ACER\Desktop\Grocery\grocery-store\bin\Debug\net5.0\WebBuilder\tsconfig.json
+C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Form\FormMessage.cshtml.g.cs
+C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Form\SelectList.cshtml.g.cs
+C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Form\TextField.cshtml.g.cs
+C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Form\TextFieldNumber.cshtml.g.cs
+C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Navbar\Logo.cshtml.g.cs
+C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Navbar\NavbarSide.cshtml.g.cs
+C:\Users\ACER\Desktop\Grocery\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Table\Status.cshtml.g.cs
