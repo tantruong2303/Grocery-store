@@ -17,6 +17,8 @@ namespace Backend.Utils.Locale
             public const string ERROR_CART_EMPTY = "ERROR_CART_EMPTY";
             public const string ERROR_INVALID_ORDER = "ERROR_INVALID_ORDER";
             public const string ERROR_INVALID_QUANTITY = "ERROR_INVALID_QUANTITY";
+            public const string ERROR_OUT_OF_STOCK = "ERROR_OUT_OF_STOCK";
+            public const string ERROR_NOT_ENOUGH = "ERROR_NOT_ENOUGH";
 
         }
 
@@ -28,6 +30,7 @@ namespace Backend.Utils.Locale
             public const string MESSAGE_LOGOUT_SUCCESS = "MESSAGE_LOGOUT_SUCCESS";
             public const string MESSAGE_UPDATE_SUCCESS = "MESSAGE_UPDATE_SUCCESS";
             public const string MESSAGE_ADD_SUCCESS = "MESSAGE_ADD_SUCCESS";
+            public const string MESSAGE_ADD_CART_SUCCESS = "MESSAGE_ADD_CART_SUCCESS";
             public const string MESSAGE_DELETE_SUCCESS = "MESSAGE_DELETE_SUCCESS";
             public const string MESSAGE_ORDER_SUCCESS = "MESSAGE_ORDER_SUCCESS";
 
@@ -52,6 +55,8 @@ namespace Backend.Utils.Locale
             AddTranslation("en", ErrorMessageKey.ERROR_CART_EMPTY, "cart is empty");
             AddTranslation("en", ErrorMessageKey.ERROR_INVALID_ORDER, "order is invalid");
             AddTranslation("en", ErrorMessageKey.ERROR_INVALID_QUANTITY, "have only");
+            AddTranslation("en", ErrorMessageKey.ERROR_OUT_OF_STOCK, "{Name} is out of stock");
+            AddTranslation("en", ErrorMessageKey.ERROR_NOT_ENOUGH, "{Name} has {Quantity} left");
 
 
             // Success message
@@ -63,6 +68,7 @@ namespace Backend.Utils.Locale
             AddTranslation("en", MessageKey.MESSAGE_ADD_SUCCESS, "add success");
             AddTranslation("en", MessageKey.MESSAGE_DELETE_SUCCESS, "delete success");
             AddTranslation("en", MessageKey.MESSAGE_ORDER_SUCCESS, "order success");
+            AddTranslation("en", MessageKey.MESSAGE_ADD_CART_SUCCESS, "Add to cart successfully");
 
             // Don't touch me please
             AddTranslation("en", "EmailValidator", "is not a valid email address");

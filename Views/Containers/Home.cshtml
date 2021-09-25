@@ -65,7 +65,7 @@
                                 <div class="relative p-3 rounded-md duration hover:bg-blue-200 box">
                                     <div class="relative flex-none block pos-image">
                                         <div class="pos-image__preview image-fit">
-                                            <img alt="Rubick Tailwind HTML Admin Template" src="@item.ImageUrl">
+                                                <img alt="@item.Name" src="@item.ImageUrl">
                                         </div>
                                     </div>
                                     <div class="block mt-3 font-medium text-center truncate">@item.Name</div>
@@ -90,7 +90,10 @@
                                     aria-selected="false">My Cart</a> </div>
                         </div>
                     </div>
+                    <div class="pt-2">
               @await Html.PartialAsync("../Components/Form/FormMessage.cshtml")
+
+                    </div>
                 
                 <div class="p-2 mt-3 box intro-y "> 
                     <label>Payment Method</label>

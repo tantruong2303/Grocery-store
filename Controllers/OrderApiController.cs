@@ -54,7 +54,10 @@ namespace Backend.Controllers
                 profit += (product.RetailPrice - product.OriginalPrice);
                 if (cartItem.Value.Quantity > product.Quantity)
                 {
-                    res.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_INVALID_ORDER, $"{product.Quantity}");
+                    System.Collections.Generic.Dictionary<string, object> context = new System.Collections.Generic.Dictionary<string, object>();
+                    context.Add("Name", product.Name);
+                    context.Add("Quantity", product.Quantity);
+                    res.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_ENOUGH, context);
                     return new BadRequestObjectResult(res.getResponse());
                 }
             }

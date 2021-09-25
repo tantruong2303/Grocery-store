@@ -4,8 +4,8 @@ import { ServerResponse } from "../interface/serverResponse";
 export function requestInterceptor(req: AxiosRequestConfig) {
         const btn = document.getElementById("form-btn");
         const loading = document.getElementById("loading");
-        const message = document.getElementById("message");
-        const errorMessage = document.getElementById("errorMessage");
+        const message = document.getElementById("MESSAGEERROR");
+        const errorMessage = document.getElementById("ERRORMESSAGEERROR");
 
         for (const key in req.data) {
                 const error = document.getElementById(`${key.toUpperCase()}ERROR`);
