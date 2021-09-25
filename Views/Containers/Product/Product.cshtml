@@ -3,10 +3,10 @@
     var products = (List<Product>)this.ViewData["products"];
     var categories = (SelectList)this.ViewData["categories"];
 
-    var min = (string) this.Context.Request.Query["min"];
-    var max = (string) this.Context.Request.Query["max"];
-    var name =(string)  this.Context.Request.Query["name"];
-    var categoryId = (string)  this.Context.Request.Query["categoryId"];
+    var min = (string)this.Context.Request.Query["min"];
+    var max = (string)this.Context.Request.Query["max"];
+    var name = (string)this.Context.Request.Query["name"];
+    var categoryId = (string)this.Context.Request.Query["categoryId"];
 
 
 }
@@ -19,36 +19,56 @@
         <div class="content">
             <div class="p-5 mt-5 intro-y box">
                 <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
-                    <form id="tabulator-html-filter-form" >
+                    <form id="tabulator-html-filter-form">
                         <div class="flex items-end space-x-2">
                             <div class="space-y-2">
                                 <label>Name</label>
-                                @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new {Label="Name",
-                                Field="name",Type="text", Value=name})
+                                @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new
+                                {
+                                    Label = "Name",
+                                Field = "name",
+                                    Type = "text",
+                                    Value = name
+                                })
                             </div>
                             <div class="space-y-2">
                                 <label>Min Price</label>
-                                @await Html.PartialAsync("../../Components/Form/TextFieldNumber.cshtml", new {Label="Min price",
-                                Field="min",Step="0.01", Value=min})
+                                @await Html.PartialAsync("../../Components/Form/TextFieldNumber.cshtml", new
+                                {
+                                    Label = "Min price",
+                                Field = "min",
+                                    Step = "0.01",
+                                    Value = min
+                                })
                             </div>
                             <div class="space-y-2">
                                 <label>Max Price</label>
-                                @await Html.PartialAsync("../../Components/Form/TextFieldNumber.cshtml", new {Label="Max price",
-                                Field="max",Step="0.01", Value=max})
+                                @await Html.PartialAsync("../../Components/Form/TextFieldNumber.cshtml", new
+                                {
+                                    Label = "Max price",
+                                Field = "max",
+                                    Step = "0.01",
+                                    Value = max
+                                })
                             </div>
-                            <div class="space-y-2"> 
+                            <div class="space-y-2">
                                 <label>Category</label>
-                                @await Html.PartialAsync("../../Components/Form/SelectList.cshtml", new {Label="Max price",
-                                Values=categories, Value=categoryId, Field="categoryId"})
+                                @await Html.PartialAsync("../../Components/Form/SelectList.cshtml", new
+                                {
+                                    Label = "Max price",
+                                Values = categories,
+                                    Value = categoryId,
+                                    Field = "categoryId"
+                                })
                             </div>
                             <div class="flex items-end">
-                                <button class="mb-2 btn btn-primary"> 
-                                    <i data-feather="search" class="w-5 h-5"></i> 
+                                <button class="mb-2 btn btn-primary">
+                                    <i data-feather="search" class="w-5 h-5"></i>
                                 </button>
-                                    
+
                             </div>
                         </div>
-                    
+
                     </form>
                 </div>
 
@@ -87,7 +107,7 @@
                                 <td class="border">@item.Description</td>
                                 <td class="border">
                                     @await Html.PartialAsync("../../Components/Table/Status.cshtml", item.Status
-                                                == ProductStatus.ACTIVE )
+                                                == ProductStatus.ACTIVE)
 
                                 </td>
                                 <td class="border">$@item.OriginalPrice</td>
@@ -95,15 +115,15 @@
                                 <td class="border">@item.CreateDate</td>
                                 <td class="border">@item.Quantity</td>
                                 <td class="border">
-                                       <a href="@link" class=" btn btn-primary"> <i data-feather="edit"
-                                        class="w-5 h-5"></i> </a>
-
+                                    <a href="@link" class=" btn btn-primary">
+                                        <i data-feather="edit"
+                                           class="w-5 h-5"></i>
+                                    </a>
                                 </td>
-
                             </tr>
                         }
 
-                     </tbody>
+                    </tbody>
                 </table>
             </div>
         </div>
