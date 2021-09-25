@@ -7,6 +7,9 @@ export const routers = {
                 create: "/api/category",
                 update: "/api/category",
         },
+        order: {
+                addToCart: "/api/cart/add",
+        },
         user: {
                 changePassword: "/api/user/password",
                 update: "/api/user",

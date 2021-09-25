@@ -10,13 +10,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/category/update.ts":
-/*!********************************!*\
-  !*** ./src/category/update.ts ***!
-  \********************************/
+/***/ "./src/home/home.ts":
+/*!**************************!*\
+  !*** ./src/home/home.ts ***!
+  \**************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nvar axios_1 = __webpack_require__(/*! ../package/axios */ \"./src/package/axios/index.ts\");\r\nvar routes_1 = __webpack_require__(/*! ../package/axios/routes */ \"./src/package/axios/routes.ts\");\r\nvar status = 1;\r\nvar createCategoryForm = document.getElementById(\"updateCategoryForm\");\r\nvar statusList = document.querySelectorAll('input[name=\"status\"]');\r\nstatusList.forEach(function (radio) {\r\n    var element = radio;\r\n    if (element.getAttribute(\"checked\")) {\r\n        status = Number(element.value);\r\n    }\r\n    radio.addEventListener(\"click\", function () {\r\n        console.log(\"hello\");\r\n        status = Number(element.value);\r\n    });\r\n});\r\ncreateCategoryForm === null || createCategoryForm === void 0 ? void 0 : createCategoryForm.addEventListener(\"submit\", function (event) {\r\n    event.preventDefault();\r\n    var name = document.getElementById(\"name\");\r\n    var description = document.getElementById(\"description\");\r\n    var categoryId = document.getElementById(\"categoryId\");\r\n    if (name != null && description != null && status != null) {\r\n        var input = {\r\n            name: name.value,\r\n            description: description.value,\r\n            status: status,\r\n            categoryId: categoryId.value,\r\n        };\r\n        axios_1.http.put(routes_1.routers.category.update, input);\r\n    }\r\n});\r\n\n\n//# sourceURL=webpack://mono-webpack/./src/category/update.ts?");
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nvar axios_1 = __webpack_require__(/*! ../package/axios */ \"./src/package/axios/index.ts\");\r\nvar routes_1 = __webpack_require__(/*! ../package/axios/routes */ \"./src/package/axios/routes.ts\");\r\nvar store = document.getElementById(\"store\");\r\nvar btnList = store === null || store === void 0 ? void 0 : store.querySelectorAll('button[type=\"button\"]');\r\n// string productId, int quantity\r\nbtnList === null || btnList === void 0 ? void 0 : btnList.forEach(function (btn) {\r\n    btn.addEventListener(\"click\", function (event) {\r\n        var id = btn.getAttribute(\"data-id\") || \"\";\r\n        axios_1.http.post(routes_1.routers.order.addToCart, { productId: id, quantity: 1 }).then(function () {\r\n            window.location.reload();\r\n        });\r\n    });\r\n});\r\nvar addToCart = document === null || document === void 0 ? void 0 : document.querySelectorAll('div[data-group=\"addCart\"]');\r\naddToCart === null || addToCart === void 0 ? void 0 : addToCart.forEach(function (item) {\r\n    var id = item.getAttribute(\"data-id\") || \"\";\r\n    var plus = item.querySelectorAll('button[data-group=\"plus\"]')[0];\r\n    var label = item.querySelectorAll('div[data-group=\"label\"]')[0];\r\n    var minus = item.querySelectorAll('button[data-group=\"minus\"]')[0];\r\n    plus.addEventListener(\"click\", function () {\r\n        axios_1.http.post(routes_1.routers.order.addToCart, { productId: id, quantity: 1 }).then(function () {\r\n            window.location.reload();\r\n        });\r\n    });\r\n    minus.addEventListener(\"click\", function () {\r\n        axios_1.http.post(routes_1.routers.order.addToCart, { productId: id, quantity: -1 }).then(function () {\r\n            window.location.reload();\r\n        });\r\n    });\r\n});\r\n\n\n//# sourceURL=webpack://mono-webpack/./src/home/home.ts?");
 
 /***/ }),
 
@@ -81,7 +81,7 @@ eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/category/update.ts");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/home/home.ts");
 /******/ 	
 /******/ })()
 ;

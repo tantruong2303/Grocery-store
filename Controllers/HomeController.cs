@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Backend.Utils.Common;
 using Backend.Pipe;
 using Backend.Services.Interface;
@@ -38,14 +39,13 @@ namespace Backend.Controllers
 
             categories.Add(allCategory);
             this.ViewData["categories"] = new SelectList(categories);
+            var cart = this.HttpContext.Session.GetString(CartSession) ?? "";
 
-            var cart = this.HttpContext.Session.GetString(CartSession);
-            if (cart != null && cart != "")
-            {
-                var list = this.CartService.convertStringToCartItem(cart);
-                var getCart = this.CartService.GetCartItems(list);
-                this.ViewData["cartItems"] = getCart;
-            }
+            var list = this.CartService.convertStringToCartItem(cart);
+
+            var getCart = this.CartService.GetCartItems(list);
+            this.ViewData["cartItems"] = getCart;
+
 
             if (name == null) name = "";
             if (categoryId == null) categoryId = "";

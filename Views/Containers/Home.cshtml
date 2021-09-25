@@ -2,7 +2,9 @@
     this.ViewData["Title"] = Routers.Home.Title;
     var products = (List<Product>)this.ViewData["products"];
 
+    var cartItems = (List<Product>)this.ViewData["cartItems"];
 
+    double totalPrice = 0;
     var categories = (SelectList)this.ViewData["categories"];
     var min = (string) this.Context.Request.Query["min"];
     var max = (string) this.Context.Request.Query["max"];
@@ -23,7 +25,7 @@
 
             <div class="grid grid-cols-12 gap-5 mt-5 pos intro-y">
                 <!-- BEGIN: Item List -->
-                <div class="col-span-12 intro-y lg:col-span-8">
+                <div class="col-span-12 intro-y lg:col-span-7">
                      <form id="tabulator-html-filter-form" >
                         <div class="flex items-end space-x-2">
                             <div class="space-y-2">
@@ -55,11 +57,11 @@
                         </div>
                     
                     </form>
-                    <div class="grid grid-cols-12 gap-5 pt-5 mt-5 border-t border-theme-5">
+                    <div class="grid grid-cols-12 gap-5 pt-5 mt-5 border-t border-theme-5" id="store">
 
                         @foreach (var item in products)
                         {
-                            <button type="button" class="block col-span-4 intro-y md:col-span-2 ">
+                            <button type="button" class="block col-span-4 intro-y md:col-span-3" data-id="@item.ProductId" >
                                 <div class="relative p-3 rounded-md duration hover:bg-blue-200 box">
                                     <div class="relative flex-none block pos-image">
                                         <div class="pos-image__preview image-fit">
@@ -76,8 +78,8 @@
                 </div>
                 <!-- END: Item List -->
                 <!-- BEGIN: Ticket -->
-                <div class="col-span-12 lg:col-span-4">
-                    <div class="pr-1 intro-y">
+                <div class="col-span-12 space-y-2 lg:col-span-5">
+                    <div class=" intro-y">
                         <div class="p-2 box">
                             <div class="justify-center pos__tabs nav nav-tabs" role="tablist"> <a id="ticket-tab"
                                     data-toggle="tab" data-target="#ticket" href="javascript:;"
@@ -87,50 +89,45 @@
                     </div>
                     <div class="tab-content">
 
+                        @foreach (var item in cartItems)
+                        {
 
+                            var total =  item.Quantity * item.RetailPrice;
+                            totalPrice += total;
+                        <div  data-group="addCart" data-id="@item.ProductId"   class="flex items-center block p-3 transition duration-300 ease-in-out bg-white rounded-md cursor-pointer dark:bg-dark-3 hover:bg-gray-200 dark:hover:bg-dark-1">
+                                            <div class="w-3/6 mr-1 truncate pos__ticket__item-name">@item.Name
+
+                                        </div>
+                                        <div  class="flex items-center w-1/6 space-x-2 add-cart" >
+                                            <button class="p-1 font-semibold" data-group="plus">+</button>
+                                            <div class="text-gray-600"data-group="label" >@item.Quantity</div>
+                                            <button class="p-1 font-semibold" data-group="minus">-</button>
+                                        </div>
+                                        <div class="w-1/6 ml-auto font-medium" data-group="total">$@total</div>
+                        </div>
+                            
+                        }
+                        <div  class="flex items-center block p-3 transition duration-300 ease-in-out bg-white rounded-md cursor-pointer dark:bg-dark-3 hover:bg-gray-200 dark:hover:bg-dark-1">
+                                            <div class="w-3/6 mr-1 truncate pos__ticket__item-name">Total
+                                        </div>
+                                        <div  class="flex items-center w-1/6 space-x-2" >
+                                            
+                                        </div>
+                                        <div class="w-1/6 ml-auto font-medium" id="total">$@totalPrice</div>
+                        </div>
                     </div>
                 </div>
                 <!-- END: Ticket -->
             </div>
-            <!-- BEGIN: New Order Modal -->
-            <div id="new-order-modal" class="modal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content ">
-                        <div class="modal-header">
-                            <h2 class="mr-auto text-base font-medium">
-                                New Order
-                            </h2>
-                        </div>
-                        <div class="grid grid-cols-12 gap-4 modal-body gap-y-3">
-                            <div class="col-span-12">
-                                <label for="pos-form-1" class="form-label">Name</label>
-                                <input id="pos-form-1" type="text" class="flex-1 form-control"
-                                    placeholder="Customer name">
-                            </div>
-                            <div class="col-span-12">
-                                <label for="pos-form-2" class="form-label">Table</label>
-                                <input id="pos-form-2" type="text" class="flex-1 form-control"
-                                    placeholder="Customer table">
-                            </div>
-                            <div class="col-span-12">
-                                <label for="pos-form-3" class="form-label">Number of People</label>
-                                <input id="pos-form-3" type="text" class="flex-1 form-control" placeholder="People">
-                            </div>
-                        </div>
-                        <div class="text-right modal-footer">
-                            <button type="button" data-dismiss="modal"
-                                class="w-32 mr-1 btn btn-outline-secondary">Cancel</button>
-                            <button type="button" class="w-32 btn btn-primary">Create Ticket</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- END: New Order Modal -->
-            <!-- BEGIN: Add Item Modal -->
-
-            <!-- END: Add Item Modal -->
+          
         </div>
         <!-- END: Content -->
     </div>
 
 </div>
+
+@section Scripts {
+
+<script src="/js/home.js"></script>
+
+}

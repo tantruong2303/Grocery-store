@@ -9,6 +9,7 @@ module.exports = {
                 createProduct: "./src/product/create.ts",
                 updatePassword: "./src/user/updatePassword.ts",
                 updateInformation: "./src/user/updateUser.ts",
+                home: "./src/home/home.ts",
         },
         output: {
                 path: __dirname + "/../wwwroot/js",
