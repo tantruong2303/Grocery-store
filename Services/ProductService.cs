@@ -38,127 +38,15 @@ namespace Backend.Services
         {
             return this.ProductRepository.GetProducts(min, max, name, categoryId);
         }
-        public bool CreateProductHandler(CreateProductDTO input, ViewDataDictionary dataView)
+        public bool CreateProductHandler(Product product)
         {
-            ValidationResult result = new CreateProductDTOValidator().Validate(input);
-            if (!result.IsValid)
-            {
-                ServerResponse.MapDetails(result, dataView);
-                return false;
-            }
-
-            var isExistCategory = this.CategoryRepository.GetCategoryByCategoryId(input.CategoryId);
-            if (isExistCategory == null)
-            {
-                ServerResponse.SetFieldErrorMessage("categoryId", CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_FOUND, dataView);
-                return false;
-            }
-
-            var isExistProduct = this.ProductRepository.GetProductByProductName(input.Name);
-            if (isExistProduct != null)
-            {
-                ServerResponse.SetFieldErrorMessage("name", CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, dataView);
-                return false;
-            }
-
-            var validFile = this.UploadFileService.CheckFileExtension(input.File) && this.UploadFileService.CheckFileSize(input.File, 5);
-            if (!validFile)
-            {
-                ServerResponse.SetFieldErrorMessage("file", CustomLanguageValidator.ErrorMessageKey.ERROR_INVALID_FILE, dataView);
-                return false;
-            }
-
-            var imageUrl = this.UploadFileService.Upload(input.File);
-            if (imageUrl == null)
-            {
-                ServerResponse.SetFieldErrorMessage("file", CustomLanguageValidator.ErrorMessageKey.ERROR_UPLOAD_FILE_FAILED, dataView);
-                return false;
-            }
-
-            var product = new Product();
-            product.ProductId = Guid.NewGuid().ToString();
-            product.Name = input.Name;
-            product.Description = input.Description;
-            product.Status = (ProductStatus)0;
-            product.RetailPrice = input.RetailPrice;
-            product.OriginalPrice = input.OriginalPrice;
-            product.CreateDate = DateTime.Now.ToShortDateString();
-            product.Quantity = input.Quantity;
-            product.ImageUrl = imageUrl;
-            product.CategoryId = input.CategoryId;
-            this.DBContext.Product.Add(product);
-            this.DBContext.SaveChanges();
-            return true;
+            return this.ProductRepository.CreateProductHandler(product);
         }
 
-        public bool UpdateProductHandler(UpdateProductDTO input, ViewDataDictionary dataView)
+        public bool UpdateProductHandler(Product product)
         {
-
-            Console.WriteLine(input.Status);
-            ValidationResult result = new UpdateProductDTOValidator().Validate(input);
-            if (!result.IsValid)
-            {
-
-                ServerResponse.MapDetails(result, dataView);
-                return false;
-            }
-
-            var product = this.ProductRepository.GetProductById(input.ProductId);
-            if (product == null)
-            {
-                ServerResponse.SetFieldErrorMessage("productId", CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_FOUND, dataView);
-                return false;
-            }
-
-            var isExistCategory = this.CategoryRepository.GetCategoryByCategoryId(input.CategoryId);
-            if (isExistCategory == null)
-            {
-                ServerResponse.SetFieldErrorMessage("categoryId", CustomLanguageValidator.ErrorMessageKey.ERROR_NOT_FOUND, dataView);
-                return false;
-            }
-
-            if (product.Name != input.Name)
-            {
-                var isExistProduct = this.ProductRepository.GetProductByProductName(input.Name);
-                if (isExistProduct != null)
-                {
-                    ServerResponse.SetFieldErrorMessage("name", CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, dataView);
-                    return false;
-                }
-            }
-
-            if (input.File != null)
-            {
-                var validFile = this.UploadFileService.CheckFileExtension(input.File) && this.UploadFileService.CheckFileSize(input.File, 5);
-                if (!validFile)
-                {
-                    ServerResponse.SetFieldErrorMessage("file", CustomLanguageValidator.ErrorMessageKey.ERROR_INVALID_FILE, dataView);
-                    return false;
-                }
-
-                var imageUrl = this.UploadFileService.Upload(input.File);
-                if (imageUrl == null)
-                {
-                    ServerResponse.SetFieldErrorMessage("file", CustomLanguageValidator.ErrorMessageKey.ERROR_UPLOAD_FILE_FAILED, dataView);
-                    return false;
-                }
-
-                product.ImageUrl = imageUrl;
-            }
-
-
-
-            product.Name = input.Name;
-            product.Description = input.Description;
-            product.Status = input.Status;
-            product.RetailPrice = input.RetailPrice;
-            product.OriginalPrice = input.OriginalPrice;
-            product.CreateDate = DateTime.Now.ToShortDateString();
-            product.Quantity = input.Quantity;
-            product.CategoryId = input.CategoryId;
-
-            this.DBContext.SaveChanges();
-            return true;
+            return this.ProductRepository.UpdateProductHandler(product);
         }
+
     }
 }

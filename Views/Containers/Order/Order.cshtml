@@ -1,42 +1,77 @@
 @{
-    ViewData["Title"] = Routers.Order.Title;
-    List<Order> orders = (List<Order>)ViewData["orders"];
+    this.ViewData["Title"] = Routers.Category.Title;
+    var orders = (List<Order>)this.ViewData["orders"];
+
+
+
 
 }
-<div class="p-2 ">
-    @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
-    <table class="my-2 bg-white border border-black fade-in">
-        <thead>
-            <tr>
-                <th class="p-2 border border-black">Date</th>
-                <th class="p-2 border border-black">Status</th>
-                <th class="p-2 border border-black">Payment Method</th>
-                <th class="p-2 border border-black">Total</th>
-                <th class="p-2 border border-black">Detail</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var order in orders)
-            {
-                var detailLink = $"{@Routers.OrderDetail.Link}?orderId={@order.OrderId}";
-                var activeColor = order.Status == OrderStatus.ACTIVE ? "text-green-500" : "text-red-500";
-                <tr>
-                    <td class="p-2 text-center border border-black max-h-16">@order.CreateDate</td>
-                    <td class="p-2 text-center lowercase border border-black first-letter @activeColor">@order.Status
-                    </td>
-                    <td class="p-2 text-center border border-black">@order.PaymentMethod</td>
-                    <td class="p-2 text-center border border-black">$@order.Total</td>
 
-                    <td class="p-2 text-center border border-black">
-                        <a href="@detailLink"
-                        class="inline-block p-2 font-medium text-white duration-300 bg-blue-600 rounded-sm hover:bg-blue-800">View</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    @if (orders.Count <= 0)
-    {
-        <div class="text-xl">List is empty</div>
-    }
+<div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6">
+    <div class="flex">
+        @await Html.PartialAsync("../../Components/Navbar/NavbarSide.cshtml")
+        <div class="content">
+            <div class="mt-5 intro-y box">
+                <div class="flex flex-col items-center p-5 border-b border-gray-200 sm:flex-row">
+                    <h2 class="mr-auto text-base font-medium">
+                        My Order
+                    </h2>
+
+                </div>
+
+
+                <div class="p-5" id="hoverable-table">
+                    <div class="preview">
+                        <div class="overflow-x-auto">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Order ID
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Customer Name
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Total
+                                        </th>
+
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Create Date
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Payment
+                                            Method
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Stauts</th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">View Detail
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in orders)
+                                    {
+
+                                        var link = $"{Routers.OrderDetail.Link}?orderId={item.OrderId}";
+
+                                        <tr class="hover:bg-gray-200">
+                                            <td class="border">@item.OrderId</td>
+                                            <td class="border">@item.Customer.Name</td>
+                                            <td class="border">$@item.Total</td>
+                                            <td class="border">@item.CreateDate</td>
+                                            <td class="border">@item.PaymentMethod</td>
+                                            <td class="border">
+                                                @await Html.PartialAsync("../../Components/Table/Status.cshtml", item.Status
+                                            == OrderStatus.ACTIVE )
+                                            </td>
+                                            <td class="border">
+                                                <a href="@link" class="mb-2 mr-1 btn btn-primary"> <i
+                                                    data-feather="shopping-bag" class="w-5 h-5"></i> </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

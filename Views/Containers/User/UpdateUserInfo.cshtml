@@ -1,27 +1,69 @@
 @{
-    ViewData["Title"] = Routers.UpdateUserInfo.Title;
-    User user = (User)ViewData["user"];
-
-    var name = new FormField() { Label = "Name", Field = "name", Type = "text", Value = user.Name };
-    var email = new FormField() { Label = "Email", Field = "email", Type = "text", Value = user.Email };
-    var address = new FormField() { Label = "Address", Field = "address", Type = "text", Value = user.Address };
-    var phone = new FormField() { Label = "Phone", Field = "phone", Type = "text", Value = user.Phone };
-    var updateUserBtn = new FormField() { Label = "Update User Information" };
+    this.ViewData["Title"] = Routers.Category.Title;
+    var user = (User)this.ViewData["user"];
 }
+@*
+    public string name { get; set; }
+    public string email { get; set; }
+    public string phone { get; set; }
+    public string address { get; set; } *@
+
+<div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6">
+    <div class="flex">
+        <!-- BEGIN: Side Menu -->
+        @await Html.PartialAsync("../../Components/Navbar/NavbarSide.cshtml")
+        <!-- END: Side Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <div class="max-w-sm mt-5 intro-y box">
+                <div class="flex flex-col items-center p-5 border-b border-gray-200 sm:flex-row dark:border-dark-5">
+                    <h2 class="mr-auto text-base font-medium">
+                        Update Information
+                    </h2>
+                </div>
+                <form id="updateInformationForm" class="p-5 space-y-4">
+                    <div class="space-y-2 preview">
+                        @await Html.PartialAsync("../../Components/Form/FormMessage.cshtml")
+                        <div>
+                            <label>Name</label>
+                            @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new
+                            {Label="Name",
+                            Field="name",Type="text", Value=user.Name})
+                        </div>
+                        <div>
+                            <label>Email</label>
+                            @await Html.PartialAsync("../../Components/Form/TextField.cshtml",new
+                            {Label="Email",
+                            Field="email",Type="text", Value=user.Email})
+                        </div>
+                        <div>
+                            <label>Phone</label>
+                            @await Html.PartialAsync("../../Components/Form/TextField.cshtml",new
+                            {Label="Phone",
+                            Field="phone",Type="text", Value=user.Phone})
+                        </div>
+                        <div>
+                            <label>Address</label>
+                            @await Html.PartialAsync("../../Components/Form/TextField.cshtml",new
+                            {Label="Address",
+                            Field="address",Type="text", Value=user.Address})
+                        </div>
+
+                    </div>
+
+                    @await Html.PartialAsync("../../Components/Form/FormBtn.cshtml","Update Information")
+                </form>
 
 
-
-<div class="flex items-center justify-center flex-1 ">
-    <form method="post" action="@Routers.UpdateUserInfo.Link"
-        class="flex-1 px-4 py-16 mx-2 space-y-8 bg-white rounded-md shadow-lg md:mx-0 md:w-96 bg-opacity-90 md:flex-none fade-in">
-        <h1 class="text-4xl font-semibold text-center">Update Information</h1>
-        @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
-        <div class="space-y-4">
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", address)
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", phone)
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", email)
+            </div>
         </div>
-        @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", updateUserBtn)
-    </form>
+        <!-- END: Content -->
+    </div>
+
 </div>
+
+@section Scripts {
+
+<script src="/js/updateInformation.js"></script>
+
+}

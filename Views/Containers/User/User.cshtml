@@ -1,72 +1,53 @@
 @{
-    ViewData["Title"] = Routers.User.Title;
-    User user = (User)ViewData["user"];
+    this.ViewData["Title"] = Routers.CreateProduct.Title;
+    var user = (User)this.ViewData["user"];
+
 }
 
-<div class="flex items-center justify-center flex-1 py-2 ">
+<div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6">
+    <div class="flex">
+        <!-- BEGIN: Side Menu -->
+        @await Html.PartialAsync("../../Components/Navbar/NavbarSide.cshtml")
+        <!-- END: Side Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <div class="max-w-md px-5 py-8 mt-5 space-y-2 intro-y box">
+                <h1 class="text-4xl font-semibold">User Information</h1>
+                <img src="https://picsum.photos/200" class="inline-block w-32 h-32" />
+                <div class="grid grid-cols-12">
+                    <div class="col-span-6 font-semibold">Name</div>
+                    <div class="col-span-6">@user.Name</div>
+                </div>
+                <div class="grid grid-cols-12">
+                    <div class="col-span-6 font-semibold">Username</div>
+                    <div class="col-span-6">@user.Username</div>
+                </div>
+                <div class="grid grid-cols-12">
+                    <div class="col-span-6 font-semibold">Role</div>
+                    <div class="col-span-6">@user.Role</div>
+                </div>
+                <div class="grid grid-cols-12">
+                    <div class="col-span-6 font-semibold">Email</div>
+                    <div class="col-span-6">@user.Email</div>
+                </div>
+                <div class="grid grid-cols-12">
+                    <div class="col-span-6 font-semibold">Phone</div>
+                    <div class="col-span-6">@user.Phone</div>
+                </div>
+                <div class="grid grid-cols-12">
+                    <div class="col-span-6 font-semibold">Address</div>
+                    <div class="col-span-6">@user.Address</div>
+                </div>
 
-    <div
-        class="flex-1 px-4 py-16 mx-2 space-y-8 bg-white rounded-md shadow-lg bg-opacity-90 md:mx-0 md:flex-none fade-in">
-        <h1 class="text-4xl font-bold ">User Information</h1>
-        <div class="space-y-4">
-            <div class="grid grid-cols-1 space-x-2 md:grid-cols-2">
-                <div class="col-span-1">
-                    <p class="font-semibold">Username</p>
-                </div>
-                <div class="col-span-1">
-                    <p>@user.Username</p>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 space-x-2 md:grid-cols-2">
-                <div class="col-span-1">
-                    <p class="font-semibold">Name</p>
-                </div>
-                <div class="col-span-1">
-                    <p class="first-letter">@user.Name</p>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 space-x-2 md:grid-cols-2">
-                <div class="col-span-1">
-                    <p class="font-semibold">Email</p>
-                </div>
-                <div class="col-span-1">
-                    <p class="first-letter">@user.Email</p>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 space-x-2 md:grid-cols-2">
-                <div class="col-span-1">
-                    <p class="font-semibold">Phone</p>
-                </div>
-                <div class="col-span-1">
-                    <p class="first-letter">@user.Phone</p>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 space-x-2 md:grid-cols-2">
-                <div class="col-span-1">
-                    <p class="font-semibold">Address</p>
-                </div>
-                <div class="col-span-1">
-                    <p class="first-letter">@user.Address</p>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 space-x-2 md:grid-cols-2">
-                <div class="col-span-1">
-                    <p class="font-semibold ">Role</p>
-                </div>
-                <div class="col-span-1">
-                    <p class="lowercase first-letter">@user.Role</p>
-                </div>
             </div>
         </div>
-        <div class="flex items-center justify-between space-x-2">
-            <a href="@Routers.UpdatePassword.Link"
-                class="flex-1 p-2 font-medium text-center text-white bg-blue-600">Update
-                Password</a>
-            <a href="@Routers.UpdateUserInfo.Link"
-                class="flex-1 p-2 font-medium text-center text-white bg-blue-600">Update
-                Information</a>
-        </div>
-
+        <!-- END: Content -->
     </div>
 
 </div>
+
+@section Scripts {
+
+<script src=" /js/createProduct.js"></script>
+
+}

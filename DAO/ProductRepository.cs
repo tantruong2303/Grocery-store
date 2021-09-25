@@ -46,5 +46,17 @@ namespace Backend.DAO
             }
             return (products, products.Count);
         }
+
+        public bool CreateProductHandler(Product product)
+        {
+            this.DBContext.Product.Add(product);
+            return this.DBContext.SaveChanges() > 0;
+        }
+
+        public bool UpdateProductHandler(Product product)
+        {
+            this.DBContext.Product.Update(product);
+            return this.DBContext.SaveChanges() > 0;
+        }
     }
 }

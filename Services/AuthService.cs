@@ -25,63 +25,15 @@ namespace Backend.Services
             this.JWTService = jwtService;
         }
 
-        public bool RegisterHandler(RegisterDTO input, ViewDataDictionary dataView)
+        public bool RegisterHandler(User user)
         {
-            ValidationResult result = new RegisterDTOValidator().Validate(input);
-            if (!result.IsValid)
-            {
-                ServerResponse.MapDetails(result, dataView);
-                return false;
-            }
-            var isExistUser = this.UserRepository.GetUserByUsername(input.Username);
-            if (isExistUser != null)
-            {
-                ServerResponse.SetFieldErrorMessage("username", CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, dataView);
-                return false;
-            }
-
-            var user = new User();
-            user.UserId = Guid.NewGuid().ToString();
-            user.Name = input.Name;
-            user.Username = input.Username;
-            user.Phone = input.Phone;
-            user.Address = input.Address;
-            user.Email = input.Email;
-            user.CreateDate = DateTime.Now.ToShortDateString();
-            user.Role = UserRole.CUSTOMER;
-            user.Password = this.HashingPassword(input.Password);
-
-            this.DBContext.User.Add(user);
-            this.DBContext.SaveChanges();
-
-            return true;
+            return this.UserRepository.RegisterHandler(user);
         }
 
 
-        public string LoginHandler(LoginDTO input, ViewDataDictionary dataView)
+        public string LoginHandler(string userId)
         {
-            ValidationResult result = new LoginDTOValidator().Validate(input);
-            if (!result.IsValid)
-            {
-                ServerResponse.MapDetails(result, dataView);
-                return null;
-            }
-
-            var user = this.UserRepository.GetUserByUsername(input.Username);
-            if (user == null)
-            {
-                ServerResponse.SetErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_LOGIN_FAIL, dataView);
-                return null;
-            }
-
-            if (!this.ComparePassword(input.Password, user.Password))
-            {
-                ServerResponse.SetErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_LOGIN_FAIL, dataView);
-                return null;
-            }
-
-            string token = this.JWTService.GenerateToken(user.UserId);
-
+            string token = this.JWTService.GenerateToken(userId);
             return token;
         }
 

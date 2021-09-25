@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Backend.Utils.Common;
 using Backend.Pipe;
 using Backend.Services.Interface;
@@ -29,22 +30,22 @@ namespace Backend.Controllers
         public IActionResult Index(double min, double max, string name, string categoryId, string message, string errorMessage)
         {
 
-            var categories = this.CategoryService.GetCategories();
-            var allCategory = new Category()
+            var categories = this.CategoryService.GetCategoryDropListRender();
+            var allCategory = new SelectListItem()
             {
-                CategoryId = "",
-                Name = "All"
+                Value = "",
+                Text = "All"
             };
-            categories.Add(allCategory);
-            this.ViewData["categories"] = new SelectList(categories, "CategoryId", "Name", categories[categories.Count - 1].CategoryId);
 
-            var cart = this.HttpContext.Session.GetString(CartSession);
-            if (cart != null && cart != "")
-            {
-                var list = this.CartService.convertStringToCartItem(cart);
-                var getCart = this.CartService.GetCartItems(list);
-                this.ViewData["cartItems"] = getCart;
-            }
+            categories.Add(allCategory);
+            this.ViewData["categories"] = new SelectList(categories);
+            var cart = this.HttpContext.Session.GetString(CartSession) ?? "";
+
+            var list = this.CartService.convertStringToCartItem(cart);
+
+            var getCart = this.CartService.GetCartItems(list);
+            this.ViewData["cartItems"] = getCart;
+
 
             if (name == null) name = "";
             if (categoryId == null) categoryId = "";

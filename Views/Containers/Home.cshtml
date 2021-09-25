@@ -1,145 +1,139 @@
-@model Backend.Models.Category
 @{
-    ViewData["Title"] = Routers.Home.Title;
-    List<Product> products = (List<Product>)ViewData["products"];
-    List<Product> carts = (List<Product>)ViewData["cartItems"];
-    Double total = 0;
+    this.ViewData["Title"] = Routers.Home.Title;
+    var products = (List<Product>)this.ViewData["products"];
 
-    var min = new FormField() { Label = "Min", Field = "min", Type = "number", Value = 0 };
-    var max = new FormField() { Label = "Max", Field = "max", Type = "number", Value = 0 };
-    var name = new FormField() { Label = "Name", Field = "name", Type = "text", Value = "" };
-    var categoryId = new FormField() { Label = "CategoryId", Field = "categoryId", Type = "text", Value = "" };
-    var createBtn = new FormField() { Label = "Search" };
-    var createBtnCart = new FormField() { Label = "Order Now" };
+    var cartItems = (List<Product>)this.ViewData["cartItems"];
+
+    double totalPrice = 0;
+    var categories = (SelectList)this.ViewData["categories"];
+    var min = (string) this.Context.Request.Query["min"];
+    var max = (string) this.Context.Request.Query["max"];
+    var name =(string)  this.Context.Request.Query["name"];
+    var categoryId = (string)  this.Context.Request.Query["categoryId"];
 }
 
+<div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6">
+    <div class="flex">
+        <!-- BEGIN: Side Menu -->
+        @await Html.PartialAsync("../Components/Navbar/NavbarSide.cshtml")
+        <!-- END: Side Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <!-- BEGIN: Top Bar -->
+ 
+            <!-- END: Top Bar -->
 
-
-<div class="flex flex-col justify-center flex-1 px-2 py-8 mb-56 space-y-4 md:flex-row md:space-x-4 md:space-y-0">
-    <div class="flex-1 space-y-2">
-        <form method="get" action="@Routers.Home.Link">
-
-            <div class="space-y-4">
-
-                <div class="flex space-x-4 justify-items-stretch">
-                    @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", min)
-                    @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", max)
-                </div>
-                <div class="flex space-x-4 justify-items-stretch">
-                    @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
-                    @await Html.PartialAsync("~/Views/Components/Form/FormCategories.cshtml")
-                </div>
-                <div class="w-32">
-                    @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", createBtn)
-                </div>
-            </div>
-        </form>
-
-
-        <h1 class="text-xl font-semibold ">Product List</h1>
-        <div class="grid gap-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 fade-in">
-            @foreach (var product in products)
-            {
-                @if (product.Status == ProductStatus.ACTIVE && product.Category.Status == CategoryStatus.ACTIVE)
-                {
-                    var updateLink = $"{@Routers.UpdateProduct.Link}?productId={@product.ProductId}";
-                    var activeColor = product.Status == ProductStatus.ACTIVE ? "text-green-500" : "text-red-500";
-                    <div class="flex items-center justify-between p-2 space-x-2 bg-white rounded-lg shadow-lg">
-                        <div class="w-16 h-16 overflow-hidden border-2 rounded-full ">
-                            <img src="@product.ImageUrl" alt="@product.Name" class="block object-cover w-full h-full" />
-                        </div>
-                        <div class="w-1/2 text-left">
-                            <p class="font-semibold first-letter">@product.Name</p>
-                            <p class="max-lines">@product.Description</p>
-                            <p class="font-medium text-yellow-600">$@product.RetailPrice</p>
-                        </div>
-                        <div>
-                            <a href="/cart/add?productId=@product.ProductId&quantity=1"
-                        class="inline-block px-2 py-1 text-white bg-blue-600 rounded-md">Add to Cart</a>
-
-                        </div>
-                    </div>
-                }
-
-
-            }
-            @if (products.Count <= 0)
-            {
-                <div class="text-xl">List is empty</div>
-            }
-        </div>
-    </div>
-
-    <div class="space-y-2">
-        <h1 class="text-xl font-semibold">My Cart</h1>
-        <div class="space-y-2 md:w-101" id="mycart">
-            @if (carts == null)
-            {
-                <div class="flex items-center justify-between p-2 space-x-2 bg-white rounded-md shadow-lg fade-in">
-                    <p class="font-semibold">Empty cart</p>
-                </div>
-            }
-            else
-            {
-                @foreach (var cartItem in carts)
-                {
-                    total += cartItem.Quantity * cartItem.RetailPrice;
-                    <div class="flex items-center justify-between p-2 space-x-2 bg-white rounded-lg shadow-lg fade-in">
-                        <div class="w-16 h-16 overflow-hidden border-2 rounded-full ">
-                            <img src="@cartItem.ImageUrl" alt="mi" class="block object-cover">
-                        </div>
-                        <div class="flex-1 space-y-1">
-                            <p class="font-semibold first-letter">@cartItem.Name</p>
-                            <div class="flex space-x-2">
-                                <a href="/cart/add?productId=@cartItem.ProductId&quantity=-1"
-                            class="flex items-center justify-center w-6 h-6 font-semibold bg-blue-100">-</a>
-                                <p>@cartItem.Quantity</p>
-                                <a href="/cart/add?productId=@cartItem.ProductId&quantity=1"
-                            class="flex items-center justify-center w-6 h-6 font-semibold bg-blue-100">+</a>
+            <div class="grid grid-cols-12 gap-5 mt-5 pos intro-y">
+                <!-- BEGIN: Item List -->
+                <div class="col-span-12 intro-y lg:col-span-7">
+                     <form id="tabulator-html-filter-form" >
+                        <div class="flex items-end space-x-2">
+                            <div class="space-y-2">
+                                <label>Name</label>
+                                @await Html.PartialAsync("../Components/Form/TextField.cshtml", new {Label="Name",
+                                Field="name",Type="text", Value=name})
+                            </div>
+                            <div class="space-y-2">
+                                <label>Min Price</label>
+                                @await Html.PartialAsync("../Components/Form/TextFieldNumber.cshtml", new {Label="Min price",
+                                Field="min",Step="0.01", Value=min})
+                            </div>
+                            <div class="space-y-2">
+                                <label>Max Price</label>
+                                @await Html.PartialAsync("../Components/Form/TextFieldNumber.cshtml", new {Label="Max price",
+                                Field="max",Step="0.01", Value=max})
+                            </div>
+                            <div class="space-y-2"> 
+                                <label>Category</label>
+                                @await Html.PartialAsync("../Components/Form/SelectList.cshtml", new {Label="Max price",
+                                Values=categories, Value=categoryId, Field="categoryId"})
+                            </div>
+                            <div class="flex items-end">
+                                <button class="mb-2 btn btn-primary"> 
+                                    <i data-feather="search" class="w-5 h-5"></i> 
+                                </button>
+                                    
                             </div>
                         </div>
-                        <div>
-
-                            <p class="flex-1 font-medium text-right text-yellow-600">
-                                $@(cartItem.Quantity *
-                        cartItem.RetailPrice)
-                            </p>
-                        </div>
-                    </div>
-
-                }
-            }
-            <div class="fixed z-50 w-full font-semibold transform -translate-x-1/2 bottom-4 md:w-101 left-1/2">
-                <div class="px-4 py-4 mx-2 space-y-2 bg-white border rounded-lg shadow-2xl">
-
-                    <div class="flex items-center justify-between">
-                        <p>Total</p>
-                        <p class="text-blue-600">$@total</p>
-                    </div>
-
-                    <form method="post" action="@Routers.Order.Link">
-                        @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
-                        <div class="space-y-2">
-                            <div class="flex items-center space-x-2 rounded-md">
-                                <div class="flex items-center space-x-2">
-                                    <label class="font-medium">Payment Method: </label>
-                                    @Html.RadioButton("paymentMethod", PaymentMethod.CREDIT_CARDS)<span>
-                                        Credit Card
-                                    </span>
-                                    @Html.RadioButton("paymentMethod", PaymentMethod.CASH, true)<span>Cash</span>
-                                </div>
-                            </div>
-
-                            <a class="block w-full px-2 py-2 text-center text-white bg-blue-600 " href="#mycart">
-                                View
-                                My Cart
-                            </a>
-                            @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", createBtnCart)
-                        </div>
+                    
                     </form>
-                </div>
-            </div>
+                    <div class="grid grid-cols-12 gap-5 pt-5 mt-5 border-t border-theme-5" id="store">
 
+                        @foreach (var item in products)
+                        {
+                            <button type="button" class="block col-span-4 intro-y md:col-span-3" data-id="@item.ProductId" >
+                                <div class="relative p-3 rounded-md duration hover:bg-blue-200 box">
+                                    <div class="relative flex-none block pos-image">
+                                        <div class="pos-image__preview image-fit">
+                                            <img alt="Rubick Tailwind HTML Admin Template" src="@item.ImageUrl">
+                                        </div>
+                                    </div>
+                                    <div class="block mt-3 font-medium text-center truncate">@item.Name</div>
+                                    <div class="block mt-3 font-medium text-center truncate">$@item.RetailPrice</div>
+                                </div>
+                            </button>
+                        }
+                    </div>
+
+                </div>
+                <!-- END: Item List -->
+                <!-- BEGIN: Ticket -->
+                <form id="order" class="col-span-12 space-y-2 lg:col-span-5">
+
+             
+                <div >
+                    <div class=" intro-y">
+                        <div class="p-2 box">
+                            <div class="justify-center pos__tabs nav nav-tabs" role="tablist"> <a id="ticket-tab"
+                                    data-toggle="tab" data-target="#ticket" href="javascript:;"
+                                    class="flex-1 py-2 text-center rounded-md" role="tab" aria-controls="ticket"
+                                    aria-selected="false">My Cart</a> </div>
+                        </div>
+                    </div>
+              @await Html.PartialAsync("../Components/Form/FormMessage.cshtml")
+                
+                <div class="p-2 mt-3 box intro-y "> 
+                    <label>Payment Method</label>
+                    <div class="flex flex-col mt-2 sm:flex-row">
+                        <div class="mr-2 form-check"> 
+                            <input id="radio-switch-4" class="form-check-input" type="radio"
+                                name="payment" value="0" checked="checked"> <label class="form-check-label"
+                                for="radio-switch-4" >Cash</label> </div>
+                        <div class="mt-2 mr-2 form-check sm:mt-0">
+                             <input id="radio-switch-5" class="form-check-input" type="radio"
+                                name="payment" value="1"> <label class="form-check-label"
+                                for="radio-switch-5">Credit Card</label> </div>
+                     
+                    </div>
+                </div>
+
+                    <div class="tab-content" id="cart">
+
+                   
+                        <div  class="flex items-center block p-3 transition duration-300 ease-in-out bg-white rounded-md cursor-pointer dark:bg-dark-3 hover:bg-gray-200 dark:hover:bg-dark-1">
+                                            <div class="w-3/6 mr-1 truncate pos__ticket__item-name">Total
+                                        </div>
+                                        <div  class="flex items-center w-1/6 space-x-2" >
+                                            
+                                        </div>
+                                        <div class="w-1/6 ml-auto font-medium" id="total">$@totalPrice</div>
+                        </div>
+                    </div>
+
+                       @await Html.PartialAsync("../Components/Form/FormBtn.cshtml","Order Product")
+                </div>
+            
+             </form>
+                <!-- END: Ticket -->
+            </div>
         </div>
+        <!-- END: Content -->
     </div>
+
 </div>
+
+@section Scripts {
+
+<script src="/js/home.js"></script>
+
+}

@@ -1,91 +1,112 @@
-@model Backend.Models.Category
 @{
-    ViewData["Title"] = Routers.Product.Title;
-    List<Product> products = (List<Product>)ViewData["products"];
+    this.ViewData["Title"] = Routers.Product.Title;
+    var products = (List<Product>)this.ViewData["products"];
+    var categories = (SelectList)this.ViewData["categories"];
 
+    var min = (string) this.Context.Request.Query["min"];
+    var max = (string) this.Context.Request.Query["max"];
+    var name =(string)  this.Context.Request.Query["name"];
+    var categoryId = (string)  this.Context.Request.Query["categoryId"];
 
-    var min = new FormField() { Label = "Min", Field = "min", Type = "number", Value = 0 };
-    var max = new FormField() { Label = "Max", Field = "max", Type = "number", Value = 99999 };
-    var name = new FormField() { Label = "Name", Field = "name", Type = "text", Value = "" };
-    var categoryId = new FormField() { Label = "CategoryId", Field = "categoryId", Type = "text", Value = "" };
-
-    var createBtn = new FormField() { Label = "Search" };
 
 }
 
-<div class="flex-1 p-2">
-    <form method="get" action="@Routers.Product.Link">
-        <div class="space-y-4">
-            @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
-            <div class="flex space-x-4 justify-items-stretch">
-                @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", min)
-                @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", max)
-            </div>
-            <div class="flex space-x-4 justify-items-stretch">
-                @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
-                @await Html.PartialAsync("~/Views/Components/Form/FormCategories.cshtml")
-            </div>
-            <div class="flex space-x-4">
-                <div class="w-32">
-                    @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", createBtn)
+<div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6">
+    <div class="flex">
+
+        @await Html.PartialAsync("../../Components/Navbar/NavbarSide.cshtml")
+
+        <div class="content">
+            <div class="p-5 mt-5 intro-y box">
+                <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
+                    <form id="tabulator-html-filter-form" >
+                        <div class="flex items-end space-x-2">
+                            <div class="space-y-2">
+                                <label>Name</label>
+                                @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new {Label="Name",
+                                Field="name",Type="text", Value=name})
+                            </div>
+                            <div class="space-y-2">
+                                <label>Min Price</label>
+                                @await Html.PartialAsync("../../Components/Form/TextFieldNumber.cshtml", new {Label="Min price",
+                                Field="min",Step="0.01", Value=min})
+                            </div>
+                            <div class="space-y-2">
+                                <label>Max Price</label>
+                                @await Html.PartialAsync("../../Components/Form/TextFieldNumber.cshtml", new {Label="Max price",
+                                Field="max",Step="0.01", Value=max})
+                            </div>
+                            <div class="space-y-2"> 
+                                <label>Category</label>
+                                @await Html.PartialAsync("../../Components/Form/SelectList.cshtml", new {Label="Max price",
+                                Values=categories, Value=categoryId, Field="categoryId"})
+                            </div>
+                            <div class="flex items-end">
+                                <button class="mb-2 btn btn-primary"> 
+                                    <i data-feather="search" class="w-5 h-5"></i> 
+                                </button>
+                                    
+                            </div>
+                        </div>
+                    
+                    </form>
                 </div>
-                <a href="@Routers.CreateProduct.Link"
-                    class="inline-block p-2 font-medium text-white duration-300 bg-blue-600 rounded-sm hover:bg-blue-800">Create
-                    New Product</a>
+
+            </div>
+            <div class="overflow-x-auto intro-y box">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Product ID</th>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Name</th>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Image</th>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Category</th>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Description</th>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Status</th>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Original Price</th>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Retail Price</th>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Create Date</th>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Quantity</th>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in products)
+                        {
+
+
+                            var link = $"{Routers.UpdateProduct.Link}?productId={item.ProductId}";
+                            <tr class="hover:bg-gray-200">
+                                <td class="border">@item.ProductId</td>
+                                <td class="border">@item.Name</td>
+                                <td class="border">
+                                    <img src="@item.ImageUrl" alt="@item.Name" class="object-cover w-16 h-16" />
+                                </td>
+                                <td class="border">@item.Category.Name</td>
+                                <td class="border">@item.Description</td>
+                                <td class="border">
+                                    @await Html.PartialAsync("../../Components/Table/Status.cshtml", item.Status
+                                                == ProductStatus.ACTIVE )
+
+                                </td>
+                                <td class="border">$@item.OriginalPrice</td>
+                                <td class="border">$@item.RetailPrice</td>
+                                <td class="border">@item.CreateDate</td>
+                                <td class="border">@item.Quantity</td>
+                                <td class="border">
+                                       <a href="@link" class=" btn btn-primary"> <i data-feather="edit"
+                                        class="w-5 h-5"></i> </a>
+
+                                </td>
+
+                            </tr>
+                        }
+
+                     </tbody>
+                </table>
             </div>
         </div>
-    </form>
-    <table class="w-full my-2 bg-white border border-black fade-in">
-        <thead>
-            <tr>
-                <th class="p-2 border border-black">ProductId</th>
-                <th class="p-2 border border-black">Name</th>
-                <th class="p-2 border border-black">Image</th>
-                <th class="p-2 border border-black">Category</th>
-                <th class="p-2 border border-black">Description</th>
-                <th class="p-2 border border-black">Status</th>
-                <th class="p-2 border border-black">OriginalPrice</th>
-                <th class="p-2 border border-black">RetailPrice</th>
-                <th class="p-2 border border-black">CreateDate</th>
-                <th class="p-2 border border-black">Quantity</th>
-                <th class="p-2 border border-black">Update</th>
+    </div>
 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var product in products)
-            {
-
-                var updateLink = $"{@Routers.UpdateProduct.Link}?productId={@product.ProductId}";
-                var activeColor = product.Status == ProductStatus.ACTIVE ? "text-green-500" : "text-red-500";
-                <tr>
-                    <td class="p-2 text-center border border-black max-h-16">@product.ProductId</td>
-                    <td class="p-2 text-center border border-black max-h-16">@product.Name</td>
-                    <td class="p-2 text-center border border-black max-h-16">
-                        <div class="h-16">
-                            <img src="@product.ImageUrl" alt="@product.Name" class="object-cover w-full h-full" />
-                        </div>
-                    </td>
-                    <td class="p-2 text-center border border-black">@product.Category.Name</td>
-                    <td class="p-2 text-center lowercase border border-black first-letter ">@product.Description</td>
-                    <td class="p-2 text-center lowercase border border-black first-letter @activeColor ">@product.Status
-                    </td>
-                    <td class="p-2 text-center lowercase border border-black first-letter ">$@product.OriginalPrice</td>
-                    <td class="p-2 text-center lowercase border border-black first-letter ">$@product.RetailPrice</td>
-                    <td class="p-2 text-center lowercase border border-black first-letter ">@product.CreateDate</td>
-                    <td class="p-2 text-center lowercase border border-black first-letter ">@product.Quantity</td>
-                    <td class="p-2 text-center border border-black">
-                        <a href="@updateLink"
-                        class="inline-block p-2 font-medium text-white duration-300 bg-blue-600 rounded-sm hover:bg-blue-800">Update</a>
-                    </td>
-
-                </tr>
-
-            }
-        </tbody>
-    </table>
-    @if (products.Count <= 0)
-    {
-        <div class="text-xl">List is empty</div>
-    }
 </div>

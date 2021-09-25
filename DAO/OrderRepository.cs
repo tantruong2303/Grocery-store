@@ -70,5 +70,20 @@ namespace Backend.DAO
             return orders;
         }
 
+
+        public bool CreateOrderHandler(Order order)
+        {
+            this.DBContext.Order.Add(order);
+            this.DBContext.SaveChanges();
+            return true;
+        }
+
+        public bool CreateOrderItemHandler(OrderItem orderItem)
+        {
+            this.DBContext.OrderItem.Add(orderItem);
+            this.DBContext.SaveChanges();
+            return true;
+        }
+
     }
 }

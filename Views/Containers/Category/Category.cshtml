@@ -1,46 +1,68 @@
 @{
-    ViewData["Title"] = Routers.Category.Title;
-    List<Category> categories = (List<Category>)ViewData["categories"];
+    this.ViewData["Title"] = Routers.Category.Title;
+    var categories = (List<Category>)this.ViewData["categories"];
 }
 
-<div class="p-2 ">
+<div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6 ">
+    <div class="flex">
+        <!-- BEGIN: Side Menu -->
+        @await Html.PartialAsync("../../Components/Navbar/NavbarSide.cshtml")
+        <!-- END: Side Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <div class="mt-5 intro-y box">
+                <div class="flex flex-col items-center p-5 border-b border-gray-200 sm:flex-row">
+                    <h2 class="mr-auto text-base font-medium">
+                        Category Manager
+                    </h2>
 
-    <div>
-        <a href="@Routers.CreateCategory.Link"
-            class="inline-block p-2 font-medium text-white duration-300 bg-blue-600 rounded-sm hover:bg-blue-800">Create
-            New Catagory</a>
+                </div>
+                <div class="p-5" id="hoverable-table">
+                    <div class="preview">
+                        <div class="overflow-x-auto">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Category ID
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Name
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Description
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Stauts</th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Edit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in categories)
+                                    {
+
+                                        var link = $"{Routers.UpdateCategory.Link}?categoryId={item.CategoryId}";
+
+                                        <tr class="hover:bg-gray-200">
+                                            <td class="border">@item.CategoryId</td>
+                                            <td class="border">@item.Name</td>
+                                            <td class="border">@item.Description</td>
+                                            <td class="border">
+                                                @await Html.PartialAsync("../../Components/Table/Status.cshtml", item.Status
+                                            == CategoryStatus.ACTIVE )
+                                            </td>
+                                            <td class="border">
+                                                <a href="@link" class="mb-2 mr-1 btn btn-primary"> <i data-feather="edit"
+                                                    class="w-5 h-5"></i> </a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END: Content -->
     </div>
-    @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
-    <table class="my-2 bg-white border border-black fade-in">
-        <thead>
-            <tr>
-                <th class="p-2 border border-black">Name</th>
-                <th class="p-2 border border-black">Description</th>
-                <th class="p-2 border border-black">Status</th>
-                <th class="p-2 border border-black">Update</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var category in categories)
-            {
-                var updateLink = $"{@Routers.UpdateCategory.Link}?categoryId={@category.CategoryId}";
-                var deleteLink = $"{@Routers.DeleteCategory.Link}?categoryId={@category.CategoryId}";
-                var activeColor = category.Status == CategoryStatus.ACTIVE ? "text-green-500" : "text-red-500";
-                <tr>
-                    <td class="p-2 text-center border border-black max-h-16">@category.Name</td>
-                    <td class="p-2 text-center border border-black">@category.Description</td>
-                    <td class="p-2 text-center lowercase border border-black first-letter @activeColor">@category.Status
-                    </td>
-                    <td class="p-2 text-center border border-black">
-                        <a href="@updateLink"
-                        class="inline-block p-2 font-medium text-white duration-300 bg-blue-600 rounded-sm hover:bg-blue-800">Update</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    @if (categories.Count <= 0)
-    {
-        <div class="text-xl">List is empty</div>
-    }
+
 </div>

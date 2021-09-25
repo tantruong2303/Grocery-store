@@ -10,6 +10,10 @@ using Backend.DAO.Interface;
 using Backend.Utils.Locale;
 using Backend.Models;
 
+
+using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 namespace Backend.Services
 {
     public class CategoryService : ICategoryService
@@ -34,58 +38,28 @@ namespace Backend.Services
             return this.CategoryRepository.GetCategories();
         }
 
-        public bool CreateCategoryHandler(CreateCategoryDTO input, ViewDataDictionary dataView)
+        public List<SelectListItem> GetCategoryDropListRender()
         {
-
-
-            ValidationResult result = new CreateCategoryDTOValidator().Validate(input);
-            if (!result.IsValid)
+            var categories = new List<SelectListItem>();
+            var list = this.CategoryRepository.GetCategories();
+            foreach (var item in list)
             {
-                ServerResponse.MapDetails(result, dataView);
-                return false;
-            }
-            var isExistCategory = this.CategoryRepository.GetCategoryByCategoryName(input.Name);
-            if (isExistCategory != null)
-            {
-                ServerResponse.SetFieldErrorMessage("name", CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, dataView);
-                return false;
+                categories.Add(new SelectListItem() { Value = item.CategoryId, Text = item.Name });
             }
 
-            var category = new Category();
-            category.CategoryId = Guid.NewGuid().ToString();
-            category.Name = input.Name;
-            category.Description = input.Description;
-            category.Status = (CategoryStatus)input.Status;
-            category.CreateDate = DateTime.Now.ToShortDateString();
-            this.DBContext.Category.Add(category);
-            this.DBContext.SaveChanges();
-            return true;
+            return categories;
         }
 
-        public bool UpdateCategoryHandler(UpdateCategoryDTO input, ViewDataDictionary dataView)
+        public bool CreateCategoryHandler(Category category)
         {
 
-            ValidationResult result = new UpdateCategoryDTOValidator().Validate(input);
-            if (!result.IsValid)
-            {
-                ServerResponse.MapDetails(result, dataView);
-                return false;
-            }
-            var category = this.CategoryRepository.GetCategoryByCategoryId(input.CategoryId);
+            return this.CategoryRepository.CreateCategoryHandler(category);
+        }
 
-            var isExistCategory = this.CategoryRepository.GetCategoryByCategoryName(input.Name);
-            if (isExistCategory != null && isExistCategory.Name != category.Name)
-            {
-                ServerResponse.SetFieldErrorMessage("name", CustomLanguageValidator.ErrorMessageKey.ERROR_EXISTED, dataView);
-                return false;
-            }
+        public bool UpdateCategoryHandler(Category category)
+        {
 
-            category.Name = input.Name;
-            category.Description = input.Description;
-            category.Status = (CategoryStatus)input.Status;
-            this.DBContext.SaveChanges();
-            return true;
-
+            return this.CategoryRepository.UpdateCategoryHandler(category);
         }
     }
 }

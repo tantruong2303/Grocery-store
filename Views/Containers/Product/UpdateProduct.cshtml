@@ -1,98 +1,100 @@
-@model Product
 @{
-    ViewData["Title"] = Routers.UpdateProduct.Title;
-    Product product = (Product)ViewData["product"];
+    this.ViewData["Title"] = Routers.CreateProduct.Title;
+    var categories = (SelectList)this.ViewData["categories"];
+    var product = (Product)this.ViewData["product"];
 
-    var name = new FormField() { Label = "Product Name", Field = "name", Type = "text", Value = product.Name };
-    var descirption = new FormField()
-    {
-        Label = "Description",
-        Field = "description",
-        Type = "text",
-        Value = product.Description
-    };
-    var status = new FormField()
-    {
-        Label = "Status",
-        Field = "status",
-        Type = "text",
-        Value = product.Status
-    };
-    var originalPrice = new FormField()
-    {
-        Label = "Original Price",
-        Field = "originalPrice",
-        Type = "number",
-        Value = product.OriginalPrice.ToString()
-    };
-    var retailPrice = new FormField()
-    {
-        Label = "Retail Price",
-        Field = "retailPrice",
-        Type = "number",
-        Value = product.RetailPrice.ToString()
-    };
-    var quantity = new FormField()
-    {
-        Label = "Quantity",
-        Field = "quantity",
-        Type = "number",
-        Value = product.Quantity.ToString()
-    };
-    var file = new FormField() { Label = "Product Image", Field = "file", Type = "file" };
-    var categoryId = new FormField()
-    {
-        Label = "Category ID",
-        Field = "categoryId",
-        Type = "text",
-        Value = product.CategoryId
-    };
-
-    var updateBtn = new FormField() { Label = "Update Product" };
-
-    var actionLink = $"{Routers.UpdateProduct.Link}?productId={product.ProductId}";
 }
 
-<div class="flex items-center justify-center flex-1 ">
-    <form method="post" action="@actionLink" enctype="multipart/form-data"
-        class="flex-1 px-4 py-8 mx-2 my-2 space-y-8 bg-white rounded-md shadow-lg md:mx-0 md:w-96 bg-opacity-90 md:flex-none fade-in">
-        <h1 class="text-4xl font-semibold text-center">Update Product</h1>
-        <div class="flex justify-center max-h-64">
-            <img src="@product.ImageUrl" alt="product" id="pre-photo" class="inline-block object-cover w-full " />
-        </div>
-        @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
-        <div class="space-y-4">
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", name)
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", descirption)
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", originalPrice)
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", retailPrice)
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", quantity)
-            @await Html.PartialAsync("~/Views/Components/Form/FormCategories.cshtml")
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", file)
-            <div class="flex items-center space-x-2">
-                <label class="font-medium">Status: </label>
-                @Html.RadioButton("status", ProductStatus.ACTIVE,(product.Status == ProductStatus.ACTIVE))<span>Active
-                </span>
-                @Html.RadioButton("status", ProductStatus.INACTIVE,(product.Status ==
-                ProductStatus.INACTIVE))<span>Inactive</span>
-            </div>
+<div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6">
+    <div class="flex">
+        <!-- BEGIN: Side Menu -->
+        @await Html.PartialAsync("../../Components/Navbar/NavbarSide.cshtml")
+        <!-- END: Side Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <div class="max-w-sm mt-5 intro-y box">
+                <div class="flex flex-col items-center p-5 border-b border-gray-200 sm:flex-row dark:border-dark-5">
+                    <h2 class="mr-auto text-base font-medium">
+                        Update Product
+                    </h2>
+                </div>
+                <form id="updateProductForm" class="p-5 space-y-4">
+                    <div class="space-y-2 preview">
+                        <div class="space-y-2">
+                            <img alt="image" id="image-preview" class="object-cover w-24 h-24 " src="@product.ImageUrl">
+                            <input type="file" id="image" />
+                            <div id="IMAGEERROR" data-label="Image" class="text-red-500 "></div>
+                        </div>
 
+                        <input type="text" class="hidden" value="@product.ProductId" id="productId" />
+                        @await Html.PartialAsync("../../Components/Form/FormMessage.cshtml")
+                        <div>
+                            <label>Name</label>
+                            @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new
+                            {Label="Name",
+                            Field="name",Type="text", Value=product.Name})
+                        </div>
+                        <div>
+                            <label>Description</label>
+                            @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new
+                            {Label="Description",
+                            Field="description",Type="text", Value=product.Description})
+                        </div>
+                        <div>
+                            <label>Original Price</label>
+                            @await Html.PartialAsync("../../Components/Form/TextFieldNumber.cshtml",new
+                            {Label="Original Price",
+                            Field="originalPrice", Value=product.OriginalPrice.ToString(), Step = "0.1"})
+                        </div>
+                        <div>
+                            <label>Retail Price</label>
+                            @await Html.PartialAsync("../../Components/Form/TextFieldNumber.cshtml",new
+                            {Label="Retail Price",
+                            Field="retailPrice", Value=product.RetailPrice.ToString(), Step = "0.1"})
+                        </div>
+                        <div>
+                            <label>Quantity</label>
+                            @await Html.PartialAsync("../../Components/Form/TextFieldNumber.cshtml",new
+                            {Label="Quantity",
+                            Field="quantity",Step = "1", Value=product.Quantity.ToString()})
+                        </div>
+                        <div>
+                            <label>Status</label>
+                            <div class="flex flex-col mt-2 sm:flex-row">
+                                <div class="mr-2 form-check">
+                                    <input id="radio-switch-4" class="form-check-input" type="radio" name="status"
+                                        value="1" @(product.Status == ProductStatus.ACTIVE ? "checked" : "")>
+                                    <label class="form-check-label" for="radio-switch-4">Active</label>
+                                </div>
+                                <div class="mt-2 mr-2 form-check sm:mt-0">
+                                    <input id="radio-switch-5" class="form-check-input" type="radio" name="status"
+                                        value="0" @(product.Status == ProductStatus.INACTIVE ? "checked" : "")>
+                                    <label class="form-check-label" for="radio-switch-5">Inactive</label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label>Category</label>
+                            @await Html.PartialAsync("../../Components/Form/SelectList.cshtml", new {
+                            Label="Category",
+                            Values=categories, Value=product.CategoryId, Field="categoryId"})
+                        </div>
+                    </div>
+
+                    @await Html.PartialAsync("../../Components/Form/FormBtn.cshtml","Update Product")
+                </form>
+
+
+            </div>
         </div>
-        @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", updateBtn)
-    </form>
+        <!-- END: Content -->
+    </div>
+
 </div>
-<script>
-    document.getElementById("file").addEventListener(
-        "change",
-        function () {
-            const reader = new FileReader();
-            reader.onload = function () {
-                const dataURL = reader.result;
-                const output = document.getElementById("pre-photo");
-                output.src = dataURL;
-            };
-            reader.readAsDataURL(this.files[0]);
-        },
-        false
-    );
-</script>
+
+@section Scripts {
+
+<script src="/js/updateProduct.js"></script>
+
+}

@@ -36,5 +36,18 @@ namespace Backend.DAO
             Category category = this.DBContext.Category.FirstOrDefault(item => item.CategoryId == categoryId);
             return category;
         }
+
+        public bool CreateCategoryHandler(Category category)
+        {
+            this.DBContext.Category.Add(category);
+            return this.DBContext.SaveChanges() > 0;
+        }
+
+        public bool UpdateCategoryHandler(Category category)
+        {
+            this.DBContext.Category.Update(category);
+            return this.DBContext.SaveChanges() > 0;
+        }
+
     }
 }

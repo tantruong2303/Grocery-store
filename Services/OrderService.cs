@@ -42,42 +42,14 @@ namespace Backend.Services
             return this.OrderRepository.SearchOrders(startDate, endDate, search);
         }
 
-        public void CreateOrderHandler(CreateOrderDTO input, ViewDataDictionary dataView, Dictionary<string, CartItem> cart)
+        public bool CreateOrderHandler(Order order)
         {
-            User customer = (User)dataView["user"];
-            Order order = new Order();
-            order.OrderId = Guid.NewGuid().ToString();
-            order.Status = OrderStatus.ACTIVE;
-            order.Total = 0;
-            order.Profit = 0;
-            order.CreateDate = DateTime.Now.ToShortDateString();
-            order.PaymentMethod = input.PaymentMethod;
-            order.CustomerId = customer.UserId;
-            this.DBContext.Order.Add(order);
-            this.DBContext.SaveChanges();
+            return this.OrderRepository.CreateOrderHandler(order);
+        }
 
-
-            foreach (var cartItem in cart)
-            {
-                Product product = this.ProductService.GetProductById(cartItem.Key);
-                OrderItem orderItem = new OrderItem();
-                orderItem.OrderItemId = Guid.NewGuid().ToString();
-                orderItem.Quantity = cartItem.Value.Quantity;
-                orderItem.CreateDate = DateTime.Now.ToShortDateString();
-                orderItem.SalePrice = product.RetailPrice;
-                orderItem.OrderId = order.OrderId;
-                orderItem.ProductId = product.ProductId;
-                this.DBContext.OrderItem.Add(orderItem);
-                this.DBContext.SaveChanges();
-
-                order.Total += product.RetailPrice;
-                order.Profit += (product.RetailPrice - product.OriginalPrice);
-
-                product.Quantity -= orderItem.Quantity;
-            }
-
-            this.DBContext.SaveChanges();
-
+        public bool CreateOrderItemHandler(OrderItem orderItem)
+        {
+            return this.OrderRepository.CreateOrderItemHandler(orderItem);
         }
     }
 }

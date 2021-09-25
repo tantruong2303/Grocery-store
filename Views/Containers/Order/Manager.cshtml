@@ -1,85 +1,128 @@
 @{
-    ViewData["Title"] = Routers.Manager.Title;
-    List<Order> orders = (List<Order>)ViewData["orders"];
-    var startDate = new FormField() { Label = "Start Date", Field = "startDate", Type = "date" };
-    var endDate = new FormField() { Label = "End Date", Field = "endDate", Type = "date" };
-    var search = new FormField() { Label = "Name, Phone or Email", Field = "search", Type = "text" };
-    var searchBtn = new FormField() { Label = "Search" };
+    this.ViewData["Title"] = Routers.Category.Title;
+    var orders = (List<Order>)this.ViewData["orders"];
 
-    double totalValue = 0;
-    double totalProfit = 0;
+    var search = (string)this.Context.Request.Query["search"];
+    var endDate = (string)this.Context.Request.Query["endDate"];
+    var startDate = (string)this.Context.Request.Query["startDate"];
+    double totalOri = 0;
+    double totalPro = 0;
+
 }
 
-<div class="flex-1 p-2">
-    @await Html.PartialAsync("~/Views/Components/Form/FormMsg.cshtml")
-    <form action="@Routers.Manager.Link" method="get" class="space-y-2">
-        <div class="flex space-x-4">
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", startDate)
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", endDate)
-        </div>
-        <div class="flex space-x-4">
-            @await Html.PartialAsync("~/Views/Components/Form/TextFiled.cshtml", search)
-            <div class="flex-1"></div>
-        </div>
-        <div class="w-32">
-            @await Html.PartialAsync("~/Views/Components/Form/FormBtn.cshtml", searchBtn)
-        </div>
+<div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6 ">
+    <div class="flex">
+        @await Html.PartialAsync("../../Components/Navbar/NavbarSide.cshtml")
+        <div class="content">
+            <div class="mt-5 intro-y box">
+                <div class="flex flex-col items-center p-5 border-b border-gray-200 sm:flex-row">
+                    <h2 class="mr-auto text-base font-medium">
+                        Order Management
+                    </h2>
 
-    </form>
-    <div class="flex flex-col-reverse py-2">
+                </div>
+                <div class="flex flex-col items-center p-5 border-b border-gray-200 sm:flex-row">
 
-        <table class="my-2 bg-white border border-black fade-in">
-            <thead>
-                <tr>
-                    <th class="p-2 border border-black">CustomerId</th>
-                    <th class="p-2 border border-black">Customer Name</th>
-                    <th class="p-2 border border-black">Customer Phone</th>
-                    <th class="p-2 border border-black">Date</th>
-                    <th class="p-2 border border-black">Payment method</th>
-                    <th class="p-2 border border-black">Total</th>
-                    <th class="p-2 border border-black">Profit</th>
-                    <th class="p-2 border border-black">Detail</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var order in orders)
-                {
-                    var detailLink = $"{@Routers.OrderDetail.Link}?orderId={@order.OrderId}";
-                    totalValue += order.Total;
-                    totalProfit += order.Profit;
+                    <form id="tabulator-html-filter-form">
+                        <div class="flex items-end space-x-2">
+                            <div class="space-y-2">
+                                <label>Name</label>
+                                @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new {Label="Name",
+                                Field="search",Type="text", Value=search})
+                            </div>
 
-                    <tr>
-                        <td class="p-2 text-center border border-black max-h-16">@order.CustomerId</td>
-                        <td class="p-2 text-center border border-black">@order.Customer.Name</td>
-                        <td class="p-2 text-center border border-black">@order.Customer.Phone</td>
-                        <td class="p-2 text-center border border-black">@order.CreateDate</td>
-                        <td class="p-2 text-center border border-black">@order.PaymentMethod</td>
-                        <td class="p-2 text-center border border-black">$@order.Total</td>
-                        <td class="p-2 text-center border border-black">$@order.Profit</td>
-                        <td class="p-2 text-center border border-black">
-                            <a href="@detailLink"
-                            class="inline-block px-4 py-2 font-semibold text-white duration-300 bg-blue-600 rounded-sm hover:bg-blue-800">View
-                                Detail</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                            <div class="space-y-2">
+                                <label>Start Date</label>
+                                @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new {Label="Start Date",Field="startDate", Type="date", Value=startDate})
+                            </div>
+                            <div class="space-y-2">
+                                <label>End Date</label>
+                                @await Html.PartialAsync("../../Components/Form/TextField.cshtml", new {Label="End Date", Field="endDate",Type="date", Value=endDate})
+                            </div>
+                            <div class="flex items-end">
+                                <button class="mb-2 btn btn-primary">
+                                    <i data-feather="search" class="w-5 h-5"></i>
+                                </button>
 
-        <div class="flex items-center p-2 space-x-8 font-semibold bg-white">
-            <p>
-                Total Order: @orders.Count
-            </p>
-            <p>
-                Total Value: $@totalValue
-            </p>
-            <p>
-                Total Profit: $@totalProfit
-            </p>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="p-5" id="hoverable-table">
+                    <div class="preview">
+                        <div class="overflow-x-auto">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Order ID
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Customer Name
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Total
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Profit
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Create Date
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Payment
+                                            Method
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Stauts</th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">View Detail</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in orders)
+                                    {
+
+                                        var link = $"{Routers.OrderDetail.Link}?orderId={item.OrderId}";
+                                        totalOri += item.Total;
+                                        totalPro += item.Profit;
+                                        <tr class="hover:bg-gray-200">
+                                            <td class="border">@item.OrderId</td>
+                                            <td class="border">@item.Customer.Name</td>
+                                            <td class="border">$@item.Total</td>
+                                            <td class="border">$@item.Profit</td>
+                                            <td class="border">@item.CreateDate</td>
+                                            <td class="border">@item.PaymentMethod</td>
+                                            <td class="border">
+                                                @await Html.PartialAsync("../../Components/Table/Status.cshtml", item.Status
+                                            == OrderStatus.ACTIVE )
+                                            </td>
+                                            <td class="border">
+                                                <a href="@link" class="mb-2 mr-1 btn btn-primary"> <i
+                                                    data-feather="shopping-bag" class="w-5 h-5"></i> </a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                      <tr class="hover:bg-gray-200">
+                                            <td class="border"></td>
+                                            <td class="border">Total</td>
+                                            <td class="border">$@totalOri</td>
+                                            <td class="border">$@totalPro</td>
+                                            <td class="border"></td>
+                                            <td class="border"></td>
+                                            <td class="border">
+                             
+                                            </td>
+                                            <td class="border">
+                                              
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    @if (orders.Count <= 0)
-    {
-        <div class="text-xl">List is empty</div>
-    }
 </div>
+@section Scripts {
+
+
+}
