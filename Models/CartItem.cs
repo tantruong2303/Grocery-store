@@ -12,5 +12,7 @@ namespace Backend.Models
         {
             return "CartItem: \nProductId: " + ProductId + " \nQuantity: " + Quantity;
         }
+
+
     }
 }

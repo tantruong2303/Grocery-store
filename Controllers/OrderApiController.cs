@@ -12,6 +12,8 @@ using FluentValidation.Results;
 
 namespace Backend.Controllers
 {
+
+    [Route("/api/order")]
     public class OrderApiController : Controller
     {
         private readonly IOrderService OrderService;
@@ -24,6 +26,7 @@ namespace Backend.Controllers
             this.CartService = cartService;
             this.ProductService = productService;
         }
+
         [HttpPost("")]
         [ServiceFilter(typeof(AuthGuard))]
         public IActionResult CreateOrder([FromBody] CreateOrderDTO body)

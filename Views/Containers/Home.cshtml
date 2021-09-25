@@ -20,7 +20,7 @@
         <!-- BEGIN: Content -->
         <div class="content">
             <!-- BEGIN: Top Bar -->
-
+ 
             <!-- END: Top Bar -->
 
             <div class="grid grid-cols-12 gap-5 mt-5 pos intro-y">
@@ -65,7 +65,7 @@
                                 <div class="relative p-3 rounded-md duration hover:bg-blue-200 box">
                                     <div class="relative flex-none block pos-image">
                                         <div class="pos-image__preview image-fit">
-                                            <img alt="Rubick Tailwind HTML Admin Template" src="https://picsum.photos/300">
+                                            <img alt="Rubick Tailwind HTML Admin Template" src="@item.ImageUrl">
                                         </div>
                                     </div>
                                     <div class="block mt-3 font-medium text-center truncate">@item.Name</div>
@@ -78,7 +78,10 @@
                 </div>
                 <!-- END: Item List -->
                 <!-- BEGIN: Ticket -->
-                <div class="col-span-12 space-y-2 lg:col-span-5">
+                <form id="order" class="col-span-12 space-y-2 lg:col-span-5">
+
+             
+                <div >
                     <div class=" intro-y">
                         <div class="p-2 box">
                             <div class="justify-center pos__tabs nav nav-tabs" role="tablist"> <a id="ticket-tab"
@@ -87,26 +90,26 @@
                                     aria-selected="false">My Cart</a> </div>
                         </div>
                     </div>
-                    <div class="tab-content">
+              @await Html.PartialAsync("../Components/Form/FormMessage.cshtml")
+                
+                <div class="p-2 mt-3 box intro-y "> 
+                    <label>Payment Method</label>
+                    <div class="flex flex-col mt-2 sm:flex-row">
+                        <div class="mr-2 form-check"> 
+                            <input id="radio-switch-4" class="form-check-input" type="radio"
+                                name="payment" value="0" checked="checked"> <label class="form-check-label"
+                                for="radio-switch-4" >Cash</label> </div>
+                        <div class="mt-2 mr-2 form-check sm:mt-0">
+                             <input id="radio-switch-5" class="form-check-input" type="radio"
+                                name="payment" value="1"> <label class="form-check-label"
+                                for="radio-switch-5">Credit Card</label> </div>
+                     
+                    </div>
+                </div>
 
-                        @foreach (var item in cartItems)
-                        {
+                    <div class="tab-content" id="cart">
 
-                            var total =  item.Quantity * item.RetailPrice;
-                            totalPrice += total;
-                        <div  data-group="addCart" data-id="@item.ProductId"   class="flex items-center block p-3 transition duration-300 ease-in-out bg-white rounded-md cursor-pointer dark:bg-dark-3 hover:bg-gray-200 dark:hover:bg-dark-1">
-                                            <div class="w-3/6 mr-1 truncate pos__ticket__item-name">@item.Name
-
-                                        </div>
-                                        <div  class="flex items-center w-1/6 space-x-2 add-cart" >
-                                            <button class="p-1 font-semibold" data-group="plus">+</button>
-                                            <div class="text-gray-600"data-group="label" >@item.Quantity</div>
-                                            <button class="p-1 font-semibold" data-group="minus">-</button>
-                                        </div>
-                                        <div class="w-1/6 ml-auto font-medium" data-group="total">$@total</div>
-                        </div>
-                            
-                        }
+                   
                         <div  class="flex items-center block p-3 transition duration-300 ease-in-out bg-white rounded-md cursor-pointer dark:bg-dark-3 hover:bg-gray-200 dark:hover:bg-dark-1">
                                             <div class="w-3/6 mr-1 truncate pos__ticket__item-name">Total
                                         </div>
@@ -116,10 +119,13 @@
                                         <div class="w-1/6 ml-auto font-medium" id="total">$@totalPrice</div>
                         </div>
                     </div>
+
+                       @await Html.PartialAsync("../Components/Form/FormBtn.cshtml","Order Product")
                 </div>
+            
+             </form>
                 <!-- END: Ticket -->
             </div>
-          
         </div>
         <!-- END: Content -->
     </div>

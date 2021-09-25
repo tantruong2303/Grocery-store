@@ -32,7 +32,11 @@
                                         </th>
                                         <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Total
                                         </th>
-                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Profit
+
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Create Date
+                                        </th>
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Payment
+                                            Method
                                         </th>
                                         <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Stauts</th>
                                         <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Edit</th>
@@ -49,7 +53,6 @@
                                             <td class="border">@item.OrderId</td>
                                             <td class="border">@item.Customer.Name</td>
                                             <td class="border">@item.Total</td>
-                                            <td class="border">@item.Profit</td>
                                             <td class="border">@item.CreateDate</td>
                                             <td class="border">@item.PaymentMethod</td>
                                             <td class="border">
@@ -57,8 +60,8 @@
                                             == OrderStatus.ACTIVE )
                                             </td>
                                             <td class="border">
-                                                <a href="@link" class="mb-2 mr-1 btn btn-primary"> <i data-feather="file-text
-" class="w-5 h-5"></i> </a>
+                                                <a href="@link" class="mb-2 mr-1 btn btn-primary"> <i
+                                                    data-feather="shopping-bag" class="w-5 h-5"></i> </a>
                                             </td>
                                         </tr>
                                     }

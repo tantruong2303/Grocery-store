@@ -22,7 +22,8 @@ image?.addEventListener("change", function () {
         }
 });
 
-interface CreateCategoryDto {
+interface UpdateProductDto {
+        productId: string;
         name: string;
         description: string;
         originalPrice: number;
@@ -32,10 +33,11 @@ interface CreateCategoryDto {
         file: File;
 }
 
-const createProductForm = document.getElementById("createProductForm");
+const updateProductForm = document.getElementById("updateProductForm");
 
-createProductForm?.addEventListener("submit", function (event: Event) {
+updateProductForm?.addEventListener("submit", function (event: Event) {
         event.preventDefault();
+        const productId = document.getElementById("productId") as HTMLInputElement;
         const name = document.getElementById("name") as HTMLInputElement;
         const description = document.getElementById("description") as HTMLInputElement;
         const originalPrice = document.getElementById("originalPrice") as HTMLInputElement;
@@ -43,9 +45,18 @@ createProductForm?.addEventListener("submit", function (event: Event) {
         const quantity = document.getElementById("quantity") as HTMLInputElement;
         const categoryId = document.getElementById("categoryId") as HTMLInputElement;
 
-        if (name != null && description != null && originalPrice != null && retailPrice != null && quantity != null && categoryId != null) {
+        if (
+                name != null &&
+                description != null &&
+                originalPrice != null &&
+                retailPrice != null &&
+                quantity != null &&
+                categoryId != null &&
+                productId != null
+        ) {
                 const formData = new FormData();
                 console.log(name.value);
+                formData.append("productId", productId.value);
                 formData.append("name", name.value);
                 formData.append("description", description.value);
                 formData.append("originalPrice", originalPrice.value);
@@ -54,7 +65,7 @@ createProductForm?.addEventListener("submit", function (event: Event) {
                 formData.append("categoryId", categoryId.value);
                 formData.append("file", imageFile);
 
-                http.post<ServerResponse<null>>(routers.product.create, formData).then(() => {
+                http.put<ServerResponse<null>>(routers.product.update, formData).then(() => {
                         window.location.assign("/product");
                 });
         }

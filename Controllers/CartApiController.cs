@@ -31,7 +31,7 @@ namespace Backend.Controllers
         public IActionResult HandleAddToCart([FromBody] AddToCartDto body)
         {
 
-            var res = new ServerApiResponse<string>();
+            var res = new ServerApiResponse<object>();
 
             ValidationResult result = new AddToCartDtoValidator().Validate(body);
             if (!result.IsValid)
@@ -76,6 +76,7 @@ namespace Backend.Controllers
                         }
                     }
                     this.HttpContext.Session.SetString(CartSession, this.CartService.convertCartItemToString(list));
+                    res.data = this.CartService.GetCartItems(list);
                     res.setMessage("");
                     return new ObjectResult(res.getResponse());
                 }
@@ -86,7 +87,20 @@ namespace Backend.Controllers
             cartItem.Quantity = 1;
             list.Add(body.productId, cartItem);
             this.HttpContext.Session.SetString(CartSession, this.CartService.convertCartItemToString(list));
+            res.data = this.CartService.GetCartItems(list);
+            res.setMessage("");
+            return new ObjectResult(res.getResponse());
+        }
+        [HttpGet("")]
+        public IActionResult handleOnGetCart()
+        {
+            var res = new ServerApiResponse<object>();
+            var cart = this.HttpContext.Session.GetString(CartSession) ?? "";
 
+            var list = this.CartService.convertStringToCartItem(cart);
+
+            var getCart = this.CartService.GetCartItems(list);
+            res.data = getCart;
             res.setMessage("");
             return new ObjectResult(res.getResponse());
         }

@@ -9,6 +9,8 @@ export const routers = {
         },
         order: {
                 addToCart: "/api/cart/add",
+                getCart: "/api/cart",
+                create: "/api/order",
         },
         user: {
                 changePassword: "/api/user/password",
@@ -18,5 +20,6 @@ export const routers = {
         },
         product: {
                 create: "/api/product",
+                update: "/api/product",
         },
 };

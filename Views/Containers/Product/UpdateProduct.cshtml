@@ -18,7 +18,7 @@
                         Update Product
                     </h2>
                 </div>
-                <form id="createProductForm" class="p-5 space-y-4">
+                <form id="updateProductForm" class="p-5 space-y-4">
                     <div class="space-y-2 preview">
                         <div class="space-y-2">
                             <img alt="image" id="image-preview" class="object-cover w-24 h-24 " src="@product.ImageUrl">
@@ -26,6 +26,7 @@
                             <div id="IMAGEERROR" data-label="Image" class="text-red-500 "></div>
                         </div>
 
+                        <input type="text" class="hidden" value="@product.ProductId" id="productId" />
                         @await Html.PartialAsync("../../Components/Form/FormMessage.cshtml")
                         <div>
                             <label>Name</label>
@@ -78,6 +79,6 @@
 
 @section Scripts {
 
-<script src="/js/createProduct.js"></script>
+<script src="/js/updateProduct.js"></script>
 
 }

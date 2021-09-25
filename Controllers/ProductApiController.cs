@@ -34,7 +34,7 @@ namespace Backend.Controllers
         }
 
         [HttpPost("")]
-        public IActionResult HandleCreateProduct([FromBody] CreateProductDTO body)
+        public IActionResult HandleCreateProduct([FromForm] CreateProductDTO body)
         {
             var res = new ServerApiResponse<Product>();
             ValidationResult result = new CreateProductDTOValidator().Validate(body);
@@ -93,7 +93,7 @@ namespace Backend.Controllers
 
 
         [HttpPut("")]
-        public IActionResult HandleUpdateProduct([FromBody] UpdateProductDTO body)
+        public IActionResult HandleUpdateProduct([FromForm] UpdateProductDTO body)
         {
             var res = new ServerApiResponse<Product>();
             ValidationResult result = new UpdateProductDTOValidator().Validate(body);

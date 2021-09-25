@@ -5,6 +5,9 @@
     var search = (string)this.Context.Request.Query["search"];
     var endDate = (string)this.Context.Request.Query["endDate"];
     var startDate = (string)this.Context.Request.Query["startDate"];
+    double totalOri = 0;
+    double totalPro = 0;
+
 }
 
 <div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6 ">
@@ -76,7 +79,8 @@
                                     {
 
                                         var link = $"{Routers.OrderDetail.Link}?orderId={item.OrderId}";
-
+                                        totalOri += item.Total;
+                                        totalPro += item.Profit;
                                         <tr class="hover:bg-gray-200">
                                             <td class="border">@item.OrderId</td>
                                             <td class="border">@item.Customer.Name</td>
@@ -94,6 +98,21 @@
                                             </td>
                                         </tr>
                                     }
+
+                                      <tr class="hover:bg-gray-200">
+                                            <td class="border"></td>
+                                            <td class="border">Total</td>
+                                            <td class="border">$@totalOri</td>
+                                            <td class="border">$@totalPro</td>
+                                            <td class="border"></td>
+                                            <td class="border"></td>
+                                            <td class="border">
+                             
+                                            </td>
+                                            <td class="border">
+                                              
+                                            </td>
+                                        </tr>
                                 </tbody>
                             </table>
                         </div>
