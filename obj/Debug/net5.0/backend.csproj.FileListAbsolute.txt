@@ -1649,8 +1649,6 @@ E:\server\final\grocery-store\bin\Debug\net5.0\testhost.exe
 E:\server\final\grocery-store\bin\Debug\net5.0\testhost.dll
 E:\server\final\grocery-store\bin\Debug\net5.0\appsettings.Development.json
 E:\server\final\grocery-store\bin\Debug\net5.0\appsettings.json
-E:\server\final\grocery-store\bin\Debug\net5.0\config\env.development.json
-E:\server\final\grocery-store\bin\Debug\net5.0\config\env.production.json
 E:\server\final\grocery-store\bin\Debug\net5.0\Microsoft.TestPlatform.PlatformAbstractions.dll
 E:\server\final\grocery-store\bin\Debug\net5.0\WebBuilder\package.json
 E:\server\final\grocery-store\bin\Debug\net5.0\WebBuilder\tsconfig.json
@@ -1836,3 +1834,5 @@ E:\server\final\grocery-store\obj\Debug\net5.0\backend.dll
 E:\server\final\grocery-store\obj\Debug\net5.0\ref\backend.dll
 E:\server\final\grocery-store\obj\Debug\net5.0\backend.pdb
 E:\server\final\grocery-store\obj\Debug\net5.0\backend.genruntimeconfig.cache
+E:\server\final\grocery-store\bin\Debug\net5.0\config\env.development.json
+E:\server\final\grocery-store\bin\Debug\net5.0\config\env.production.json
