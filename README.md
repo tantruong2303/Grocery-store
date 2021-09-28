@@ -4,7 +4,7 @@
 
 [![Grocery Store Logo](doc/logo.png)](https://grocery.vinhnhan.com)
 
-## [Live Demo](https://grocery.vinhnhan.com)
+## [Live Demo](https://grocery.vinhnhan.com) - [Live Document](https://grocery.vinhnhan.com)
 
 # Mono Grocery Store - .NET + Entity Framework
 
@@ -65,9 +65,20 @@ the manager to control all systems.
 
 ## Project Picture
 
+### Home Page
+
 ![Home Page](doc/home.jpg)
+
+### Manager Page
+
 ![Manager Page](doc/manager.jpg)
+
+### Category Page
+
 ![Order Page](doc/order.jpg)
+
+### Login Page
+
 ![Login Page](doc/login.jpg)
 
 ## Bug Report
