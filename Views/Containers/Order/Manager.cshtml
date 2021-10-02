@@ -19,7 +19,6 @@
                     <h2 class="mr-auto text-base font-medium">
                         Order Management
                     </h2>
-
                 </div>
                 <div class="flex flex-col items-center p-5 border-b border-gray-200 sm:flex-row">
 
@@ -56,7 +55,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Order ID
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">#
                                         </th>
                                         <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Customer Name
                                         </th>
@@ -74,15 +73,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
-                                    @foreach (var item in orders)
-                                    {
-
-                                        var link = $"{Routers.OrderDetail.Link}?orderId={item.OrderId}";
+                                    @for (int i = 0; i < orders.Count; i++)
+                                    {   
+                                        var item = orders[i];
+                                              var link = $"{Routers.OrderDetail.Link}?orderId={item.OrderId}";
                                         totalOri += item.Total;
                                         totalPro += item.Profit;
                                         <tr class="hover:bg-gray-200">
-                                            <td class="border">@item.OrderId</td>
+                                            <td class="border">@i</td>
                                             <td class="border">@item.Customer.Name</td>
                                             <td class="border">$@item.Total</td>
                                             <td class="border">$@item.Profit</td>
@@ -98,6 +96,8 @@
                                             </td>
                                         </tr>
                                     }
+
+
 
                                       <tr class="hover:bg-gray-200">
                                             <td class="border"></td>

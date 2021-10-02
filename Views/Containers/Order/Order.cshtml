@@ -26,7 +26,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Order ID
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">#
                                         </th>
                                         <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Customer Name
                                         </th>
@@ -45,13 +45,13 @@
                                 </thead>
                                 <tbody>
 
-                                    @foreach (var item in orders)
+                                    @for (int i = 0; i < orders.Count; i++)
                                     {
-
+                                        var item = orders[i];
                                         var link = $"{Routers.OrderDetail.Link}?orderId={item.OrderId}";
 
                                         <tr class="hover:bg-gray-200">
-                                            <td class="border">@item.OrderId</td>
+                                            <td class="border">@i</td>
                                             <td class="border">@item.Customer.Name</td>
                                             <td class="border">$@item.Total</td>
                                             <td class="border">@item.CreateDate</td>
@@ -66,6 +66,7 @@
                                             </td>
                                         </tr>
                                     }
+
                                 </tbody>
                             </table>
                         </div>

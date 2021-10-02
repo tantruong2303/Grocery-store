@@ -57,7 +57,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Product ID</th>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">#</th>
                             <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Name</th>
                             <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Image</th>
                             <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Category</th>
@@ -72,13 +72,13 @@
                     </thead>
                     <tbody>
 
-                        @foreach (var item in products)
-                        {
 
-
-                            var link = $"{Routers.UpdateProduct.Link}?productId={item.ProductId}";
+                        @for (int i = 0; i < products.Count; i++)
+                        {   
+                            var item = products[i];
+                             var link = $"{Routers.UpdateProduct.Link}?productId={item.ProductId}";
                             <tr class="hover:bg-gray-200">
-                                <td class="border">@item.ProductId</td>
+                                <td class="border">@i</td>
                                 <td class="border">@item.Name</td>
                                 <td class="border">
                                     <img src="@item.ImageUrl" alt="@item.Name" class="object-cover w-16 h-16" />
@@ -102,7 +102,6 @@
 
                             </tr>
                         }
-
                      </tbody>
                 </table>
             </div>

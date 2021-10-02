@@ -1835,4 +1835,3 @@ E:\server\final\grocery-store\obj\Debug\net5.0\ref\backend.dll
 E:\server\final\grocery-store\obj\Debug\net5.0\backend.pdb
 E:\server\final\grocery-store\obj\Debug\net5.0\backend.genruntimeconfig.cache
 E:\server\final\grocery-store\bin\Debug\net5.0\config\env.development.json
-E:\server\final\grocery-store\bin\Debug\net5.0\config\env.production.json
