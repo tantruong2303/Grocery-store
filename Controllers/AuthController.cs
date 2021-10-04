@@ -3,11 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using Backend.Utils.Common;
 using Backend.Services.Interface;
 using Microsoft.AspNetCore.Http;
+using Backend.Pipe;
+using Backend.Models;
 
 namespace Backend.Controllers
 {
 
     [Route("auth")]
+    [ServiceFilter(typeof(UserFilter))]
     public class AuthController : Controller
     {
         private readonly IAuthService AuthService;
@@ -20,7 +23,11 @@ namespace Backend.Controllers
         [HttpGet("login")]
         public IActionResult Login()
         {
-
+            var user = (User)this.ViewData["user"];
+            if (user != null)
+            {
+                return Redirect(Routers.Home.Link);
+            }
             return View(Routers.Login.Page);
         }
 
@@ -28,6 +35,11 @@ namespace Backend.Controllers
         [HttpGet("register")]
         public IActionResult Register()
         {
+            var user = (User)this.ViewData["user"];
+            if (user != null)
+            {
+                return Redirect(Routers.Home.Link);
+            }
             return View(Routers.Register.Page);
         }
 
