@@ -61,5 +61,17 @@ namespace Backend.Services
 
             return this.CategoryRepository.UpdateCategoryHandler(category);
         }
+
+        public (List<Category>, int) GetAllCategoriesWithStatus(int pageIndex, int pageSize, string searchName, CategoryStatus searchStatus) => this.CategoryRepository.GetAllCategoriesWithStatus(pageIndex, pageSize, searchName, searchStatus);
+
+        public List<SelectListItem> GetCategoryStatusDropListRender()
+        {
+            var status = new List<SelectListItem>(){
+                new SelectListItem(){ Value = CategoryStatus.ACTIVE.ToString(), Text = "Active"},
+                new SelectListItem(){  Value =  CategoryStatus.INACTIVE.ToString(), Text = "Inactive"}
+            };
+
+            return status;
+        }
     }
 }

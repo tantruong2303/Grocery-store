@@ -13,5 +13,6 @@ namespace Backend.DAO.Interface
         public Category GetCategory(string categoryId);
         public bool CreateCategoryHandler(Category category);
         public bool UpdateCategoryHandler(Category category);
+        public (List<Category>, int) GetAllCategoriesWithStatus(int pageIndex, int pageSize, string searchName, CategoryStatus searchStatus);
     }
 }

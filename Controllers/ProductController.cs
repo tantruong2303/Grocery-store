@@ -45,7 +45,7 @@ namespace Backend.Controllers
 
         [HttpGet("")]
         [ServiceFilter(typeof(AuthGuard))]
-        public IActionResult Product(double min, double max, string name, string categoryId)
+        public IActionResult Product(double min, double max, string name, string categoryId, int pageIndex = 0, int pageSize = 12)
         {
             var categories = this.CategoryService.GetCategoryDropListRender();
             var allCategory = new SelectListItem()
@@ -84,7 +84,7 @@ namespace Backend.Controllers
             }
 
 
-            var (products, count) = this.ProductService.GetProducts(min, max, name, categoryId);
+            var (products, count) = this.ProductService.GetProducts(pageIndex, pageSize, min, max, name, categoryId);
             this.ViewData["products"] = products;
             this.ViewData["count"] = count;
             return View(Routers.Product.Page);
