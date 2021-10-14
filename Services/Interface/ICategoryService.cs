@@ -13,6 +13,8 @@ namespace Backend.Services.Interface
         public List<Category> GetCategories();
         public Category GetCategory(string categoryId);
         public List<SelectListItem> GetCategoryDropListRender();
+        public (List<Category>, int) GetAllCategoriesWithStatus(int pageIndex, int pageSize, string searchName, CategoryStatus searchStatus);
+        public List<SelectListItem> GetCategoryStatusDropListRender();
 
     }
 }

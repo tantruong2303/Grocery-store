@@ -7,7 +7,7 @@ namespace Backend.Services.Interface
 {
     public interface IProductService
     {
-        public (List<Product>, int) GetProducts(double min, double max, string name, string categoryId);
+        public (List<Product>, int) GetProducts(int pageIndex, int pageSize, double min, double max, string name, string categoryId);
         public bool CreateProductHandler(Product product);
         public bool UpdateProductHandler(Product product);
         public Product GetProductById(string productId);
