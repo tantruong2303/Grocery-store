@@ -26,7 +26,7 @@ namespace Backend.Controllers
         [HttpGet("create")]
         public IActionResult CreateProduct()
         {
-            var categories = this.CategoryService.GetCategoryDropListRender();
+            var categories = this.CategoryService.GetCategoryDropListRender(CategoryStatus.INACTIVE);
             this.ViewData["categories"] = new SelectList(categories);
             return View(Routers.CreateProduct.Page);
         }
@@ -38,7 +38,7 @@ namespace Backend.Controllers
             var product = this.ProductService.GetProductById(productId);
             this.ViewData["product"] = product;
 
-            var categories = this.CategoryService.GetCategoryDropListRender();
+            var categories = this.CategoryService.GetCategoryDropListRender(CategoryStatus.INACTIVE);
             this.ViewData["categories"] = new SelectList(categories);
             return View(Routers.UpdateProduct.Page);
         }
@@ -47,7 +47,7 @@ namespace Backend.Controllers
         [ServiceFilter(typeof(AuthGuard))]
         public IActionResult Product(double min, double max, string name, string categoryId, int pageIndex = 0, int pageSize = 12)
         {
-            var categories = this.CategoryService.GetCategoryDropListRender();
+            var categories = this.CategoryService.GetCategoryDropListRender(CategoryStatus.INACTIVE);
             var allCategory = new SelectListItem()
             {
                 Value = "",
@@ -84,7 +84,7 @@ namespace Backend.Controllers
             }
 
 
-            var (products, count) = this.ProductService.GetProducts(pageIndex, pageSize, min, max, name, categoryId);
+            var (products, count) = this.ProductService.GetProducts(pageIndex, pageSize, min, max, name, categoryId, CategoryStatus.INACTIVE);
             this.ViewData["products"] = products;
             this.ViewData["count"] = count;
             return View(Routers.Product.Page);
