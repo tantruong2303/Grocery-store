@@ -38,10 +38,18 @@ namespace Backend.Services
             return this.CategoryRepository.GetCategories();
         }
 
-        public List<SelectListItem> GetCategoryDropListRender()
+        public List<SelectListItem> GetCategoryDropListRender(CategoryStatus categoryStatus)
         {
             var categories = new List<SelectListItem>();
-            var list = this.CategoryRepository.GetCategories();
+            IEnumerable<Category> list;
+            if (categoryStatus == CategoryStatus.ACTIVE)
+            {
+                list = this.CategoryRepository.GetCategories().Where(c => c.Status == CategoryStatus.ACTIVE);
+            }
+            else
+            {
+                list = this.CategoryRepository.GetCategories();
+            }
             foreach (var item in list)
             {
                 categories.Add(new SelectListItem() { Value = item.CategoryId, Text = item.Name });
@@ -68,7 +76,7 @@ namespace Backend.Services
         {
             var status = new List<SelectListItem>(){
                 new SelectListItem(){ Value = CategoryStatus.ACTIVE.ToString(), Text = "Active"},
-                new SelectListItem(){  Value =  CategoryStatus.INACTIVE.ToString(), Text = "Inactive"}
+                new SelectListItem() { Value = CategoryStatus.INACTIVE.ToString(), Text = "Inactive" }
             };
 
             return status;
