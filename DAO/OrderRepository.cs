@@ -22,7 +22,7 @@ namespace Backend.DAO
             return orders;
         }
 
-        public List<OrderItem> GetOrderDetail(string orderId)
+        public (List<OrderItem>, int) GetOrderDetail(string orderId, int pageIndex, int pageSize)
         {
             List<OrderItem> orderItems = this.DBContext.OrderItem.Where(x => x.OrderId == orderId).ToList();
             foreach (var orderItem in orderItems)
@@ -30,7 +30,8 @@ namespace Backend.DAO
                 this.DBContext.Entry(orderItem).Reference(item => item.Product).Load();
                 this.DBContext.Entry(orderItem.Product).Reference(item => item.Category).Load();
             }
-            return orderItems;
+            var pagelist = (List<OrderItem>)orderItems.Take((pageIndex + 1) * pageSize).Skip(pageIndex * pageSize).ToList();
+            return (pagelist, orderItems.Count);
         }
 
         public List<Order> GetAllOrders()

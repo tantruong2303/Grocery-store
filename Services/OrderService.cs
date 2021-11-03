@@ -29,9 +29,9 @@ namespace Backend.Services
         {
             return this.OrderRepository.GetOrders(userId);
         }
-        public List<OrderItem> GetOrderDetail(string orderId)
+        public (List<OrderItem>, int) GetOrderDetail(string orderId, int pageIndex, int pageSize)
         {
-            return this.OrderRepository.GetOrderDetail(orderId);
+            return this.OrderRepository.GetOrderDetail(orderId, pageIndex, pageSize);
         }
         public List<Order> GetAllOrders()
         {
