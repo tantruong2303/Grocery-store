@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ACER\\Desktop\\Groce\\grocery-store\\backend.csproj": {}
+    "E:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ACER\\Desktop\\Groce\\grocery-store\\backend.csproj": {
+    "E:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ACER\\Desktop\\Groce\\grocery-store\\backend.csproj",
+        "projectUniqueName": "E:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "C:\\Users\\ACER\\Desktop\\Groce\\grocery-store\\backend.csproj",
-        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ACER\\Desktop\\Groce\\grocery-store\\obj\\",
+        "projectPath": "E:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\backend.csproj",
+        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+        "outputPath": "E:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
