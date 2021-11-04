@@ -11,6 +11,7 @@ module.exports = {
                 updateInformation: "./src/user/updateUser.ts",
                 updateProduct: "./src/product/update.ts",
                 home: "./src/home/home.ts",
+                pagination: "./src/common/pagination.ts",
         },
         output: {
                 path: __dirname + "/../wwwroot/js",

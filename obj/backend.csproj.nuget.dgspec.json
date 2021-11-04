@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\backend.csproj": {}
+    "D:\\grocery-store\\backend.csproj": {}
   },
   "projects": {
-    "E:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\backend.csproj": {
+    "D:\\grocery-store\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\backend.csproj",
+        "projectUniqueName": "D:\\grocery-store\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "E:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\backend.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "E:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\obj\\",
+        "projectPath": "D:\\grocery-store\\backend.csproj",
+        "packagesPath": "C:\\Users\\heaty\\.nuget\\packages\\",
+        "outputPath": "D:\\grocery-store\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\heaty\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

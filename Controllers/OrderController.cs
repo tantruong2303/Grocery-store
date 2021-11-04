@@ -70,7 +70,7 @@ namespace Backend.Controllers
             }
             catch (System.Exception)
             {
-                Console.WriteLine("ok");
+
                 var query = $"?startDate={firstDate}&endDate={lastDate}&search=";
                 return Redirect(Routers.Manager.Link + query);
             }

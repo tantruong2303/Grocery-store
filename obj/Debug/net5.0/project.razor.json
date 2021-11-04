@@ -1,5 +1,5 @@
 {
-  "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\backend.csproj",
+  "FilePath": "d:\\grocery-store\\backend.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "5.0",
@@ -15619,138 +15619,148 @@
   "RootNamespace": "backend",
   "Documents": [
     {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Components\\Form\\SelectList.cshtml",
-      "TargetPath": "Views\\Components\\Form\\SelectList.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Containers\\Category\\UpdateCategory.cshtml",
-      "TargetPath": "Views\\Containers\\Category\\UpdateCategory.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Containers\\Home.cshtml",
-      "TargetPath": "Views\\Containers\\Home.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Components\\Form\\TextField.cshtml",
-      "TargetPath": "Views\\Components\\Form\\TextField.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Components\\Navbar\\NavbarSide.cshtml",
-      "TargetPath": "Views\\Components\\Navbar\\NavbarSide.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Containers\\Order\\Order.cshtml",
-      "TargetPath": "Views\\Containers\\Order\\Order.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Containers\\Product\\UpdateProduct.cshtml",
-      "TargetPath": "Views\\Containers\\Product\\UpdateProduct.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Components\\Table\\Status.cshtml",
-      "TargetPath": "Views\\Components\\Table\\Status.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Containers\\Category\\CreateCategory.cshtml",
-      "TargetPath": "Views\\Containers\\Category\\CreateCategory.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Containers\\Order\\Manager.cshtml",
-      "TargetPath": "Views\\Containers\\Order\\Manager.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Containers\\Product\\Product.cshtml",
-      "TargetPath": "Views\\Containers\\Product\\Product.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Containers\\User\\UpdateUserInfo.cshtml",
-      "TargetPath": "Views\\Containers\\User\\UpdateUserInfo.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Containers\\User\\UpdatePassword.cshtml",
-      "TargetPath": "Views\\Containers\\User\\UpdatePassword.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Containers\\Order\\OrderDetail.cshtml",
+      "FilePath": "d:\\grocery-store\\Views\\Containers\\Order\\OrderDetail.cshtml",
       "TargetPath": "Views\\Containers\\Order\\OrderDetail.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Containers\\Product\\CreateProduct.cshtml",
-      "TargetPath": "Views\\Containers\\Product\\CreateProduct.cshtml",
+      "FilePath": "d:\\grocery-store\\Views\\Components\\Common\\Pagination.cshtml",
+      "TargetPath": "Views\\Components\\Common\\Pagination.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Containers\\User\\User.cshtml",
-      "TargetPath": "Views\\Containers\\User\\User.cshtml",
+      "FilePath": "d:\\grocery-store\\Views\\Containers\\Category\\UpdateCategory.cshtml",
+      "TargetPath": "Views\\Containers\\Category\\UpdateCategory.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Components\\Form\\FormMessage.cshtml",
-      "TargetPath": "Views\\Components\\Form\\FormMessage.cshtml",
+      "FilePath": "d:\\grocery-store\\Views\\Components\\Navbar\\NavbarSide.cshtml",
+      "TargetPath": "Views\\Components\\Navbar\\NavbarSide.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Containers\\Auth\\Login.cshtml",
-      "TargetPath": "Views\\Containers\\Auth\\Login.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Components\\Form\\FormBtn.cshtml",
-      "TargetPath": "Views\\Components\\Form\\FormBtn.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Containers\\Auth\\Register.cshtml",
-      "TargetPath": "Views\\Containers\\Auth\\Register.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Components\\Navbar\\Logo.cshtml",
-      "TargetPath": "Views\\Components\\Navbar\\Logo.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Components\\Form\\TextFieldNumber.cshtml",
-      "TargetPath": "Views\\Components\\Form\\TextFieldNumber.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FilePath": "d:\\grocery-store\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "e:\\MinhThuan\\PRN211\\Pagination-2\\grocery-store\\Views\\Containers\\Category\\Category.cshtml",
+      "FilePath": "d:\\grocery-store\\Views\\Components\\Form\\FormMessage.cshtml",
+      "TargetPath": "Views\\Components\\Form\\FormMessage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Containers\\User\\UpdateUserInfo.cshtml",
+      "TargetPath": "Views\\Containers\\User\\UpdateUserInfo.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Containers\\Auth\\Login.cshtml",
+      "TargetPath": "Views\\Containers\\Auth\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Containers\\Product\\CreateProduct.cshtml",
+      "TargetPath": "Views\\Containers\\Product\\CreateProduct.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Containers\\Auth\\Register.cshtml",
+      "TargetPath": "Views\\Containers\\Auth\\Register.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Containers\\Order\\Manager.cshtml",
+      "TargetPath": "Views\\Containers\\Order\\Manager.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Components\\Form\\FormHidden.cshtml",
+      "TargetPath": "Views\\Components\\Form\\FormHidden.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Containers\\Category\\Category.cshtml",
       "TargetPath": "Views\\Containers\\Category\\Category.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Containers\\User\\User.cshtml",
+      "TargetPath": "Views\\Containers\\User\\User.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Containers\\Product\\Product.cshtml",
+      "TargetPath": "Views\\Containers\\Product\\Product.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Containers\\Order\\Order.cshtml",
+      "TargetPath": "Views\\Containers\\Order\\Order.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Components\\Navbar\\Logo.cshtml",
+      "TargetPath": "Views\\Components\\Navbar\\Logo.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Components\\Form\\TextFieldNumber.cshtml",
+      "TargetPath": "Views\\Components\\Form\\TextFieldNumber.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Containers\\Home.cshtml",
+      "TargetPath": "Views\\Containers\\Home.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Containers\\Category\\CreateCategory.cshtml",
+      "TargetPath": "Views\\Containers\\Category\\CreateCategory.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Containers\\User\\UpdatePassword.cshtml",
+      "TargetPath": "Views\\Containers\\User\\UpdatePassword.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Components\\Form\\FormBtn.cshtml",
+      "TargetPath": "Views\\Components\\Form\\FormBtn.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Components\\Table\\Status.cshtml",
+      "TargetPath": "Views\\Components\\Table\\Status.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Containers\\Product\\UpdateProduct.cshtml",
+      "TargetPath": "Views\\Containers\\Product\\UpdateProduct.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Components\\Form\\SelectList.cshtml",
+      "TargetPath": "Views\\Components\\Form\\SelectList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\grocery-store\\Views\\Components\\Form\\TextField.cshtml",
+      "TargetPath": "Views\\Components\\Form\\TextField.cshtml",
       "FileKind": "mvc"
     }
   ],

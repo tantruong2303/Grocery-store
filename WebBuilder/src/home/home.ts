@@ -55,7 +55,6 @@ const createEntity = (name: string, quantity: number, price: number, id: string)
                 "duration-300",
                 "ease-in-out",
                 "bg-white",
-                "rounded-md",
                 "cursor-pointer",
                 "dark:bg-dark-3",
                 "hover:bg-gray-200",

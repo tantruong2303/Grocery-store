@@ -75,7 +75,7 @@ namespace Backend.Controllers
 
             var (products, count) = this.ProductService.GetProducts(pageIndex, pageSize, min, max, name, categoryId, CategoryStatus.ACTIVE);
             this.ViewData["products"] = products;
-            this.ViewData["count"] = count;
+            this.ViewData["total"] = count;
 
             return View(Routers.Home.Page);
         }

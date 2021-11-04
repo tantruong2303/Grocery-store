@@ -22,7 +22,7 @@
                 </div>
                 <div class="flex flex-col items-center p-5 border-b border-gray-200 sm:flex-row">
 
-                    <form id="tabulator-html-filter-form">
+                    <form id="formFilter">
                         <div class="flex items-end space-x-2">
                             <div class="space-y-2">
                                 <label>Name</label>
@@ -45,7 +45,10 @@
 
                             </div>
                         </div>
-
+                        @await Html.PartialAsync("../../Components/Form/FormHidden.cshtml",
+                        new { Name = "pageSize", Value = (string) this.Context.Request.Query["pageSize"] ?? "12" })
+                        @await Html.PartialAsync("../../Components/Form/FormHidden.cshtml",
+                        new { Name = "pageIndex",Value = (string) this.Context.Request.Query["pageIndex"] ?? "0" })
                     </form>
                 </div>
 
@@ -122,7 +125,6 @@
         </div>
     </div>
 </div>
-@section Scripts {
-
-
-}
+@* @section Scripts {
+<script src="/js/pagination.js"></script>
+} *@
