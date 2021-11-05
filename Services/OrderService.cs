@@ -25,9 +25,9 @@ namespace Backend.Services
             this.CartService = cartService;
             this.ProductService = productService;
         }
-        public List<Order> GetOrders(string userId)
+        public List<Order> GetOrders(string userId, int pageIndex, int pageSize)
         {
-            return this.OrderRepository.GetOrders(userId);
+            return this.OrderRepository.GetOrders(userId, pageIndex, pageSize);
         }
         public (List<OrderItem>, int) GetOrderDetail(string orderId, int pageIndex, int pageSize)
         {
@@ -37,9 +37,9 @@ namespace Backend.Services
         {
             return this.OrderRepository.GetAllOrders();
         }
-        public List<Order> SearchOrders(string startDate, string endDate, string search)
+        public List<Order> SearchOrders(string startDate, string endDate, string search, int pageIndex, int pageSize)
         {
-            return this.OrderRepository.SearchOrders(startDate, endDate, search);
+            return this.OrderRepository.SearchOrders(startDate, endDate, search, pageIndex, pageSize);
         }
 
         public bool CreateOrderHandler(Order order)

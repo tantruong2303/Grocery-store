@@ -15,11 +15,12 @@ namespace Backend.DAO
             this.DBContext = dBContext;
         }
 
-        public List<Order> GetOrders(string userId)
+        public List<Order> GetOrders(string userId, int pageIndex, int pageSize)
         {
 
             List<Order> orders = this.DBContext.Order.Where(o => o.CustomerId == userId).ToList();
-            return orders;
+            var result = orders.Take((pageIndex + 1) * pageSize).Skip(pageIndex * pageSize).ToList();
+            return result;
         }
 
         public (List<OrderItem>, int) GetOrderDetail(string orderId, int pageIndex, int pageSize)
@@ -40,7 +41,7 @@ namespace Backend.DAO
             return orders;
         }
 
-        public List<Order> SearchOrders(string startDate, string endDate, string search)
+        public List<Order> SearchOrders(string startDate, string endDate, string search, int pageIndex, int pageSize)
         {
             if (search == null)
             {
@@ -68,7 +69,8 @@ namespace Backend.DAO
                     orders.RemoveAt(i);
                 }
             }
-            return orders;
+            var result = orders.Take((pageIndex + 1) * pageSize).Skip(pageIndex * pageSize).ToList();
+            return result;
         }
 
 

@@ -27,11 +27,11 @@ namespace Backend.Controllers
         [HttpGet("")]
         [RoleGuardAttribute(new UserRole[] { UserRole.CUSTOMER })]
         [ServiceFilter(typeof(AuthGuard))]
-        public IActionResult Order()
+        public IActionResult Order(int pageIndex = 0, int pageSize = 12)
         {
 
             var user = (User)this.ViewData["user"];
-            var orders = this.OrderService.GetOrders(user.UserId);
+            var orders = this.OrderService.GetOrders(user.UserId, pageIndex, pageSize);
             this.ViewData["orders"] = orders;
             return View(Routers.Order.Page);
         }
@@ -50,7 +50,7 @@ namespace Backend.Controllers
         [HttpGet("manager")]
         [RoleGuardAttribute(new UserRole[] { UserRole.MANGER })]
         [ServiceFilter(typeof(AuthGuard))]
-        public IActionResult GetAllOrders(string startDate, string endDate, string search)
+        public IActionResult GetAllOrders(string startDate, string endDate, string search, int pageIndex = 0, int pageSize = 12)
         {
             var now = DateTime.Now;
             string lastDate = now.AddDays(1).ToString("yyyy-MM-dd");
@@ -64,7 +64,7 @@ namespace Backend.Controllers
 
             try
             {
-                var orders = this.OrderService.SearchOrders(startDate, endDate, search);
+                var orders = this.OrderService.SearchOrders(startDate, endDate, search, pageIndex, pageSize);
                 this.ViewData["orders"] = orders;
                 return View(Routers.Manager.Page);
             }
