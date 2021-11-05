@@ -66,17 +66,17 @@
 
             if (i == pageIndex)
             {
-                <li>
+                <li class="mx-2">
 
-                    <button data-index="@i" type="button" class="pagination__link pagination__link--active" aria-current="page">
+                    <button data-index="@i" type="button" class="p-2 font-semibold text-blue-500" aria-current="page">
                         @display
                     </button>
                 </li>
             }
             else
             {
-                <li>
-                    <button data-index="@i" type="button" class="pagination__link " aria-current="page">
+                <li class="mx-2">
+                    <button data-index="@i" type="button" class="p-2 font-medium" aria-current="page">
                         @display
                     </button>
                 </li>

@@ -39,11 +39,11 @@ namespace Backend.Controllers
 
         [HttpGet("detail")]
         [ServiceFilter(typeof(AuthGuard))]
-        public IActionResult OrderDetail(string orderId, int pageIndex = 0, int pageSize = 1)
+        public IActionResult OrderDetail(string orderId, int pageIndex = 0, int pageSize = 1000)
         {
             var (items, count) = this.OrderService.GetOrderDetail(orderId, pageIndex, pageSize);
             this.ViewData["items"] = items;
-            this.ViewData["count"] = count;
+            this.ViewData["total"] = count;
             return View(Routers.OrderDetail.Page);
         }
 

@@ -45,7 +45,7 @@
                                         var link = $"{Routers.OrderDetail.Link}?orderId={item.OrderId}";
 
                                         <tr class="hover:bg-gray-200">
-                                            <td class="border">@i</td>
+                                            <td class="border">@(i+1)</td>
                                             <td class="border">@item.Product.Name</td>
                                             <td class="border">@item.Quantity</td>
                                             <td class="border">$@item.SalePrice</td>

@@ -1,10 +1,7 @@
 @{
     this.ViewData["Title"] = Routers.Category.Title;
     var orders = (List<Order>)this.ViewData["orders"];
-
-
-
-
+    var total = (int)this.ViewData["total"];
 }
 
 <div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6">
@@ -18,8 +15,12 @@
                     </h2>
 
                 </div>
-
-
+                <form id="formFilter">
+                    @await Html.PartialAsync("../../Components/Form/FormHidden.cshtml",
+                    new { Name = "pageSize", Value = (string) this.Context.Request.Query["pageSize"] ?? "12" })
+                    @await Html.PartialAsync("../../Components/Form/FormHidden.cshtml",
+                    new { Name = "pageIndex",Value = (string) this.Context.Request.Query["pageIndex"] ?? "0" })
+                </form>
                 <div class="p-5" id="hoverable-table">
                     <div class="preview">
                         <div class="overflow-x-auto">
@@ -51,7 +52,7 @@
                                         var link = $"{Routers.OrderDetail.Link}?orderId={item.OrderId}";
 
                                         <tr class="hover:bg-gray-200">
-                                            <td class="border">@i</td>
+                                            <td class="border">@(i+1)</td>
                                             <td class="border">@item.Customer.Name</td>
                                             <td class="border">$@item.Total</td>
                                             <td class="border">@item.CreateDate</td>
@@ -69,6 +70,10 @@
 
                                 </tbody>
                             </table>
+                            @await Html.PartialAsync("../../Components/Common/Pagination.cshtml",
+                            new { PageIndex = (string) this.Context.Request.Query["pageIndex"] ?? "0", PageSize =
+                            (string)
+                            this.Context.Request.Query["pageSize"]?? "12", Total = total })
                         </div>
                     </div>
                 </div>
@@ -76,3 +81,6 @@
         </div>
     </div>
 </div>
+@section Scripts {
+<script src="/js/pagination.js"></script>
+}

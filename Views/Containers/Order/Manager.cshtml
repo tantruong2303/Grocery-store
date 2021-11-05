@@ -83,7 +83,7 @@
                                         totalOri += item.Total;
                                         totalPro += item.Profit;
                                         <tr class="hover:bg-gray-200">
-                                            <td class="border">@i</td>
+                                            <td class="border">@(i+1)</td>
                                             <td class="border">@item.Customer.Name</td>
                                             <td class="border">$@item.Total</td>
                                             <td class="border">$@item.Profit</td>
@@ -129,6 +129,6 @@
         </div>
     </div>
 </div>
-@* @section Scripts {
+@section Scripts {
 <script src="/js/pagination.js"></script>
-} *@
+}
