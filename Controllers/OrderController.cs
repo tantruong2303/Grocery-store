@@ -31,8 +31,9 @@ namespace Backend.Controllers
         {
 
             var user = (User)this.ViewData["user"];
-            var orders = this.OrderService.GetOrders(user.UserId, pageIndex, pageSize);
+            var (orders, total) = this.OrderService.GetOrders(user.UserId, pageIndex, pageSize);
             this.ViewData["orders"] = orders;
+            this.ViewData["total"] = total;
             return View(Routers.Order.Page);
         }
 
@@ -64,8 +65,9 @@ namespace Backend.Controllers
 
             try
             {
-                var orders = this.OrderService.SearchOrders(startDate, endDate, search, pageIndex, pageSize);
+                var (orders, total) = this.OrderService.SearchOrders(startDate, endDate, search, pageIndex, pageSize);
                 this.ViewData["orders"] = orders;
+                this.ViewData["total"] = total;
                 return View(Routers.Manager.Page);
             }
             catch (System.Exception)
