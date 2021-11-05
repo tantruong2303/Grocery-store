@@ -44,6 +44,7 @@ namespace Backend
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<AuthGuard>();
+            services.AddScoped<UserFilter>();
 
             services.AddSession();
 

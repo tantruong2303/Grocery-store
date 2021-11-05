@@ -22,7 +22,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Item ID
+                                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">#
                                         </th>
                                         <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Product Name
                                         </th>
@@ -37,21 +37,21 @@
                                 </thead>
                                 <tbody>
 
-                                    @foreach (var item in items)
+                                    @for (int i = 0; i < items.Count; i++)
                                     {
+                                        var item = items[i];
                                         total += item.SalePrice;
 
                                         var link = $"{Routers.OrderDetail.Link}?orderId={item.OrderId}";
 
                                         <tr class="hover:bg-gray-200">
-                                            <td class="border">@item.OrderItemId</td>
+                                            <td class="border">@(i+1)</td>
                                             <td class="border">@item.Product.Name</td>
                                             <td class="border">@item.Quantity</td>
                                             <td class="border">$@item.SalePrice</td>
                                             <td class="border">@item.CreateDate</td>
                                         </tr>
                                     }
-
 
                                     <tr class="hover:bg-gray-200">
                                         <td class="border"></td>

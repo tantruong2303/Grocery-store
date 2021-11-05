@@ -27,10 +27,16 @@ namespace Backend.Controllers
         }
 
         [HttpGet("")]
-        public IActionResult Index(double min, double max, string name, string categoryId, string message, string errorMessage)
+        public IActionResult Index(double min, double max, string name, string categoryId, string message, string errorMessage, int pageIndex = 0, int pageSize = 12)
         {
 
-            var categories = this.CategoryService.GetCategoryDropListRender();
+            var user = (User)this.ViewData["user"];
+            if (user.Role == UserRole.MANGER)
+            {
+                return Redirect(Routers.Product.Link);
+            }
+
+            var categories = this.CategoryService.GetCategoryDropListRender(CategoryStatus.ACTIVE);
             var allCategory = new SelectListItem()
             {
                 Value = "",
@@ -73,9 +79,9 @@ namespace Backend.Controllers
             }
 
 
-            var (products, count) = this.ProductService.GetProducts(min, max, name, categoryId);
+            var (products, count) = this.ProductService.GetProducts(pageIndex, pageSize, min, max, name, categoryId, CategoryStatus.ACTIVE);
             this.ViewData["products"] = products;
-            this.ViewData["count"] = count;
+            this.ViewData["total"] = count;
 
             return View(Routers.Home.Page);
         }

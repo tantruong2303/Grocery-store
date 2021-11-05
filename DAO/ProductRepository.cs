@@ -34,9 +34,17 @@ namespace Backend.DAO
             return product;
         }
 
-        public (List<Product>, int) GetProducts(double min, double max, string name, string categoryId)
+        public (List<Product>, int) GetProducts(int pageIndex, int pageSize, double min, double max, string name, string categoryId, CategoryStatus categoryStatus)
         {
-            List<Product> products = this.DBContext.Product.Where(item => item.RetailPrice >= min && item.RetailPrice <= max && item.Name.Contains(name) && item.CategoryId.Contains(categoryId)).ToList();
+            List<Product> products = null;
+            if (categoryStatus == CategoryStatus.ACTIVE)
+            {
+                products = this.DBContext.Product.Where(item => item.RetailPrice >= min && item.RetailPrice <= max && item.Name.Contains(name) && item.CategoryId.Contains(categoryId) && item.Category.Status == CategoryStatus.ACTIVE).ToList();
+            }
+            else
+            {
+                products = this.DBContext.Product.Where(item => item.RetailPrice >= min && item.RetailPrice <= max && item.Name.Contains(name) && item.CategoryId.Contains(categoryId)).ToList();
+            }
             foreach (Product product in products)
             {
                 if (product != null)
@@ -44,7 +52,9 @@ namespace Backend.DAO
                     this.DBContext.Entry(product).Reference(item => item.Category).Load();
                 }
             }
-            return (products, products.Count);
+
+            var pagelist = (List<Product>)products.Take((pageIndex + 1) * pageSize).Skip(pageIndex * pageSize).ToList();
+            return (pagelist, products.Count);
         }
 
         public bool CreateProductHandler(Product product)

@@ -27,21 +27,23 @@ namespace Backend.Controllers
         [HttpGet("")]
         [RoleGuardAttribute(new UserRole[] { UserRole.CUSTOMER })]
         [ServiceFilter(typeof(AuthGuard))]
-        public IActionResult Order()
+        public IActionResult Order(int pageIndex = 0, int pageSize = 12)
         {
 
             var user = (User)this.ViewData["user"];
-            var orders = this.OrderService.GetOrders(user.UserId);
+            var (orders, total) = this.OrderService.GetOrders(user.UserId, pageIndex, pageSize);
             this.ViewData["orders"] = orders;
+            this.ViewData["total"] = total;
             return View(Routers.Order.Page);
         }
 
         [HttpGet("detail")]
         [ServiceFilter(typeof(AuthGuard))]
-        public IActionResult OrderDetail(string orderId)
+        public IActionResult OrderDetail(string orderId, int pageIndex = 0, int pageSize = 1000)
         {
-            var items = this.OrderService.GetOrderDetail(orderId);
+            var (items, count) = this.OrderService.GetOrderDetail(orderId, pageIndex, pageSize);
             this.ViewData["items"] = items;
+            this.ViewData["total"] = count;
             return View(Routers.OrderDetail.Page);
         }
 
@@ -49,7 +51,7 @@ namespace Backend.Controllers
         [HttpGet("manager")]
         [RoleGuardAttribute(new UserRole[] { UserRole.MANGER })]
         [ServiceFilter(typeof(AuthGuard))]
-        public IActionResult GetAllOrders(string startDate, string endDate, string search)
+        public IActionResult GetAllOrders(string startDate, string endDate, string search, int pageIndex = 0, int pageSize = 12)
         {
             var now = DateTime.Now;
             string lastDate = now.AddDays(1).ToString("yyyy-MM-dd");
@@ -63,13 +65,14 @@ namespace Backend.Controllers
 
             try
             {
-                var orders = this.OrderService.SearchOrders(startDate, endDate, search);
+                var (orders, total) = this.OrderService.SearchOrders(startDate, endDate, search, pageIndex, pageSize);
                 this.ViewData["orders"] = orders;
+                this.ViewData["total"] = total;
                 return View(Routers.Manager.Page);
             }
             catch (System.Exception)
             {
-                Console.WriteLine("ok");
+
                 var query = $"?startDate={firstDate}&endDate={lastDate}&search=";
                 return Redirect(Routers.Manager.Link + query);
             }

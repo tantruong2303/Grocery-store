@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\server\\final\\grocery-store\\backend.csproj": {}
+    "D:\\server\\grocery-store\\backend.csproj": {}
   },
   "projects": {
-    "E:\\server\\final\\grocery-store\\backend.csproj": {
+    "D:\\server\\grocery-store\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\server\\final\\grocery-store\\backend.csproj",
+        "projectUniqueName": "D:\\server\\grocery-store\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "E:\\server\\final\\grocery-store\\backend.csproj",
+        "projectPath": "D:\\server\\grocery-store\\backend.csproj",
         "packagesPath": "C:\\Users\\heaty566\\.nuget\\packages\\",
-        "outputPath": "E:\\server\\final\\grocery-store\\obj\\",
+        "outputPath": "D:\\server\\grocery-store\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\heaty566\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -107,7 +107,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -2,13 +2,11 @@
     this.ViewData["Title"] = Routers.Product.Title;
     var products = (List<Product>)this.ViewData["products"];
     var categories = (SelectList)this.ViewData["categories"];
-
+    var total = (int)this.ViewData["total"];
     var min = (string) this.Context.Request.Query["min"];
     var max = (string) this.Context.Request.Query["max"];
     var name =(string)  this.Context.Request.Query["name"];
     var categoryId = (string)  this.Context.Request.Query["categoryId"];
-
-
 }
 
 <div class="flex-1 min-h-screen px-2 py-2 xl:px-8 xl:py-6">
@@ -19,7 +17,7 @@
         <div class="content">
             <div class="p-5 mt-5 intro-y box">
                 <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
-                    <form id="tabulator-html-filter-form" >
+                    <form id="formFilter">
                         <div class="flex items-end space-x-2">
                             <div class="space-y-2">
                                 <label>Name</label>
@@ -47,6 +45,10 @@
                                 </button>
                                     
                             </div>
+                             @await Html.PartialAsync("../../Components/Form/FormHidden.cshtml",
+                             new { Name = "pageSize", Value = (string) this.Context.Request.Query["pageSize"] ?? "12" })
+                             @await Html.PartialAsync("../../Components/Form/FormHidden.cshtml",
+                            new { Name = "pageIndex",Value = (string) this.Context.Request.Query["pageIndex"] ?? "0" })
                         </div>
                     
                     </form>
@@ -57,7 +59,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Product ID</th>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">#</th>
                             <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Name</th>
                             <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Image</th>
                             <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Category</th>
@@ -72,13 +74,13 @@
                     </thead>
                     <tbody>
 
-                        @foreach (var item in products)
-                        {
 
-
-                            var link = $"{Routers.UpdateProduct.Link}?productId={item.ProductId}";
+                        @for (int i = 0; i < products.Count; i++)
+                        {   
+                            var item = products[i];
+                             var link = $"{Routers.UpdateProduct.Link}?productId={item.ProductId}";
                             <tr class="hover:bg-gray-200">
-                                <td class="border">@item.ProductId</td>
+                                <td class="border">@(i+1)</td>
                                 <td class="border">@item.Name</td>
                                 <td class="border">
                                     <img src="@item.ImageUrl" alt="@item.Name" class="object-cover w-16 h-16" />
@@ -102,11 +104,18 @@
 
                             </tr>
                         }
-
                      </tbody>
                 </table>
+                @await Html.PartialAsync("../../Components/Common/Pagination.cshtml",
+                new { PageIndex = (string) this.Context.Request.Query["pageIndex"] ?? "0", PageSize =
+                (string) this.Context.Request.Query["pageSize"]?? "12", Total = total })
             </div>
         </div>
     </div>
 
 </div>
+@section Scripts {
+
+<script src="/js/pagination.js"></script>
+
+}

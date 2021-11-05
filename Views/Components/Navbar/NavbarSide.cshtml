@@ -1,25 +1,30 @@
 @{
     var user = (User)this.ViewData["user"];
+
 }
 
 <nav class="side-nav">
     @await Html.PartialAsync("./Logo.cshtml")
     <div class="my-6 side-nav__devider"></div>
     <ul>
-        <li>
-            <a href="@Routers.Home.Link" class="side-menu side-menu--active ">
-                <div class="side-menu__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+
+        @if (user.Role != UserRole.MANGER)
+        {
+            <li>
+                <a href="@Routers.Home.Link" class="side-menu side-menu--active ">
+                    <div class="side-menu__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
                         class="block mx-auto feather feather-archive">
-                        <polyline points="21 8 21 21 3 21 3 8"></polyline>
-                        <rect x="1" y="3" width="22" height="5"></rect>
-                        <line x1="10" y1="12" x2="14" y2="12"></line>
-                    </svg>
-                </div>
-                <div class="side-menu__title">Store</div>
-            </a>
-        </li>
+                            <polyline points="21 8 21 21 3 21 3 8"></polyline>
+                            <rect x="1" y="3" width="22" height="5"></rect>
+                            <line x1="10" y1="12" x2="14" y2="12"></line>
+                        </svg>
+                    </div>
+                    <div class="side-menu__title">Store</div>
+                </a>
+            </li>
+        }
 
         @if (user.Role == UserRole.MANGER)
         {
@@ -125,7 +130,7 @@
                                     <line x1="5" y1="12" x2="19" y2="12"></line>
                                 </svg>
                             </div>
-                                <div class="side-menu__title">Create Product</div>
+                            <div class="side-menu__title">Create Product</div>
                         </a>
                     </li>
                 </ul>

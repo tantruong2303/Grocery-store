@@ -9,6 +9,7 @@ using Backend.Models;
 using Backend.Pipe;
 using Backend.Controllers.DTO;
 using FluentValidation.Results;
+using Backend.Utils.Locale;
 
 namespace Backend.Controllers
 {
@@ -51,7 +52,9 @@ namespace Backend.Controllers
             Product product = this.ProductService.GetProductById(body.productId);
             if (product.Quantity <= 0)
             {
-                res.setErrorMessage("");
+                Dictionary<string, object> context = new Dictionary<string, object>();
+                context.Add("Name", product.Name);
+                res.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_OUT_OF_STOCK, context);
                 return new BadRequestObjectResult(res.getResponse());
             }
 
@@ -64,7 +67,10 @@ namespace Backend.Controllers
                     {
                         item.Value.Quantity = product.Quantity;
                         this.HttpContext.Session.SetString(CartSession, this.CartService.convertCartItemToString(list));
-                        res.setErrorMessage("");
+                        Dictionary<string, object> context = new Dictionary<string, object>();
+                        context.Add("Name", product.Name);
+                        context.Add("Quantity", product.Quantity);
+                        res.setErrorMessage(CustomLanguageValidator.ErrorMessageKey.ERROR_OUT_OF_STOCK, context);
                         return new BadRequestObjectResult(res.getResponse());
                     }
                     else
@@ -77,7 +83,7 @@ namespace Backend.Controllers
                     }
                     this.HttpContext.Session.SetString(CartSession, this.CartService.convertCartItemToString(list));
                     res.data = this.CartService.GetCartItems(list);
-                    res.setMessage("");
+                    res.setMessage(CustomLanguageValidator.MessageKey.MESSAGE_ADD_CART_SUCCESS);
                     return new ObjectResult(res.getResponse());
                 }
             }
@@ -88,7 +94,7 @@ namespace Backend.Controllers
             list.Add(body.productId, cartItem);
             this.HttpContext.Session.SetString(CartSession, this.CartService.convertCartItemToString(list));
             res.data = this.CartService.GetCartItems(list);
-            res.setMessage("");
+            res.setMessage(CustomLanguageValidator.MessageKey.MESSAGE_ADD_CART_SUCCESS);
             return new ObjectResult(res.getResponse());
         }
         [HttpGet("")]
@@ -100,8 +106,8 @@ namespace Backend.Controllers
             var list = this.CartService.convertStringToCartItem(cart);
 
             var getCart = this.CartService.GetCartItems(list);
+
             res.data = getCart;
-            res.setMessage("");
             return new ObjectResult(res.getResponse());
         }
     }
