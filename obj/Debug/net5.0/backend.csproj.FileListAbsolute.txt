@@ -2816,3 +2816,5 @@ C:\Users\Lenovo\Desktop\grocery\obj\Debug\net5.0\backend.dll
 C:\Users\Lenovo\Desktop\grocery\obj\Debug\net5.0\ref\backend.dll
 C:\Users\Lenovo\Desktop\grocery\obj\Debug\net5.0\backend.pdb
 C:\Users\Lenovo\Desktop\grocery\obj\Debug\net5.0\backend.genruntimeconfig.cache
+C:\Users\Lenovo\Desktop\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Common\Pagination.cshtml.g.cs
+C:\Users\Lenovo\Desktop\grocery-store\obj\Debug\net5.0\Razor\Views\Components\Form\FormHidden.cshtml.g.cs
