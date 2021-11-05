@@ -1,7 +1,7 @@
 @{
     this.ViewData["Title"] = Routers.Category.Title;
     var orders = (List<Order>)this.ViewData["orders"];
-
+    var total = (int)this.ViewData["total"];
     var search = (string)this.Context.Request.Query["search"];
     var endDate = (string)this.Context.Request.Query["endDate"];
     var startDate = (string)this.Context.Request.Query["startDate"];
@@ -118,6 +118,10 @@
                                         </tr>
                                 </tbody>
                             </table>
+                              @await Html.PartialAsync("../../Components/Common/Pagination.cshtml",
+                            new { PageIndex = (string) this.Context.Request.Query["pageIndex"] ?? "0", PageSize =
+                            (string)
+                            this.Context.Request.Query["pageSize"]?? "12", Total = total })
                         </div>
                     </div>
                 </div>

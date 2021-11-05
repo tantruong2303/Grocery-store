@@ -30,6 +30,12 @@ namespace Backend.Controllers
         public IActionResult Index(double min, double max, string name, string categoryId, string message, string errorMessage, int pageIndex = 0, int pageSize = 12)
         {
 
+            var user = (User)this.ViewData["user"];
+            if (user.Role == UserRole.MANGER)
+            {
+                return Redirect(Routers.Product.Link);
+            }
+
             var categories = this.CategoryService.GetCategoryDropListRender(CategoryStatus.ACTIVE);
             var allCategory = new SelectListItem()
             {
