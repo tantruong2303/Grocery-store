@@ -50,7 +50,7 @@ namespace Backend.Controllers
             foreach (var cartItem in list)
             {
                 Product product = this.ProductService.GetProductById(cartItem.Key);
-                total += product.RetailPrice;
+                total += product.RetailPrice * cartItem.Value.Quantity;
                 profit += (product.RetailPrice - product.OriginalPrice);
                 if (cartItem.Value.Quantity > product.Quantity)
                 {
