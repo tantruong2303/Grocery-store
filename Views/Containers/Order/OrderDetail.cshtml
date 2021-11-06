@@ -40,7 +40,7 @@
                                     @for (int i = 0; i < items.Count; i++)
                                     {
                                         var item = items[i];
-                                        total += item.SalePrice;
+                                        total += item.SalePrice * item.Quantity;
 
                                         var link = $"{Routers.OrderDetail.Link}?orderId={item.OrderId}";
 
