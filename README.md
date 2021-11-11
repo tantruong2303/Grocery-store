@@ -4,7 +4,7 @@
 
 [![Grocery Store Logo](doc/logo.png)](https://grocery.vinhnhan.com)
 
-## [Live Demo](https://grocery.vinhnhan.com) - [Live Document](https://grocery.vinhnhan.com)
+## [Live Demo](https://grocery.vinhnhan.com) - [Document](./document.pdf)
 
 # Mono Grocery Store - .NET + Entity Framework
 
